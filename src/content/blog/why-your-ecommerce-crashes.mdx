@@ -1,0 +1,36 @@
+---
+title: "Why Your E-commerce Backend Crashes on Black Friday"
+date: "2024-11-28"
+description: "Scalability isn't just about adding more servers. It's about architectural decisions, database locking strategies, and caching layers."
+tags: ["Backend", "Scalability", "E-commerce"]
+---
+
+# Why Your E-commerce Backend Crashes on Black Friday
+
+It's the nightmare scenario: You've spent months preparing for the biggest sale of the year. Marketing has done their job, traffic is spiking, and then... **502 Bad Gateway**.
+
+Scalability isn't just about adding more servers (vertical scaling) or even just adding more instances (horizontal scaling). It's about how your application handles concurrency, database locks, and resource contention.
+
+## The Database Bottleneck
+
+Most e-commerce crashes happen at the database layer. When thousands of users try to buy the same item simultaneously, you run into **row locking** issues.
+
+If you're using a standard `UPDATE products SET stock = stock - 1 WHERE id = ?` query, you're relying on the database to handle the concurrency. Under high load, these transactions queue up, connections pool out, and your application hangs.
+
+### The Solution: Optimistic Locking or Redis
+
+Instead of locking the row, use **optimistic locking** with a version column, or better yet, offload inventory management to an in-memory store like **Redis**.
+
+Redis can handle atomic decrements (`DECR`) millions of times faster than a disk-based SQL database.
+
+## Caching Strategies
+
+If you're hitting the database for product details on every page load, you're doing it wrong. Static data like product descriptions, images, and pricing (mostly) should be cached.
+
+1.  **CDN**: Cache static assets and even HTML at the edge.
+2.  **Application Cache**: Use Redis to cache database query results.
+3.  **Browser Cache**: Ensure proper headers are set.
+
+## Conclusion
+
+Building a high-performance e-commerce platform requires "Engineering Precision". It's not enough to just write code that works; you must write code that survives.
