@@ -10,7 +10,7 @@ interface ProjectCardProps {
         title: string;
         description: string;
         tags: string[];
-        link: string;
+        liveUrl?: string;
     };
     index: number;
 }
@@ -25,16 +25,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             className="group relative flex flex-col p-6 rounded-lg border border-border/50 bg-card hover:border-primary transition-colors h-full"
         >
             <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold group-hover:underline transition-all">
-                    {project.title}
-                </h3>
-                <Link
-                    href={project.link}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    aria-label={`View ${project.title}`}
-                >
-                    <ArrowUpRight className="w-5 h-5" />
+                <Link href={`/projects/${project.id}`} className="block">
+                    <h3 className="text-xl font-bold group-hover:underline transition-all">
+                        {project.title}
+                    </h3>
                 </Link>
+                {project.liveUrl && (
+                    <Link
+                        href={project.liveUrl}
+                        target="_blank"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                        aria-label={`View ${project.title} Live`}
+                    >
+                        <ArrowUpRight className="w-5 h-5" />
+                    </Link>
+                )}
             </div>
 
             <p className="text-muted-foreground mb-6 flex-grow leading-relaxed">
