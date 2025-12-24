@@ -1,9 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
-import { sendEmail } from "@/app/actions/sendEmail";
+import { useState, useRef } from "react";
 import { Send, Loader2 } from "lucide-react";
-import { useEffect, useRef } from "react";
 
 const initialState = {
     success: false,
@@ -11,18 +9,38 @@ const initialState = {
 };
 
 export default function ContactForm() {
-    // @ts-ignore - React 19 types might be slightly different or older types installed, but this signature is standard for useActionState/useFormState
-    const [state, formAction, isPending] = useActionState(sendEmail, initialState);
+    const [isPending, setIsPending] = useState(false);
+    const [state, setState] = useState<{ success: boolean; error: string }>({
+        success: false,
+        error: "",
+    });
     const formRef = useRef<HTMLFormElement>(null);
 
-    useEffect(() => {
-        if (state.success && formRef.current) {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsPending(true);
+        setState({ success: false, error: "" });
+
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
+
+        // Simulate network delay
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        // For static portfolio, we'll just log to console and show success
+        // In a real static site, you'd use Formspree, EmailJS, or similar
+        console.log("Form submitted:", data);
+
+        setIsPending(false);
+        setState({ success: true, error: "" });
+
+        if (formRef.current) {
             formRef.current.reset();
         }
-    }, [state.success]);
+    };
 
     return (
-        <form ref={formRef} action={formAction} className="space-y-6">
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium">
@@ -74,7 +92,7 @@ export default function ContactForm() {
 
             {state.success && (
                 <div className="p-3 text-sm text-green-500 bg-green-50 dark:bg-green-900/20 rounded-md">
-                    Message sent successfully! I'll get back to you soon.
+                    Message sent successfully! (Demo mode)
                 </div>
             )}
 
