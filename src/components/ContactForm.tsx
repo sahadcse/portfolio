@@ -1,7 +1,10 @@
+// src/components/ContactForm.tsx
+
 "use client";
 
 import { useState, useRef } from "react";
 import { Send, Loader2 } from "lucide-react";
+import { sendEmail } from "@/app/contact/actions";
 
 const initialState = {
     success: false,
@@ -22,20 +25,22 @@ export default function ContactForm() {
         setState({ success: false, error: "" });
 
         const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData.entries());
 
-        // Simulate network delay
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        try {
+            const result = await sendEmail(formData);
 
-        // For static portfolio, we'll just log to console and show success
-        // In a real static site, you'd use Formspree, EmailJS, or similar
-        console.log("Form submitted:", data);
-
-        setIsPending(false);
-        setState({ success: true, error: "" });
-
-        if (formRef.current) {
-            formRef.current.reset();
+            if (result.success) {
+                setState({ success: true, error: "" });
+                if (formRef.current) {
+                    formRef.current.reset();
+                }
+            } else {
+                setState({ success: false, error: result.error });
+            }
+        } catch (error) {
+            setState({ success: false, error: "Something went wrong. Please try again." });
+        } finally {
+            setIsPending(false);
         }
     };
 
