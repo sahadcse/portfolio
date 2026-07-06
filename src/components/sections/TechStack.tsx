@@ -15,10 +15,10 @@ export default function TechStack() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.05 }}
-                            className="flex flex-col items-center justify-center p-4 rounded-lg hover:bg-background/80 hover:shadow-sm transition-all duration-300 group"
+                            className="flex flex-col items-center justify-center p-4 rounded-lg hover:bg-background/80 hover:shadow-[0_0_22px_-6px_hsl(var(--primary)/0.35)] transition-all duration-300 group border border-transparent hover:border-primary/30"
                         >
                             <tech.icon className="w-10 h-10 mb-3 text-muted-foreground group-hover:text-primary transition-colors" />
-                            <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground">
+                            <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors px-3 py-1 rounded-md bg-background/50 group-hover:bg-primary/10">
                                 {tech.name}
                             </span>
                         </motion.div>

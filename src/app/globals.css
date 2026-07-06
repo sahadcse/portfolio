@@ -162,4 +162,21 @@
   .micro-interact:active {
     transform: scale(0.97);
   }
+
+  /* Keyword highlighting for scannability */
+  .highlight-biz {
+    color: hsl(142 76% 36%);
+    font-weight: 600;
+  }
+  .dark .highlight-biz {
+    color: hsl(142 71% 45%);
+  }
+
+  .highlight-tech {
+    color: hsl(217 91% 60%);
+    font-weight: 500;
+  }
+  .dark .highlight-tech {
+    color: hsl(217 91% 70%);
+  }
 }

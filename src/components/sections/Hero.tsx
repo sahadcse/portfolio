@@ -32,7 +32,10 @@ export default function Hero() {
           {HERO_CONTENT.headline}
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl leading-relaxed">
-          {HERO_CONTENT.subHeadline}
+          I engineer custom backend architectures and full-stack web systems that{" "}
+          <span className="highlight-biz">automate manual processes</span>,{" "}
+          <span className="highlight-biz">eliminate operational bottlenecks</span>, and{" "}
+          <span className="highlight-biz">reduce overhead costs</span>.
         </p>
 
         {/* Updated CTAs using premium Button component */}

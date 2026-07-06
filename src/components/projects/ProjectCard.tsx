@@ -21,7 +21,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             className="group relative flex flex-col p-6 rounded-xl border border-border/50 bg-card hover:border-primary transition-all duration-300 h-full card-elevation hover:card-elevation-hover"
         >
             <div className="flex items-start justify-between mb-4">
-                <Link href={`/projects/${project.id}`} className="block flex-grow">
+                <Link href={`/projects/${project.id}`} className="block grow">
                     <div className="flex items-center gap-2 mb-3">
                         <Badge variant="primary" size="sm">
                             {project.clientSector}
@@ -43,13 +43,18 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 )}
             </div>
 
-            <p className="text-muted-foreground mb-6 flex-grow leading-relaxed line-clamp-3">
+            <p className="text-muted-foreground mb-6 grow leading-relaxed line-clamp-3">
                 {project.businessProblem.slice(0, 150)}...
             </p>
 
             <div className="flex flex-wrap gap-2 mt-auto">
                 {project.tags.slice(0, 4).map((tag) => (
-                    <Badge key={tag} variant="outline" size="sm">
+                    <Badge
+                        key={tag}
+                        variant="outline"
+                        size="sm"
+                        className="hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:shadow-[0_0_14px_-4px_hsl(var(--primary)/0.45)]"
+                    >
                         {tag}
                     </Badge>
                 ))}
