@@ -3,15 +3,11 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import type { Project } from "@/types/portfolio";
+import { Badge } from "@/components/ui/Badge";
 
 interface ProjectCardProps {
-    project: {
-        id: string;
-        title: string;
-        description: string;
-        tags: string[];
-        liveUrl?: string;
-    };
+    project: Project;
     index: number;
 }
 
@@ -22,10 +18,15 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group relative flex flex-col p-6 rounded-lg border border-border/50 bg-card hover:border-primary transition-colors h-full"
+            className="group relative flex flex-col p-6 rounded-xl border border-border/50 bg-card hover:border-primary transition-all duration-300 h-full card-elevation hover:card-elevation-hover"
         >
             <div className="flex items-start justify-between mb-4">
-                <Link href={`/projects/${project.id}`} className="block">
+                <Link href={`/projects/${project.id}`} className="block flex-grow">
+                    <div className="flex items-center gap-2 mb-3">
+                        <Badge variant="primary" size="sm">
+                            {project.clientSector}
+                        </Badge>
+                    </div>
                     <h3 className="text-xl font-bold group-hover:underline transition-all">
                         {project.title}
                     </h3>
@@ -42,18 +43,15 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 )}
             </div>
 
-            <p className="text-muted-foreground mb-6 flex-grow leading-relaxed">
-                {project.description}
+            <p className="text-muted-foreground mb-6 flex-grow leading-relaxed line-clamp-3">
+                {project.businessProblem.slice(0, 150)}...
             </p>
 
             <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tags.map((tag) => (
-                    <span
-                        key={tag}
-                        className="px-2 py-1 text-xs font-mono rounded-md bg-secondary text-secondary-foreground border border-border/50"
-                    >
+                {project.tags.slice(0, 4).map((tag) => (
+                    <Badge key={tag} variant="outline" size="sm">
                         {tag}
-                    </span>
+                    </Badge>
                 ))}
             </div>
         </motion.div>

@@ -1,4 +1,5 @@
-import { ABOUT_CONTENT } from "@/lib/data";
+import { ABOUT_CONTENT } from "@/data/experience";
+import type { Experience, Education } from "@/types/portfolio";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export default function AboutPage() {
                     <div className="mt-12">
                         <h3 className="text-2xl font-bold mb-6 font-mono">Professional Experience</h3>
                         <div className="space-y-8">
-                            {ABOUT_CONTENT.experience.map((exp: any, index: number) => (
+                            {ABOUT_CONTENT.experience.map((exp: Experience, index: number) => (
                                 <div key={index} className="p-6 rounded-lg border border-border/50 bg-card">
                                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                                         <div>
@@ -50,7 +51,7 @@ export default function AboutPage() {
                         <div className="p-6 rounded-lg border border-border/50 bg-card h-full">
                             <h3 className="text-lg font-bold mb-4 font-mono">Education</h3>
                             <ul className="space-y-6">
-                                {ABOUT_CONTENT.education.map((edu: any, index: number) => (
+                                {ABOUT_CONTENT.education.map((edu: Education, index: number) => (
                                     <li key={index}>
                                         <div className="font-bold text-lg">{edu.degree}</div>
                                         <div className="text-primary">{edu.institution}</div>

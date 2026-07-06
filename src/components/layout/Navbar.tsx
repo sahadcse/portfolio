@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X, Code2, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { SITE_CONFIG } from "@/lib/data";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { SITE_CONFIG } from "@/data/site-config";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navItems = [
     { name: "Projects", href: "/projects" },
@@ -41,6 +41,17 @@ export default function Navbar() {
                             {item.name}
                         </Link>
                     ))}
+                    {SITE_CONFIG.resumeUrl && (
+                        <a
+                            href={SITE_CONFIG.resumeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                        >
+                            <Download className="w-4 h-4" />
+                            CV
+                        </a>
+                    )}
                     <ThemeToggle />
                 </nav>
 
@@ -66,12 +77,12 @@ export default function Navbar() {
                         exit={{ opacity: 0, height: 0 }}
                         className="md:hidden border-b border-border/40 bg-background"
                     >
-                        <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                        <nav className="py-4 flex flex-col space-y-4">
                             {navItems.map((item) => (
                                 <Link
                                     key={item.href}
                                     href={item.href}
-                                    className={`text-sm font-medium transition-colors hover:text-primary ${pathname === item.href
+                                    className={`px-4 text-sm font-medium transition-colors hover:text-primary ${pathname === item.href
                                         ? "text-foreground"
                                         : "text-muted-foreground"
                                         }`}
@@ -80,6 +91,18 @@ export default function Navbar() {
                                     {item.name}
                                 </Link>
                             ))}
+                            {SITE_CONFIG.resumeUrl && (
+                                <a
+                                    href={SITE_CONFIG.resumeUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    <Download className="w-4 h-4" />
+                                    Download CV
+                                </a>
+                            )}
                         </nav>
                     </motion.div>
                 )}

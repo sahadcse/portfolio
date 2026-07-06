@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "../components/Footer";
-import { SITE_CONFIG } from "@/lib/data";
-import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import { SITE_CONFIG } from "@/data/site-config";
+import { ThemeProvider } from "@/components/layout/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],

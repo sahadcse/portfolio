@@ -1,5 +1,5 @@
-import ProjectCard from "@/components/ProjectCard";
-import { PROJECTS } from "@/lib/data";
+import ProjectCard from "@/components/projects/ProjectCard";
+import { PROJECTS } from "@/data/projects";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

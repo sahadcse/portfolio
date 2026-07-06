@@ -1,7 +1,7 @@
-import { SITE_CONFIG } from "@/lib/data";
+import { SITE_CONFIG } from "@/data/site-config";
 import { Metadata } from "next";
 import { Mail } from "lucide-react";
-import ContactForm from "@/components/ContactForm";
+import ContactForm from "@/components/sections/ContactForm";
 
 export const metadata: Metadata = {
     title: "Contact",

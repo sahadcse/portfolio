@@ -1,28 +1,24 @@
-// src/components/ContactForm.tsx
-
 "use client";
 
 import { useState, useRef } from "react";
-import { Send, Loader2 } from "lucide-react";
-import { sendEmail } from "@/app/contact/actions";
-
-const initialState = {
-    success: false,
-    error: "",
-};
+import { Send } from "lucide-react";
+import { sendEmail, ActionState } from "@/app/contact/actions";
+import { Button } from "@/components/ui/Button";
 
 export default function ContactForm() {
     const [isPending, setIsPending] = useState(false);
-    const [state, setState] = useState<{ success: boolean; error: string }>({
+    const [state, setState] = useState<ActionState>({
         success: false,
         error: "",
     });
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
     const formRef = useRef<HTMLFormElement>(null);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsPending(true);
         setState({ success: false, error: "" });
+        setFieldErrors({});
 
         const formData = new FormData(e.currentTarget);
 
@@ -36,6 +32,9 @@ export default function ContactForm() {
                 }
             } else {
                 setState({ success: false, error: result.error });
+                if (result.fieldErrors) {
+                    setFieldErrors(result.fieldErrors);
+                }
             }
         } catch (error) {
             setState({ success: false, error: "Something went wrong. Please try again." });
@@ -43,6 +42,10 @@ export default function ContactForm() {
             setIsPending(false);
         }
     };
+
+    const inputStyles = "w-full px-4 py-3 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-200";
+    const errorInputStyles = "border-red-500 focus:border-red-500 focus:ring-red-500/20";
+    const normalInputStyles = "border-input focus:border-primary";
 
     return (
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
@@ -56,9 +59,12 @@ export default function ContactForm() {
                         name="name"
                         type="text"
                         placeholder="John Doe"
-                        className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                        className={`${inputStyles} ${fieldErrors.name ? errorInputStyles : normalInputStyles}`}
                         required
                     />
+                    {fieldErrors.name && (
+                        <p className="text-sm text-red-500">{fieldErrors.name}</p>
+                    )}
                 </div>
                 <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-medium">
@@ -69,9 +75,12 @@ export default function ContactForm() {
                         name="email"
                         type="email"
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                        className={`${inputStyles} ${fieldErrors.email ? errorInputStyles : normalInputStyles}`}
                         required
                     />
+                    {fieldErrors.email && (
+                        <p className="text-sm text-red-500">{fieldErrors.email}</p>
+                    )}
                 </div>
             </div>
 
@@ -84,40 +93,39 @@ export default function ContactForm() {
                     name="message"
                     placeholder="Tell me about your project..."
                     rows={6}
-                    className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
+                    className={`${inputStyles} resize-none ${fieldErrors.message ? errorInputStyles : normalInputStyles}`}
                     required
                 />
+                {fieldErrors.message && (
+                    <p className="text-sm text-red-500">{fieldErrors.message}</p>
+                )}
             </div>
 
-            {state.error && (
-                <div className="p-3 text-sm text-red-500 bg-red-50 dark:bg-red-900/20 rounded-md">
+            {state.error && !Object.keys(fieldErrors).length && (
+                <div className="p-4 text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
                     {state.error}
                 </div>
             )}
 
             {state.success && (
-                <div className="p-3 text-sm text-green-500 bg-green-50 dark:bg-green-900/20 rounded-md">
-                    Message sent successfully! (Demo mode)
+                <div className="p-4 text-sm text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                    Message sent successfully!
                 </div>
             )}
 
-            <button
+            <Button
                 type="submit"
-                disabled={isPending}
-                className="inline-flex items-center justify-center px-8 py-3 rounded-md bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors w-full md:w-auto disabled:opacity-70 disabled:cursor-not-allowed"
+                variant="primary"
+                size="md"
+                isLoading={isPending}
+                icon={<Send className="w-4 h-4" />}
+                iconPosition="right"
+                className="w-full md:w-auto"
             >
-                {isPending ? (
-                    <>
-                        Sending...
-                        <Loader2 className="ml-2 w-4 h-4 animate-spin" />
-                    </>
-                ) : (
-                    <>
-                        Send Message
-                        <Send className="ml-2 w-4 h-4" />
-                    </>
-                )}
-            </button>
+                Send Message
+            </Button>
+
+
         </form>
     );
 }

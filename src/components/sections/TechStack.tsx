@@ -1,13 +1,12 @@
 "use client";
 
-import { TECH_STACK } from "@/lib/data";
+import { TECH_STACK } from "@/data/site-config";
 import { motion } from "framer-motion";
 
 export default function TechStack() {
     return (
         <section className="py-16 border-y border-border/40 bg-muted/20">
-            <div className="container mx-auto px-4">
-                <h2 className="text-2xl font-bold mb-8 font-mono">Technologies Mostly Used</h2>
+            <h2 className="text-2xl font-bold mb-8 font-mono">Technologies Mostly Used</h2>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                     {TECH_STACK.map((tech, index) => (
                         <motion.div
@@ -25,7 +24,6 @@ export default function TechStack() {
                         </motion.div>
                     ))}
                 </div>
-            </div>
         </section>
     );
 }

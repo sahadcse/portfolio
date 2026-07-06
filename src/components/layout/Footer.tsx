@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
-import { SITE_CONFIG } from "@/lib/data";
+import { SITE_CONFIG } from "@/data/site-config";
 
 export default function Footer() {
     return (

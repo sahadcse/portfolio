@@ -1,6 +1,6 @@
 import { getPostData, getSortedPostsData } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import CallToAction from "@/components/CallToAction";
+import CallToAction from "@/components/sections/CallToAction";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
