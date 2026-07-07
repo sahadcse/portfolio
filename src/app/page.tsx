@@ -9,7 +9,6 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-20 pb-20">
       <Hero />
-      <TechStack />
 
       <section>
         <div className="flex items-center justify-between mb-10">
@@ -28,6 +27,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <TechStack />
+
     </div>
   );
 }

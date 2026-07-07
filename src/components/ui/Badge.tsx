@@ -11,7 +11,7 @@ interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
     ({ variant = "default", size = "md", className = "", children, ...props }, ref) => {
-        const baseStyles = "inline-flex items-center font-mono rounded-md transition-all duration-200";
+        const baseStyles = "inline-flex items-center font-mono rounded-md transition-all duration-200 whitespace-nowrap";
 
         const variantStyles = {
             default: "bg-secondary text-secondary-foreground border border-border/50",
@@ -22,8 +22,8 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
         };
 
         const sizeStyles = {
-            sm: "px-2 py-0.5 text-xs",
-            md: "px-3 py-1 text-sm",
+            sm: "px-2 py-0.5 text-[11px] md:text-xs",
+            md: "px-3 py-1 text-xs md:text-sm",
         };
 
         return (

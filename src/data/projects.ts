@@ -80,8 +80,8 @@ export const PROJECTS: Project[] = [
     codeUrl: "https://github.com/sahadcse",
   },
   {
-    id: "fchc-healthcare",
-    title: "FCHC Healthcare Portal",
+    id: "fcsc-healthcare",
+    title: "FCSC Healthcare Portal",
     clientSector: "Healthcare & Medical Services",
     businessProblem: "Healthcare facility needed a modern digital presence to showcase services, provide patient resources, and streamline appointment booking processes in an increasingly competitive local healthcare market.",
     businessOutcome: "Delivered a professional healthcare portal that improved patient information accessibility and established a strong digital foundation for future telehealth integration.",
@@ -93,8 +93,8 @@ export const PROJECTS: Project[] = [
       "Mobile-first responsive design"
     ],
     tags: ["Next.js", "Static Generation", "SEO", "Responsive Design", "Healthcare UX"],
-    imageUrl: "/images/projects/fchc.png",
-    liveUrl: "#",
+    imageUrl: "/images/projects/fcsc.png",
+    liveUrl: "https://fcsc-nids.vercel.app/",
     codeUrl: "https://github.com/sahadcse",
   },
   {
@@ -111,8 +111,8 @@ export const PROJECTS: Project[] = [
       "Mobile-responsive for all devices"
     ],
     tags: ["Next.js", "Accessibility", "Information Architecture", "NDIS Services"],
-    imageUrl: "/images/projects/ndis.png",
-    liveUrl: "#",
+    imageUrl: "/images/projects/award-care.png",
+    liveUrl: "https://award-care-landing.vercel.app/",
     codeUrl: "https://github.com/sahadcse",
   },
   {
@@ -181,7 +181,7 @@ export const PROJECTS: Project[] = [
       "Robust security protocols and endpoint rate-limiting implemented"
     ],
     tags: ["Express.js", "PostgreSQL", "Prisma", "Redis", "Performance Optimization"],
-    imageUrl: "/images/projects/rushkat.png",
+    imageUrl: "",
     liveUrl: "#",
     codeUrl: "https://github.com/sahadcse",
   },

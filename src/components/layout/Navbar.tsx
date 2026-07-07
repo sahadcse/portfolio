@@ -7,6 +7,7 @@ import { Menu, X, Code2, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SITE_CONFIG } from "@/data/site-config";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import Logo from "@/components/ui/Logo";
 
 const navItems = [
     { name: "Projects", href: "/projects" },
@@ -15,17 +16,19 @@ const navItems = [
     { name: "Contact", href: "/contact" },
 ];
 
+const featuredNavItem = {
+    name: "Services",
+    href: "/services",
+};
+
 export default function Navbar() {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-backdrop-filter:bg-background/60">
             <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-                <Link href="/" className="flex items-center space-x-2 font-bold text-xl tracking-tight">
-                    <Code2 className="w-6 h-6 text-primary" />
-                    <span className="font-mono">{SITE_CONFIG.name}</span>
-                </Link>
+                <Logo className="transition-colors duration-300" />
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center space-x-6">
@@ -41,6 +44,16 @@ export default function Navbar() {
                             {item.name}
                         </Link>
                     ))}
+                    {/* Featured Services Link - High Focus */}
+                    <Link
+                        href={featuredNavItem.href}
+                        className={`border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 px-4 py-1.5 rounded-full hover:bg-cyan-500/20 transition-all font-medium ${pathname === featuredNavItem.href
+                            ? "ring-2 ring-cyan-500/50"
+                            : ""
+                            }`}
+                    >
+                        {featuredNavItem.name}
+                    </Link>
                     {SITE_CONFIG.resumeUrl && (
                         <a
                             href={SITE_CONFIG.resumeUrl}
@@ -91,6 +104,17 @@ export default function Navbar() {
                                     {item.name}
                                 </Link>
                             ))}
+                            {/* Featured Services Link - Mobile */}
+                            <Link
+                                href={featuredNavItem.href}
+                                className={`px-4 text-sm font-medium transition-colors border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 rounded-full py-2 text-center ${pathname === featuredNavItem.href
+                                    ? "ring-2 ring-cyan-500/50"
+                                    : ""
+                                    }`}
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {featuredNavItem.name}
+                            </Link>
                             {SITE_CONFIG.resumeUrl && (
                                 <a
                                     href={SITE_CONFIG.resumeUrl}

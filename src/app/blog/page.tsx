@@ -26,9 +26,9 @@ export default function BlogPage() {
                         <div className="flex items-center gap-3 text-sm text-muted-foreground">
                             <time dateTime={post.date}>{post.date}</time>
                             <span>•</span>
-                            <div className="flex gap-2">
+                            <div className="flex flex-wrap gap-1.5">
                                 {post.tags.map(tag => (
-                                    <span key={tag} className="bg-secondary px-2 py-0.5 rounded text-xs text-secondary-foreground">
+                                    <span key={tag} className="bg-secondary px-2.5 py-1 rounded-md text-[11px] md:text-xs text-secondary-foreground whitespace-nowrap">
                                         {tag}
                                     </span>
                                 ))}

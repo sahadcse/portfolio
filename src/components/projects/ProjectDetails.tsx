@@ -1,9 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import type { Project } from "@/types/portfolio";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Globe, Github, TrendingUp, Building2, Cpu, DollarSign } from "lucide-react";
+import { ArrowLeft, Globe, Github, TrendingUp, Building2, Cpu, DollarSign, ImageOff } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface ProjectDetailsProps {
@@ -105,6 +106,21 @@ function highlightTechKeywords(text: string): React.ReactNode {
 
 export default function ProjectDetails({ project }: ProjectDetailsProps) {
     const { title, clientSector, businessProblem, businessOutcome, technicalArchitecture, metrics, tags, liveUrl, codeUrl, imageUrl } = project;
+    const [imageLoading, setImageLoading] = useState(!!imageUrl);
+    const [imageError, setImageError] = useState(false);
+
+    const handleImageLoad = () => {
+        setImageLoading(false);
+    };
+
+    const handleImageError = () => {
+        setImageLoading(false);
+        setImageError(true);
+    };
+
+    // Determine if we should show the image or fallback
+    const shouldShowImage = imageUrl && !imageError;
+    const shouldShowFallback = !imageUrl || imageError;
 
     return (
         <div className="min-h-screen py-20 px-4">
@@ -125,14 +141,14 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                 >
                     {/* Project Header */}
                     <div className="mb-12">
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="px-3 py-1 text-sm font-mono rounded-md bg-primary/10 text-primary border border-primary/20">
+                        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-4">
+                            <span className="px-2.5 py-1 text-[11px] md:text-sm font-mono rounded-md bg-primary/10 text-primary border border-primary/20 whitespace-nowrap">
                                 {clientSector}
                             </span>
                             {tags.slice(0, 3).map((tag) => (
                                 <span
                                     key={tag}
-                                    className="px-3 py-1 text-sm font-mono rounded-md bg-secondary text-secondary-foreground"
+                                    className="px-2.5 py-1 text-[11px] md:text-sm font-mono rounded-md bg-secondary text-secondary-foreground whitespace-nowrap"
                                 >
                                     {tag}
                                 </span>
@@ -141,21 +157,67 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-mono tracking-tight">{title}</h1>
                     </div>
 
-                    {/* Project Image */}
-                    {imageUrl && (
-                        <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden mb-16 bg-muted card-elevation">
-                            <Image
-                                src={imageUrl}
-                                alt={title}
-                                fill
-                                className="object-cover"
-                                priority
-                            />
+                    {/* Project Image - Premium Offset Accent Frame */}
+                    {shouldShowImage && (
+                        <div className="relative group max-w-4xl mx-auto my-8 ">
+                            {/* Decorative Top-Right Corner Frame */}
+                            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-cyan-500/60 dark:border-cyan-400/60 transition-all duration-300 group-hover:-top-4 group-hover:-right-4 z-0" />
+
+                            {/* Decorative Bottom-Left Corner Frame */}
+                            <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-cyan-500/60 dark:border-cyan-400/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-left-4 z-0" />
+
+                            {/* Premium Image Container */}
+                            <div className="relative z-10 overflow-hidden rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-900 shadow-xl dark:shadow-cyan-950/20 transition-all duration-500 group-hover:scale-[1.01] group-hover:shadow-2xl min-h-[300px]">
+                                {/* Loading State */}
+                                {imageLoading && (
+                                    <div className="absolute inset-0 flex items-center justify-center bg-slate-100 dark:bg-slate-900 rounded-xl">
+                                        <div className="flex flex-col items-center gap-3">
+                                            <div className="w-8 h-8 border-3 border-primary/30 border-t-primary rounded-full animate-spin" />
+                                            <p className="text-sm text-muted-foreground">Loading image...</p>
+                                        </div>
+                                    </div>
+                                )}
+                                <Image
+                                    src={imageUrl!}
+                                    alt={title}
+                                    width={1200}
+                                    height={800}
+                                    className="w-full h-auto object-cover rounded-xl"
+                                    priority
+                                    onLoad={handleImageLoad}
+                                    onError={handleImageError}
+                                />
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Image Not Available Fallback */}
+                    {shouldShowFallback && (
+                        <div className="relative group max-w-4xl mx-auto my-8">
+                            {/* Decorative Top-Right Corner Frame */}
+                            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-cyan-500/60 dark:border-cyan-400/60 transition-all duration-300 group-hover:-top-4 group-hover:-right-4 z-0" />
+
+                            {/* Decorative Bottom-Left Corner Frame */}
+                            <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-cyan-500/60 dark:border-cyan-400/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-left-4 z-0" />
+
+                            <div className="relative z-10 overflow-hidden rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-900 shadow-xl p-12">
+                                <div className="flex flex-col items-center justify-center gap-4 text-center">
+                                    <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
+                                        <ImageOff className="w-8 h-8 text-muted-foreground" />
+                                    </div>
+                                    <h3 className="text-xl font-semibold text-foreground">Image Not Available</h3>
+                                    <p className="text-sm text-muted-foreground max-w-md">
+                                        {!imageUrl
+                                            ? "No project image is available for this case study."
+                                            : "The project image could not be loaded. This may be due to a broken link or the image source is temporarily unavailable."}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     )}
 
                     {/* Two Column Layout */}
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mt-10 md:mt-20">
                         {/* Section A: Executive Summary & Business Impact */}
                         <div className="space-y-8">
                             <div className="flex items-center gap-3 mb-6">
@@ -216,11 +278,11 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                             {/* Tech Stack */}
                             <div className="bg-card p-6 rounded-xl border border-border/50 card-elevation">
                                 <h3 className="text-lg font-bold mb-4">Technology Stack</h3>
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-1.5 md:gap-2 w-full">
                                     {tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="px-3 py-1.5 text-sm font-mono rounded-md bg-secondary text-secondary-foreground border border-border/50 hover:border-primary/50 transition-colors"
+                                            className="px-2.5 py-1 text-[11px] md:text-xs font-mono rounded-md bg-secondary text-secondary-foreground border border-border/50 hover:border-primary/50 transition-colors whitespace-nowrap"
                                         >
                                             {tag}
                                         </span>
