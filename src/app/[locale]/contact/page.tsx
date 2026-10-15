@@ -3,12 +3,32 @@ import { Metadata } from "next";
 import { Mail } from "lucide-react";
 import ContactForm from "@/components/sections/ContactForm";
 
-export const metadata: Metadata = {
+import { setRequestLocale } from "next-intl/server";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+
     title: "Contact",
     description: "Get in touch for collaboration or inquiries.",
-};
+        alternates: {
+            canonical: localePath(locale as Locale, "/contact"),
+            languages: localeAlternates("/contact"),
+        },
+    };
+}
 
-export default function ContactPage() {
+export default async function ContactPage({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
+    setRequestLocale(locale);
     return (
         <div className="container mx-auto px-4 py-20">
             <div className="max-w-2xl mx-auto">

@@ -1,18 +1,38 @@
 import { SERVICES } from "@/data/services";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Metadata } from "next";
 import FAQ from "@/components/sections/FAQ";
 
-export const metadata: Metadata = {
+import { setRequestLocale } from "next-intl/server";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+
     title: "Services | Premium Websites & Enterprise Software",
     description: "Custom Next.js websites, high-converting landing pages, and enterprise software development by SAHAD - Software Architect.",
-};
+        alternates: {
+            canonical: localePath(locale as Locale, "/services"),
+            languages: localeAlternates("/services"),
+        },
+    };
+}
 
 /**
  * Services Page - Premium Tier 1 Offering
  * Designed for business stakeholders seeking elite digital solutions
  */
-export default function ServicesPage() {
+export default async function ServicesPage({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
+    setRequestLocale(locale);
     return (
         <main className="min-h-screen bg-background">
             {/* Hero Section */}

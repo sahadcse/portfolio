@@ -2,10 +2,17 @@ import Hero from "@/components/sections/Hero";
 import TechStack from "@/components/sections/TechStack";
 import ProjectCard from "@/components/projects/ProjectCard";
 import { PROJECTS } from "@/data/projects";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
+import { setRequestLocale } from "next-intl/server";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return (
     <div className="flex flex-col gap-20 pb-20">
       <Hero />

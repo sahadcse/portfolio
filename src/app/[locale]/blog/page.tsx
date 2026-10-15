@@ -1,14 +1,34 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getSortedPostsData } from "@/lib/blog";
 import { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
+import { setRequestLocale } from "next-intl/server";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+
     title: "Blog",
     description: "Thoughts on software engineering, scalability, and backend architecture.",
-};
+        alternates: {
+            canonical: localePath(locale as Locale, "/blog"),
+            languages: localeAlternates("/blog"),
+        },
+    };
+}
 
-export default function BlogPage() {
+export default async function BlogPage({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
+    setRequestLocale(locale);
     const posts = getSortedPostsData();
 
     return (

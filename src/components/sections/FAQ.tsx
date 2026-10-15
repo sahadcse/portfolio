@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FAQ_ITEMS } from "@/data/faq";
+import { Link } from "@/i18n/navigation";
 
 /**
  * Premium FAQ Accordion Component
@@ -98,12 +99,12 @@ export default function FAQ() {
                 <div className="mt-12 text-center">
                     <p className="text-sm text-slate-500 dark:text-slate-500">
                         Still have questions?{" "}
-                        <a
+                        <Link
                             href="/contact"
                             className="text-cyan-600 dark:text-cyan-400 font-medium hover:underline"
                         >
                             Get in touch
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

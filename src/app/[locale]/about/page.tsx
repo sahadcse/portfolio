@@ -2,12 +2,32 @@ import { ABOUT_CONTENT } from "@/data/experience";
 import type { Experience, Education } from "@/types/portfolio";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+import { setRequestLocale } from "next-intl/server";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+
     title: "About",
     description: "About Md Sahaduzzaman - Software Engineer.",
-};
+        alternates: {
+            canonical: localePath(locale as Locale, "/about"),
+            languages: localeAlternates("/about"),
+        },
+    };
+}
 
-export default function AboutPage() {
+export default async function AboutPage({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
+    setRequestLocale(locale);
     return (
         <div className="container mx-auto px-4 py-20">
             <div className="max-w-3xl mx-auto">

@@ -2,15 +2,38 @@ import { MetadataRoute } from "next";
 import { PROJECTS } from "@/data/projects";
 import { getSortedPostsData } from "@/lib/blog";
 import { SITE_URL } from "@/data/site-config";
+import { LOCALES, localeAlternates, localePath, type Locale } from "@/i18n/config";
 
 /**
- * Dynamic sitemap generation for SEO
- * Includes all static routes, dynamic project pages, and blog posts,
- * all on the canonical host (SITE_URL)
+ * Localized sitemap (plan §10.6): one <url> entry per (page × locale),
+ * each carrying the full bidirectional hreflang cluster for its path.
+ * Generated from the same helpers as the page metadata so the two
+ * can never drift apart.
  */
+type SitemapEntry = MetadataRoute.Sitemap[number];
+
+function localizedEntries(
+    paths: string[],
+    extra: Partial<SitemapEntry> = {}
+): MetadataRoute.Sitemap {
+    const entries: MetadataRoute.Sitemap = [];
+    for (const path of paths) {
+        for (const locale of LOCALES) {
+            entries.push({
+                url: `${SITE_URL}${localePath(locale as Locale, path)}`,
+                changeFrequency: "monthly",
+                alternates: { languages: localeAlternates(path) },
+                ...extra,
+            });
+        }
+    }
+    return entries;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-    // Static routes
-    const staticRoutes = [
+    // Static routes (homepage gets the highest priority; core pages weekly)
+    const staticEntries: MetadataRoute.Sitemap = [];
+    const staticPaths = [
         "",
         "/about",
         "/projects",
@@ -20,28 +43,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
         "/privacy",
         "/terms",
         "/impressum",
-    ].map((route) => ({
-        url: `${SITE_URL}${route}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly" as const,
-        priority: route === "" ? 1 : 0.8,
-    }));
+    ];
+    for (const path of staticPaths) {
+        for (const locale of LOCALES) {
+            staticEntries.push({
+                url: `${SITE_URL}${localePath(locale as Locale, path)}`,
+                lastModified: new Date(),
+                changeFrequency: "weekly",
+                priority: path === "" ? 1 : 0.8,
+                alternates: { languages: localeAlternates(path) },
+            });
+        }
+    }
 
     // Dynamic project routes
-    const projectRoutes = PROJECTS.map((project) => ({
-        url: `${SITE_URL}/projects/${project.id}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
-    }));
+    const projectEntries = localizedEntries(
+        PROJECTS.map((project) => `/projects/${project.id}`),
+        { priority: 0.6, lastModified: new Date() }
+    );
 
     // Dynamic blog routes
-    const blogPosts = getSortedPostsData().map((post) => ({
-        url: `${SITE_URL}/blog/${post.slug}`,
-        lastModified: new Date(post.date),
-        changeFrequency: "monthly" as const,
-        priority: 0.5,
-    }));
+    const blogEntries = localizedEntries(
+        getSortedPostsData().map((post) => `/blog/${post.slug}`),
+        { priority: 0.5 }
+    );
 
-    return [...staticRoutes, ...projectRoutes, ...blogPosts];
+    return [...staticEntries, ...projectEntries, ...blogEntries];
 }

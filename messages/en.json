@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog",
+    "cv": "CV",
+    "downloadCv": "Download CV",
+    "openMenu": "Toggle menu"
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "impressum": "Legal Notice (Impressum)",
+    "copyright": "© {year} {name}. All rights reserved."
+  },
+  "language": {
+    "label": "Change language"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for doesn't exist or has been moved.",
+    "backHome": "Back to home"
+  }
+}

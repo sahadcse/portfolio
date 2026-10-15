@@ -1,8 +1,10 @@
-import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { SITE_CONFIG } from "@/data/site-config";
+import { Link } from "@/i18n/navigation";
 
-export default function Footer() {
+export default async function Footer() {
+    const t = await getTranslations("footer");
     return (
         <footer className="border-t border-border/40 bg-background py-8 mt-auto">
             <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-4">
@@ -37,7 +39,7 @@ export default function Footer() {
 
                 {/* Copyright */}
                 <p className="text-sm text-muted-foreground text-center">
-                    &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
+                    {t("copyright", { year: new Date().getFullYear(), name: SITE_CONFIG.name })}
                 </p>
 
                 {/* Legal Compliance Links */}
@@ -46,21 +48,21 @@ export default function Footer() {
                         href="/privacy"
                         className="text-xs text-slate-500 hover:text-cyan-500 transition-colors mx-3"
                     >
-                        Privacy Policy
+                        {t("privacy")}
                     </Link>
                     <span className="text-xs text-slate-400">•</span>
                     <Link
                         href="/terms"
                         className="text-xs text-slate-500 hover:text-cyan-500 transition-colors mx-3"
                     >
-                        Terms of Service
+                        {t("terms")}
                     </Link>
                     <span className="text-xs text-slate-400">•</span>
                     <Link
                         href="/impressum"
                         className="text-xs text-slate-500 hover:text-cyan-500 transition-colors mx-3"
                     >
-                        Legal Notice (Impressum)
+                        {t("impressum")}
                     </Link>
                 </div>
             </div>

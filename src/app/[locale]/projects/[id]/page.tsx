@@ -1,8 +1,10 @@
 import { PROJECTS } from "@/data/projects";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import ProjectDetails from "@/components/projects/ProjectDetails";
 import type { Project } from "@/types/portfolio";
 import type { Metadata } from "next";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
 
 export async function generateStaticParams() {
     return PROJECTS.map((project) => ({
@@ -10,8 +12,12 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
-    const { id } = await params;
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string; id: string }>;
+}): Promise<Metadata> {
+    const { locale, id } = await params;
     const project = PROJECTS.find((p) => p.id === id);
 
     if (!project) {
@@ -20,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
         };
     }
 
+    const pagePath = `/projects/${id}`;
     const title = `${project.title} | Case Study`;
     // Description comes from the business outcome (claim-safe by V2-04),
     // not from the metrics array, so unverifiable figures can't leak into
@@ -38,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
             title,
             description,
             type: "website",
-            url: `/projects/${id}`,
+            url: localePath(locale as Locale, pagePath),
             images: ogImage,
         },
         twitter: {
@@ -49,19 +56,22 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
             images: ogImage,
         },
         alternates: {
-            canonical: `/projects/${id}`,
+            canonical: localePath(locale as Locale, pagePath),
+            languages: localeAlternates(pagePath),
         },
     };
 }
 
 interface ProjectPageProps {
     params: Promise<{
+        locale: string;
         id: string;
     }>;
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-    const { id } = await params;
+    const { locale, id } = await params;
+    setRequestLocale(locale);
 
     // Server-side project lookup - executed before rendering
     const project = PROJECTS.find((p) => p.id === id);

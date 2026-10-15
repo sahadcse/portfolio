@@ -1,15 +1,35 @@
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+import { setRequestLocale } from "next-intl/server";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+
     title: "Terms of Service | SAHAD - Software Architect",
     description: "Terms of Service outlining independent contractor relationship, service delivery timelines, source code ownership, and liability limitations.",
-};
+        alternates: {
+            canonical: localePath(locale as Locale, "/terms"),
+            languages: localeAlternates("/terms"),
+        },
+    };
+}
 
 /**
  * Terms of Service Page
  * Standard service terms for international clients
  */
-export default function TermsPage() {
+export default async function TermsPage({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
+    setRequestLocale(locale);
     return (
         <main className="min-h-screen bg-background">
             <div className="max-w-3xl mx-auto px-4 py-20">

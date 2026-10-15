@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Send } from "lucide-react";
-import { sendEmail, ActionState } from "@/app/contact/actions";
+import { sendEmail, ActionState } from "@/app/[locale]/contact/actions";
 import { Button } from "@/components/ui/Button";
 
 export default function ContactForm() {

@@ -1,16 +1,36 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
-export const metadata: Metadata = {
+import { setRequestLocale } from "next-intl/server";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+
     title: "Legal Notice (Impressum) | SAHAD - Software Architect",
     description: "Legal notice and impressum complying with German and EU regulations. Professional contact details for SAHAD, Software Architect based in Dhaka, Bangladesh.",
-};
+        alternates: {
+            canonical: localePath(locale as Locale, "/impressum"),
+            languages: localeAlternates("/impressum"),
+        },
+    };
+}
 
 /**
  * Impressum / Legal Notice Page
  * German/EU Compliant Legal Disclosure
  */
-export default function ImpressumPage() {
+export default async function ImpressumPage({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
+    setRequestLocale(locale);
     return (
         <main className="min-h-screen bg-background">
             <div className="max-w-3xl mx-auto px-4 py-20">

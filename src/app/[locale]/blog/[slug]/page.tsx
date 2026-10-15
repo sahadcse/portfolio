@@ -2,14 +2,16 @@ import { getPostData, getSortedPostsData } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import CallToAction from "@/components/sections/CallToAction";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
 
 type Props = {
-    params: Promise<{ slug: string }>;
+    params: Promise<{ locale: string; slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { slug } = await params;
+    const { locale, slug } = await params;
     const post = getPostData(slug);
 
     if (!post) {
@@ -21,6 +23,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: post.title,
         description: post.description,
+        alternates: {
+            canonical: localePath(locale as Locale, `/blog/${slug}`),
+            languages: localeAlternates(`/blog/${slug}`),
+        },
     };
 }
 
@@ -32,7 +38,8 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }: Props) {
-    const { slug } = await params;
+    const { locale, slug } = await params;
+    setRequestLocale(locale);
     const post = getPostData(slug);
 
     if (!post) {

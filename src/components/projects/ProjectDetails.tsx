@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Project } from "@/types/portfolio";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { ArrowLeft, Globe, Github, TrendingUp, Building2, Cpu, DollarSign, ImageOff } from "lucide-react";
 import { motion } from "framer-motion";

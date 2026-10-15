@@ -2,12 +2,32 @@ import ProjectCard from "@/components/projects/ProjectCard";
 import { PROJECTS } from "@/data/projects";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+import { setRequestLocale } from "next-intl/server";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+
     title: "Projects",
     description: "A showcase of my technical projects and engineering solutions.",
-};
+        alternates: {
+            canonical: localePath(locale as Locale, "/projects"),
+            languages: localeAlternates("/projects"),
+        },
+    };
+}
 
-export default function ProjectsPage() {
+export default async function ProjectsPage({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
+    setRequestLocale(locale);
     return (
         <div className="container mx-auto px-4 py-20">
             <div className="max-w-2xl mb-12">

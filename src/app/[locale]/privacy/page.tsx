@@ -1,15 +1,35 @@
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+import { setRequestLocale } from "next-intl/server";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+
     title: "Privacy Policy | SAHAD - Software Architect",
     description: "Privacy Policy detailing data collection, usage, and protection practices in compliance with GDPR and Australian Privacy Act standards.",
-};
+        alternates: {
+            canonical: localePath(locale as Locale, "/privacy"),
+            languages: localeAlternates("/privacy"),
+        },
+    };
+}
 
 /**
  * Privacy Policy Page
  * GDPR (Europe) & Privacy Act (Australia) Compliant
  */
-export default function PrivacyPage() {
+export default async function PrivacyPage({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
+    setRequestLocale(locale);
     return (
         <main className="min-h-screen bg-background">
             <div className="max-w-3xl mx-auto px-4 py-20">

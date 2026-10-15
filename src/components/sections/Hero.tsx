@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { HERO_CONTENT, VALUE_PROPOSITION, VALUE_PROP_ICONS } from "@/data/site-config";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
