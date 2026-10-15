@@ -2,6 +2,14 @@ import { SiteConfig, HeroContent, TechStackItem, ValueProposition } from "@/type
 import { Github, Linkedin, Mail, Server, Database, Cloud, Code, Terminal, Globe, Layers, Zap, Shield, TrendingUp } from "lucide-react";
 
 /**
+ * Canonical site URL — the single source of truth for absolute URLs
+ * (metadataBase, robots.txt, sitemap.xml). The fallback matches the
+ * production deployment; override via the NEXT_PUBLIC_SITE_URL env var
+ * if the domain ever changes.
+ */
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://sahadcse.vercel.app";
+
+/**
  * Site-wide configuration and metadata
  */
 export const SITE_CONFIG: SiteConfig = {
