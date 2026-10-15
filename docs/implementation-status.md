@@ -1,12 +1,33 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R1 — Immediate corrections (Group 1 P0 tasks + resume operations)** — code complete, pending owner review and manual account actions.
+**Current stage:** **R2a — Foundation** in progress. **R1 complete** (all executable tasks done; owner manual actions pending — see below). **V2-06 complete.**
 **Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
 
 ---
 
-## Completed tasks
+## Completed tasks — V2-06 (i18n architecture foundation, commit `eb521cb`)
+
+Implements plan §10 exactly. 40 files changed (+1,557/−192); routes moved via git-tracked renames into `src/app/[locale]/`.
+
+| Area | What was built |
+|---|---|
+| Library & wiring | next-intl 4.14.9 (peer-verified `next ^16`); plugin in `next.config.ts`; `src/i18n/{config,routing,request,navigation}.ts`; `src/proxy.ts` (Next 16 middleware convention, verified present in 16.2.10) |
+| Routing | All routes under `app/[locale]/`; `localePrefix: "as-needed"` — English URLs byte-identical (unprefixed); `generateStaticParams` + `setRequestLocale` preserve SSG (build emits 4 prerenders per route) |
+| Negotiation | Middleware only: explicit path locale > `NEXT_LOCALE` cookie > Accept-Language > default en; **no IP redirects** (country hint reserved for the future picker) |
+| RTL foundation | `<html lang dir>` per locale — `/ar` renders `dir="rtl"`; typography (Arabic font, line-height) is V2-08 |
+| Fallback | English deep-merge in `request.ts`: `messages/{de,fr,ar}.json` intentionally empty until V2-24 — missing keys render English, never key paths; `npm run i18n:check` gate (fails on stale keys; `--strict` becomes the build gate post-V2-24) |
+| SEO | Bidirectional hreflang + self-canonicals per locale on every page via shared `localeAlternates`/`localePath` helpers; localized sitemap — 88 entries (22 URLs × 4), `xhtml:link` alternates |
+| UI | `LocaleSwitcher` (native names, path-preserving, `aria-expanded`/`listbox`); Navbar/Footer message keys; all internal links locale-aware (`@/i18n/navigation` `Link`); locale-scoped catch-all + not-found |
+
+**V2-06 acceptance evidence (production build + local server, 2026-10-15):**
+- build clean: TS pass, `ƒ Proxy (Middleware)` registered, all locales prerendered
+- `/about` 200 unprefixed `lang="en" dir="ltr"` · `/en/about` **307 → /about** · `/de/about` 200 `lang="de"` · `/ar` `lang="ar" dir="rtl"` · `/fr/services` + `/ar/projects/cozee-care` 200
+- `/` with `NEXT_LOCALE=de` cookie → **307 /de** (manual choice governs ambiguous entries); `/` without cookie → 200 (no geo/redirect)
+- unknown path → localized 404 (English fallback in de) · hreflang cluster (en/de/fr/ar/x-default) + per-locale self-canonicals verified in served HTML · sitemap 88 entries with alternates · `/de/about` renders English fallback content as documented
+- `npm run lint`: 0 errors (3 pre-existing warnings) · `npm run i18n:check`: OK
+
+## Completed tasks — R1 (details in the R1 handoff, preserved below)
 
 | Task ID | Change | Commit |
 |---|---|---|
@@ -63,6 +84,33 @@
 | After merge + deploy: submit `https://sahadcse.vercel.app/sitemap.xml` in Search Console; request removal of stale `sahad.vercel.app` URLs | V2-01 closeout | Search Console |
 | LinkedIn Post Inspector spot-check of the share card once deployed | V2-02 closeout | LinkedIn |
 
+## Known limitations & deferred items (V2-06)
+
+- **de/fr/ar content is English by fallback** — per plan §10.5 this is the documented architecture-stage behavior; translations are V2-24 (MT drafts) + V2-25 (human review). `i18n:check --strict` will gate completeness once translations land.
+- **Arabic typography not yet wired** — font loading, line-height, letter-spacing rules and the full logical-property component pass are V2-08. Only `dir="rtl"` is active.
+- **LocaleSwitcher styling** uses current tokens (fine for now); visual pass happens with the design work (V2-07+).
+- **Dev server interrupted:** an `npm run dev` session was running against this repo and held Windows file locks on `src/app/blog` and `src/app/projects`; it was stopped (PIDs documented in session) so the route moves could proceed. Restart with `npm run dev` as needed.
+- **Extracted strings are nav/footer/not-found only** — the rest of the UI strings migrate into `messages/` during their owning tasks (V2-09 homepage, V2-15 contact form localization, etc.), per plan scope boundaries.
+
 ## Next task
 
-**V2-06 — i18n architecture foundation** (Group 2 / R2a), dependencies satisfied: V2-01 ✅. Prerequisites to arrange in parallel: O7–O10 owner inputs. Per the plan's staging, R2a = V2-06 (i18n) + V2-07 (token consolidation); R1 should be reviewed and the manual actions above completed (or consciously deferred) before R2 begins.
+**V2-07 — Design-token consolidation** (Group 2 / R2a; can run in parallel with content work), then V2-08 (RTL conversion) which depends on V2-06 ✅ and V2-07. Owner inputs to arrange in parallel: O7–O10, plus the still-open R1 manual actions below.
+
+---
+
+## Remaining manual actions (owner only — carried from R1)
+
+| Action | Task | Where |
+|---|---|---|
+| Set `NEXT_PUBLIC_SITE_URL=https://sahadcse.vercel.app` in Vercel env (code has a matching fallback) | O1 / V2-01 | Vercel dashboard |
+| Rotate the Gmail app password used by the contact form; prune dead env vars | O4 / V2-05 | Google account + Vercel |
+| Retire (or pause + de-index) the legacy `sahad.vercel.app` deployment | O5 / V2-05b | Vercel dashboard |
+| Verify the 4 unreachable demo links from a second network; confirm/remove | O2 / V2-03 follow-up | Browser |
+| Confirm client-name/link permissions (Cozee Care, Violina, Taqwa, FCSC/FCHC, NDIS CarePlus, 4j) | O2 | — |
+| Confirm the resume adjudications applied in R1-CV1 (dates, Taqwa employment entry, FCHC/FCSC naming) | O6 | — |
+| After merge + deploy: submit the sitemap in Search Console; request removal of stale `sahad.vercel.app` URLs | V2-01 closeout | Search Console |
+| LinkedIn Post Inspector spot-check of the share card once deployed | V2-02 closeout | LinkedIn |
+
+---
+
+## Completed tasks — R1 (archive of the prior handoff)
