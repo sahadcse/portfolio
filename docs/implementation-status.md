@@ -1,10 +1,28 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R2a — Foundation** in progress. **R1 complete** (all executable tasks done; owner manual actions pending — see below). **V2-06 complete.**
+**Current stage:** **R2a — Foundation.** R1 complete · **V2-06 complete** · **V2-07 complete**.
 **Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
 
 ---
+
+## Completed tasks — V2-07 (design-token consolidation, commit `39d805b`)
+
+Kills the off-token design language (finding F5) per plan §8.3. 23 files changed (+226/−206).
+
+| Change | Detail |
+|---|---|
+| Status tokens | `--color-success` / `--color-warning` / `--color-danger` (danger aliases destructive values) with light+dark values; contact-form error/success states and Badge's success variant now semantic |
+| Radius scale (§8.3) | `--radius-sm 6px` (buttons/inputs/badges/tags) · `--radius-md 12px` (cards/menus/image frames) · `--radius-lg 16px` (large surfaces) · pills `rounded-full`; all component classes migrated to spec tiers |
+| Elevation tokens | `--shadow-elev-surface` / `--shadow-elev-floating` (floating-only, translucent); LocaleSwitcher uses the floating token |
+| Color sweep | 194+ hardcoded utilities across 11 files: slate-* → foreground/muted-foreground/card/muted/border; cyan-* → primary (services pill, Services CTA, FAQ link, Footer, Logo, ProjectDetails frames); blue/purple section accents unified to primary; cyan shadow-glow removed |
+
+**V2-07 acceptance evidence (2026-10-15):**
+- **Repo grep: ZERO off-token color utilities** in `src/**` (acceptance criterion) — intentional exceptions: `highlight-biz`/`highlight-tech` classes in `globals.css` (centrally defined keyword-highlight colors, part of the evidence-chip system, not scattered utilities)
+- Compiled CSS (served bundle): contains `--success` (both themes), `--warning` (both), radius scale 6/12/16, `.text-success`/`.text-destructive`/`.text-primary` utilities; **zero cyan utilities** compiled
+- `npm run lint`: 0 errors (3 pre-existing warnings) · `npm run build`: clean, 94 static pages
+- Spot-rendered 200s across locales (`/`, `/about`, `/de/services`, `/ar/projects`, `/fr/contact`); V2-06 behaviors re-verified unregressed: `/en/about` → 307 `/about`, de-cookie `/` → 307 `/de`, `/ar` `dir="rtl"`, hreflang cluster present
+- **Honest limitation:** no visual/browser tooling in this environment — verification was compiled-CSS-level, HTTP-level, and structural. A human should eyeball light+dark on `/`, `/services`, a case study, and the contact form after deploy. Intentional visual shifts to review: panels 8→12px radius, buttons 8→6px, the Services CTA and nav pill changed cyan→indigo.
 
 ## Completed tasks — V2-06 (i18n architecture foundation, commit `eb521cb`)
 
@@ -94,7 +112,7 @@ Implements plan §10 exactly. 40 files changed (+1,557/−192); routes moved via
 
 ## Next task
 
-**V2-07 — Design-token consolidation** (Group 2 / R2a; can run in parallel with content work), then V2-08 (RTL conversion) which depends on V2-06 ✅ and V2-07. Owner inputs to arrange in parallel: O7–O10, plus the still-open R1 manual actions below.
+**V2-08 — Type/spacing system + RTL logical-property conversion** (Group 2 / R2a). Dependencies: V2-06 ✅, V2-07 ✅. Scope: six type presets (mono off headings), 68rem content width + single width owner, logical-property conversion of all components, `prefers-reduced-motion` global rule is V2-13. Also folds in: unify `.card-elevation` utilities with the new `--shadow-elev-*` tokens. Owner inputs to arrange in parallel: O7–O10, plus the still-open R1 manual actions below.
 
 ---
 
