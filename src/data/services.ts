@@ -31,7 +31,7 @@ export const SERVICES: Service[] = [
             },
             {
                 title: "Technical SEO & Core Web Vitals Optimization",
-                description: "100/100 Mobile/Desktop Performance scores for maximum search visibility."
+                description: "Performance tested against Core Web Vitals before handover, for maximum search visibility."
             },
             {
                 title: "Frictionless Lead Capture Forms, Booking Systems & CRM Automations",
@@ -56,7 +56,7 @@ export const SERVICES: Service[] = [
             },
             {
                 title: "High-Concurrency Database Caching (PostgreSQL, Prisma & Redis)",
-                description: "Sub-100ms response times even under heavy concurrent user loads."
+                description: "Caching and query optimization for fast, consistent responses under heavy concurrent loads."
             },
             {
                 title: "Complex Automation Engines & Secure Third-Party API Integrations",

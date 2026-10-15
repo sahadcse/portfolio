@@ -23,7 +23,7 @@ export const FAQ_ITEMS: FAQItem[] = [
     {
         id: "retainer-model",
         question: "How does the 'Fixed Developer Retainer' model work?",
-        answer: "It is like having a dedicated Remote CTO/Engineer on demand without the full-time overhead. For a fixed monthly fee, I take care of your priority updates, continuous performance tuning, server security audits, and urgent bug fixes, ensuring zero downtime for your systems."
+        answer: "It is like having a dedicated Remote CTO/Engineer on demand without the full-time overhead. For a fixed monthly fee, I take care of your priority updates, continuous performance tuning, server security audits, and urgent bug fixes — keeping your systems updated, monitored, and quickly repaired."
     },
     {
         id: "communication-timezone",

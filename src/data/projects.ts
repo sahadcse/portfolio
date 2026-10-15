@@ -10,14 +10,13 @@ export const PROJECTS: Project[] = [
     title: "Cozee Care - Disability Services Operational Platform",
     clientSector: "Disability Services & Healthcare (Australia)",
     businessProblem: "The client relied on manual, disjointed processes for scheduling and tracking sensitive patient workflows, causing operational bottlenecks and increasing data vulnerability risks in a highly regulated healthcare environment.",
-    businessOutcome: "Engineered an enterprise-grade internal management platform that completely automated scheduling and streamlined data handling, reducing manual scheduling errors to zero while ensuring full compliance with Australian disability service standards.",
-    technicalArchitecture: "Built using Next.js for high accessibility standards (WCAG 2.1 AA compliance) and NestJS with PostgreSQL for concurrent API operations. Implemented strict role-based access control (RBAC) via JWT authentication and NestJS Guards to protect high-confidentiality healthcare records. Designed database schema to handle sensitive patient data with proper encryption at rest and in transit.",
+    businessOutcome: "Engineered an enterprise-grade internal management platform that automated scheduling and streamlined data handling for daily operations in a highly regulated disability-services environment.",
+    technicalArchitecture: "Built using Next.js to meet WCAG 2.1 AA accessibility criteria and NestJS with PostgreSQL for concurrent API operations. Implemented strict role-based access control (RBAC) via JWT authentication and NestJS Guards to protect high-confidentiality healthcare records. Designed database schema to handle sensitive patient data with proper encryption at rest and in transit.",
     metrics: [
-      "100% data confidentiality maintained",
-      "Automated daily operational workflows",
-      "Zero-trust RBAC integration",
-      "WCAG 2.1 AA accessibility compliance",
-      "Zero manual scheduling errors"
+      "Role-based access control over sensitive records (JWT + NestJS Guards)",
+      "End-to-end automation of the scheduling workflow",
+      "Built to WCAG 2.1 AA accessibility criteria",
+      "Sensitive data protected in transit and at rest"
     ],
     tags: ["Next.js", "NestJS", "PostgreSQL", "JWT", "RBAC", "Healthcare Compliance"],
     imageUrl: "/images/projects/cozee-care.png",
@@ -29,13 +28,13 @@ export const PROJECTS: Project[] = [
     title: "Violina Pflegedienst - Ambulatory Care Management Platform",
     clientSector: "Outpatient Healthcare (Germany)",
     businessProblem: "The healthcare provider struggled with unoptimized service presentations and chaotic patient scheduling data, isolating non-technical end-users and creating barriers to care access in the local German market.",
-    businessOutcome: "Launched a specialized platform enhancing local patient engagement and structuring care service requests into a clean digital funnel, resulting in accelerated patient scheduling cycles and improved care accessibility.",
+    businessOutcome: "Launched a specialized platform that structures care service requests into a clear digital funnel, making services easier to find and request for patients and their families.",
     technicalArchitecture: "Leveraged Next.js Server Components for optimized performance and SEO targeting German healthcare market. Connected to a lightweight, highly secure NestJS backend to route care service inquiries without exposing sensitive data. Implemented responsive design optimized for elderly users with larger touch targets and clear navigation patterns.",
     metrics: [
-      "Accelerated patient scheduling cycle",
-      "Enhanced localized digital presence in Germany",
-      "Optimized accessible UI for eldercare interactors",
-      "SEO-optimized for local healthcare search"
+      "Care-service requests structured into a clear digital funnel",
+      "Localized German-language web presence",
+      "Accessible UI designed for elderly users",
+      "Technical SEO foundations for local healthcare search"
     ],
     tags: ["Next.js", "Server Components", "NestJS", "Responsive Design", "Accessibility"],
     imageUrl: "/images/projects/violina.png",
@@ -48,12 +47,12 @@ export const PROJECTS: Project[] = [
     clientSector: "Real Estate & Asset Logistics",
     businessProblem: "Complex plot inventory tracking and unoptimized heavy search queries were degrading backend response times during customer land lookups, causing lost sales opportunities and frustrated user experiences.",
     businessOutcome: "Architected a custom Vertical SaaS system capable of fluid, lightning-fast real estate inventory matching and secure transaction logging, enabling the business to scale operations without technical limitations.",
-    technicalArchitecture: "Utilized Next.js for the responsive interface and NestJS with Prisma ORM for type-safe database persistence. Integrated Redis for efficient state management and caching of heavy query workloads, achieving sub-100ms response times. Implemented database indexing strategies and query optimization for complex land search filters.",
+    technicalArchitecture: "Utilized Next.js for the responsive interface and NestJS with Prisma ORM for type-safe database persistence. Integrated Redis for caching of heavy query workloads. Implemented database indexing strategies and query optimization for complex land search filters.",
     metrics: [
-      "Sub-100ms inventory query execution via Redis",
-      "100% data transactional integrity across plots",
-      "Eliminated manual tracking spreadsheets",
-      "Zero-downtime deployment during peak traffic"
+      "Redis caching for hot inventory queries",
+      "Database indexing for complex land-search filters",
+      "Replaced manual spreadsheet tracking with a shared system",
+      "Transactional logging for plot sales"
     ],
     tags: ["Next.js", "NestJS", "Prisma ORM", "Redis", "PostgreSQL", "Vertical SaaS"],
     imageUrl: "/images/projects/taqwa-group.png",
@@ -71,8 +70,7 @@ export const PROJECTS: Project[] = [
       "Real-time synchronization using Socket.io",
       "WebRTC HD video consultation",
       "Automated scheduling flow with Stripe",
-      "Cloud-native scaling on Azure",
-      "Sub-500ms latency for chat and video"
+      "Cloud-native scaling on Azure"
     ],
     tags: ["WebRTC", "Socket.io", "Stripe", "Azure", "MongoDB", "Express", "React"],
     imageUrl: "/images/projects/telemedicine.png",
@@ -87,10 +85,10 @@ export const PROJECTS: Project[] = [
     businessOutcome: "Delivered a professional healthcare portal that improved patient information accessibility and established a strong digital foundation for future telehealth integration.",
     technicalArchitecture: "Built using Next.js with static generation for optimal performance and Core Web Vitals. Implemented responsive design with healthcare-focused UX patterns including clear service navigation and accessible appointment request forms. Added structured data for enhanced local SEO visibility.",
     metrics: [
-      "95+ Google PageSpeed score",
-      "Sub-2s initial page load",
-      "SEO-optimized for local healthcare searches",
-      "Mobile-first responsive design"
+      "Performance-budgeted build with static generation",
+      "Structured data for local SEO",
+      "Mobile-first responsive design",
+      "Accessible appointment request flows"
     ],
     tags: ["Next.js", "Static Generation", "SEO", "Responsive Design", "Healthcare UX"],
     imageUrl: "/images/projects/fcsc.png",
@@ -105,10 +103,9 @@ export const PROJECTS: Project[] = [
     businessOutcome: "Created a clear, accessible website that effectively communicates complex NDIS services and improves information accessibility for participants and their families.",
     technicalArchitecture: "Developed using Next.js with focus on accessibility (WCAG compliance) and clear information architecture. Implemented simplified navigation for users with varying digital literacy. Added comprehensive FAQ sections and clear contact pathways for service inquiries.",
     metrics: [
-      "WCAG accessibility compliant",
+      "Built to WCAG accessibility criteria",
       "Clear service information architecture",
-      "Optimized for NDIS-related searches",
-      "Mobile-responsive for all devices"
+      "Mobile-responsive across devices"
     ],
     tags: ["Next.js", "Accessibility", "Information Architecture", "NDIS Services"],
     imageUrl: "/images/projects/award-care.png",
@@ -138,7 +135,7 @@ export const PROJECTS: Project[] = [
     title: "TravelLast - Travel Booking System",
     clientSector: "Travel & Hospitality",
     businessProblem: "Travel booking platform needed to showcase accommodations, manage property listings, and provide seamless booking experiences for travelers seeking hotels, resorts, and holiday rentals.",
-    businessOutcome: "Created an intuitive travel platform that simplified property discovery and booking, improving user engagement and conversion rates for listed properties.",
+    businessOutcome: "Created an intuitive travel platform that simplified property discovery and booking.",
     technicalArchitecture: "Developed using React with integrated API connections for property data. Implemented advanced search and filtering capabilities for finding accommodations by location, amenities, and pricing. Built responsive property cards with detailed information displays and booking integration.",
     metrics: [
       "Advanced property search and filtering",
@@ -156,12 +153,12 @@ export const PROJECTS: Project[] = [
     title: "4j Traders (E-Commerce Engine)",
     clientSector: "B2B/B2C Retail & E-Commerce",
     businessProblem: "Unoptimized database schema and lack of transactional isolation levels caused inventory sync errors and order drops during high-traffic flash sales.",
-    businessOutcome: "Guaranteed 100% order transactional integrity and automated multi-tenant system deployments while establishing clear administrative boundaries.",
+    businessOutcome: "Delivered a dependable order-processing backend for the e-commerce platform, built on strict transaction protocols with containerized deployment pipelines and clearly separated administrative roles.",
     technicalArchitecture: "Engineered with NestJS, PostgreSQL, and Prisma ORM utilizing strict ACID transaction protocols. Implemented custom NestJS Guards for multi-role RBAC and containerized the system with Docker and GitHub Actions.",
     metrics: [
-      "100% transactional integrity across all order checkouts",
-      "Reduced deployment cycle down to minutes via Docker",
-      "Granular RBAC architecture implemented safely"
+      "ACID transaction isolation for order workflows",
+      "Containerized deployments via Docker and GitHub Actions",
+      "Granular multi-role RBAC via NestJS Guards"
     ],
     tags: ["NestJS", "PostgreSQL", "Prisma", "Docker", "GitHub Actions"],
     imageUrl: "/images/projects/4j-traders.png",
@@ -176,12 +173,12 @@ export const PROJECTS: Project[] = [
     title: "Rushkat (3D Asset Store Backend)",
     clientSector: "Digital Asset Marketplace & Creative Tech (South Korea)",
     businessProblem: "Sluggish query execution and unoptimized database reads caused significant latency spikes when concurrent users accessed heavy 3D files.",
-    businessOutcome: "Drastically slashed endpoint response times and accelerated data retrieval pipelines under heavy concurrent traffic loads.",
+    businessOutcome: "Improved endpoint response times under concurrent load through Redis caching and query optimization.",
     technicalArchitecture: "Designed and optimized RESTful APIs using TypeScript and Express.js. Managed PostgreSQL persistence layer with Prisma ORM and integrated Redis caching to offload repetitive high-traffic database queries.",
     metrics: [
-      "Redis caching integration for sub-100ms API response",
-      "Optimized complex SQL query parsing for large datasets",
-      "Robust security protocols and endpoint rate-limiting implemented"
+      "Redis caching for high-traffic endpoints",
+      "Query optimization for large datasets",
+      "Endpoint rate limiting and security hardening"
     ],
     tags: ["Express.js", "PostgreSQL", "Prisma", "Redis", "Performance Optimization"],
     imageUrl: "",
