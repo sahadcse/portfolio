@@ -1,5 +1,5 @@
 import { SiteConfig, HeroContent, TechStackItem, ValueProposition } from "@/types/portfolio";
-import { Github, Linkedin, Mail, Server, Database, Cloud, Code, Terminal, Globe, Layers, Zap, Shield, TrendingUp } from "lucide-react";
+import { Server, Database, Cloud, Code, Terminal, Globe, Layers, Zap, Shield, TrendingUp } from "lucide-react";
 
 /**
  * Canonical site URL — the single source of truth for absolute URLs
