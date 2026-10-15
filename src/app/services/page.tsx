@@ -71,7 +71,7 @@ export default function ServicesPage() {
                                 {/* Features List */}
                                 <div className="space-y-4">
                                     <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wide">
-                                        What's Included
+                                        What&apos;s Included
                                     </h3>
                                     <ul className="space-y-3">
                                         {service.features.map((feature, idx) => (
@@ -113,7 +113,7 @@ export default function ServicesPage() {
                     </h2>
                     <p className="text-lg text-slate-600 dark:text-slate-300 mb-8">
                         Need a high-performance website or a dedicated hand to manage your systems?
-                        Let's talk about your project.
+                        Let&apos;s talk about your project.
                     </p>
                     <Link
                         href="/contact"

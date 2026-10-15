@@ -118,7 +118,7 @@ export default function TermsPage() {
                             <li><strong>Scope Changes:</strong> Significant changes beyond original scope may incur additional fees</li>
                         </ul>
                         <p className="text-slate-600 dark:text-slate-400">
-                            "Scope creep" (continuous addition of new requirements) will be addressed through change orders with adjusted timelines and fees.
+                            &quot;Scope creep&quot; (continuous addition of new requirements) will be addressed through change orders with adjusted timelines and fees.
                         </p>
                     </section>
 

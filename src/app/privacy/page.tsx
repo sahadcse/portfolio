@@ -116,7 +116,7 @@ export default function PrivacyPage() {
                     </section>
 
                     <section className="mb-10">
-                        <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4">8. Children's Privacy</h2>
+                        <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4">8. Children&apos;s Privacy</h2>
                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                             My services are not intended for individuals under the age of 16. I do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided personal information, please contact me for deletion.
                         </p>

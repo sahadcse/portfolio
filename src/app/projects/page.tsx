@@ -13,7 +13,7 @@ export default function ProjectsPage() {
             <div className="max-w-2xl mb-12">
                 <h1 className="text-4xl font-bold mb-4 font-mono">Projects</h1>
                 <p className="text-muted-foreground text-lg">
-                    A selection of scalable backends, real-time applications, and cloud infrastructure projects I've engineered.
+                    A selection of scalable backends, real-time applications, and cloud infrastructure projects I&apos;ve engineered.
                 </p>
             </div>
 
