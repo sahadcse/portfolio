@@ -20,7 +20,9 @@ export const EXPERIENCE: Experience[] = [
     role: "Software Engineer",
     company: "4j Traders Ltd",
     location: "Dhaka, Bangladesh",
-    period: "July 2025 - Dec 2025",
+    // Period per the approved updated resume (was "July 2025"; resume
+    // governs — R1-CV1, flagged for owner confirmation in O6)
+    period: "September 2025 - Dec 2025",
     description: [
       "Engineered and deployed a scalable, containerized backend (NestJS/PostgreSQL/Prisma) for a high-value e-commerce platform, handling product inventory, complex user roles (superAdmin, admin, customer), and ensuring transactional integrity for all order processes.",
       "Optimized core database performance by implementing a centralized query structure and performing schema normalization, which prepared the system for high-volume data operations across products, projects, and orders.",
@@ -29,13 +31,29 @@ export const EXPERIENCE: Experience[] = [
     ]
   },
   {
+    role: "Software Engineer",
+    company: "Taqwa Group",
+    location: "Dhaka, Bangladesh",
+    // Employment entry added in R1-CV1 — present in the updated resume,
+    // previously missing from the site. Bullets condensed from the
+    // resume's verified content (no invented details).
+    period: "February 2024 - Aug 2025",
+    description: [
+      "Engineered end-to-end architecture as the sole software engineer for a multi-industry group platform spanning real estate, agro-business, and ticketing services.",
+      "Built a land-plot booking and installment (EMI) engine that computes variable interest charges across custom repayment tenures, with SSLCommerz payment-gateway integration for initial payments.",
+      "Designed an automated multi-tier referral system with role promotions across seven organizational ranks and commission payouts on active transactions.",
+      "Developed administrative dashboards covering manual bookings, financial statement generation, and account moderation; owned the Docker-based DevOps and infrastructure lifecycle."
+    ]
+  },
+  {
     role: "Backend Engineer",
     company: "Rushkat Company Ltd",
     location: "Remote [South Korea]",
-    period: "Oct 2024 - Jun 2025",
+    // Period per the approved updated resume (was "Jun 2025")
+    period: "Oct 2024 - Jan 2025",
     description: [
       "Developed and optimized scalable backend services for a high-traffic 3D asset store using TypeScript, Express.js, and Prisma ORM, significantly improving system performance through strategic code refactoring and query optimization.",
-      "Designed and implemented RESTful APIs for asset management and user interactions; managed PostgreSQL database and integrated Redis caching to accelerate high-traffic endpoints, reducing response times by 60%.",
+      "Designed and implemented RESTful APIs for asset management and user interactions; managed PostgreSQL database and integrated Redis caching to accelerate high-traffic endpoints.",
       "Ensured production readiness by implementing robust security protocols, collaborating with cross-functional teams to deliver key features, and conducting thorough testing and performance tuning for optimal user experience."
     ]
   }
@@ -57,7 +75,7 @@ export const EDUCATION: Education[] = [
  * Bio and skills data
  */
 export const BIO_PARAGRAPHS = [
-  "I'm a software engineer dedicated to creating high-performance, scalable solutions that improve user experience and drive business success. With 3+ years of experience in JavaScript, TypeScript, DevOps, and cloud technologies, I excel at transforming complex problems into streamlined systems, delivering impactful solutions that meet both technical and business needs.",
+  "I'm a software engineer dedicated to creating high-performance, scalable solutions that improve user experience and drive business success. Working professionally since 2024 across JavaScript, TypeScript, DevOps, and cloud technologies, I excel at transforming complex problems into streamlined systems, delivering impactful solutions that meet both technical and business needs.",
   "As the founder of Sahad Labs, I partner with international clients to architect Vertical SaaS solutions and internal operational infrastructure. Whether leading teams or coding hands-on, my passion for innovation and results shines through every project."
 ];
 
