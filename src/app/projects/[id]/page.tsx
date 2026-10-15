@@ -21,7 +21,15 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     }
 
     const title = `${project.title} | Case Study`;
-    const description = `Explore how I helped ${project.clientSector} achieve ${project.metrics[0] || 'exceptional results'}. ${project.businessOutcome.slice(0, 120)}...`;
+    // Description comes from the business outcome (claim-safe by V2-04),
+    // not from the metrics array, so unverifiable figures can't leak into
+    // search snippets or social previews.
+    const description = project.businessOutcome.length > 158
+        ? `${project.businessOutcome.slice(0, 155)}...`
+        : project.businessOutcome;
+    const ogImage = project.imageUrl
+        ? [{ url: project.imageUrl }]
+        : undefined;
 
     return {
         title,
@@ -31,11 +39,14 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
             description,
             type: "website",
             url: `/projects/${id}`,
+            images: ogImage,
         },
         twitter: {
-            card: "summary_large_image",
+            // summary_large_image requires an image; fall back to a compact card
+            card: project.imageUrl ? "summary_large_image" : "summary",
             title,
             description,
+            images: ogImage,
         },
         alternates: {
             canonical: `/projects/${id}`,
