@@ -49,8 +49,8 @@ export default function Navbar() {
                     {/* Featured Services Link - High Focus */}
                     <Link
                         href={featuredNavItem.href}
-                        className={`border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 px-4 py-1.5 rounded-full hover:bg-cyan-500/20 transition-all font-medium ${pathname === featuredNavItem.href
-                            ? "ring-2 ring-cyan-500/50"
+                        className={`border border-primary/30 bg-primary/10 text-primary px-4 py-1.5 rounded-full hover:bg-primary/20 transition-all font-medium ${pathname === featuredNavItem.href
+                            ? "ring-2 ring-primary/50"
                             : ""
                             }`}
                     >
@@ -61,7 +61,7 @@ export default function Navbar() {
                             href={SITE_CONFIG.resumeUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
                         >
                             <Download className="w-4 h-4" />
                             {t("cv")}
@@ -112,8 +112,8 @@ export default function Navbar() {
                             {/* Featured Services Link - Mobile */}
                             <Link
                                 href={featuredNavItem.href}
-                                className={`mx-4 text-sm font-medium transition-colors border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 rounded-full py-2 text-center ${pathname === featuredNavItem.href
-                                    ? "ring-2 ring-cyan-500/50"
+                                className={`mx-4 text-sm font-medium transition-colors border border-primary/30 bg-primary/10 text-primary rounded-full py-2 text-center ${pathname === featuredNavItem.href
+                                    ? "ring-2 ring-primary/50"
                                     : ""
                                     }`}
                                 onClick={() => setIsOpen(false)}

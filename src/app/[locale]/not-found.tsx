@@ -10,7 +10,7 @@ export default function NotFoundPage() {
             <p className="text-muted-foreground mb-8 max-w-md">{t("body")}</p>
             <Link
                 href="/"
-                className="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
+                className="inline-flex items-center px-6 py-3 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
             >
                 {t("backHome")}
             </Link>

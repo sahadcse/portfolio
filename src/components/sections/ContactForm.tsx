@@ -43,8 +43,8 @@ export default function ContactForm() {
         }
     };
 
-    const inputStyles = "w-full px-4 py-3 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-200";
-    const errorInputStyles = "border-red-500 focus:border-red-500 focus:ring-red-500/20";
+    const inputStyles = "w-full px-4 py-3 rounded-sm border bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-200";
+    const errorInputStyles = "border-destructive focus:border-destructive focus:ring-destructive/20";
     const normalInputStyles = "border-input focus:border-primary";
 
     return (
@@ -63,7 +63,7 @@ export default function ContactForm() {
                         required
                     />
                     {fieldErrors.name && (
-                        <p className="text-sm text-red-500">{fieldErrors.name}</p>
+                        <p className="text-sm text-destructive">{fieldErrors.name}</p>
                     )}
                 </div>
                 <div className="space-y-2">
@@ -79,7 +79,7 @@ export default function ContactForm() {
                         required
                     />
                     {fieldErrors.email && (
-                        <p className="text-sm text-red-500">{fieldErrors.email}</p>
+                        <p className="text-sm text-destructive">{fieldErrors.email}</p>
                     )}
                 </div>
             </div>
@@ -97,18 +97,18 @@ export default function ContactForm() {
                     required
                 />
                 {fieldErrors.message && (
-                    <p className="text-sm text-red-500">{fieldErrors.message}</p>
+                    <p className="text-sm text-destructive">{fieldErrors.message}</p>
                 )}
             </div>
 
             {state.error && !Object.keys(fieldErrors).length && (
-                <div className="p-4 text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+                <div className="p-4 text-sm text-destructive bg-destructive/10 rounded-md border border-destructive/30">
                     {state.error}
                 </div>
             )}
 
             {state.success && (
-                <div className="p-4 text-sm text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                <div className="p-4 text-sm text-success bg-success/10 rounded-md border border-success/30">
                     Message sent successfully!
                 </div>
             )}

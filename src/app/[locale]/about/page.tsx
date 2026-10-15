@@ -46,7 +46,7 @@ export default async function AboutPage({
                         <h3 className="text-2xl font-bold mb-6 font-mono">Professional Experience</h3>
                         <div className="space-y-8">
                             {ABOUT_CONTENT.experience.map((exp: Experience, index: number) => (
-                                <div key={index} className="p-6 rounded-lg border border-border/50 bg-card">
+                                <div key={index} className="p-6 rounded-md border border-border/50 bg-card">
                                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                                         <div>
                                             <h4 className="text-xl font-bold">{exp.role}</h4>
@@ -68,7 +68,7 @@ export default async function AboutPage({
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-                        <div className="p-6 rounded-lg border border-border/50 bg-card h-full">
+                        <div className="p-6 rounded-md border border-border/50 bg-card h-full">
                             <h3 className="text-lg font-bold mb-4 font-mono">Education</h3>
                             <ul className="space-y-6">
                                 {ABOUT_CONTENT.education.map((edu: Education, index: number) => (
@@ -82,7 +82,7 @@ export default async function AboutPage({
                             </ul>
                         </div>
 
-                        <div className="p-6 rounded-lg border border-border/50 bg-card h-full">
+                        <div className="p-6 rounded-md border border-border/50 bg-card h-full">
                             <h3 className="text-lg font-bold mb-4 font-mono">Skills</h3>
                             <div className="flex flex-wrap gap-2">
                                 {ABOUT_CONTENT.skills.map((skill: string, index: number) => (

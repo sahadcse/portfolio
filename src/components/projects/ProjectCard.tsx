@@ -18,7 +18,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group relative flex flex-col p-6 rounded-xl border border-border/50 bg-card hover:border-primary transition-all duration-300 h-full card-elevation hover:card-elevation-hover"
+            className="group relative flex flex-col p-6 rounded-md border border-border/50 bg-card hover:border-primary transition-all duration-300 h-full card-elevation hover:card-elevation-hover"
         >
             <div className="flex items-start justify-between mb-4">
                 <Link href={`/projects/${project.id}`} className="block grow">

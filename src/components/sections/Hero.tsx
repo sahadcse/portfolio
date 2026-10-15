@@ -83,10 +83,10 @@ export default function Hero() {
                 initial="hidden"
                 animate="visible"
                 variants={variants}
-                className="group p-8 rounded-xl border border-border/50 bg-card hover:border-primary/50 card-elevation transition-all duration-300"
+                className="group p-8 rounded-md border border-border/50 bg-card hover:border-primary/50 card-elevation transition-all duration-300"
               >
                 {IconComponent && (
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                  <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                     <IconComponent className="w-6 h-6 text-primary" />
                   </div>
                 )}

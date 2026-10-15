@@ -25,7 +25,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className = "",
         ...props
     }, ref) => {
-        const baseStyles = "inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed";
+        const baseStyles = "inline-flex items-center justify-center font-semibold rounded-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed";
 
         const variantStyles = {
             primary: "bg-primary text-primary-foreground hover:bg-primary/90 ambient-glow-sm micro-interact hover:scale-[1.02]",

@@ -142,13 +142,13 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                     {/* Project Header */}
                     <div className="mb-12">
                         <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-4">
-                            <span className="px-2.5 py-1 text-[11px] md:text-sm font-mono rounded-md bg-primary/10 text-primary border border-primary/20 whitespace-nowrap">
+                            <span className="px-2.5 py-1 text-[11px] md:text-sm font-mono rounded-sm bg-primary/10 text-primary border border-primary/20 whitespace-nowrap">
                                 {clientSector}
                             </span>
                             {tags.slice(0, 3).map((tag) => (
                                 <span
                                     key={tag}
-                                    className="px-2.5 py-1 text-[11px] md:text-sm font-mono rounded-md bg-secondary text-secondary-foreground whitespace-nowrap"
+                                    className="px-2.5 py-1 text-[11px] md:text-sm font-mono rounded-sm bg-secondary text-secondary-foreground whitespace-nowrap"
                                 >
                                     {tag}
                                 </span>
@@ -161,16 +161,16 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                     {shouldShowImage && (
                         <div className="relative group max-w-4xl mx-auto my-8 ">
                             {/* Decorative Top-Right Corner Frame */}
-                            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-cyan-500/60 dark:border-cyan-400/60 transition-all duration-300 group-hover:-top-4 group-hover:-right-4 z-0" />
+                            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-primary/60 transition-all duration-300 group-hover:-top-4 group-hover:-right-4 z-0" />
 
                             {/* Decorative Bottom-Left Corner Frame */}
-                            <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-cyan-500/60 dark:border-cyan-400/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-left-4 z-0" />
+                            <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-primary/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-left-4 z-0" />
 
                             {/* Premium Image Container */}
-                            <div className="relative z-10 overflow-hidden rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-900 shadow-xl dark:shadow-cyan-950/20 transition-all duration-500 group-hover:scale-[1.01] group-hover:shadow-2xl min-h-[300px]">
+                            <div className="relative z-10 overflow-hidden rounded-md border border-border bg-muted shadow-xl  transition-all duration-500 group-hover:scale-[1.01] group-hover:shadow-2xl min-h-[300px]">
                                 {/* Loading State */}
                                 {imageLoading && (
-                                    <div className="absolute inset-0 flex items-center justify-center bg-slate-100 dark:bg-slate-900 rounded-xl">
+                                    <div className="absolute inset-0 flex items-center justify-center bg-muted rounded-md">
                                         <div className="flex flex-col items-center gap-3">
                                             <div className="w-8 h-8 border-3 border-primary/30 border-t-primary rounded-full animate-spin" />
                                             <p className="text-sm text-muted-foreground">Loading image...</p>
@@ -182,7 +182,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                     alt={title}
                                     width={1200}
                                     height={800}
-                                    className="w-full h-auto object-cover rounded-xl"
+                                    className="w-full h-auto object-cover rounded-md"
                                     priority
                                     onLoad={handleImageLoad}
                                     onError={handleImageError}
@@ -195,12 +195,12 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                     {shouldShowFallback && (
                         <div className="relative group max-w-4xl mx-auto my-8">
                             {/* Decorative Top-Right Corner Frame */}
-                            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-cyan-500/60 dark:border-cyan-400/60 transition-all duration-300 group-hover:-top-4 group-hover:-right-4 z-0" />
+                            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-primary/60 transition-all duration-300 group-hover:-top-4 group-hover:-right-4 z-0" />
 
                             {/* Decorative Bottom-Left Corner Frame */}
-                            <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-cyan-500/60 dark:border-cyan-400/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-left-4 z-0" />
+                            <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-primary/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-left-4 z-0" />
 
-                            <div className="relative z-10 overflow-hidden rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-900 shadow-xl p-12">
+                            <div className="relative z-10 overflow-hidden rounded-md border border-border bg-muted shadow-xl p-12">
                                 <div className="flex flex-col items-center justify-center gap-4 text-center">
                                     <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
                                         <ImageOff className="w-8 h-8 text-muted-foreground" />
@@ -221,14 +221,14 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                         {/* Section A: Executive Summary & Business Impact */}
                         <div className="space-y-8">
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                                    <Building2 className="w-5 h-5 text-blue-500" />
+                                <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+                                    <Building2 className="w-5 h-5 text-primary" />
                                 </div>
                                 <h2 className="text-2xl font-bold">Executive Summary</h2>
                             </div>
 
                             {/* Business Problem */}
-                            <div className="bg-card p-6 rounded-xl border border-border/50 card-elevation">
+                            <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
                                 <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
                                     <TrendingUp className="w-5 h-5 text-destructive" />
                                     The Challenge
@@ -237,9 +237,9 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                             </div>
 
                             {/* Business Outcome */}
-                            <div className="bg-card p-6 rounded-xl border border-border/50 card-elevation">
+                            <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
                                 <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
-                                    <DollarSign className="w-5 h-5 text-green-500" />
+                                    <DollarSign className="w-5 h-5 text-success" />
                                     The Impact
                                 </h3>
                                 <p className="text-muted-foreground leading-relaxed mb-4">{highlightBusinessKeywords(businessOutcome)}</p>
@@ -249,7 +249,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                     {metrics.map((metric, index) => (
                                         <div
                                             key={index}
-                                            className="bg-muted/50 p-3 rounded-lg border border-border/30"
+                                            className="bg-muted/50 p-3 rounded-md border border-border/30"
                                         >
                                             <p className="text-sm font-semibold text-foreground">{highlightBusinessKeywords(metric)}</p>
                                         </div>
@@ -261,14 +261,14 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                         {/* Section B: Engineering & Architecture Deep Dive */}
                         <div className="space-y-8">
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                                    <Cpu className="w-5 h-5 text-purple-500" />
+                                <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+                                    <Cpu className="w-5 h-5 text-primary" />
                                 </div>
                                 <h2 className="text-2xl font-bold">Technical Deep Dive</h2>
                             </div>
 
                             {/* Technical Architecture */}
-                            <div className="bg-card p-6 rounded-xl border border-border/50 card-elevation">
+                            <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
                                 <h3 className="text-lg font-bold mb-4">System Architecture</h3>
                                 <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                                     {highlightTechKeywords(technicalArchitecture)}
@@ -276,13 +276,13 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                             </div>
 
                             {/* Tech Stack */}
-                            <div className="bg-card p-6 rounded-xl border border-border/50 card-elevation">
+                            <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
                                 <h3 className="text-lg font-bold mb-4">Technology Stack</h3>
                                 <div className="flex flex-wrap gap-1.5 md:gap-2 w-full">
                                     {tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="px-2.5 py-1 text-[11px] md:text-xs font-mono rounded-md bg-secondary text-secondary-foreground border border-border/50 hover:border-primary/50 transition-colors whitespace-nowrap"
+                                            className="px-2.5 py-1 text-[11px] md:text-xs font-mono rounded-sm bg-secondary text-secondary-foreground border border-border/50 hover:border-primary/50 transition-colors whitespace-nowrap"
                                         >
                                             {tag}
                                         </span>
@@ -296,7 +296,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                     <Link
                                         href={liveUrl}
                                         target="_blank"
-                                        className="flex items-center justify-center px-6 py-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold"
+                                        className="flex items-center justify-center px-6 py-3 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold"
                                     >
                                         <Globe className="w-5 h-5 mr-2" />
                                         Live Application
@@ -306,7 +306,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                     <Link
                                         href={codeUrl}
                                         target="_blank"
-                                        className="flex items-center justify-center px-6 py-3 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border transition-colors font-semibold"
+                                        className="flex items-center justify-center px-6 py-3 rounded-sm bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border transition-colors font-semibold"
                                     >
                                         <Github className="w-5 h-5 mr-2" />
                                         View Source Code

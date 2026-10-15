@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function CallToAction() {
     return (
-        <div className="my-12 p-8 rounded-lg border border-primary/20 bg-primary/5">
+        <div className="my-12 p-8 rounded-md border border-primary/20 bg-primary/5">
             <h3 className="text-xl font-bold mb-3">Need a high-performance solution?</h3>
             <p className="text-muted-foreground mb-6">
                 I help businesses build scalable backends and real-time applications. Let&apos;s discuss your project.

@@ -54,7 +54,7 @@ export default async function BlogPost({ params }: Props) {
                     <span>•</span>
                     <div className="flex flex-wrap gap-1.5">
                         {post.tags.map(tag => (
-                            <span key={tag} className="bg-secondary px-2.5 py-1 rounded-md text-[11px] md:text-xs text-secondary-foreground whitespace-nowrap">
+                            <span key={tag} className="bg-secondary px-2.5 py-1 rounded-sm text-[11px] md:text-xs text-secondary-foreground whitespace-nowrap">
                                 {tag}
                             </span>
                         ))}

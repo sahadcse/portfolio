@@ -31,21 +31,21 @@ export default function FAQ() {
         let highlightedText = children;
         keywords.forEach(keyword => {
             const regex = new RegExp(`(${keyword})`, 'gi');
-            highlightedText = highlightedText.replace(regex, '<mark class="bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 px-1 rounded">$1</mark>');
+            highlightedText = highlightedText.replace(regex, '<mark class="bg-primary/20 text-primary px-1 rounded-sm">$1</mark>');
         });
 
         return <span dangerouslySetInnerHTML={{ __html: highlightedText }} />;
     };
 
     return (
-        <section className="py-20 px-4 bg-slate-50/50 dark:bg-slate-900/30">
+        <section className="py-20 px-4 bg-muted/30">
             <div className="max-w-3xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
                         Frequently Asked Questions
                     </h2>
-                    <p className="text-slate-600 dark:text-slate-400">
+                    <p className="text-muted-foreground">
                         Everything you need to know before we start working together
                     </p>
                 </div>
@@ -55,7 +55,7 @@ export default function FAQ() {
                     {FAQ_ITEMS.map((item, index) => (
                         <div
                             key={item.id}
-                            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden transition-all duration-300 hover:border-cyan-500/20"
+                            className="bg-card border border-border rounded-md overflow-hidden transition-all duration-300 hover:border-primary/20"
                         >
                             {/* Question Button */}
                             <button
@@ -63,11 +63,11 @@ export default function FAQ() {
                                 className="w-full flex items-center justify-between px-6 py-5 text-left"
                                 aria-expanded={activeId === item.id}
                             >
-                                <span className="font-semibold text-slate-900 dark:text-white pr-4">
+                                <span className="font-semibold text-foreground pr-4">
                                     {item.question}
                                 </span>
                                 <svg
-                                    className={`flex-shrink-0 w-5 h-5 text-slate-500 transition-transform duration-200 ${
+                                    className={`flex-shrink-0 w-5 h-5 text-muted-foreground transition-transform duration-200 ${
                                         activeId === item.id ? "rotate-180" : ""
                                     }`}
                                     fill="none"
@@ -86,7 +86,7 @@ export default function FAQ() {
                             {/* Answer Panel */}
                             {activeId === item.id && (
                                 <div className="px-6 pb-5 pt-0">
-                                    <div className="text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
+                                    <div className="text-muted-foreground leading-relaxed border-t border-border pt-4">
                                         <Highlight>{item.answer}</Highlight>
                                     </div>
                                 </div>
@@ -97,11 +97,11 @@ export default function FAQ() {
 
                 {/* Trust Indicator */}
                 <div className="mt-12 text-center">
-                    <p className="text-sm text-slate-500 dark:text-slate-500">
+                    <p className="text-sm text-muted-foreground">
                         Still have questions?{" "}
                         <Link
                             href="/contact"
-                            className="text-cyan-600 dark:text-cyan-400 font-medium hover:underline"
+                            className="text-primary font-medium hover:underline"
                         >
                             Get in touch
                         </Link>
