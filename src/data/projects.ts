@@ -165,7 +165,10 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["NestJS", "PostgreSQL", "Prisma", "Docker", "GitHub Actions"],
     imageUrl: "/images/projects/4j-traders.png",
-    liveUrl: "https://4jtraders.com",
+    // Live URL removed (V2-03): 4jtraders.com served a "currently
+    // unavailable" page (verified 2026-10-15). Restore only if the
+    // deployment comes back and the owner approves (O2).
+    liveUrl: "",
     codeUrl: "https://github.com/sahadcse",
   },
   {
@@ -182,7 +185,9 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["Express.js", "PostgreSQL", "Prisma", "Redis", "Performance Optimization"],
     imageUrl: "",
-    liveUrl: "#",
+    // No live URL exists for this employment-tier project (V2-03):
+    // the previous "#" value rendered a broken external-link icon.
+    liveUrl: "",
     codeUrl: "https://github.com/sahadcse",
   },
   {
