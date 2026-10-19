@@ -1,15 +1,19 @@
 {
   "nav": {
-    "projects": "Projects",
+    "projects": "Work",
     "services": "Services",
     "about": "About",
     "contact": "Contact",
-    "blog": "Blog",
     "cv": "CV",
     "downloadCv": "Download CV",
     "openMenu": "Toggle menu"
   },
   "footer": {
+    "projects": "Work",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "impressum": "Legal Notice (Impressum)",
@@ -22,5 +26,120 @@
     "title": "Page not found",
     "body": "The page you are looking for doesn't exist or has been moved.",
     "backHome": "Back to home"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Md Sahaduzzaman (Sahad) — Software Engineer · Founder, Sahad Labs",
+      "title": "From a first website to a full platform.",
+      "subtitle": "I help founders, businesses, and professionals launch, improve, automate, and build the digital systems their work depends on — designed, delivered, and maintained personally, end to end.",
+      "ctaPrimary": "Discuss a project",
+      "ctaSecondary": "See the work",
+      "availability": "Currently available for new projects",
+      "portraitAlt": "Portrait of Md Sahaduzzaman",
+      "portraitCaption": "Md Sahaduzzaman · Dhaka, Bangladesh"
+    },
+    "proof": {
+      "title": "Delivered work, personally counted",
+      "proofLine": "Designed and delivered for clients and teams in Australia, Germany, and beyond — healthcare, real estate, e-commerce, and more.",
+      "methodologyLabel": "How this is counted",
+      "footnote": "Personal counts — methodology shown for every number."
+    },
+    "needs": {
+      "title": "What do you need to do?",
+      "subtitle": "Four things clients usually come to me for. Pick yours — each card links to proof.",
+      "items": {
+        "launch": {
+          "label": "Launch",
+          "definition": "A website or product that goes live properly — fast, accessible, and findable.",
+          "examples": "Marketing sites · Landing pages · Product MVPs",
+          "proofHref": "/projects/violina-pflegedienst",
+          "proofLabel": "See proof: Violina Pflegedienst"
+        },
+        "improve": {
+          "label": "Improve",
+          "definition": "Make an existing system faster, clearer, or easier to run.",
+          "examples": "Performance and caching · UX and accessibility · SEO foundations",
+          "proofHref": "/projects/rushkat",
+          "proofLabel": "See proof: Rushkat"
+        },
+        "automate": {
+          "label": "Automate",
+          "definition": "Replace manual tracking and repetitive admin with software that just runs.",
+          "examples": "Workflow automation · Internal dashboards · Scheduling and booking",
+          "proofHref": "/projects/cozee-care",
+          "proofLabel": "See proof: Cozee Care"
+        },
+        "build": {
+          "label": "Build",
+          "definition": "Custom platforms for the way your business actually works.",
+          "examples": "Vertical SaaS · APIs and integrations · Real-time systems",
+          "proofHref": "/projects/taqwa-group",
+          "proofLabel": "See proof: Taqwa Group"
+        }
+      }
+    },
+    "work": {
+      "title": "Selected work",
+      "subtitle": "Systems in daily operation. Every claim is tied to something you can check.",
+      "viewAll": "All projects"
+    },
+    "process": {
+      "title": "How I work",
+      "ownership": "You own everything I build — source code, repositories, and accounts, handed over at completion.",
+      "steps": {
+        "scope": {
+          "label": "Scope",
+          "text": "We start from what you're trying to do, not from tech. You get a plain-language plan and a clear price shape before anything is built."
+        },
+        "build": {
+          "label": "Build",
+          "text": "I design and build it personally, end to end. You see progress early, while changing direction is still cheap."
+        },
+        "launch": {
+          "label": "Launch",
+          "text": "Deployment, domain, hosting, handover — done with you, in your accounts, under your name."
+        },
+        "maintain": {
+          "label": "Maintain",
+          "text": "After launch: updates, monitoring, and quick fixes — or a clean handover to your own team. Your call."
+        }
+      }
+    },
+    "tech": {
+      "title": "Technologies I work with"
+    },
+    "faqTeaser": {
+      "title": "Questions people ask before working with me",
+      "link": "Read the full FAQ"
+    },
+    "cta": {
+      "title": "Tell me what you're trying to do.",
+      "body": "One paragraph about your project is enough — I'll reply with an honest assessment, even if I'm not the right fit.",
+      "cta": "Discuss a project",
+      "emailLabel": "Or email me directly:",
+      "copy": "Copy email address",
+      "copied": "Copied"
+    }
+  },
+  "projectsIndex": {
+    "title": "Work",
+    "intro": "Case studies of delivered work — client systems, client websites, an own product, and employment-tier engineering. Every card states its evidence tier.",
+    "filterLabel": "Filter by sector",
+    "filterAll": "All",
+    "empty": "No projects in this sector yet."
+  },
+  "caseStudy": {
+    "back": "Back to all work",
+    "roleLabel": "Role",
+    "constraintsLabel": "Context",
+    "problemLabel": "The problem",
+    "builtLabel": "What I built",
+    "howLabel": "How it works",
+    "outcomesLabel": "Outcomes",
+    "stackLabel": "Stack",
+    "nextStep": "Building something similar?",
+    "nextCta": "Discuss a project",
+    "archivedNote": "Archived demo — kept for reference; no longer presented as current work.",
+    "loadingImage": "Loading image..."
   }
 }

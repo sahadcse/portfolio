@@ -2,7 +2,6 @@ import { PROJECTS } from "@/data/projects";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import ProjectDetails from "@/components/projects/ProjectDetails";
-import type { Project } from "@/types/portfolio";
 import type { Metadata } from "next";
 import { localeAlternates, localePath, type Locale } from "@/i18n/config";
 
@@ -34,8 +33,10 @@ export async function generateMetadata({
     const description = project.businessOutcome.length > 158
         ? `${project.businessOutcome.slice(0, 155)}...`
         : project.businessOutcome;
-    const ogImage = project.imageUrl
-        ? [{ url: project.imageUrl }]
+    // Social previews use the pipeline's JPEG (WebP is unreliable in some
+    // scrapers); summary card fallback when none exists.
+    const ogImage = project.ogImageUrl
+        ? [{ url: project.ogImageUrl }]
         : undefined;
 
     return {

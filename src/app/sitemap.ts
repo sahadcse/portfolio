@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { PROJECTS } from "@/data/projects";
+import { CURATED_PROJECTS } from "@/data/projects";
 import { getSortedPostsData } from "@/lib/blog";
 import { SITE_URL } from "@/data/site-config";
 import { LOCALES, localeAlternates, localePath, type Locale } from "@/i18n/config";
@@ -56,9 +56,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         }
     }
 
-    // Dynamic project routes
+    // Dynamic project routes — curated set only; archived demos stay
+    // routable but out of the index (plan §15.2 V2-10)
     const projectEntries = localizedEntries(
-        PROJECTS.map((project) => `/projects/${project.id}`),
+        CURATED_PROJECTS.map((project) => `/projects/${project.id}`),
         { priority: 0.6, lastModified: new Date() }
     );
 

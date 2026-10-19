@@ -42,6 +42,31 @@ export default async function Footer() {
                     {t("copyright", { year: new Date().getFullYear(), name: SITE_CONFIG.name })}
                 </p>
 
+                {/* Site links — Blog de-emphasized out of the nav (plan §6.2) */}
+                <nav aria-label="Footer" className="flex items-center justify-center flex-wrap gap-x-1 gap-y-2">
+                    {[
+                        { href: "/projects", label: t("projects") },
+                        { href: "/services", label: t("services") },
+                        { href: "/about", label: t("about") },
+                        { href: "/contact", label: t("contact") },
+                        { href: "/blog", label: t("blog") },
+                    ].map((item, index) => (
+                        <span key={item.href} className="flex items-center">
+                            {index > 0 && (
+                                <span className="text-xs text-muted-foreground mx-1.5" aria-hidden="true">
+                                    ·
+                                </span>
+                            )}
+                            <Link
+                                href={item.href}
+                                className="text-xs text-muted-foreground hover:text-primary transition-colors"
+                            >
+                                {item.label}
+                            </Link>
+                        </span>
+                    ))}
+                </nav>
+
                 {/* Legal Compliance Links */}
                 <div className="flex items-center justify-center flex-wrap gap-1">
                     <Link

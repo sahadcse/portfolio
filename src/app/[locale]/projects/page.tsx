@@ -1,8 +1,9 @@
-import ProjectCard from "@/components/projects/ProjectCard";
-import { PROJECTS } from "@/data/projects";
+import { CURATED_PROJECTS } from "@/data/projects";
 import { Metadata } from "next";
+import ProjectsIndex from "@/components/projects/ProjectsIndex";
 
 import { setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { localeAlternates, localePath, type Locale } from "@/i18n/config";
 export async function generateMetadata({
     params,
@@ -10,10 +11,10 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
     const { locale } = await params;
-    return {
 
-    title: "Projects",
-    description: "A showcase of my technical projects and engineering solutions.",
+    return {
+    title: "Work",
+    description: "Case studies of delivered client systems, client websites, an own product, and employment-tier engineering work.",
         alternates: {
             canonical: localePath(locale as Locale, "/projects"),
             languages: localeAlternates("/projects"),
@@ -28,20 +29,16 @@ export default async function ProjectsPage({
 }) {
     const { locale } = await params;
     setRequestLocale(locale);
+    const t = await getTranslations("projectsIndex");
+
     return (
         <div className="px-4 py-16 md:py-24">
             <div className="max-w-2xl mb-12">
-                <h1 className="text-hero mb-4">Projects</h1>
-                <p className="text-lead">
-                    A selection of scalable backends, real-time applications, and cloud infrastructure projects I&apos;ve engineered.
-                </p>
+                <h1 className="text-hero mb-4">{t("title")}</h1>
+                <p className="text-lead">{t("intro")}</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {PROJECTS.map((project, index) => (
-                    <ProjectCard key={project.id} project={project} index={index} />
-                ))}
-            </div>
+            <ProjectsIndex projects={CURATED_PROJECTS} />
         </div>
     );
 }

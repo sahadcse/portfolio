@@ -4,10 +4,45 @@
  */
 
 // Project-related types
+
+/**
+ * Evidence tier (plan §9.2) — exactly one chip per case study, semantics
+ * never blurred. This is the defense against prototype-equals-production.
+ */
+export type EvidenceTier =
+  | "client-system"
+  | "client-site"
+  | "own-production"
+  | "demo"
+  | "employment";
+
+/** Curation level (plan §15.2 V2-10): full case study / light entry / off index */
+export type ProjectStatus = "flagship" | "supporting" | "archived";
+
+export interface Screenshot {
+  src: string;
+  alt: string;
+  caption: string; // mono caption: "Fig. 01 — ..."
+}
+
+export interface EngineeringDecision {
+  decision: string;
+  because: string; // "chose X over Y because Z" (§9.1)
+}
+
+export interface Outcome {
+  statement: string;
+  basis: string; // how this is known — outcomes without a basis are omitted (§9.1)
+}
+
 export interface Project {
   id: string;
   title: string;
+  /** Compact display name for cards */
+  shortTitle?: string;
   clientSector: string;
+  /** Normalized sector for index filter chips (§6.4) */
+  sectorShort?: string;
   businessProblem: string;
   businessOutcome: string;
   technicalArchitecture: string;
@@ -16,6 +51,21 @@ export interface Project {
   imageUrl: string;
   liveUrl: string;
   codeUrl: string;
+  /** Case-study system (plan §9.1/§9.2) */
+  status: ProjectStatus;
+  evidenceLevel: EvidenceTier;
+  role: string; // one line: "Solo engineer — architecture, build, deployment"
+  timeframe?: string;
+  /** 16:10 card crop + social preview JPEG (V2-12 pipeline output) */
+  cardImageUrl?: string;
+  ogImageUrl?: string;
+  /** One-line outcome for cards */
+  oneLineOutcome?: string;
+  /** Full case-study fields (flagships) */
+  constraints?: string;
+  decisions?: EngineeringDecision[];
+  screenshots?: Screenshot[];
+  outcomes?: Outcome[];
 }
 
 // Experience-related types
@@ -49,48 +99,9 @@ export interface SiteConfig {
   resumeUrl?: string;
 }
 
-export interface HeroContent {
-  headline: string;
-  subHeadline: string;
-}
-
 export interface AboutContent {
   bio: string[];
   experience: Experience[];
   education: Education[];
   skills: string[];
-}
-
-export interface TechStackItem {
-  name: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
-
-export interface ValuePropositionItem {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-export interface ValueProposition {
-  title: string;
-  subtitle: string;
-  pillars: ValuePropositionItem[];
-}
-
-export interface HeroCTA {
-  primary: {
-    text: string;
-    href: string;
-  };
-  secondary: {
-    text: string;
-    href: string;
-  };
-}
-
-export interface HeroContent {
-  headline: string;
-  subHeadline: string;
-  cta?: HeroCTA;
 }

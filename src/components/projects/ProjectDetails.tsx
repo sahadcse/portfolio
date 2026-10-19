@@ -1,38 +1,41 @@
 "use client";
 
 import { useState } from "react";
-import type { Project } from "@/types/portfolio";
-import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { ArrowLeft, Globe, Github, TrendingUp, Building2, Cpu, DollarSign, ImageOff } from "lucide-react";
+import { ArrowLeft, ArrowRight, Globe, Github } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { tierLabel } from "@/data/verified-metrics";
+import type { Project } from "@/types/portfolio";
 
-interface ProjectDetailsProps {
-    project: Project;
-}
+/**
+ * Case-study template (plan §9.1): sector chip + evidence-tier chip +
+ * timeframe → title → role line → figure with mono caption → the problem →
+ * what I built → how it works (flagships: engineering decisions as
+ * "chose X over Y because Z") → outcomes (only with a basis) → stack →
+ * next-step CTA. Supporting entries render the light version; archived
+ * demos carry an explicit banner (§9.2: semantics never blurred).
+ */
 
+/** Mechanism phrases worth scanning for (claim phrases pruned per recorded finding #4). */
 const BUSINESS_KEYWORDS = [
-    "automated daily operational workflows",
-    "100% transactional integrity",
-    "100% data confidentiality",
-    "100% data integrity",
-    "Sub-100ms inventory",
-    "Sub-100ms",
-    "Eliminated manual tracking",
-    "Eliminated manual",
-    "Zero manual scheduling errors",
-    "Zero-downtime",
-    "Zero-trust",
-    "Reduced deployment cycle",
-    "Automated scheduling",
-    "Cloud-native",
-    "Real-time",
+    "Automated the scheduling workflow end to end",
+    "End-to-end automation of the scheduling workflow",
+    "Replaced manual spreadsheet tracking",
+    "spreadsheet tracking",
+    "structured into a clear digital funnel",
+    "Role-based access control",
+    "role-based access",
+    "Transactional logging",
+    "ACID transaction isolation",
+    "Redis caching",
+    "query optimization",
     "WCAG 2.1 AA",
-    "Granular RBAC",
-    "Accelerated",
-    "Enhanced",
-    "Frictionless",
+    "Performance-budgeted",
+    "static generation",
     "automated",
+    "accessible",
 ];
 
 const TECH_KEYWORDS = [
@@ -58,17 +61,11 @@ const TECH_KEYWORDS = [
     "MongoDB",
     "Redux",
     "React",
-    "MERN",
     "WCAG",
     "JWT",
 ];
 
-/**
- * Highlight configured keywords inside a string as safe React nodes.
- * Matching runs in a single pass with phrases sorted longest-first, so
- * multi-word terms (e.g. "Next.js Server Components") are wrapped as a unit
- * instead of being fragmented by their sub-words. No dangerouslySetInnerHTML.
- */
+/** Highlight configured keywords inside a string as safe React nodes. */
 function highlight(text: string, keywords: string[], highlightClass: string): React.ReactNode {
     const escaped = keywords
         .slice()
@@ -90,37 +87,20 @@ function highlight(text: string, keywords: string[], highlightClass: string): Re
     });
 }
 
-/**
- * Highlight high-impact business outcomes (emerald) for executive scannability.
- */
-function highlightBusinessKeywords(text: string): React.ReactNode {
-    return highlight(text, BUSINESS_KEYWORDS, "highlight-biz");
-}
+const highlightBusiness = (text: string) => highlight(text, BUSINESS_KEYWORDS, "highlight-biz");
+const highlightTech = (text: string) => highlight(text, TECH_KEYWORDS, "highlight-tech");
 
-/**
- * Highlight core technical architectures (royal blue) for engineering evaluators.
- */
-function highlightTechKeywords(text: string): React.ReactNode {
-    return highlight(text, TECH_KEYWORDS, "highlight-tech");
-}
+export default function ProjectDetails({ project }: { project: Project }) {
+    const t = useTranslations("caseStudy");
+    const { title, clientSector, businessProblem, technicalArchitecture, metrics, tags, liveUrl, codeUrl } = project;
 
-export default function ProjectDetails({ project }: ProjectDetailsProps) {
-    const { title, clientSector, businessProblem, businessOutcome, technicalArchitecture, metrics, tags, liveUrl, codeUrl, imageUrl } = project;
-    const [imageLoading, setImageLoading] = useState(!!imageUrl);
+    const [imageLoading, setImageLoading] = useState(!!project.screenshots?.[0]?.src);
     const [imageError, setImageError] = useState(false);
+    const figure = project.screenshots?.[0];
 
-    const handleImageLoad = () => {
-        setImageLoading(false);
-    };
-
-    const handleImageError = () => {
-        setImageLoading(false);
-        setImageError(true);
-    };
-
-    // Determine if we should show the image or fallback
-    const shouldShowImage = imageUrl && !imageError;
-    const shouldShowFallback = !imageUrl || imageError;
+    const isFlagship = project.status === "flagship";
+    const isArchived = project.status === "archived";
+    const showCodeUrl = Boolean(codeUrl && codeUrl !== "https://github.com/sahadcse");
 
     return (
         <div className="min-h-screen py-16 md:py-24 px-4">
@@ -131,7 +111,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                     className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors mb-8 group"
                 >
                     <ArrowLeft className="w-4 h-4 me-2 rtl:rotate-180 group-hover:-translate-x-1 rtl:group-hover:translate-x-1 transition-transform" />
-                    Back to Case Studies
+                    {t("back")}
                 </Link>
 
                 <motion.div
@@ -139,181 +119,199 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    {/* Project Header */}
-                    <div className="mb-12">
-                        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-4">
-                            <span className="px-2.5 py-1 text-[11px] md:text-sm font-mono rounded-sm bg-primary/10 text-primary border border-primary/20 whitespace-nowrap">
+                    {/* Header: chips → title → role line (§9.1) */}
+                    <header className="mb-12">
+                        <div className="flex flex-wrap items-center gap-2 mb-4">
+                            <span className="text-mono rounded-sm bg-secondary text-secondary-foreground px-2 py-0.5">
                                 {clientSector}
                             </span>
-                            {tags.slice(0, 3).map((tag) => (
-                                <span
-                                    key={tag}
-                                    className="px-2.5 py-1 text-[11px] md:text-sm font-mono rounded-sm bg-secondary text-secondary-foreground whitespace-nowrap"
-                                >
-                                    {tag}
+                            <span className="text-mono rounded-sm border border-primary/20 bg-primary/10 text-primary px-2 py-0.5">
+                                {tierLabel(project.evidenceLevel)}
+                            </span>
+                            {project.timeframe && (
+                                <span className="text-mono text-muted-foreground px-1">
+                                    {project.timeframe}
                                 </span>
-                            ))}
+                            )}
                         </div>
-                        <h1 className="text-hero mb-6">{title}</h1>
-                    </div>
 
-                    {/* Project Image - Premium Offset Accent Frame */}
-                    {shouldShowImage && (
-                        <div className="relative group max-w-4xl mx-auto my-8 ">
-                            {/* Decorative Corner Frames — logical properties so the
-                                composition mirrors in RTL (plan §8.4) */}
-                            <div className="absolute -top-3 -end-3 w-16 h-16 border-t-2 border-e-2 border-primary/60 transition-all duration-300 group-hover:-top-4 group-hover:-end-4 z-0" />
+                        <h1 className="text-hero mb-4">{title}</h1>
+                        <p className="text-label text-muted-foreground">
+                            {t("roleLabel")}: {project.role}
+                        </p>
+                    </header>
 
-                            <div className="absolute -bottom-3 -start-3 w-16 h-16 border-b-2 border-s-2 border-primary/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-start-4 z-0" />
+                    {isArchived && (
+                        <div
+                            role="note"
+                            className="mb-10 rounded-md border border-warning/30 bg-warning/10 p-4 text-body text-foreground"
+                        >
+                            {t("archivedNote")}
+                        </div>
+                    )}
 
-                            {/* Premium Image Container */}
-                            <div className="relative z-10 overflow-hidden rounded-md border border-border bg-muted shadow-xl  transition-all duration-500 group-hover:scale-[1.01] group-hover:shadow-2xl min-h-[300px]">
-                                {/* Loading State */}
+                    {/* Context (flagships) */}
+                    {project.constraints && (
+                        <section className="mb-12 max-w-reading">
+                            <h2 className="text-label text-muted-foreground uppercase mb-2">
+                                {t("constraintsLabel")}
+                            </h2>
+                            <p className="text-body text-muted-foreground">{project.constraints}</p>
+                        </section>
+                    )}
+
+                    {/* Figure 01 with mono caption */}
+                    {figure && !imageError && (
+                        <figure className="max-w-4xl mb-12">
+                            <div className="relative overflow-hidden rounded-md border border-border bg-muted">
                                 {imageLoading && (
-                                    <div className="absolute inset-0 flex items-center justify-center bg-muted rounded-md">
-                                        <div className="flex flex-col items-center gap-3">
-                                            <div className="w-8 h-8 border-3 border-primary/30 border-t-primary rounded-full animate-spin" />
-                                            <p className="text-sm text-muted-foreground">Loading image...</p>
-                                        </div>
+                                    <div className="absolute inset-0 flex items-center justify-center bg-muted">
+                                        <p className="text-mono text-muted-foreground">{t("loadingImage")}</p>
                                     </div>
                                 )}
                                 <Image
-                                    src={imageUrl!}
-                                    alt={title}
-                                    width={1200}
-                                    height={800}
-                                    className="w-full h-auto object-cover rounded-md"
+                                    src={figure.src}
+                                    alt={figure.alt}
+                                    width={1600}
+                                    height={1000}
+                                    sizes="(min-width: 1024px) 896px, 100vw"
+                                    className="w-full h-auto"
                                     priority
-                                    onLoad={handleImageLoad}
-                                    onError={handleImageError}
+                                    onLoad={() => setImageLoading(false)}
+                                    onError={() => {
+                                        setImageLoading(false);
+                                        setImageError(true);
+                                    }}
                                 />
                             </div>
-                        </div>
+                            <figcaption className="mt-2.5 text-mono text-muted-foreground">
+                                {figure.caption}
+                            </figcaption>
+                        </figure>
                     )}
 
-                    {/* Image Not Available Fallback */}
-                    {shouldShowFallback && (
-                        <div className="relative group max-w-4xl mx-auto my-8">
-                            {/* Decorative Corner Frames — logical properties so the
-                                composition mirrors in RTL (plan §8.4) */}
-                            <div className="absolute -top-3 -end-3 w-16 h-16 border-t-2 border-e-2 border-primary/60 transition-all duration-300 group-hover:-top-4 group-hover:-end-4 z-0" />
+                    <div className="max-w-reading space-y-12">
+                        {/* The problem (business language) */}
+                        <section>
+                            <h2 className="text-h2 mb-4">{t("problemLabel")}</h2>
+                            <p className="text-body text-muted-foreground">
+                                {highlightBusiness(businessProblem)}
+                            </p>
+                        </section>
 
-                            <div className="absolute -bottom-3 -start-3 w-16 h-16 border-b-2 border-s-2 border-primary/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-start-4 z-0" />
-
-                            <div className="relative z-10 overflow-hidden rounded-md border border-border bg-muted shadow-xl p-12">
-                                <div className="flex flex-col items-center justify-center gap-4 text-center">
-                                    <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
-                                        <ImageOff className="w-8 h-8 text-muted-foreground" />
-                                    </div>
-                                    <h3 className="text-h3 text-foreground">Image Not Available</h3>
-                                    <p className="text-sm text-muted-foreground max-w-md">
-                                        {!imageUrl
-                                            ? "No project image is available for this case study."
-                                            : "The project image could not be loaded. This may be due to a broken link or the image source is temporarily unavailable."}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Two Column Layout */}
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mt-10 md:mt-20">
-                        {/* Section A: Executive Summary & Business Impact */}
-                        <div className="space-y-8">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
-                                    <Building2 className="w-5 h-5 text-primary" />
-                                </div>
-                                <h2 className="text-h2">Executive Summary</h2>
-                            </div>
-
-                            {/* Business Problem */}
-                            <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
-                                <h3 className="text-h3 mb-3 flex items-center gap-2">
-                                    <TrendingUp className="w-5 h-5 text-destructive" />
-                                    The Challenge
-                                </h3>
-                                <p className="text-muted-foreground leading-relaxed">{highlightBusinessKeywords(businessProblem)}</p>
-                            </div>
-
-                            {/* Business Outcome */}
-                            <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
-                                <h3 className="text-h3 mb-3 flex items-center gap-2">
-                                    <DollarSign className="w-5 h-5 text-success" />
-                                    The Impact
-                                </h3>
-                                <p className="text-muted-foreground leading-relaxed mb-4">{highlightBusinessKeywords(businessOutcome)}</p>
-
-                                {/* Metrics Grid */}
-                                <div className="grid grid-cols-2 gap-3">
-                                    {metrics.map((metric, index) => (
-                                        <div
-                                            key={index}
-                                            className="bg-muted/50 p-3 rounded-md border border-border/30"
-                                        >
-                                            <p className="text-sm font-semibold text-foreground">{highlightBusinessKeywords(metric)}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Section B: Engineering & Architecture Deep Dive */}
-                        <div className="space-y-8">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
-                                    <Cpu className="w-5 h-5 text-primary" />
-                                </div>
-                                <h2 className="text-h2">Technical Deep Dive</h2>
-                            </div>
-
-                            {/* Technical Architecture */}
-                            <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
-                                <h3 className="text-h3 mb-4">System Architecture</h3>
-                                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                                    {highlightTechKeywords(technicalArchitecture)}
-                                </p>
-                            </div>
-
-                            {/* Tech Stack */}
-                            <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
-                                <h3 className="text-h3 mb-4">Technology Stack</h3>
-                                <div className="flex flex-wrap gap-1.5 md:gap-2 w-full">
-                                    {tags.map((tag) => (
+                        {/* What I built (business language bullets) */}
+                        <section>
+                            <h2 className="text-h2 mb-4">{t("builtLabel")}</h2>
+                            <ul className="space-y-2.5">
+                                {metrics.map((metric) => (
+                                    <li key={metric} className="flex items-start gap-3 text-body text-muted-foreground">
                                         <span
-                                            key={tag}
-                                            className="px-2.5 py-1 text-[11px] md:text-xs font-mono rounded-sm bg-secondary text-secondary-foreground border border-border/50 hover:border-primary/50 transition-colors whitespace-nowrap"
-                                        >
-                                            {tag}
-                                        </span>
+                                            className="mt-2.5 w-1.5 h-1.5 shrink-0 rounded-full bg-primary"
+                                            aria-hidden="true"
+                                        />
+                                        <span>{highlightBusiness(metric)}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+
+                        {/* How it works: flagship = decisions ("chose X over Y because Z"),
+                            light = architecture paragraph */}
+                        <section>
+                            <h2 className="text-h2 mb-4">{t("howLabel")}</h2>
+                            {isFlagship && project.decisions ? (
+                                <ul className="space-y-4">
+                                    {project.decisions.map((d) => (
+                                        <li key={d.decision} className="border-s-2 border-primary/30 ps-4">
+                                            <p className="text-body font-medium text-foreground">
+                                                {highlightTech(d.decision)}
+                                            </p>
+                                            <p className="text-body text-muted-foreground mt-1">
+                                                — {highlightTech(d.because)}
+                                            </p>
+                                        </li>
                                     ))}
-                                </div>
+                                </ul>
+                            ) : (
+                                <p className="text-body text-muted-foreground">
+                                    {highlightTech(technicalArchitecture)}
+                                </p>
+                            )}
+                        </section>
+
+                        {/* Outcomes — only statements with a stated basis (§9.1) */}
+                        {isFlagship && project.outcomes && project.outcomes.length > 0 && (
+                            <section>
+                                <h2 className="text-h2 mb-4">{t("outcomesLabel")}</h2>
+                                <ul className="space-y-3">
+                                    {project.outcomes.map((outcome) => (
+                                        <li key={outcome.statement} className="text-body text-foreground">
+                                            {highlightBusiness(outcome.statement)}
+                                            <span className="text-muted-foreground">
+                                                {" "}
+                                                — {outcome.basis}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                        )}
+
+                        {/* Stack + links */}
+                        <section>
+                            <h2 className="text-label text-muted-foreground uppercase mb-3">
+                                {t("stackLabel")}
+                            </h2>
+                            <div className="flex flex-wrap gap-1.5">
+                                {tags.map((tag) => (
+                                    <span
+                                        key={tag}
+                                        className="text-mono text-muted-foreground rounded-sm border border-border/60 px-2 py-0.5"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
                             </div>
 
-                            {/* Action Links */}
-                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                {liveUrl && liveUrl !== "#" && (
-                                    <Link
+                            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                                {liveUrl && (
+                                    <a
                                         href={liveUrl}
                                         target="_blank"
-                                        className="flex items-center justify-center px-6 py-3 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold px-6 py-3"
                                     >
-                                        <Globe className="w-5 h-5 me-2" />
-                                        Live Application
-                                    </Link>
+                                        <Globe className="w-5 h-5" aria-hidden="true" />
+                                        {project.evidenceLevel === "client-site" ? "Live website" : "Live application"}
+                                    </a>
                                 )}
-                                {codeUrl && codeUrl !== "#" && codeUrl !== "https://github.com/sahadcse" && (
-                                    <Link
+                                {showCodeUrl && (
+                                    <a
                                         href={codeUrl}
                                         target="_blank"
-                                        className="flex items-center justify-center px-6 py-3 rounded-sm bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border transition-colors font-semibold"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 rounded-sm bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border transition-colors font-semibold px-6 py-3"
                                     >
-                                        <Github className="w-5 h-5 me-2" />
+                                        <Github className="w-5 h-5" aria-hidden="true" />
                                         View Source Code
-                                    </Link>
+                                    </a>
                                 )}
                             </div>
-                        </div>
+                        </section>
+
+                        {/* Next-step CTA (§9.1 constant) */}
+                        {!isArchived && (
+                            <section className="rounded-md border border-primary/20 bg-primary/5 p-6 md:p-8">
+                                <p className="text-h3 mb-4">{t("nextStep")}</p>
+                                <Link
+                                    href="/contact"
+                                    className="inline-flex items-center gap-2 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold px-6 py-3"
+                                >
+                                    {t("nextCta")}
+                                    <ArrowRight className="w-4 h-4 rtl:rotate-180" aria-hidden="true" />
+                                </Link>
+                            </section>
+                        )}
                     </div>
                 </motion.div>
             </div>
