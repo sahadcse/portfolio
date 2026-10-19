@@ -7,6 +7,9 @@ import { z } from "zod";
 
 /**
  * Zod schema for contact form validation.
+ * Messages are STABLE ERROR CODES — the client form translates them via
+ * the message layer (server has no locale context). Unknown codes fall
+ * back to the raw string in the UI.
  * inquiryType is a closed set from the form's radio group; budget is an
  * optional free-text field for client-side inquiries.
  */
@@ -14,20 +17,20 @@ const INQUIRY_TYPES = ["hiring", "project", "improve", "collaborate"] as const;
 
 const contactFormSchema = z.object({
     name: z.string()
-        .min(2, "Name must be at least 2 characters")
-        .max(100, "Name must be less than 100 characters")
+        .min(2, "nameMin")
+        .max(100, "nameMax")
         .trim(),
     email: z.string()
-        .email("Invalid email address")
-        .max(254, "Email address is too long")
+        .email("emailInvalid")
+        .max(254, "emailTooLong")
         .toLowerCase()
         .trim(),
     message: z.string()
-        .min(10, "Message must be at least 10 characters")
-        .max(2000, "Message must be less than 2000 characters")
+        .min(10, "messageMin")
+        .max(2000, "messageMax")
         .trim(),
     inquiryType: z.enum(INQUIRY_TYPES).default("project"),
-    budget: z.string().max(200, "Budget/scope is too long").trim().optional().default(""),
+    budget: z.string().max(200, "budgetTooLong").trim().optional().default(""),
 });
 
 /**
@@ -83,11 +86,11 @@ export async function sendEmail(formData: FormData): Promise<ActionState> {
     if (!rawName || !rawEmail || !rawMessage) {
         return {
             success: false,
-            error: "All fields are required",
+            error: "fixErrors",
             fieldErrors: {
-                ...(rawName ? {} : { name: "Name is required" }),
-                ...(rawEmail ? {} : { email: "Email is required" }),
-                ...(rawMessage ? {} : { message: "Message is required" }),
+                ...(rawName ? {} : { name: "nameRequired" }),
+                ...(rawEmail ? {} : { email: "emailRequired" }),
+                ...(rawMessage ? {} : { message: "messageRequired" }),
             }
         };
     }
@@ -113,7 +116,7 @@ export async function sendEmail(formData: FormData): Promise<ActionState> {
 
         return {
             success: false,
-            error: "Please fix the errors below and try again",
+            error: "fixErrors",
             fieldErrors,
         };
     }
@@ -128,7 +131,7 @@ export async function sendEmail(formData: FormData): Promise<ActionState> {
             console.error("Missing SMTP environment variables");
             return {
                 success: false,
-                error: "Server configuration error. Please contact the administrator."
+                error: "serverConfig"
             };
         }
 
@@ -180,6 +183,6 @@ export async function sendEmail(formData: FormData): Promise<ActionState> {
         return { success: true, error: "" };
     } catch (error) {
         console.error("Error sending email:", error);
-        return { success: false, error: "Failed to send email. Please try again later." };
+        return { success: false, error: "sendFailed" };
     }
 }

@@ -18,10 +18,10 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
     const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "meta.about" });
     return {
-        title: "About",
-        description:
-            "Md Sahaduzzaman — software engineer and founder of Sahad Labs. Full-stack and backend engineering for international clients since 2024.",
+        title: t("title"),
+        description: t("description"),
         alternates: {
             canonical: localePath(locale as Locale, "/about"),
             languages: localeAlternates("/about"),

@@ -184,6 +184,18 @@
     font-weight: 600;
   }
 
+  /* Headline marker (hero): a restrained highlighter sweep behind the
+     bottom of the phrase — decoration over live text, invisible if
+     styling fails. Mirrors safely in RTL (background position is
+     direction-neutral). */
+  .headline-mark {
+    background-image: linear-gradient(
+      to top,
+      hsl(var(--primary) / 0.18) 0.28em,
+      transparent 0.28em
+    );
+  }
+
   /* Sticky-header offset for same-page anchor targets */
   section[id] {
     scroll-margin-top: 5rem;

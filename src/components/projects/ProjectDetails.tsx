@@ -5,7 +5,8 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight, Globe, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import OnThisPage from "@/components/shared/OnThisPage";
 import { tierLabel } from "@/data/verified-metrics";
 import type { Project } from "@/types/portfolio";
 
@@ -92,6 +93,7 @@ const highlightTech = (text: string) => highlight(text, TECH_KEYWORDS, "highligh
 
 export default function ProjectDetails({ project }: { project: Project }) {
     const t = useTranslations("caseStudy");
+    const locale = useLocale();
     const { title, clientSector, businessProblem, technicalArchitecture, metrics, tags, liveUrl, codeUrl } = project;
 
     const [imageLoading, setImageLoading] = useState(!!project.screenshots?.[0]?.src);
@@ -102,9 +104,17 @@ export default function ProjectDetails({ project }: { project: Project }) {
     const isArchived = project.status === "archived";
     const showCodeUrl = Boolean(codeUrl && codeUrl !== "https://github.com/sahadcse");
 
+    const sections = [
+        { id: "problem", label: t("problemLabel") },
+        { id: "built", label: t("builtLabel") },
+        { id: "how", label: t("howLabel") },
+        ...(isFlagship && project.outcomes?.length ? [{ id: "outcomes", label: t("outcomesLabel") }] : []),
+    ];
+
     return (
         <div className="container-content py-16 md:py-24">
             <div>
+                <OnThisPage items={sections} />
                 {/* Back Navigation */}
                 <Link
                     href="/projects"
@@ -150,6 +160,17 @@ export default function ProjectDetails({ project }: { project: Project }) {
                         </div>
                     )}
 
+                    {/* §10.5: long-form case-study bodies may remain English behind
+                        a visible localized notice until the translation track lands */}
+                    {locale !== "en" && (
+                        <div
+                            role="note"
+                            className="mb-10 rounded-md border border-border/50 bg-muted/30 p-4 text-body text-muted-foreground"
+                        >
+                            {t("englishBodyNote")}
+                        </div>
+                    )}
+
                     {/* Context (flagships) */}
                     {project.constraints && (
                         <section className="mb-12 max-w-reading">
@@ -192,7 +213,7 @@ export default function ProjectDetails({ project }: { project: Project }) {
 
                     <div className="max-w-reading space-y-12">
                         {/* The problem (business language) */}
-                        <section>
+                        <section id="problem">
                             <h2 className="text-h2 mb-4">{t("problemLabel")}</h2>
                             <p className="text-body text-muted-foreground">
                                 {highlightBusiness(businessProblem)}
@@ -200,7 +221,7 @@ export default function ProjectDetails({ project }: { project: Project }) {
                         </section>
 
                         {/* What I built (business language bullets) */}
-                        <section>
+                        <section id="built">
                             <h2 className="text-h2 mb-4">{t("builtLabel")}</h2>
                             <ul className="space-y-2.5">
                                 {metrics.map((metric) => (
@@ -217,7 +238,7 @@ export default function ProjectDetails({ project }: { project: Project }) {
 
                         {/* How it works: flagship = decisions ("chose X over Y because Z"),
                             light = architecture paragraph */}
-                        <section>
+                        <section id="how">
                             <h2 className="text-h2 mb-4">{t("howLabel")}</h2>
                             {isFlagship && project.decisions ? (
                                 <ul className="space-y-4">
@@ -241,7 +262,7 @@ export default function ProjectDetails({ project }: { project: Project }) {
 
                         {/* Outcomes — only statements with a stated basis (§9.1) */}
                         {isFlagship && project.outcomes && project.outcomes.length > 0 && (
-                            <section>
+                            <section id="outcomes">
                                 <h2 className="text-h2 mb-4">{t("outcomesLabel")}</h2>
                                 <ul className="space-y-3">
                                     {project.outcomes.map((outcome) => (

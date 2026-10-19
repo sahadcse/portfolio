@@ -9,11 +9,21 @@
     "openMenu": "Toggle menu"
   },
   "footer": {
+    "tagline": "Full-stack software for businesses that have outgrown spreadsheets — designed, delivered, and maintained personally.",
+    "ctaTitle": "Have something in mind?",
+    "ctaLabel": "Discuss a project",
+    "siteLabel": "Site",
+    "connectLabel": "Connect",
+    "legalLabel": "Legal",
     "projects": "Projects",
     "services": "Services",
     "about": "About",
     "contact": "Contact",
     "blog": "Blog",
+    "cv": "CV (PDF)",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "impressum": "Legal Notice (Impressum)",
@@ -22,8 +32,34 @@
   "language": {
     "label": "Change language"
   },
+  "faq": {
+    "items": {
+      "technical-knowledge": {
+        "question": "Do I need any technical knowledge to work with you?",
+        "answer": "Not at all. I handle the entire lifecycle—from domain configuration and hosting setup to deployment. Once live, I will provide a simple walk-through so you can manage your operations or text updates effortlessly."
+      },
+      "code-ownership": {
+        "question": "Who owns the source code and project assets after delivery?",
+        "answer": "You do. You retain 100% intellectual property and ownership. Upon project completion, the entire repository and production assets are securely handed over to your GitHub or cloud account."
+      },
+      "retainer-model": {
+        "question": "How does the 'Fixed Developer Retainer' model work?",
+        "answer": "It is like having a dedicated Remote CTO/Engineer on demand without the full-time overhead. For a fixed monthly fee, I take care of your priority updates, continuous performance tuning, server security audits, and urgent bug fixes — keeping your systems updated, monitored, and quickly repaired."
+      },
+      "communication-timezone": {
+        "question": "How do we handle communication and timezone differences?",
+        "answer": "I am based in Bangladesh but maintain highly flexible working hours that overlap perfectly with Australian (AEST) and European/German (CET) business days. We will use tools like Slack, Zoom, and Notion for transparent, structured async and sync updates."
+      },
+      "project-timeline": {
+        "question": "What is the typical timeline for a project?",
+        "answer": "An elite Next.js Website or Conversion Landing Page is typically engineered and deployed within 3 to 7 business days. Complex custom business software or internal infrastructure timelines are calculated based on your specific operational requirements."
+      }
+    }
+  },
   "a11y": {
-    "onThisPage": "On this page"
+    "onThisPage": "On this page",
+    "goToTop": "Go to top",
+    "close": "Close"
   },
   "notFound": {
     "title": "Page not found",
@@ -32,26 +68,45 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Md Sahaduzzaman (Sahad) — Software Engineer · Founder, Sahad Labs",
-      "title": "From a first website to a full platform.",
+      "headlineStart": "From a first website",
+      "headlineEnd": "to a <mark>full platform</mark>.",
       "subtitle": "I help founders, businesses, and professionals <accent>launch</accent>, <accent>improve</accent>, <accent>automate</accent>, and <accent>build</accent> the digital systems their work depends on — designed, delivered, and maintained personally, end to end.",
       "ctaPrimary": "Discuss a project",
       "ctaSecondary": "See the projects",
       "availability": "Currently available for new projects",
       "portraitAlt": "Portrait of Md Sahaduzzaman",
-      "portraitCaption": "Md Sahaduzzaman · Dhaka, Bangladesh",
       "panel": {
         "role": "Software Engineer · Founder, Sahad Labs",
-        "basedIn": "Dhaka, Bangladesh — working AU/DE hours",
-        "expertiseTitle": "Engineering focus",
-        "expertise": [
-          "Websites & digital experiences",
-          "Backend systems & APIs",
-          "Databases & data-driven applications",
-          "Booking & operational workflows",
-          "Integrations, deployment & maintenance"
-        ],
-        "linkLabel": "See the evidence"
+        "basedIn": "Dhaka, Bangladesh — AU/DE hours",
+        "experienceTitle": "Hands-on experience",
+        "experienceNote": "Study and professional work combined; professional projects since early 2024.",
+        "rows": {
+          "backend": {
+            "label": "Backend & Database",
+            "since": "4+ yrs",
+            "tools": "Node.js · NestJS · Express.js · PostgreSQL · Prisma · Redis"
+          },
+          "devops": {
+            "label": "DevOps",
+            "since": "3+ yrs",
+            "tools": "Docker · GitHub Actions · Azure · Vercel"
+          },
+          "frontend": {
+            "label": "Frontend",
+            "since": "3+ yrs",
+            "tools": "React · Next.js · TypeScript · Tailwind CSS"
+          },
+          "ai": {
+            "label": "AI Tools",
+            "since": "in use",
+            "tools": "Claude Code · Cursor — assisted development; nothing shipped to clients"
+          },
+          "soft": {
+            "label": "Soft skills",
+            "since": "",
+            "tools": "Ownership · written communication · independent delivery · confidentiality"
+          }
+        }
       }
     },
     "proof": {
@@ -252,6 +307,7 @@
     "nextStep": "Building something similar?",
     "nextCta": "Discuss a project",
     "archivedNote": "Archived demo — kept for reference; no longer presented as current work.",
+    "englishBodyNote": "This case study's detailed text is shown in its original English; the translated version is in review.",
     "loadingImage": "Loading image..."
   },
   "about": {
@@ -271,7 +327,7 @@
         "location": "Dhaka, Bangladesh",
         "education": "BSc in Computer Science & Engineering, 2025",
         "experience": "Working professionally since 2024",
-        "status": "Open to remote roles and client projects"
+        "status": "Open to remote roles and clients across Australia, Europe, and the US"
       },
       "cv": "View my CV",
       "linkedin": "Connect on LinkedIn"
@@ -355,7 +411,7 @@
       "items": {
         "timezones": {
           "title": "Time zones are my problem, not yours",
-          "text": "I'm based in Bangladesh and keep working hours that overlap with Australian and Central European business days. Most of my client work has been with teams in exactly those time zones."
+          "text": "I'm based in Bangladesh and keep working hours that overlap with Australian, European, and US business days. My delivered client work to date sits with teams in Australia and Europe — and my hours are built to cover the US East Coast too."
         },
         "communication": {
           "title": "Structured, async-friendly updates",
@@ -566,9 +622,47 @@
       "submit": "Send message",
       "submitting": "Sending...",
       "success": "Message sent — thank you. I'll get back to you personally.",
-      "errorSummary": "Please fix the errors below and try again",
-      "consentNote": "Sending this form uses your email address only to reply (see the privacy policy)."
+      "consentNote": "Sending this form uses your email address only to reply (see the privacy policy).",
+      "errors": {
+        "nameRequired": "Name is required",
+        "nameMin": "Name must be at least 2 characters",
+        "nameMax": "Name must be less than 100 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email address",
+        "emailTooLong": "Email address is too long",
+        "messageRequired": "Message is required",
+        "messageMin": "Message must be at least 10 characters",
+        "messageMax": "Message must be less than 2000 characters",
+        "budgetTooLong": "Budget/scope is too long",
+        "fixErrors": "Please fix the errors below and try again",
+        "serverConfig": "Server configuration error. Please use the email address instead.",
+        "sendFailed": "Failed to send. Please try again, or use the email address.",
+        "generic": "Something went wrong. Please try again."
+      }
     }
+  },
+  "meta": {
+    "home": {
+      "title": "Sahad — Full-Stack Software Engineer | Personal Portfolio",
+      "description": "From a first website to a full platform: Md Sahaduzzaman designs, builds, and maintains the digital systems businesses depend on — backend, frontend, data, and deployment."
+    },
+    "about": {
+      "title": "About | Sahad — Full-Stack Software Engineer",
+      "description": "Md Sahaduzzaman — software engineer and founder of Sahad Labs. Full-stack and backend engineering for international clients since 2024."
+    },
+    "services": {
+      "title": "Services | Sahad — Full-Stack Software Engineer",
+      "description": "Custom web applications, backend and API engineering, business workflow systems, and production-grade websites — grounded in shipped systems."
+    },
+    "projects": {
+      "title": "Selected Projects | Sahad — Full-Stack Software Engineer",
+      "description": "Case studies of delivered work — client systems, client websites, an own product, and employment-tier engineering. Every card states its evidence tier."
+    },
+    "contact": {
+      "title": "Contact | Sahad — Full-Stack Software Engineer",
+      "description": "Get in touch about software-engineering roles, new projects, improving an existing system, or a collaboration."
+    },
+    "caseStudySuffix": "Case Study"
   },
   "cta": {
     "shared": {

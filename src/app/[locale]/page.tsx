@@ -1,4 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
 import Hero from "@/components/home/Hero";
 import ProofBand from "@/components/home/ProofBand";
 import NeedsGrid from "@/components/home/NeedsGrid";
@@ -17,6 +19,23 @@ import OnThisPage from "@/components/shared/OnThisPage";
  * their own rhythm (py-16 md:py-24); content constrains via
  * .container-content.
  */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta.home" });
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      canonical: localePath(locale as Locale, "/"),
+      languages: localeAlternates("/"),
+    },
+  };
+}
+
 export default async function Home({
   params,
 }: {

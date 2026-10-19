@@ -1,6 +1,6 @@
 import { PROJECTS } from "@/data/projects";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import ProjectDetails from "@/components/projects/ProjectDetails";
 import type { Metadata } from "next";
 import { localeAlternates, localePath, type Locale } from "@/i18n/config";
@@ -25,8 +25,9 @@ export async function generateMetadata({
         };
     }
 
+    const t = await getTranslations({ locale, namespace: "meta" });
     const pagePath = `/projects/${id}`;
-    const title = `${project.title} | Case Study`;
+    const title = `${project.title} | ${t("caseStudySuffix")}`;
     // Description comes from the business outcome (claim-safe by V2-04),
     // not from the metrics array, so unverifiable figures can't leak into
     // search snippets or social previews.

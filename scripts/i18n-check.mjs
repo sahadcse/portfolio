@@ -58,8 +58,8 @@ for (const locale of LOCALES.slice(1)) {
 }
 
 console.log(
-    "\nNote: missing keys currently render English via the fallback merge " +
-        "(intentional until V2-24 lands reviewed translations)."
+    "\nAll locales carry full key coverage; en fallback merge remains as a" +
+        "\nsafety net for any future key added without translation."
 );
 
 if (stale > 0) {

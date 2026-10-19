@@ -1,78 +1,73 @@
 "use client";
 
 import { useState } from "react";
-import { FAQ_ITEMS } from "@/data/faq";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 /**
- * Premium FAQ Accordion Component
- * - Interactive state-based accordion with smooth animations
- * - Premium dark mode styling with arrow rotation
- * - High-impact keyword highlighting
+ * FAQ accordion (copy lives in the `faq` message namespace so all four
+ * locales serve it). Optional title override; optional link target.
  */
-export default function FAQ({ title, id }: { title?: string; id?: string }) {
+const FAQ_KEYS = [
+    "technical-knowledge",
+    "code-ownership",
+    "retainer-model",
+    "communication-timezone",
+    "project-timeline",
+] as const;
+
+export default function FAQ({
+    title,
+    id,
+    linkHref,
+    linkLabel,
+}: {
+    title?: string;
+    id?: string;
+    linkHref?: string;
+    linkLabel?: string;
+}) {
+    const t = useTranslations("faq");
     const [activeId, setActiveId] = useState<string | null>(null);
 
     const toggle = (id: string) => {
         setActiveId(activeId === id ? null : id);
     };
 
-    const Highlight = ({ children }: { children: string }) => {
-        // Highlight high-impact keywords
-        const keywords = [
-            "100% intellectual property",
-            "zero downtime",
-            "3 to 7 business days",
-            "entire lifecycle",
-            "Remote CTO/Engineer",
-            "fixed monthly fee"
-        ];
-
-        let highlightedText = children;
-        keywords.forEach(keyword => {
-            const regex = new RegExp(`(${keyword})`, 'gi');
-            highlightedText = highlightedText.replace(regex, '<mark class="bg-primary/20 text-primary px-1 rounded-sm">$1</mark>');
-        });
-
-        return <span dangerouslySetInnerHTML={{ __html: highlightedText }} />;
-    };
-
     return (
         <section id={id} className="py-16 md:py-24 px-4 bg-muted/30">
             <div className="max-w-reading mx-auto">
                 {/* Section Header */}
-                <div className="text-center mb-12">
-                    <h2 className="text-h2 text-foreground mb-4">
-                        {title ?? "Frequently Asked Questions"}
-                    </h2>
-                    <p className="text-muted-foreground">
-                        Everything you need to know before we start working together
-                    </p>
-                </div>
+                {title && (
+                    <div className="text-center mb-12">
+                        <h2 className="text-h2 text-foreground mb-4">{title}</h2>
+                    </div>
+                )}
 
                 {/* FAQ Items */}
                 <div className="space-y-4">
-                    {FAQ_ITEMS.map((item) => (
+                    {FAQ_KEYS.map((key) => (
                         <div
-                            key={item.id}
+                            key={key}
                             className="bg-card border border-border rounded-md overflow-hidden transition-all duration-300 hover:border-primary/20"
                         >
                             {/* Question Button */}
                             <button
-                                onClick={() => toggle(item.id)}
+                                onClick={() => toggle(key)}
                                 className="w-full flex items-center justify-between px-6 py-5 text-start"
-                                aria-expanded={activeId === item.id}
+                                aria-expanded={activeId === key}
                             >
                                 <span className="font-semibold text-foreground pe-4">
-                                    {item.question}
+                                    {t(`items.${key}.question`)}
                                 </span>
                                 <svg
                                     className={`flex-shrink-0 w-5 h-5 text-muted-foreground transition-transform duration-200 ${
-                                        activeId === item.id ? "rotate-180" : ""
+                                        activeId === key ? "rotate-180" : ""
                                     }`}
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
+                                    aria-hidden="true"
                                 >
                                     <path
                                         strokeLinecap="round"
@@ -84,10 +79,10 @@ export default function FAQ({ title, id }: { title?: string; id?: string }) {
                             </button>
 
                             {/* Answer Panel */}
-                            {activeId === item.id && (
+                            {activeId === key && (
                                 <div className="px-6 pb-5 pt-0">
-                                    <div className="text-muted-foreground leading-relaxed border-t border-border pt-4">
-                                        <Highlight>{item.answer}</Highlight>
+                                    <div className="text-muted-foreground leading-relaxed border-t border-border pt-4 text-body">
+                                        {t(`items.${key}.answer`)}
                                     </div>
                                 </div>
                             )}
@@ -96,17 +91,18 @@ export default function FAQ({ title, id }: { title?: string; id?: string }) {
                 </div>
 
                 {/* Trust Indicator */}
-                <div className="mt-12 text-center">
-                    <p className="text-sm text-muted-foreground">
-                        Still have questions?{" "}
-                        <Link
-                            href="/contact"
-                            className="text-primary font-medium hover:underline"
-                        >
-                            Get in touch
-                        </Link>
-                    </p>
-                </div>
+                {linkHref && linkLabel && (
+                    <div className="mt-12 text-center">
+                        <p className="text-sm text-muted-foreground">
+                            <Link
+                                href={linkHref}
+                                className="text-primary font-medium hover:underline"
+                            >
+                                {linkLabel}
+                            </Link>
+                        </p>
+                    </div>
+                )}
             </div>
         </section>
     );

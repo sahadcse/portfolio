@@ -6,31 +6,42 @@ import { Button } from "@/components/ui/Button";
 import { IdentityName } from "@/components/shared/IdentityName";
 
 /**
- * Homepage hero (user brief §3): two-audience composition.
- * Left — business value: scope-ladder headline, four-verb subhead (accent
- * emphasis via t.rich), CTAs, availability line.
- * Right — technical identity: compact portrait + editorial expertise panel.
+ * Homepage hero (user brief §3, refined): two-audience composition.
+ * Left — pure business value: editorial two-part headline (quiet opening
+ * line, then the platform phrase at full scale with a marker accent),
+ * four-verb subhead, CTAs, availability. No identity content here.
+ * Right — technical profile: identity header (portrait, accent name,
+ * role) and hands-on experience rows with clearly labeled durations.
  * Static server component; the first viewport paints without JavaScript.
  */
+const EXPERIENCE_KEYS = ["backend", "devops", "frontend", "ai", "soft"] as const;
 
 export default async function Hero() {
     const t = await getTranslations("home.hero");
-    const expertise = t.raw("panel.expertise") as string[];
 
     return (
         <section className="py-16 md:py-24">
             <div className="container-content">
                 <div className="grid w-full grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-12 lg:gap-16 items-center">
-                    {/* Left — business value and conversion */}
+                    {/* Left — business value and conversion (no identity content) */}
                     <div>
-                        <p className="text-mono text-muted-foreground mb-6">
-                            Md <IdentityName>Sahaduzzaman (Sahad)</IdentityName>
-                            <span aria-hidden="true"> · </span>Software Engineer · Founder, Sahad Labs
-                        </p>
+                        {/* Editorial headline: quiet opening line, full-scale platform line.
+                            The marker accent is decoration on top of real text — the
+                            message stays fully readable if styling fails. */}
+                        <h1>
+                            <span className="block text-2xl md:text-3xl font-medium text-muted-foreground tracking-tight mb-1">
+                                {t("headlineStart")}
+                            </span>
+                            <span className="block text-hero">
+                                {t.rich("headlineEnd", {
+                                    mark: (chunk) => (
+                                        <span className="headline-mark">{chunk}</span>
+                                    ),
+                                })}
+                            </span>
+                        </h1>
 
-                        <h1 className="text-hero mb-6">{t("title")}</h1>
-
-                        <p className="text-lead max-w-2xl mb-8">
+                        <p className="text-lead max-w-2xl mt-6 mb-8">
                             {t.rich("subtitle", {
                                 accent: (chunk) => <span className="em-accent">{chunk}</span>,
                             })}
@@ -60,19 +71,19 @@ export default async function Hero() {
                         </p>
                     </div>
 
-                    {/* Right — technical identity and expertise panel */}
+                    {/* Right — technical profile (identity + hands-on experience) */}
                     <aside
-                        aria-label="Engineering identity"
+                        aria-label="Technical profile"
                         className="rounded-md border border-border/60 bg-card p-6 md:p-7"
                     >
                         <div className="flex items-center gap-4">
-                            <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 overflow-hidden rounded-md border border-border bg-muted">
+                            <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 overflow-hidden rounded-md border border-border bg-muted">
                                 <Image
                                     src="/images/sahad-portrait.webp"
                                     alt={t("portraitAlt")}
                                     width={960}
                                     height={1440}
-                                    sizes="96px"
+                                    sizes="80px"
                                     className="w-full h-full object-cover object-top"
                                     priority
                                 />
@@ -90,31 +101,29 @@ export default async function Hero() {
                             </div>
                         </div>
 
-                        <h2 className="text-label text-muted-foreground uppercase mt-7 mb-3">
-                            {t("panel.expertiseTitle")}
+                        <h2 className="text-label text-muted-foreground uppercase mt-7">
+                            {t("panel.experienceTitle")}
                         </h2>
-                        <ul className="space-y-2.5">
-                            {expertise.map((item) => (
-                                <li
-                                    key={item}
-                                    className="flex items-start gap-2.5 text-body text-foreground"
-                                >
-                                    <span
-                                        className="mt-[0.55rem] w-1.5 h-1.5 shrink-0 rounded-full bg-primary/70"
-                                        aria-hidden="true"
-                                    />
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
 
-                        <Link
-                            href="/projects"
-                            className="inline-flex items-center gap-1.5 text-label text-primary hover:underline mt-6"
-                        >
-                            {t("panel.linkLabel")}
-                            <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" aria-hidden="true" />
-                        </Link>
+                        <dl className="mt-3 space-y-3.5">
+                            {EXPERIENCE_KEYS.map((key) => (
+                                <div key={key} className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5">
+                                    <dt className="text-label text-foreground font-medium leading-5">
+                                        {t(`panel.rows.${key}.label`)}
+                                    </dt>
+                                    <dd className="text-mono text-primary text-right leading-5 whitespace-nowrap">
+                                        {t(`panel.rows.${key}.since`)}
+                                    </dd>
+                                    <dd className="col-span-2 text-sm text-muted-foreground leading-snug">
+                                        {t(`panel.rows.${key}.tools`)}
+                                    </dd>
+                                </div>
+                            ))}
+                        </dl>
+
+                        <p className="text-mono text-muted-foreground mt-5 pt-4 border-t border-border/40">
+                            {t("panel.experienceNote")}
+                        </p>
                     </aside>
                 </div>
             </div>

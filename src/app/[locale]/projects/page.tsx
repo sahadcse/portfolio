@@ -11,10 +11,10 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
     const { locale } = await params;
-
+    const t = await getTranslations({ locale, namespace: "meta.projects" });
     return {
-    title: "Selected Projects",
-    description: "Case studies of delivered work — client systems, client websites, an own product, and employment-tier engineering.",
+        title: t("title"),
+        description: t("description"),
         alternates: {
             canonical: localePath(locale as Locale, "/projects"),
             languages: localeAlternates("/projects"),

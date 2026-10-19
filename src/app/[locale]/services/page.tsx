@@ -14,10 +14,10 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
     const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "meta.services" });
     return {
-        title: "Services",
-        description:
-            "What Md Sahaduzzaman can do for your team or business: custom web applications, backend and API engineering, business workflow systems, and production-grade websites.",
+        title: t("title"),
+        description: t("description"),
         alternates: {
             canonical: localePath(locale as Locale, "/services"),
             languages: localeAlternates("/services"),

@@ -8,6 +8,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { SITE_CONFIG, SITE_URL } from "@/data/site-config";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import GoToTop from "@/components/shared/GoToTop";
 import { routing } from "@/i18n/routing";
 import { LOCALE_DIR, localeAlternates, localePath, type Locale } from "@/i18n/config";
 
@@ -132,6 +133,7 @@ export default async function LocaleLayout({
               {children}
             </main>
             <Footer />
+            <GoToTop />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

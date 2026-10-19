@@ -26,6 +26,19 @@ export default function ContactForm() {
     const [inquiryType, setInquiryType] = useState<string>("project");
     const formRef = useRef<HTMLFormElement>(null);
 
+    /**
+     * Server-side validation messages arrive as stable error codes (the
+     * server has no locale context); this translates them via the message
+     * layer. Unknown codes render as-is so nothing is silently swallowed.
+     */
+    const localizeError = (code: string) => {
+        try {
+            return t(`errors.${code}`);
+        } catch {
+            return code;
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsPending(true);
@@ -43,13 +56,20 @@ export default function ContactForm() {
                     formRef.current.reset();
                 }
             } else {
-                setState({ success: false, error: result.error });
+                setState({ success: false, error: localizeError(result.error) });
                 if (result.fieldErrors) {
-                    setFieldErrors(result.fieldErrors);
+                    setFieldErrors(
+                        Object.fromEntries(
+                            Object.entries(result.fieldErrors).map(([field, code]) => [
+                                field,
+                                localizeError(code),
+                            ])
+                        )
+                    );
                 }
             }
         } catch {
-            setState({ success: false, error: "Something went wrong. Please try again." });
+            setState({ success: false, error: localizeError("generic") });
         } finally {
             setIsPending(false);
         }
@@ -66,8 +86,9 @@ export default function ContactForm() {
 
     return (
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" noValidate>
-            {/* Honeypot — visually hidden from humans, irresistible to bots */}
-            <div className="absolute -left-[9999px] top-auto" aria-hidden="true">
+            {/* Honeypot — zero-size hidden wrapper (direction-safe: no physical
+                off-screen offsets that become scrollable overflow in RTL) */}
+            <div className="h-0 w-0 overflow-hidden" aria-hidden="true">
                 <label htmlFor="website">Website</label>
                 <input
                     id="website"
