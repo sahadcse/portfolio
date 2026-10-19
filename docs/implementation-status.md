@@ -1,8 +1,50 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R2a — Foundation.** R1 complete · **V2-06 complete** · **V2-07 complete**.
+**Current stage:** **R2b — Experience build (start).** R1 complete · V2-06 complete · V2-07 complete · **V2-08 complete**.
 **Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
+
+---
+
+## Completed tasks — V2-08 (type/spacing system + RTL logical-property conversion)
+
+Implements plan §8.3 (type/spacing), §8.4/§10.8/§10.9 (RTL + Arabic typography), and the V2-07 handoff's fold-in (`.card-elevation` → elevation tokens). 20 files changed.
+
+| Area | What was built |
+|---|---|
+| Type presets | Six bundled presets in `globals.css` — `.text-hero` (40/48 → md:56/60, 700, −0.02em), `.text-h2` (28/36, 700, −0.01em), `.text-h3` (20/28, 600), `.text-lead` (18/28, 400, muted), `.text-body` (16/26), `.text-label` (13/16, 500), `.text-mono` (JetBrains Mono 13/16 + `tabular-nums`). Applied across all pages/components |
+| Mono off headings | `font-mono` removed from every heading (About ×4, Hero ×2, TechStack, Contact, Blog list, Projects, 404 h1, ProjectDetails h1, home h2, `prose-headings:font-mono`). Remaining `font-mono` is the legitimate chip/label system (Badge, tech tags, 404 "404" label) |
+| Arabic typography | `IBM_Plex_Sans_Arabic` via `next/font/google` (arabic subset, weights 400–700, self-hosted — 16 @font-face blocks verified in build); per-glyph fallback stacks `--font-sans`/`--font-mono` include `var(--font-arabic)`; `html[lang="ar"]` line-height overrides (body 1.75, hero/h2 1.35, h3 1.4, lead/body 1.75, label/mono 1.7); `tracking-*` neutralizer `html[lang="ar"] [class*="tracking-"] { letter-spacing: 0 !important }` |
+| Width owners | `--container-content: 68rem` (→ `max-w-content`) replaces all three `max-w-7xl` (layout main, Navbar, Footer); `--container-reading: 44rem` (→ `max-w-reading`) replaces prose/legal `max-w-3xl`; per-page `container mx-auto` constraints removed (single width owner); services' redundant `max-w-6xl` and ProjectDetails' redundant `max-w-7xl` dropped |
+| Section rhythm | 96px desktop / 64px mobile (`py-16 md:py-24`) normalized across Hero, TechStack, FAQ, services sections, all page containers; home gap-20/pb-20 → gap-16 md:gap-24 / pb-16 md:pb-24 |
+| RTL logical conversion | All physical directional utilities → logical: `ml-/mr-`→`ms-/me-` (Button, CTA, ProjectDetails, Logo, blog/home/services arrows, About list), `text-left/right`→`text-start/end` (FAQ, LocaleSwitcher, About dates), `pr-`→`pe-`, `right-0`→`end-0` (LocaleSwitcher dropdown), `left-2`→`start-2` (ThemeToggle — fixes a real RTL bug where Moon detached from Sun), corner accent frames → `-start-3/-end-3` + `border-s-2/border-e-2` (mirrors composition in RTL per §8.4), `space-x`→`gap` (Navbar, Footer, contact email row) |
+| Directional icons | `rtl:rotate-180` on ArrowRight ×5, ArrowLeft (+ mirrored hover translate `rtl:group-hover:translate-x-1`), Send, services SVG arrow; `rtl:-scale-x-100` on ArrowUpRight (external-link mirror); FAQ chevron non-directional, untouched. Logo root locked `dir="ltr"` (Latin brand lockup never mirrors) |
+| Forms | Free-text inputs (`name`, `message`) get `dir="auto"` per §8.4; labels moved to `.text-label` |
+| Buttons (§8.5) | Height metrics 36/44/52 px (md `py-3`→`py-2.5`, lg `py-4`→`py-3`); outline border 2px→1.5px |
+| Elevation fold-in | `.card-elevation` → `var(--shadow-elev-surface)`, `.card-elevation-hover` → `var(--shadow-elev-floating)` — duplicated literals removed, tokens are the single source |
+
+**V2-08 acceptance evidence (2026-10-19):**
+- **Repo grep: ZERO physical directional utilities** in `src/**` (`ml-/mr-/pl-/pr-`, `border-l/r`, `rounded-l/r/tl/…`, `text-left/right`, physical `left-N`/`right-N` positioning) — acceptance criterion met. Remaining `translate-x` is the ArrowLeft hover nudge with its `rtl:` mirror (allowed: "translate-x flipped under rtl:")
+- Compiled CSS (`.next/static/chunks/*.css`, 79.4 KB) verified: all seven presets present; `.text-hero` md bump (`@media (min-width:768px)` 3.5rem/3.75rem); `.max-w-content`/`.max-w-reading`; `me-2`/`ms-2`→`margin-inline-*`, `text-start/end`, `end-0`/`start-2`→`inset-inline-*`, `border-e-2`/`border-s-2`→`border-inline-*`, negative `-start-3`/`-end-3` incl. group-hover −4 variants; `[dir=rtl]` variants compiled (rotate/scale-x/group-hover translate); Arabic overrides + tracking neutralizer with `!important` present; `tabular-nums` present; `@font-face` 16× IBM Plex Sans Arabic + 7× Inter + 6× JetBrains Mono + 10× Montserrat, all self-hosted woff2
+- Production server (port 3007): `/`, `/ar`, `/de/services`, `/ar/projects/cozee-care`, `/fr/contact`, `/about`, `/privacy` → all 200; `/ar` serves `lang="ar" dir="rtl"`; served HTML contains `text-hero`/`max-w-content`/`ms-2`/`start-2`; served `class` attributes contain no `ml-/mr-/text-left` (only legit `font-mono` chips)
+- V2-06 behaviors unregressed: `/en/about` → 307 `/about`; `/` + `NEXT_LOCALE=de` cookie → 307 `/de`
+- `npm run lint`: 0 errors (3 pre-existing warnings: unused vars in `projects/[id]/page.tsx`, `ContactForm` catch, `FAQ` map — untouched by this task) · `npm run i18n:check`: OK · `npm run build`: clean, TypeScript pass, 94 static pages × 4 locales
+
+**Intentional visual shifts for owner review (all spec-driven):**
+1. Hero headline caps at 56px desktop (was 72px at `lg:text-7xl`); lead paragraph 18px (was 20–24px)
+2. All headings now Inter (mono wordmark styling gone from headings); inner page h1s 40→56px responsive
+3. Content column 1280px → 1088px (68rem); prose/legal columns 48rem → 44rem
+4. Section rhythm tightened on desktop: 128px → 96px (hero, value-prop gap), 80px → 64px mobile
+5. Buttons: md 48→44px tall, lg 56→52px; outline border hairline-thinner
+6. Card hover shadow now uses the floating-elevation token (blur 32→30px, same feel)
+7. In RTL: corner accent frames mirror to the opposite corners, dropdowns/tables of content flip sides, arrows point the other way — expected by design
+
+**Honest limitation:** no visual/browser tooling in this environment — verification was compiled-CSS-level, HTTP-level, and structural. Arabic rendering (joining, line-height feel, mirrored chrome) needs human eyeballing in R3 (V2-26 deep QA as planned). Same post-deploy eyeball list as V2-07 applies.
+
+## Environment notes (this session, 2026-10-19)
+
+- **Orphan server:** a `next start` (production server, PID 14544, started 18:45 today) is still listening on port 3000. It predates this build and may serve stale manifests — kill/restart it (`npm run start`) when previewing. V2-08 verification ran on port 3007 against the fresh build.
+- **Build warnings to triage (not from V2-08):** 4× `metadataBase … using "http://localhost:3000"` during page-data collection. The V2-08 diff touches no metadata files; likely the root `opengraph-image.tsx` / per-page metadata resolution outside the `[locale]` layout's `metadataBase`. Triage in V2-09.
 
 ---
 
@@ -112,7 +154,7 @@ Implements plan §10 exactly. 40 files changed (+1,557/−192); routes moved via
 
 ## Next task
 
-**V2-08 — Type/spacing system + RTL logical-property conversion** (Group 2 / R2a). Dependencies: V2-06 ✅, V2-07 ✅. Scope: six type presets (mono off headings), 68rem content width + single width owner, logical-property conversion of all components, `prefers-reduced-motion` global rule is V2-13. Also folds in: unify `.card-elevation` utilities with the new `--shadow-elev-*` tokens. Owner inputs to arrange in parallel: O7–O10, plus the still-open R1 manual actions below.
+**V2-12 — Image pipeline** (Group 2 / R2b): PNG→WebP ≤ 300 KB, 1600px max, uniform 16:10 crops, mono captions ("Fig. 01 — …"). It has zero dependencies and is the unblocker for the content build — V2-09 (homepage flagships), V2-10 (case-study system), and V2-11 (projects index) all depend on it. In parallel, V2-13 (motion budget + hero static paint + reduced-motion, dep V2-07 ✅) can run. Owner inputs to arrange in parallel: O7–O10, plus the still-open R1 manual actions below.
 
 ---
 
