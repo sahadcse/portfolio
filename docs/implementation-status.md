@@ -1,8 +1,40 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R2b — Experience build.** R1 · V2-06 · V2-07 · V2-08 · **V2-09 · V2-10 · V2-11 · V2-12 · V2-14 complete** (owner course correction 2026-10-19: user-facing milestones prioritized and shipped together).
+**Current stage:** **R2b — Experience build.** R1 · V2-06 · V2-07 · V2-08 · V2-09/10/11/12/14 · **Phase 2 complete** (owner phase 2 brief 2026-10-19: About, Services, Contact, capabilities, soft skills, testimonials-by-evidence, Projects naming).
 **Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
+
+---
+
+## Completed — Phase 2: website-wide professional redesign (2026-10-19, commit `d6cb904`)
+
+**Visual verification: before/after screenshots** (headless Edge). BEFORE: `before-{about,services,contact}.png`; AFTER: `after-{home,about,services,contact,projects}.png` + mobile (`after-{about,services,contact}-mobile.png`) + RTL (`after-ar-{about,services,contact}.png`) — all in `%LOCALAPPDATA%\Temp\portfolio-shots\`. **Zero console errors on all 11 captures.** Form interaction tested in-browser: honeypot present and off-screen, validation errors render (3 field errors after a bad submit), `aria-invalid` wired, budget field conditionality verified. **No live submission performed** (would send real email — delivery path unchanged from production, pending owner click-test).
+
+### About (rebuilt)
+Narrative intro (portrait + facts rail: location/education/experience/status) → **verified timeline** (5 entries from the resume-reconciled record; Rushkat carries the concurrency note per recorded finding #2) → **five engineering principles, each with a "See it" deep link to its case study** (understand-first/Taqwa EMI, secure-by-default/Cozee RBAC, performance-as-decision/Rushkat+4j, commit-to-production/4j pipelines, leave-clients-independent/handover) → **working with me** (timezone overlap, async updates, plain language, confidentiality — all traceable to FAQ copy and delivered work; no invented traits or hobbies) → testimonial slot → tools line → CTA. Old resume-dump layout (portrait + prose + identical cards) gone.
+
+### Services (rebuilt)
+Agency voice deleted (incl. a residual "zero-downtime" claim the V2-04 sweep missed). Four evidence-backed services in **alternating editorial rows with oversized ghost numerals** — Custom web applications / Backend & API engineering / Business systems & workflow automation / Websites & frontend engineering — each answering problem → what I deliver → why me (named evidence) → proof deep-links. **AI deliberately omitted** (no shipped evidence in the inventory — the brief's honesty rule applied). "Something else?" honest-edges strip. Five-step engagement process (Discover → Scope → Build → Launch → Afterwards) with explicit no-timeline/no-guarantee framing. FAQ retained, heading now message-driven. Nested `<main>` removed.
+
+### Contact (rebuilt)
+Two-column invitation: audience reasons (hiring / new project / improve / collaborate) + email with click-to-copy + GitHub/LinkedIn + availability and privacy notes beside a redesigned form card. Form: **inquiry-type pills** (radio group), **conditional budget/scope field** (shows for project/improve), **honeypot spam trap** (hidden `website` field; bot fills → fake success, nothing sent), `aria-invalid`/`aria-describedby` on errors, `role="alert"`/`role="status"` banners, localized labels. Server action extended (`inquiryType` in subject, budget + type in the email body) with existing zod validation, XSS escaping, and SMTP delivery **unchanged**.
+
+### Capabilities + naming + cohesion
+- Homepage tech list → **Engineering capabilities accordion** (native `<details>`, keyboard-accessible, zero JS): six capabilities, each with problems solved, deliverables, tools as supporting mono detail, and proof deep-links. AI-free per the evidence rule.
+- **"Projects" naming restored** per brief §8: nav, "Selected Projects" index heading + metadata, homepage "Selected projects" section, "Back to all projects" links.
+- Shared `PageHero` / `CtaPanel` / `TestimonialSection` components extracted; About/Services/Contact/Projects now share one opening grammar and one closing CTA.
+- Data fix: 4j Traders timeframe corrected to the resume-reconciled **Sep–Dec 2025** (was Jul–Sep — mismatch with `experience.ts`).
+
+### Testimonial status (evidence per brief §7)
+No verified testimonial material exists in the repo (plan §9.4 OBSERVED stands). The section component ships design-ready and renders **absent** until a permission-gated entry lands in `src/data/testimonials.ts`. What's missing for each candidate (Cozee Care, Violina, Taqwa, Rushkat, 4j contacts): author name + role confirmed, written statement or LinkedIn recommendation, and explicit written permission for named publication (`permission` field, §9.4).
+
+### Acceptance evidence (2026-10-19)
+`npm run lint`: **0 errors, 0 warnings** (the FAQ unused-var warning fixed in passing) · `npm run i18n:check`: OK (155 keys en; de/fr/ar remain English-fallback by design until V2-24/25) · `npm run build`: clean, all locales prerendered. Screenshots: 11 after-captures + 3 before-captures inspected; form interactions verified in-browser (see above).
+
+### Known limitations
+- Form **delivery** not re-verified end-to-end (requires real SMTP send = real email); validation/UI/honeypot verified. Owner click-test recommended post-deploy (O4 rotation still pending owner-side).
+- Capabilities/About copy is English-only in messages (de/fr/ar fallback) — translation track unchanged (V2-24/25).
+- Ghost numerals and the capabilities accordion are intentionally calm (no JS animation added); motion budget remains V2-13.
 
 ---
 
