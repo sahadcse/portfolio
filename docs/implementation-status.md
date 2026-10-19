@@ -1,8 +1,57 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R2b — Experience build (start).** R1 complete · V2-06 complete · V2-07 complete · **V2-08 complete**.
+**Current stage:** **R2b — Experience build.** R1 · V2-06 · V2-07 · V2-08 · **V2-09 · V2-10 · V2-11 · V2-12 · V2-14 complete** (owner course correction 2026-10-19: user-facing milestones prioritized and shipped together).
 **Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
+
+---
+
+## Completed tasks — V2-09/V2-10/V2-11/V2-12/V2-14 (visible redesign, 2026-10-19)
+
+The user-facing vertical slice, executed as one stage per the owner's course correction. **Visual verification performed with headless-Edge screenshots (desktop 1440px + mobile 390px + /ar RTL)** — a first for this project; screenshots archived outside the repo in `%LOCALAPPDATA%\Temp\portfolio-shots\`.
+
+### V2-12 — Image pipeline
+- `scripts/optimize-images.mjs` (sharp): raw captures → `<name>.webp` (1600px, case-study figures) + `<name>-card.webp` (uniform 16:10) + `<name>-og.jpg` (1200×630 social preview — WebP is unreliable in some scrapers) + `sahad-portrait.webp` from the owner-supplied `public/ceo_image.png` (owner's file, left untracked). **All 34 outputs ≤ 300 KB budget** (largest 134 KB vs a 2.1 MB source). Card/OG crops anchor **left** — centre crop clipped the screenshots' headline text ("mpowering Lives").
+- Sources: raw PNGs no longer live in `public/` (git history retains them); the script takes a source dir argument for future re-runs (`node scripts/optimize-images.mjs <dir-with-pngs>`).
+- 11 heavy PNGs deleted from the served tree; ~9 MB lighter.
+
+### V2-14 — Verified metrics + testimonial system
+- `src/data/verified-metrics.ts`: the four §9.3/§9.5-gated metrics (8 delivered · 6 sectors · 4 countries · 3 live client systems, verified 2026-10), each with its counting methodology. Owner-gated slots (clients served, response time) deliberately absent.
+- `src/data/testimonials.ts`: typed §9.4 model with the hard `permission.written` gate; **ships empty — the section renders absent, never placeholder**. Adding a permissioned entry makes it appear.
+- `ProofBand` component: stats with methodology disclosed on hover AND keyboard focus; verification dates shown inline.
+
+### V2-09 — Homepage rebuild (§6.3 outline, complete)
+1. **Hero** — identity eyebrow (mono), scope-ladder H1 ("From a first website to a full platform."), four-verb subhead, CTAs, availability line; **owner's portrait** with mono caption; **static server component — first viewport paints without JS** (framer-motion removed from the hero).
+2. **Proof band** (§9.5) + personal proof line (§5.4).
+3. **Needs cards** — Launch / Improve / Automate / Build, each: plain definition, example deliverables, "See proof →" deep-link to a real case study (Violina, Rushkat, Cozee, Taqwa).
+4. **Selected work** — 3 flagship cards with screenshots, tier + sector chips, one-line outcomes.
+5. **How I work** — Scope → Build → Launch → Maintain + ownership statement.
+6. **Tech strip** — compact monochrome list (16 technologies, all evidenced by shipped work).
+7. **FAQ teaser** — ownership / retainer / timezone + link.
+8. **Final CTA** — "Tell me what you're trying to do." + click-to-copy email.
+- Nav per §6.2: "Projects" → "Work"; Blog moved from nav to footer. All homepage strings extracted to `messages/en.json` (`home.*`, `projectsIndex.*`, `caseStudy.*` namespaces); de/fr/ar stay on English fallback (review gates §11.4 respected — no unreviewed translations shipped).
+- Old Hero/ValueProposition/TechStack/Badge/ProjectCard components and their types removed as dead code.
+
+### V2-10 — Case-study system (§9.1)
+- `Project` extended with `status` (flagship/supporting/archived), `evidenceLevel`, `role`, `timeframe`, card/OG image refs, `oneLineOutcome`, and the flagship fields (constraints, decisions "chose X over Y because Z", screenshots with mono captions, outcomes with basis).
+- `ProjectDetails` rewritten to the §9.1 template: chips → title → role line → context → Fig. 01 → problem → what I built → how it works → outcomes (only with stated basis) → stack → next-step CTA. Archived demos carry an explicit "Archived demo" banner and no CTA.
+- **3 flagships full** (Cozee Care, Violina, Taqwa), **5 supporting light**, **4 archived** (procourier, travellast, restaurant-hub, minishop — off the index AND the sitemap; routes still resolve for old links). Sitemap now 72 entries (18 paths × 4 locales).
+- Tier assignments: Cozee/Violina = client-system; FCSC/NDIS = client-site (pending O2/O3 confirmation); Online Doctor = own-production; 4j/Rushkat/Taqwa = employment (recorded finding #1); the 4 archived = demo. **Spec reconciliation:** §9.1's type sketch lists 4 evidence levels, §9.2 mandates 5 chips — implemented §9.2's five (the more specific, normative semantics).
+- Claim hygiene kept: outcomes state mechanisms with honest bases ("delivered system capability", "live-URL verification, 2026-10"); stale highlight phrases pruned (recorded finding #4); per-project OG now uses the JPEG variant.
+
+### V2-11 — Projects index
+- Curated grid (8), uniform 16:10 image cards, tier + sector chips, working sector filter (All + 6 normalized sectors matching the §9.3 metric), honest "No preview" for image-less Rushkat, external-live icon only on verified live URLs.
+
+### Acceptance evidence (2026-10-19)
+- `npm run lint`: **0 errors** (2 pre-existing warnings in files this stage didn't touch) · `npm run i18n:check`: OK (93 keys, en) · `npm run build`: clean, 94 pages × 4 locales.
+- **Screenshots inspected (headless Edge, real rendering):** homepage desktop + mobile, /projects desktop, /projects/cozee-care desktop, /ar desktop + mobile — **zero console errors on any captured page**. RTL verified visually: mirrored layout, flipped arrows, correct card order, Western digits.
+- HTTP checks: sitemap 72 entries with archived demos excluded; archived route 200 with banner; all 8 homepage sections render; `/de` renders `lang="de"` with fallback English; per-project `og:image` → JPEG on the canonical host.
+
+### Known limitations & follow-ups
+- **Visual verification is one reviewer's reading of static screenshots** — no interaction testing (menu open, filter clicks, form submit were not exercised in-browser; filter logic is unit-simple but unexercised). Owner should click through the preview.
+- ceo_image.png (owner's original, 523 KB) remains untracked at `public/`; decide whether to commit the source or leave it workspace-only (the optimized webp is committed).
+- Proof-band tension to adjudicate (O6): Taqwa is tiered *employment* (recorded finding #1) while §9.5's approved band text says "3 live client systems" — the count methodology (live-URL verification) still holds; owner may want to relabel or re-scope that metric.
+- The remaining R2b tasks (V2-13 motion budget, V2-15..V2-23) are unchanged; next by dependency: V2-13 (deps met) and V2-15 (contact hardening).
 
 ---
 
@@ -154,7 +203,7 @@ Implements plan §10 exactly. 40 files changed (+1,557/−192); routes moved via
 
 ## Next task
 
-**V2-12 — Image pipeline** (Group 2 / R2b): PNG→WebP ≤ 300 KB, 1600px max, uniform 16:10 crops, mono captions ("Fig. 01 — …"). It has zero dependencies and is the unblocker for the content build — V2-09 (homepage flagships), V2-10 (case-study system), and V2-11 (projects index) all depend on it. In parallel, V2-13 (motion budget + hero static paint + reduced-motion, dep V2-07 ✅) can run. Owner inputs to arrange in parallel: O7–O10, plus the still-open R1 manual actions below.
+**V2-13 — Motion budget + reduced-motion** (Group 2 / R2b, deps V2-07 ✅ V2-08 ✅; hero static paint already delivered by V2-09) and **V2-15 — contact hardening** (deps V2-06 ✅ V2-17) are the next unblocked tasks. Owner inputs to arrange in parallel: O7–O10, plus the still-open R1 manual actions below.
 
 ---
 
