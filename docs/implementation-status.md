@@ -1,8 +1,49 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R2b — Experience build.** R1 · V2-06 · V2-07 · V2-08 · V2-09/10/11/12/14 · Phase 2 · **Refinement pass complete** (owner brief 2026-10-19/20: hero, i18n fix, identity, emphasis, tools, trust, section nav, full-bleed).
+**Current stage:** **R3-equivalent reached early.** R1 · V2-06/07/08 · V2-09…14 · Phase 2 · Refinement · **Multilingual + navigation pass complete** (owner brief 2026-10-20: fixed TOC, hero v2, experience profile, Go to Top, footer, USA geo, **full de/fr/ar translations**).
 **Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
+
+---
+
+## Completed — Multilingual + navigation pass (2026-10-20, commit `8707c64`)
+
+### Translations — full coverage (390/390 keys × de/fr/ar)
+All four locales now serve complete translated content: homepage (hero, proof band, needs cards, projects, process, capabilities, trust, FAQ teaser), About (intro, journey, principles, working-with-me, tools), Services (4 services, process, FAQ), projects index, contact + form + validation, footer, nav, 404, a11y labels, and **per-locale metadata** (new `meta` namespace; every page `generateMetadata` is message-driven). FAQ content migrated from `src/data/faq.ts` (deleted) into the `faq` message namespace. Server validation messages became **stable error codes** translated client-side (server has no locale context). `i18n:check` flipped to `--strict` (the plan §10.5 post-V2-24 gate): de/fr/ar at 390/390 keys. Approved §5.3 copy-deck lines used verbatim; brand/tech names protected; **verified client geography (AU/DE/KR/BD) kept factual** — USA added only to availability/time-zone contexts (about working-with-me + open-to-work fact) in all four locales.
+**Quality caveat (honest):** translations are model-produced drafts. The **V2-25 native-review track is still required** before these should be considered publication-quality — structure, terminology, tags, placeholders, and facts are verified; idiomatic quality awaits native review.
+
+### Case-study bodies (documented trade-off, §10.5)
+The 12 case studies' long-form prose lives in `src/data/projects.ts` and **remains English on non-English locales behind a visible localized notice** on each case-study page (§10.5's sanctioned pattern). Translating ~400 strings of regulated-industry technical prose without native review was judged worse than the notice; flagships can be prioritized in the V2-24 data-translation pass.
+
+### Section navigation (brief §2) — `OnThisPage.tsx` reworked
+- **≥2xl:** fixed labeled panel, inline-end, vertically centered, subtle border/blur surface
+- **xl:** footprint-reduced dot rail (sr-only + hover labels) so it never overlaps the 68rem content
+- **<xl:** floating TOC button (bottom-inline-end, above Go to Top) opening a popover dialog — labeled links, active indicator, X + outside-tap + **Escape** dismiss, focus return, background scroll lock
+- One IntersectionObserver per page; anchor targets keep `scroll-margin-top: 5rem`; RTL mirrors via logical `end-*` positioning. Verified: panel viewport-stable while scrolled; active dot tracks; mobile jump dismisses and lands 90px clear; Escape works.
+
+### Hero (brief §3) — `Hero.tsx` + `headlineStart/headlineEnd` keys
+Left side now carries **no identity content** (name/title/company removed). Editorial two-part headline: quiet muted opening line + full-scale bold platform line with a `.headline-mark` highlighter sweep (decoration over live text). Right panel: **experience-based technical profile** — identity header (portrait, accent name, role, location) + five rows with labeled durations (Backend & Database 4+ yrs · DevOps 3+ · Frontend 3+ · AI Tools "in use" · Soft skills) and an explicit honesty note: *"Study and professional work combined; professional projects since early 2024."* AI row states assisted-development-only.
+
+### USA geo (brief §4)
+Added in all four locales to availability/time-zone statements (About working-with-me, open-to-work fact). Verified client history (AU/DE/KR/BD) deliberately unchanged.
+
+### Go to Top (brief §5) — `GoToTop.tsx`, mounted in locale layout
+Appears past 600px scroll, smooth-scrolls unless reduced motion (checked at click), bottom-inline-end, stacked clear of the mobile TOC button. Verified: hidden at top, visible at 2500px, returns scrollY→0.
+
+### Footer (brief §6) — `Footer.tsx` rebuilt
+Full-bleed `bg-muted/30` + viewport-spanning top border; invitation band (CTA); identity (accent name + tagline) / site links / connect (GitHub, LinkedIn, email, CV) columns; legal row with copyright. All prior destinations preserved. Verified EN + AR (mirrored).
+
+### RTL defect found and fixed
+The honeypot's physical `-left-[9999px]` offset produced **9999px of scrollable overflow in RTL** (leftward = forward in RTL). Changed to a zero-size clip wrapper (direction-safe). AR contact overflow now 0px.
+
+### Gates and evidence (2026-10-20)
+`npm run lint`: **0 errors, 0 warnings** · `npm run i18n:check`: **strict OK, 390/390 × 3 locales** · `npm run build`: clean (TypeScript pass) · Verification suite (`verify-i18n.js`, `%LOCALAPPDATA%\Temp\portfolio-shots\`): 14 captures + interactions inspected — 4-locale home first-viewports, AR/DE/FR full pages, contact AR, case study AR, mobile; **zero console errors, zero overflow** (post-fix); desktop TOC viewport-stable; mobile TOC open/jump/dismiss/Escape verified; Go to Top verified; language switch `/services` → `/de/services` preserves path and `lang` attribute.
+
+### Owner actions / limitations
+1. **Native review of de/fr/ar (V2-25)** — translations are verified drafts, not native-reviewed copy. Legal pages remain English by the §11.4 human-only path.
+2. Case-study long-form bodies remain English behind a visible notice (§10.5) — data-translation pass optional next.
+3. Experience durations use the owner-supplied figures with the "study + professional" honesty note — owner may reword.
+4. Real form click-test post-deploy (O4) still pending; ceo_image.png tracking decision open.
 
 ---
 
