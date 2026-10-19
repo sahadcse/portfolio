@@ -311,7 +311,7 @@ export const PROJECTS: Project[] = [
     status: "supporting",
     evidenceLevel: "employment",
     role: "Backend engineer (4j Traders) — order-processing backend",
-    timeframe: "Jul – Sep 2025",
+    timeframe: "Sep – Dec 2025",
     businessProblem:
       "Unoptimized database schema and lack of transactional isolation levels caused inventory sync errors and order drops during high-traffic flash sales.",
     businessOutcome:

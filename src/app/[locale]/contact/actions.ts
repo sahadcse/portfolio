@@ -1,4 +1,4 @@
-// src/app/contact/actions.ts
+// src/app/[locale]/contact/actions.ts
 
 "use server";
 
@@ -6,11 +6,12 @@ import nodemailer from "nodemailer";
 import { z } from "zod";
 
 /**
- * Zod schema for contact form validation
- * - name: 2-100 characters
- * - email: must be valid email format
- * - message: 10-2000 characters
+ * Zod schema for contact form validation.
+ * inquiryType is a closed set from the form's radio group; budget is an
+ * optional free-text field for client-side inquiries.
  */
+const INQUIRY_TYPES = ["hiring", "project", "improve", "collaborate"] as const;
+
 const contactFormSchema = z.object({
     name: z.string()
         .min(2, "Name must be at least 2 characters")
@@ -25,6 +26,8 @@ const contactFormSchema = z.object({
         .min(10, "Message must be at least 10 characters")
         .max(2000, "Message must be less than 2000 characters")
         .trim(),
+    inquiryType: z.enum(INQUIRY_TYPES).default("project"),
+    budget: z.string().max(200, "Budget/scope is too long").trim().optional().default(""),
 });
 
 /**
@@ -58,16 +61,25 @@ function escapeHtml(unsafe: string): string {
 }
 
 /**
- * Server action to send contact form email via SMTP
- * Includes input validation and XSS protection
+ * Server action to send contact form email via SMTP.
+ * Includes input validation, XSS protection, and a honeypot spam trap:
+ * bots that fill the hidden "website" field receive a fake success and
+ * nothing is sent (standard silent-drop practice — no signal to the bot).
  */
 export async function sendEmail(formData: FormData): Promise<ActionState> {
+    // Honeypot: human users never see this field, so any value means a bot.
+    if ((formData.get("website") as string)?.trim()) {
+        return { success: true, error: "" };
+    }
+
     // Extract raw values from FormData
     const rawName = formData.get("name");
     const rawEmail = formData.get("email");
     const rawMessage = formData.get("message");
+    const rawInquiryType = formData.get("inquiryType");
+    const rawBudget = formData.get("budget");
 
-    // Validate that all fields are present
+    // Validate that required fields are present
     if (!rawName || !rawEmail || !rawMessage) {
         return {
             success: false,
@@ -85,6 +97,8 @@ export async function sendEmail(formData: FormData): Promise<ActionState> {
         name: rawName,
         email: rawEmail,
         message: rawMessage,
+        inquiryType: rawInquiryType ?? undefined,
+        budget: rawBudget ?? undefined,
     });
 
     if (!validationResult.success) {
@@ -105,7 +119,7 @@ export async function sendEmail(formData: FormData): Promise<ActionState> {
     }
 
     // Validated data
-    const { name, email, message } = validationResult.data;
+    const { name, email, message, inquiryType, budget } = validationResult.data;
 
     try {
         const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM } = process.env;
@@ -135,17 +149,21 @@ export async function sendEmail(formData: FormData): Promise<ActionState> {
         const safeName = escapeHtml(name);
         const safeEmail = escapeHtml(email);
         const safeMessage = escapeHtml(message);
+        const safeBudget = escapeHtml(budget || "—");
+        const safeInquiry = escapeHtml(inquiryType);
 
         await transporter.sendMail({
             from: SMTP_FROM || SMTP_USER,
             to: SMTP_USER,
             replyTo: email,
-            subject: `New Contact Form Submission from ${safeName}`,
-            text: message,
+            subject: `[${safeInquiry}] New Contact Form Submission from ${safeName}`,
+            text: `Inquiry type: ${inquiryType}\nBudget/scope: ${budget || "—"}\n\n${message}`,
             html: `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
                     <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                         <h2 style="color: #333; margin-top: 0;">New Contact Form Submission</h2>
+                        <p style="margin: 10px 0;"><strong>Inquiry type:</strong> ${safeInquiry}</p>
+                        <p style="margin: 10px 0;"><strong>Budget / scope:</strong> ${safeBudget}</p>
                         <p style="margin: 10px 0;"><strong>Name:</strong> ${safeName}</p>
                         <p style="margin: 10px 0;"><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
                         <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;" />

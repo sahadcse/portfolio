@@ -10,7 +10,7 @@ import { Link } from "@/i18n/navigation";
  * - Premium dark mode styling with arrow rotation
  * - High-impact keyword highlighting
  */
-export default function FAQ() {
+export default function FAQ({ title }: { title?: string }) {
     const [activeId, setActiveId] = useState<string | null>(null);
 
     const toggle = (id: string) => {
@@ -43,7 +43,7 @@ export default function FAQ() {
                 {/* Section Header */}
                 <div className="text-center mb-12">
                     <h2 className="text-h2 text-foreground mb-4">
-                        Frequently Asked Questions
+                        {title ?? "Frequently Asked Questions"}
                     </h2>
                     <p className="text-muted-foreground">
                         Everything you need to know before we start working together
@@ -52,7 +52,7 @@ export default function FAQ() {
 
                 {/* FAQ Items */}
                 <div className="space-y-4">
-                    {FAQ_ITEMS.map((item, index) => (
+                    {FAQ_ITEMS.map((item) => (
                         <div
                             key={item.id}
                             className="bg-card border border-border rounded-md overflow-hidden transition-all duration-300 hover:border-primary/20"

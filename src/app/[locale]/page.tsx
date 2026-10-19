@@ -4,14 +4,14 @@ import ProofBand from "@/components/home/ProofBand";
 import NeedsGrid from "@/components/home/NeedsGrid";
 import Flagships from "@/components/home/Flagships";
 import HowIWork from "@/components/home/HowIWork";
-import TechStrip from "@/components/home/TechStrip";
+import Capabilities from "@/components/home/Capabilities";
 import FaqTeaser from "@/components/home/FaqTeaser";
-import FinalCta from "@/components/home/FinalCta";
+import CtaPanel from "@/components/shared/CtaPanel";
 
 /**
  * Homepage (plan §6.3): hero → proof band → needs router → selected work →
- * how I work → tech strip → FAQ teaser → final CTA. Sections carry their
- * own rhythm (py-16 md:py-24).
+ * how I work → capabilities index → FAQ teaser → final CTA. Sections carry
+ * their own rhythm (py-16 md:py-24).
  */
 export default async function Home({
   params,
@@ -27,9 +27,9 @@ export default async function Home({
       <NeedsGrid />
       <Flagships />
       <HowIWork />
-      <TechStrip />
+      <Capabilities />
       <FaqTeaser />
-      <FinalCta />
+      <CtaPanel />
     </div>
   );
 }

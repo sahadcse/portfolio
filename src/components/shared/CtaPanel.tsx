@@ -6,11 +6,11 @@ import { SITE_CONFIG } from "@/data/site-config";
 import CopyEmailButton from "@/components/home/CopyEmailButton";
 
 /**
- * Final CTA (plan §6.3 #8): personal-voice conversion — "Tell me what
- * you're trying to do." + primary CTA + direct email with click-to-copy.
+ * Shared closing CTA (plan §6.3 #8) — the "Tell me what you're trying to
+ * do." panel used at the end of the homepage, About, and Services.
  */
-export default async function FinalCta() {
-    const t = await getTranslations("home.cta");
+export default async function CtaPanel() {
+    const t = await getTranslations("cta.shared");
 
     return (
         <section className="py-16 md:py-24">
@@ -21,7 +21,7 @@ export default async function FinalCta() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link href="/contact" className="inline-flex">
                         <Button size="lg">
-                            {t("cta")}
+                            {t("button")}
                             <ArrowRight className="ms-2 w-5 h-5 rtl:rotate-180" aria-hidden="true" />
                         </Button>
                     </Link>

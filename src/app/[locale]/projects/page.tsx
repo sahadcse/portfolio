@@ -1,9 +1,9 @@
 import { CURATED_PROJECTS } from "@/data/projects";
 import { Metadata } from "next";
 import ProjectsIndex from "@/components/projects/ProjectsIndex";
+import PageHero from "@/components/shared/PageHero";
 
-import { setRequestLocale } from "next-intl/server";
-import { getTranslations } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { localeAlternates, localePath, type Locale } from "@/i18n/config";
 export async function generateMetadata({
     params,
@@ -13,8 +13,8 @@ export async function generateMetadata({
     const { locale } = await params;
 
     return {
-    title: "Work",
-    description: "Case studies of delivered client systems, client websites, an own product, and employment-tier engineering work.",
+    title: "Selected Projects",
+    description: "Case studies of delivered work — client systems, client websites, an own product, and employment-tier engineering.",
         alternates: {
             canonical: localePath(locale as Locale, "/projects"),
             languages: localeAlternates("/projects"),
@@ -33,10 +33,10 @@ export default async function ProjectsPage({
 
     return (
         <div className="px-4 py-16 md:py-24">
-            <div className="max-w-2xl mb-12">
-                <h1 className="text-hero mb-4">{t("title")}</h1>
-                <p className="text-lead">{t("intro")}</p>
-            </div>
+            <PageHero
+                title={t("title")}
+                lead={t("intro")}
+            />
 
             <ProjectsIndex projects={CURATED_PROJECTS} />
         </div>
