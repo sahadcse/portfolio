@@ -103,7 +103,7 @@ export default function ProjectDetails({ project }: { project: Project }) {
     const showCodeUrl = Boolean(codeUrl && codeUrl !== "https://github.com/sahadcse");
 
     return (
-        <div className="min-h-screen py-16 md:py-24 px-4">
+        <div className="container-content py-16 md:py-24">
             <div>
                 {/* Back Navigation */}
                 <Link

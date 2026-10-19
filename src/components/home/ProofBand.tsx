@@ -39,7 +39,7 @@ function MetricStat({
                 </span>
                 <span
                     role="presentation"
-                    className="pointer-events-none absolute start-0 bottom-full z-20 mb-2 w-72 rounded-md border border-border bg-popover text-popover-foreground p-3 text-body text-start opacity-0 shadow-elev-floating transition-opacity duration-150 peer-hover:opacity-100 peer-focus-visible:opacity-100"
+                    className="pointer-events-none absolute start-0 end-0 bottom-full z-20 mb-2 md:end-auto md:w-72 rounded-md border border-border bg-popover text-popover-foreground p-3 text-body text-start opacity-0 shadow-elev-floating transition-opacity duration-150 peer-hover:opacity-100 peer-focus-visible:opacity-100"
                 >
                     {metric.methodology}
                 </span>
@@ -54,9 +54,13 @@ export default async function ProofBand() {
     const hasTestimonial = testimonials.length > 0;
 
     return (
-        <section className="py-16 md:py-24 border-y border-border/40 bg-muted/20">
-            <div>
-                <p className="text-lead max-w-3xl mb-12">{t("proofLine")}</p>
+        <section id="proof" className="py-16 md:py-24 border-y border-border/40 bg-muted/20">
+            <div className="container-content">
+                <p className="text-lead max-w-3xl mb-12">
+                    {t.rich("proofLine", {
+                        accent: (chunk) => <span className="em-accent">{chunk}</span>,
+                    })}
+                </p>
 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
                     {VERIFIED_METRICS.map((metric) => (

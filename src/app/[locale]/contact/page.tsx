@@ -36,7 +36,7 @@ export default async function ContactPage({
     const t = await getTranslations("contact");
 
     return (
-        <div className="px-4 py-16 md:py-24">
+        <div className="container-content py-16 md:py-24">
             <PageHero
                 eyebrow={t("hero.eyebrow")}
                 title={t("hero.title")}

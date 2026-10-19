@@ -15,7 +15,8 @@ export default function PageHero({
 }: {
     eyebrow?: string;
     title: string;
-    lead: string;
+    /** String or rich-text node (t.rich output) */
+    lead: React.ReactNode;
     cta?: { label: string; href: string };
 }) {
     return (

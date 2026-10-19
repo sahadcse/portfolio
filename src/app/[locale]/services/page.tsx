@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import PageHero from "@/components/shared/PageHero";
 import CtaPanel from "@/components/shared/CtaPanel";
+import OnThisPage from "@/components/shared/OnThisPage";
 import FAQ from "@/components/sections/FAQ";
 import { localeAlternates, localePath, type Locale } from "@/i18n/config";
 
@@ -36,12 +37,27 @@ export default async function ServicesPage({
     setRequestLocale(locale);
     const t = await getTranslations("services");
 
-    return (
-        <div className="px-4 py-16 md:py-24">
-            <PageHero eyebrow={t("hero.eyebrow")} title={t("hero.title")} lead={t("hero.lead")} />
+    const sections = [
+        { id: "services", label: t("onThisPage.services") },
+        { id: "process", label: t("onThisPage.process") },
+        { id: "faq", label: t("onThisPage.faq") },
+    ];
 
-            {/* Service sections — alternating editorial rows, not a card grid */}
-            <div>
+    return (
+        <div>
+            <div className="container-content pt-16 md:pt-24">
+                <PageHero
+                    eyebrow={t("hero.eyebrow")}
+                    title={t("hero.title")}
+                    lead={t.rich("hero.lead", {
+                        accent: (chunk) => <span className="em-accent">{chunk}</span>,
+                    })}
+                />
+                <OnThisPage items={sections} />
+            </div>
+
+            {/* Service sections — alternating editorial rows, full-bleed dividers */}
+            <div id="services">
                 {SERVICE_KEYS.map((key, index) => {
                     const proofs = t.raw(`items.${key}.proofs`) as { label: string; href: string }[];
                     const delivers = t.raw(`items.${key}.delivers`) as string[];
@@ -50,8 +66,10 @@ export default async function ServicesPage({
                     return (
                         <section
                             key={key}
-                            className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-12 py-12 md:py-16 border-t border-border/60"
+                            className="border-t border-border/60 py-12 md:py-16"
                         >
+                            <div className="container-content">
+                            <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-12">
                             {/* Oversized index numeral — the editorial anchor */}
                             <div
                                 className={`text-6xl md:text-8xl font-bold text-primary/15 leading-none select-none ${
@@ -124,52 +142,58 @@ export default async function ServicesPage({
                                     </div>
                                 </div>
                             </div>
+                            </div>
+                            </div>
                         </section>
                     );
                 })}
             </div>
 
             {/* Adjacent needs — honest edges */}
-            <section className="rounded-md border border-border/50 bg-card p-8 md:p-10 my-4">
-                <h2 className="text-h3 mb-3">{t("notListed.title")}</h2>
-                <p className="text-body text-muted-foreground max-w-3xl mb-5">
-                    {t("notListed.text")}
-                </p>
-                <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-1.5 text-label text-primary hover:underline"
-                >
-                    {t("notListed.cta")}
-                    <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" aria-hidden="true" />
-                </Link>
-            </section>
+            <div className="container-content my-12">
+                <section className="rounded-md border border-border/50 bg-card p-8 md:p-10">
+                    <h2 className="text-h3 mb-3">{t("notListed.title")}</h2>
+                    <p className="text-body text-muted-foreground max-w-3xl mb-5">
+                        {t("notListed.text")}
+                    </p>
+                    <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-1.5 text-label text-primary hover:underline"
+                    >
+                        {t("notListed.cta")}
+                        <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" aria-hidden="true" />
+                    </Link>
+                </section>
+            </div>
 
             {/* Engagement process */}
-            <section className="py-16 md:py-24">
-                <div className="max-w-2xl mb-12">
-                    <h2 className="text-h2 mb-4">{t("process.title")}</h2>
-                    <p className="text-lead">{t("process.subtitle")}</p>
-                </div>
+            <section id="process" className="py-16 md:py-24 border-t border-border/60">
+                <div className="container-content">
+                    <div className="max-w-2xl mb-12">
+                        <h2 className="text-h2 mb-4">{t("process.title")}</h2>
+                        <p className="text-lead">{t("process.subtitle")}</p>
+                    </div>
 
-                <ol className="border-t border-border/60">
-                    {PROCESS_KEYS.map((key, index) => (
-                        <li
-                            key={key}
-                            className="grid grid-cols-1 md:grid-cols-[auto_12rem_1fr] gap-2 md:gap-10 py-7 border-b border-border/60 items-baseline"
-                        >
-                            <span className="text-mono text-muted-foreground">
-                                {String(index + 1).padStart(2, "0")}
-                            </span>
-                            <h3 className="text-h3">{t(`process.steps.${key}.label`)}</h3>
-                            <p className="text-body text-muted-foreground max-w-2xl">
-                                {t(`process.steps.${key}.text`)}
-                            </p>
-                        </li>
-                    ))}
-                </ol>
+                    <ol className="border-t border-border/60">
+                        {PROCESS_KEYS.map((key, index) => (
+                            <li
+                                key={key}
+                                className="grid grid-cols-1 md:grid-cols-[auto_12rem_1fr] gap-2 md:gap-10 py-7 border-b border-border/60 items-baseline"
+                            >
+                                <span className="text-mono text-muted-foreground">
+                                    {String(index + 1).padStart(2, "0")}
+                                </span>
+                                <h3 className="text-h3">{t(`process.steps.${key}.label`)}</h3>
+                                <p className="text-body text-muted-foreground max-w-2xl">
+                                    {t(`process.steps.${key}.text`)}
+                                </p>
+                            </li>
+                        ))}
+                    </ol>
+                </div>
             </section>
 
-            <FAQ title={t("faqTitle")} />
+            <FAQ title={t("faqTitle")} id="faq" />
 
             <CtaPanel />
         </div>

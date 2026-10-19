@@ -145,12 +145,50 @@
     outline: 2px solid hsl(var(--ring));
     outline-offset: 2px;
   }
+
+  /* Motion budget: smooth anchor scrolling must respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
 /**
  * Premium Custom Utilities
  */
 @layer utilities {
+  /* Full-width container — the ONE content width owner for page bodies.
+     Sections that need full-bleed backgrounds/borders span the viewport;
+     their inner content uses this class. */
+  .container-content {
+    margin-inline: auto;
+    width: 100%;
+    max-width: var(--container-content);
+    padding-inline: 1rem;
+  }
+
+  /* Identity elements (user brief §4): the name renders uppercase in the
+     accent color; screen readers still read the natural case in source */
+  .identity-name {
+    color: hsl(var(--primary));
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  /* Restrained keyword emphasis (user brief §5) — accent + weight, no
+     background/underline so it never reads as search-result markup */
+  .em-accent {
+    color: hsl(var(--primary));
+    font-weight: 600;
+  }
+
+  /* Sticky-header offset for same-page anchor targets */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
   /* Subtle ambient glow effect */
   .ambient-glow {
     box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.3);

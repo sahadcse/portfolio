@@ -19,7 +19,8 @@ export default async function HowIWork() {
     const t = await getTranslations("home.process");
 
     return (
-        <section className="py-16 md:py-24">
+        <section id="process" className="py-16 md:py-24">
+            <div className="container-content">
             <h2 className="text-h2 mb-12">{t("title")}</h2>
 
             <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -49,6 +50,7 @@ export default async function HowIWork() {
                 <ShieldCheck className="w-5 h-5 shrink-0 text-primary mt-0.5" aria-hidden="true" />
                 <span className="text-body">{t("ownership")}</span>
             </p>
+            </div>
         </section>
     );
 }

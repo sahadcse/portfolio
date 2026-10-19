@@ -22,7 +22,8 @@ export default async function NeedsGrid() {
     const t = await getTranslations("home.needs");
 
     return (
-        <section className="py-16 md:py-24">
+        <section id="needs" className="py-16 md:py-24">
+            <div className="container-content">
             <div className="mb-12 max-w-2xl">
                 <h2 className="text-h2 mb-4">{t("title")}</h2>
                 <p className="text-lead">{t("subtitle")}</p>
@@ -59,6 +60,7 @@ export default async function NeedsGrid() {
                         </Link>
                     );
                 })}
+            </div>
             </div>
         </section>
     );

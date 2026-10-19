@@ -17,7 +17,8 @@ export default async function FaqTeaser() {
     );
 
     return (
-        <section className="py-16 md:py-24">
+        <section id="faq" className="py-16 md:py-24">
+            <div className="container-content">
             <h2 className="text-h2 mb-10">{t("title")}</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
@@ -38,6 +39,7 @@ export default async function FaqTeaser() {
                 {t("link")}
                 <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" aria-hidden="true" />
             </Link>
+            </div>
         </section>
     );
 }

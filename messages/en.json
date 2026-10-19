@@ -22,6 +22,9 @@
   "language": {
     "label": "Change language"
   },
+  "a11y": {
+    "onThisPage": "On this page"
+  },
   "notFound": {
     "title": "Page not found",
     "body": "The page you are looking for doesn't exist or has been moved.",
@@ -31,16 +34,29 @@
     "hero": {
       "eyebrow": "Md Sahaduzzaman (Sahad) — Software Engineer · Founder, Sahad Labs",
       "title": "From a first website to a full platform.",
-      "subtitle": "I help founders, businesses, and professionals launch, improve, automate, and build the digital systems their work depends on — designed, delivered, and maintained personally, end to end.",
+      "subtitle": "I help founders, businesses, and professionals <accent>launch</accent>, <accent>improve</accent>, <accent>automate</accent>, and <accent>build</accent> the digital systems their work depends on — designed, delivered, and maintained personally, end to end.",
       "ctaPrimary": "Discuss a project",
       "ctaSecondary": "See the projects",
       "availability": "Currently available for new projects",
       "portraitAlt": "Portrait of Md Sahaduzzaman",
-      "portraitCaption": "Md Sahaduzzaman · Dhaka, Bangladesh"
+      "portraitCaption": "Md Sahaduzzaman · Dhaka, Bangladesh",
+      "panel": {
+        "role": "Software Engineer · Founder, Sahad Labs",
+        "basedIn": "Dhaka, Bangladesh — working AU/DE hours",
+        "expertiseTitle": "Engineering focus",
+        "expertise": [
+          "Websites & digital experiences",
+          "Backend systems & APIs",
+          "Databases & data-driven applications",
+          "Booking & operational workflows",
+          "Integrations, deployment & maintenance"
+        ],
+        "linkLabel": "See the evidence"
+      }
     },
     "proof": {
       "title": "Delivered work, personally counted",
-      "proofLine": "Designed and delivered for clients and teams in Australia, Germany, and beyond — healthcare, real estate, e-commerce, and more.",
+      "proofLine": "Designed and delivered for clients and teams in <accent>Australia, Germany, and beyond</accent> — healthcare, real estate, e-commerce, and more.",
       "methodologyLabel": "How this is counted",
       "footnote": "Personal counts — methodology shown for every number."
     },
@@ -82,6 +98,65 @@
       "title": "Selected projects",
       "subtitle": "Systems in daily operation. Every claim is tied to something you can check.",
       "viewAll": "All projects"
+    },
+    "process": {
+      "title": "How I work",
+      "ownership": "You own everything I build — source code, repositories, and accounts, handed over at completion.",
+      "steps": {
+        "scope": {
+          "label": "Scope",
+          "text": "We start from what you're trying to do, not from tech. You get a plain-language plan and a clear price shape before anything is built."
+        },
+        "build": {
+          "label": "Build",
+          "text": "I design and build it personally, end to end. You see progress early, while changing direction is still cheap."
+        },
+        "launch": {
+          "label": "Launch",
+          "text": "Deployment, domain, hosting, handover — done with you, in your accounts, under your name."
+        },
+        "maintain": {
+          "label": "Maintain",
+          "text": "After launch: updates, monitoring, and quick fixes — or a clean handover to your own team. Your call."
+        }
+      }
+    },
+    "trust": {
+      "title": "Why clients trust the work",
+      "subtitle": "No purchased quotes — this section shows things you can verify yourself. Client testimonials appear here once written permission is on file.",
+      "cards": {
+        "live": {
+          "tag": "Live now",
+          "text": "Client systems in production — reachable and in operation at their public addresses.",
+          "linkLabel": "cozeecare.com.au",
+          "linkHref": "https://www.cozeecare.com.au/"
+        },
+        "verified": {
+          "tag": "Verified 2026-10",
+          "text": "Every number on this page carries its counting methodology — withdraw, not defend, is the rule when evidence ages.",
+          "linkLabel": "The proof band above",
+          "linkHref": "#proof"
+        },
+        "ownership": {
+          "tag": "Your property",
+          "text": "Every handover includes the full repository, in your accounts, under your name — with a walk-through for your team.",
+          "linkLabel": "How handover works",
+          "linkHref": "/about"
+        }
+      }
+    },
+    "faqTeaser": {
+      "title": "Questions people ask before working with me",
+      "link": "Read the full FAQ"
+    },
+    "onThisPage": {
+      "proof": "Proof",
+      "needs": "What do you need",
+      "projects": "Projects",
+      "process": "How I work",
+      "capabilities": "Capabilities",
+      "trust": "Trust",
+      "faq": "FAQ"
     },
     "capabilities": {
       "title": "Engineering capabilities",
@@ -298,14 +373,39 @@
       "testimonialsTitle": "What clients and colleagues say"
     },
     "tools": {
-      "title": "Tools I reach for"
+      "title": "Tools I reach for",
+      "subtitle": "The working set, honestly grouped — including the line between AI I use and AI I ship.",
+      "categories": {
+        "ai": {
+          "label": "AI tools",
+          "items": "Claude Code · Cursor",
+          "note": "AI-assisted development workflow — used for velocity in my own process. No AI features have been shipped to clients to date."
+        },
+        "frontend": {
+          "label": "Frontend",
+          "items": "React · Next.js · TypeScript · Tailwind CSS"
+        },
+        "backend": {
+          "label": "Backend & database",
+          "items": "Node.js · NestJS · Express.js · PostgreSQL · MongoDB · Prisma · Redis"
+        },
+        "devops": {
+          "label": "DevOps",
+          "items": "Docker · GitHub Actions · Azure · Vercel"
+        },
+        "soft": {
+          "label": "Soft skills",
+          "items": "Written async communication · end-to-end ownership · plain-language handover · confidentiality · independent delivery",
+          "note": "Each evidenced in the working history — sole-engineer delivery at Taqwa Group, client handovers at Sahad Labs."
+        }
+      }
     }
   },
   "services": {
     "hero": {
       "eyebrow": "Services",
       "title": "What I can do for your team or business",
-      "lead": "Four concrete ways I help — each grounded in systems I've already shipped. If your need isn't listed, ask anyway; the answer is honest either way."
+      "lead": "Four concrete ways I help — each grounded in systems <accent>I've already shipped</accent>. If your need isn't listed, ask anyway; the answer is honest either way."
     },
     "labels": {
       "problem": "The problem",
@@ -415,7 +515,12 @@
         }
       }
     },
-    "faqTitle": "Common questions"
+    "faqTitle": "Common questions",
+    "onThisPage": {
+      "services": "Services",
+      "process": "Process",
+      "faq": "FAQ"
+    }
   },
   "contact": {
     "hero": {

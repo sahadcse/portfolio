@@ -32,7 +32,7 @@ export default async function ProjectsPage({
     const t = await getTranslations("projectsIndex");
 
     return (
-        <div className="px-4 py-16 md:py-24">
+        <div className="container-content py-16 md:py-24">
             <PageHero
                 title={t("title")}
                 lead={t("intro")}

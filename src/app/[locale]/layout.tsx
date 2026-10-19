@@ -126,7 +126,9 @@ export default async function LocaleLayout({
         >
           <NextIntlClientProvider>
             <Navbar />
-            <main className="grow flex flex-col max-w-content mx-auto px-4">
+            {/* Full-width main: sections may bleed backgrounds/borders to the
+                viewport edges; content constrains itself via .container-content */}
+            <main className="grow flex flex-col">
               {children}
             </main>
             <Footer />

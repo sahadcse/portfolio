@@ -32,7 +32,7 @@ export default async function BlogPage({
     const posts = getSortedPostsData();
 
     return (
-        <div className="px-4 py-16 md:py-24">
+        <div className="container-content py-16 md:py-24">
             <div className="max-w-2xl mb-12">
                 <h1 className="text-hero mb-4">Blog</h1>
                 <p className="text-lead">

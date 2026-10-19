@@ -12,7 +12,8 @@ export default async function Flagships() {
     const t = await getTranslations("home.work");
 
     return (
-        <section className="py-16 md:py-24 bg-muted/30 border-y border-border/40">
+        <section id="projects" className="py-16 md:py-24 bg-muted/30 border-y border-border/40">
+            <div className="container-content">
             <div className="flex flex-wrap items-end justify-between gap-4 mb-12">
                 <div className="max-w-2xl">
                     <h2 className="text-h2 mb-4">{t("title")}</h2>
@@ -31,6 +32,7 @@ export default async function Flagships() {
                 {FLAGSHIP_PROJECTS.map((project) => (
                     <CaseCard key={project.id} project={project} />
                 ))}
+            </div>
             </div>
         </section>
     );

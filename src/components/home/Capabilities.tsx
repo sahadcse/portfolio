@@ -22,7 +22,8 @@ export default async function Capabilities() {
     const t = await getTranslations("home.capabilities");
 
     return (
-        <section className="py-16 md:py-24 border-y border-border/40 bg-muted/20">
+        <section id="capabilities" className="py-16 md:py-24 border-y border-border/40 bg-muted/20">
+            <div className="container-content">
             <div className="max-w-2xl mb-12">
                 <h2 className="text-h2 mb-4">{t("title")}</h2>
                 <p className="text-lead">{t("subtitle")}</p>
@@ -96,6 +97,7 @@ export default async function Capabilities() {
                         </details>
                     );
                 })}
+            </div>
             </div>
         </section>
     );

@@ -16,6 +16,7 @@ export default async function TestimonialSection() {
 
     return (
         <section className="py-16 md:py-24">
+            <div className="container-content">
             <h2 className="text-h2 mb-12">{t("testimonialsTitle")}</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -46,6 +47,7 @@ export default async function TestimonialSection() {
                         </figcaption>
                     </figure>
                 ))}
+            </div>
             </div>
         </section>
     );

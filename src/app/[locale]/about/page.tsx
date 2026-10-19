@@ -7,6 +7,8 @@ import { Link } from "@/i18n/navigation";
 import PageHero from "@/components/shared/PageHero";
 import CtaPanel from "@/components/shared/CtaPanel";
 import TestimonialSection from "@/components/shared/TestimonialSection";
+import OnThisPage from "@/components/shared/OnThisPage";
+import { IdentityName } from "@/components/shared/IdentityName";
 import { SITE_CONFIG } from "@/data/site-config";
 import { localeAlternates, localePath, type Locale } from "@/i18n/config";
 
@@ -31,6 +33,9 @@ export async function generateMetadata({
 const JOURNEY_KEYS = ["education", "taqwa", "rushkat", "fourj", "sahadlabs"] as const;
 const PRINCIPLE_KEYS = ["understand", "secure", "performance", "ownership", "handover"] as const;
 const WORKING_KEYS = ["timezones", "communication", "plainLanguage", "confidentiality"] as const;
+const TOOL_CATEGORY_KEYS = ["ai", "frontend", "backend", "devops", "soft"] as const;
+/** Categories carrying an evidence note (AI = assisted-not-shipped; soft = where evidenced). */
+const TOOLS_WITH_NOTES: readonly string[] = ["ai", "soft"];
 
 export default async function AboutPage({
     params,
@@ -41,43 +46,58 @@ export default async function AboutPage({
     setRequestLocale(locale);
     const t = await getTranslations("about");
 
+    const sections = [
+        { id: "journey", label: t("journey.title") },
+        { id: "principles", label: t("principles.title") },
+        { id: "working", label: t("working.title") },
+        { id: "tools", label: t("tools.title") },
+    ];
+
     return (
-        <div className="px-4 py-16 md:py-24">
-            <PageHero eyebrow={t("hero.eyebrow")} title={t("hero.title")} lead={t("hero.lead")} />
+        <div>
+            <div className="container-content pt-16 md:pt-24">
+                <PageHero eyebrow={t("hero.eyebrow")} title={t("hero.title")} lead={t("hero.lead")} />
+                <OnThisPage items={sections} />
+            </div>
 
             {/* Introduction — portrait + narrative + facts */}
-            <section className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.4fr] gap-12 lg:gap-16 items-start mb-20 md:mb-28">
-                <div>
-                    <figure>
-                        <div className="overflow-hidden rounded-md border border-border bg-muted max-w-xs">
-                            <Image
-                                src="/images/sahad-portrait.webp"
-                                alt={t("intro.portraitAlt")}
-                                width={960}
-                                height={1440}
-                                sizes="(min-width: 1024px) 320px, 70vw"
-                                className="w-full h-auto"
-                                priority
-                            />
-                        </div>
-                    </figure>
-                    <dl className="mt-6 space-y-2.5">
-                        {(
-                            [
-                                ["location", MapPin],
-                                ["education", GraduationCap],
-                                ["experience", Briefcase],
-                                ["status", CircleCheck],
-                            ] as const
-                        ).map(([key, Icon]) => (
-                            <div key={key} className="flex items-center gap-2.5 text-label text-muted-foreground">
-                                <Icon className="w-4 h-4 text-primary shrink-0" aria-hidden="true" />
-                                <dt className="sr-only">{key}</dt>
-                                <dd>{t(`intro.facts.${key}`)}</dd>
+            <section className="mb-20 md:mb-28">
+                <div className="container-content">
+                <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.4fr] gap-12 lg:gap-16 items-start">
+                    <div>
+                        <figure>
+                            <div className="overflow-hidden rounded-md border border-border bg-muted max-w-xs">
+                                <Image
+                                    src="/images/sahad-portrait.webp"
+                                    alt={t("intro.portraitAlt")}
+                                    width={960}
+                                    height={1440}
+                                    sizes="(min-width: 1024px) 320px, 70vw"
+                                    className="w-full h-auto"
+                                    priority
+                                />
                             </div>
-                        ))}
-                    </dl>
-                </div>
+                        </figure>
+                        <p className="mt-6 mb-4 text-label">
+                            <IdentityName>Sahaduzzaman (Sahad)</IdentityName>
+                        </p>
+                        <dl className="space-y-2.5">
+                            {(
+                                [
+                                    ["location", MapPin],
+                                    ["education", GraduationCap],
+                                    ["experience", Briefcase],
+                                    ["status", CircleCheck],
+                                ] as const
+                            ).map(([key, Icon]) => (
+                                <div key={key} className="flex items-center gap-2.5 text-label text-muted-foreground">
+                                    <Icon className="w-4 h-4 text-primary shrink-0" aria-hidden="true" />
+                                    <dt className="sr-only">{key}</dt>
+                                    <dd>{t(`intro.facts.${key}`)}</dd>
+                                </div>
+                            ))}
+                        </dl>
+                    </div>
 
                 <div>
                     <div className="space-y-5 max-w-2xl">
@@ -109,10 +129,13 @@ export default async function AboutPage({
                         </a>
                     </div>
                 </div>
+                </div>
+                </div>
             </section>
 
             {/* Professional journey — single-rail timeline */}
-            <section className="mb-20 md:mb-28">
+            <section id="journey" className="mb-20 md:mb-28">
+                <div className="container-content">
                 <div className="max-w-2xl mb-12">
                     <h2 className="text-h2 mb-4">{t("journey.title")}</h2>
                     <p className="text-lead">{t("journey.subtitle")}</p>
@@ -139,10 +162,12 @@ export default async function AboutPage({
                         </li>
                     ))}
                 </ol>
+                </div>
             </section>
 
             {/* Engineering principles — evidence-linked */}
-            <section className="mb-20 md:mb-28">
+            <section id="principles" className="mb-20 md:mb-28">
+                <div className="container-content">
                 <div className="max-w-2xl mb-12">
                     <h2 className="text-h2 mb-4">{t("principles.title")}</h2>
                     <p className="text-lead">{t("principles.subtitle")}</p>
@@ -173,10 +198,12 @@ export default async function AboutPage({
                         </article>
                     ))}
                 </div>
+                </div>
             </section>
 
             {/* Working with me — the human side */}
-            <section className="mb-20 md:mb-28">
+            <section id="working" className="mb-20 md:mb-28">
+                <div className="container-content">
                 <div className="max-w-2xl mb-12">
                     <h2 className="text-h2 mb-4">{t("working.title")}</h2>
                     <p className="text-lead">{t("working.subtitle")}</p>
@@ -192,19 +219,41 @@ export default async function AboutPage({
                         </div>
                     ))}
                 </div>
+                </div>
             </section>
 
             {/* Testimonials — renders only from permission-gated data */}
             <TestimonialSection />
 
-            {/* Tools — one quiet line, evidence-backed only */}
-            <section className="py-10 border-y border-border/40 bg-muted/20 mb-4">
-                <h2 className="text-label text-muted-foreground uppercase mb-5">{t("tools.title")}</h2>
-                <p className="text-mono text-muted-foreground leading-loose">
-                    TypeScript · JavaScript · Node.js · NestJS · Express.js · Next.js · React ·
-                    PostgreSQL · MongoDB · Prisma · Redis · Docker · Azure · GitHub Actions ·
-                    WebRTC · Socket.IO
-                </p>
+            {/* Tools I Reach For — five evidence-backed categories, one row on desktop */}
+            <section id="tools" className="py-16 md:py-24 border-y border-border/40 bg-muted/20">
+                <div className="container-content">
+                    <div className="max-w-2xl mb-12">
+                        <h2 className="text-h2 mb-4">{t("tools.title")}</h2>
+                        <p className="text-lead">{t("tools.subtitle")}</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+                        {TOOL_CATEGORY_KEYS.map((key) => (
+                            <div
+                                key={key}
+                                className="rounded-md border border-border/50 bg-card p-5 flex flex-col"
+                            >
+                                <h3 className="text-label uppercase tracking-wide text-foreground mb-3">
+                                    {t(`tools.categories.${key}.label`)}
+                                </h3>
+                                <p className="text-mono text-muted-foreground leading-relaxed">
+                                    {t(`tools.categories.${key}.items`)}
+                                </p>
+                                {TOOLS_WITH_NOTES.includes(key) && (
+                                    <p className="text-sm text-muted-foreground mt-3 pt-3 border-t border-border/40">
+                                        {t(`tools.categories.${key}.note`)}
+                                      </p>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </section>
 
             <CtaPanel />

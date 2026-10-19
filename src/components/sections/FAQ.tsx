@@ -10,7 +10,7 @@ import { Link } from "@/i18n/navigation";
  * - Premium dark mode styling with arrow rotation
  * - High-impact keyword highlighting
  */
-export default function FAQ({ title }: { title?: string }) {
+export default function FAQ({ title, id }: { title?: string; id?: string }) {
     const [activeId, setActiveId] = useState<string | null>(null);
 
     const toggle = (id: string) => {
@@ -38,7 +38,7 @@ export default function FAQ({ title }: { title?: string }) {
     };
 
     return (
-        <section className="py-16 md:py-24 px-4 bg-muted/30">
+        <section id={id} className="py-16 md:py-24 px-4 bg-muted/30">
             <div className="max-w-reading mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-12">

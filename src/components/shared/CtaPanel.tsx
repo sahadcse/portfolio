@@ -14,6 +14,7 @@ export default async function CtaPanel() {
 
     return (
         <section className="py-16 md:py-24">
+            <div className="container-content">
             <div className="rounded-lg border border-primary/20 bg-primary/5 p-8 md:p-14 text-center">
                 <h2 className="text-h2 mb-4">{t("title")}</h2>
                 <p className="text-lead max-w-2xl mx-auto mb-8">{t("body")}</p>
@@ -41,6 +42,7 @@ export default async function CtaPanel() {
                         copiedLabel={t("copied")}
                     />
                 </div>
+            </div>
             </div>
         </section>
     );
