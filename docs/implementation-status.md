@@ -1,8 +1,48 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R2b — Experience build.** R1 · V2-06 · V2-07 · V2-08 · V2-09/10/11/12/14 · **Phase 2 complete** (owner phase 2 brief 2026-10-19: About, Services, Contact, capabilities, soft skills, testimonials-by-evidence, Projects naming).
+**Current stage:** **R2b — Experience build.** R1 · V2-06 · V2-07 · V2-08 · V2-09/10/11/12/14 · Phase 2 · **Refinement pass complete** (owner brief 2026-10-19/20: hero, i18n fix, identity, emphasis, tools, trust, section nav, full-bleed).
 **Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
+
+---
+
+## Completed — Refinement pass (2026-10-20, commit `f180ae5`)
+
+### Translation errors — root cause and fix (brief §2)
+`MISSING_MESSAGE: home.process / home.faqTeaser for locale en` — **root cause: the Phase-2 messages rewrite recreated `messages/en.json` from scratch and dropped both namespaces while `HowIWork`/`FaqTeaser` still consumed them** (regression introduced in Phase 2, caught by the owner). Both restored with their original copy; a key audit of `home.*` vs consuming components passes. Verified gone: zero console errors across 11 page captures (was the failing signal).
+
+### Hero (brief §3) — `src/components/home/Hero.tsx`
+Two-audience composition, static server component. **Left (business):** eyebrow with accent identity, headline, four-verb subhead with accent emphasis via `t.rich`, both CTAs, availability. **Right (technical):** compact editorial panel — 96px portrait, accent identity line, role, based-in mono line, five **evidence-backed** engineering-focus rows (websites / backend+APIs / databases / booking+operations / integrations+deployment+maintenance), evidence link. Mobile stacks business-first.
+
+### Identity system (brief §4)
+`IdentityName` component + `.identity-name` utility (uppercase + primary color; screen readers read natural case; no effect on metadata/SEO or client/project names). Applied: hero eyebrow + panel, About facts rail, trust sign-off.
+
+### Keyword emphasis (brief §5)
+`.em-accent` utility (primary color + 600 weight, no backgrounds) applied via `t.rich` `<accent>` tags at: hero four verbs, proof-band regions line, services lead. Restrained by design — headings untouched, no mechanical decoration.
+
+### Tools I Reach For (brief §6) — About `#tools`
+Five categories in **one row at desktop** (`lg:grid-cols-5`), 2-col tablet, stacked mobile. **AI Tools explicitly labeled** "AI-assisted development workflow — used for velocity in my own process. No AI features have been shipped to clients to date" (Claude Code · Cursor — owner should confirm the named tools). Frontend/Backend/DevOps items all evidenced in the project inventory; Soft Skills each carry an evidence note (sole-engineer delivery, client handovers).
+
+### Trust section (brief §7) — `TrustSection.tsx`, homepage `#trust`
+No verified testimonials exist (plan §9.4 stands) — so the section is **honest by construction**: heading "Why clients trust the work", subtitle states no purchased quotes, three verifiable evidence cards (live systems → cozeecare.com.au; verified counts → proof band; ownership → handover), plus a personal sign-off. Approved testimonials render automatically when permissioned entries land; `TestimonialSection` (About) unchanged and ready.
+
+### On this page (brief §9) — `OnThisPage.tsx` on home/about/services
+Compact horizontal index, one IntersectionObserver for active tracking, `section[id] { scroll-margin-top: 5rem }` for the sticky header, reduced-motion disables smooth scroll. Verified: clicking `#capabilities` lands the section 80px from the viewport top (clear of the header).
+
+### Full-bleed architecture (brief §10)
+**Root cause: `<main>` carried the max-width constraint**, so every section background/border stopped at 1088px. Fix: main is full-width; new `.container-content` utility (max-width + padding, one width owner) applied inside every page/section; full-bleed sections (proof band, capabilities, trust, tools, flagships) bleed backgrounds/borders to the viewport edges. Verified: `overflowX = 0px` on all 13 captures (one 105px mobile overflow — proof-band tooltips — was found by this pass and fixed: tooltips span their stat on mobile, w-72 from md up).
+
+### Contact verification (brief §8) — **full delivery path tested locally**
+Ran a raw-socket **SMTP sink on 127.0.0.1:2525** (captures bytes, delivers nothing) and pointed the production server's SMTP env at it. Playwright-submitted the real form: success banner shown; the sink captured the email with `[project]` subject tag, budget line, name, reply-to, message body, and the correct `To:` addressee. Honeypot fill → fake success banner, **zero mail written**. Hiring type → budget field hidden. Validation-error rendering + `aria-invalid` re-verified. **No real email was sent; no real credentials used.** Remaining owner action: one real click-test after deploy (O4).
+
+### Gates and evidence (2026-10-20)
+`npm run lint`: **0 errors, 0 warnings** · `npm run i18n:check`: OK · `npm run build`: clean (TypeScript pass) · 13 screenshot captures inspected (`p3-*.png`, `%LOCALAPPDATA%\Temp\portfolio-shots\`): home first-viewport desktop+mobile, full pages, About/Services/Projects/Contact, Cozee case study, /ar home+about (RTL mirrored correctly), mobile full — **zero console errors, zero horizontal overflow after the tooltip fix**.
+
+### Owner actions / limitations
+- Confirm the named AI-assisted tools (Claude Code, Cursor) and whether to keep them public.
+- Testimonial content still awaits permissioned statements (§9.4 acquisition plan); trust section covers meanwhile.
+- One real form click-test after deploy; O1–O10 otherwise unchanged.
+- ceo_image.png still untracked (owner decision).
 
 ---
 
