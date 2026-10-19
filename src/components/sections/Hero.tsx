@@ -20,7 +20,7 @@ const variants = {
 
 export default function Hero() {
   return (
-    <section className="py-20 md:py-32 flex flex-col items-start justify-center min-h-[60vh]">
+    <section className="py-16 md:py-24 flex flex-col items-start justify-center min-h-[60vh]">
       {/* Main Hero Content */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -28,10 +28,10 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
         className="max-w-4xl"
       >
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+        <h1 className="text-hero mb-6">
           {HERO_CONTENT.headline}
         </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl leading-relaxed">
+        <p className="text-lead mb-10 max-w-3xl">
           I engineer custom backend architectures and full-stack web systems that{" "}
           <span className="highlight-biz">automate manual processes</span>,{" "}
           <span className="highlight-biz">eliminate operational bottlenecks</span>, and{" "}
@@ -44,7 +44,7 @@ export default function Hero() {
             <Button
               variant="primary"
               size="lg"
-              icon={<ArrowRight className="w-5 h-5" />}
+              icon={<ArrowRight className="w-5 h-5 rtl:rotate-180" />}
               iconPosition="right"
             >
               {HERO_CONTENT.cta?.primary.text || "Discuss a Project"}
@@ -66,11 +66,11 @@ export default function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-20 md:mt-32"
+        className="mt-16 md:mt-24"
       >
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 font-mono">{VALUE_PROPOSITION.title}</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{VALUE_PROPOSITION.subtitle}</p>
+          <h2 className="text-h2 mb-4">{VALUE_PROPOSITION.title}</h2>
+          <p className="text-lead max-w-2xl mx-auto">{VALUE_PROPOSITION.subtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -90,8 +90,8 @@ export default function Hero() {
                     <IconComponent className="w-6 h-6 text-primary" />
                   </div>
                 )}
-                <h3 className="text-xl font-bold mb-3 font-mono">{pillar.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{pillar.description}</p>
+                <h3 className="text-h3 mb-3">{pillar.title}</h3>
+                <p className="text-body text-muted-foreground">{pillar.description}</p>
               </motion.div>
             );
           })}

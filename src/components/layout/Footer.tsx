@@ -7,9 +7,9 @@ export default async function Footer() {
     const t = await getTranslations("footer");
     return (
         <footer className="border-t border-border/40 bg-background py-8 mt-auto">
-            <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-4">
+            <div className="max-w-content mx-auto px-4 flex flex-col items-center gap-4">
                 {/* Social Links */}
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center gap-4">
                     <a
                         href={SITE_CONFIG.socials.github}
                         target="_blank"

@@ -32,15 +32,15 @@ export default async function BlogPage({
     const posts = getSortedPostsData();
 
     return (
-        <div className="container mx-auto px-4 py-20">
+        <div className="px-4 py-16 md:py-24">
             <div className="max-w-2xl mb-12">
-                <h1 className="text-4xl font-bold mb-4 font-mono">Blog</h1>
-                <p className="text-muted-foreground text-lg">
+                <h1 className="text-hero mb-4">Blog</h1>
+                <p className="text-lead">
                     Insights on building scalable systems, backend architecture, and modern web development.
                 </p>
             </div>
 
-            <div className="grid gap-8 max-w-3xl">
+            <div className="grid gap-8 max-w-reading">
                 {posts.map((post) => (
                     <article key={post.slug} className="group relative flex flex-col space-y-3">
                         <div className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -55,7 +55,7 @@ export default async function BlogPage({
                             </div>
                         </div>
 
-                        <h2 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                        <h2 className="text-h2 group-hover:text-primary transition-colors">
                             <Link href={`/blog/${post.slug}`}>
                                 {post.title}
                             </Link>
@@ -69,7 +69,7 @@ export default async function BlogPage({
                             href={`/blog/${post.slug}`}
                             className="inline-flex items-center text-sm font-medium text-primary hover:underline mt-2"
                         >
-                            Read more <ArrowRight className="ml-1 w-4 h-4" />
+                            Read more <ArrowRight className="ms-1 w-4 h-4 rtl:rotate-180" />
                         </Link>
                     </article>
                 ))}

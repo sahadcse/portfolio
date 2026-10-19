@@ -32,8 +32,8 @@ export default async function PrivacyPage({
     setRequestLocale(locale);
     return (
         <main className="min-h-screen bg-background">
-            <div className="max-w-3xl mx-auto px-4 py-20">
-                <h1 className="text-4xl font-bold tracking-tight text-foreground mb-8">
+            <div className="max-w-reading mx-auto px-4 py-16 md:py-24">
+                <h1 className="text-hero text-foreground mb-8">
                     Privacy Policy
                 </h1>
 

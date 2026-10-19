@@ -30,14 +30,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         const variantStyles = {
             primary: "bg-primary text-primary-foreground hover:bg-primary/90 ambient-glow-sm micro-interact hover:scale-[1.02]",
             secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 micro-interact hover:scale-[1.02]",
-            outline: "border-2 border-input bg-background hover:bg-accent hover:text-accent-foreground micro-interact",
+            outline: "border-[1.5px] border-input bg-background hover:bg-accent hover:text-accent-foreground micro-interact",
             ghost: "hover:bg-accent hover:text-accent-foreground micro-interact",
         };
 
+        // Height metrics per plan §8.5: sm 36 / md 44 / lg 52 px (44px+ clears WCAG 2.5.8)
         const sizeStyles = {
             sm: "px-4 py-2 text-sm",
-            md: "px-6 py-3 text-base",
-            lg: "px-8 py-4 text-lg",
+            md: "px-6 py-2.5 text-base",
+            lg: "px-8 py-3 text-lg",
         };
 
         return (
@@ -49,14 +50,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             >
                 {isLoading ? (
                     <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        <Loader2 className="w-4 h-4 me-2 animate-spin" />
                         Loading...
                     </>
                 ) : (
                     <>
-                        {icon && iconPosition === "left" && <span className="mr-2">{icon}</span>}
+                        {icon && iconPosition === "left" && <span className="me-2">{icon}</span>}
                         {children}
-                        {icon && iconPosition === "right" && <span className="ml-2">{icon}</span>}
+                        {icon && iconPosition === "right" && <span className="ms-2">{icon}</span>}
                     </>
                 )}
             </button>

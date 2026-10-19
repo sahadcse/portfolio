@@ -33,8 +33,8 @@ export default async function ImpressumPage({
     setRequestLocale(locale);
     return (
         <main className="min-h-screen bg-background">
-            <div className="max-w-3xl mx-auto px-4 py-20">
-                <h1 className="text-4xl font-bold tracking-tight text-foreground mb-2">
+            <div className="max-w-reading mx-auto px-4 py-16 md:py-24">
+                <h1 className="text-hero text-foreground mb-2">
                     Legal Notice (Impressum)
                 </h1>
                 <p className="text-muted-foreground mb-8">

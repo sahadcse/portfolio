@@ -36,12 +36,12 @@ export default async function ServicesPage({
     return (
         <main className="min-h-screen bg-background">
             {/* Hero Section */}
-            <section className="pt-32 pb-20 px-4">
+            <section className="pt-24 pb-16 md:pt-32 md:pb-24 px-4">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-6">
+                    <h1 className="text-hero text-foreground mb-6">
                         Premium Digital Services
                     </h1>
-                    <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+                    <p className="text-lead max-w-2xl mx-auto">
                         Elite websites that convert and enterprise software that scales.
                         Built for business owners who demand performance, reliability, and results.
                     </p>
@@ -49,8 +49,8 @@ export default async function ServicesPage({
             </section>
 
             {/* Services Grid */}
-            <section className="pb-20 px-4">
-                <div className="max-w-6xl mx-auto">
+            <section className="pb-16 md:pb-24 px-4">
+                <div>
                     <div className="grid md:grid-cols-2 gap-8">
                         {SERVICES.map((service, index) => (
                             <div
@@ -64,7 +64,7 @@ export default async function ServicesPage({
                                 </div>
 
                                 {/* Title */}
-                                <h2 className="text-2xl md:text-3xl font-bold tracking-wide text-foreground mb-4">
+                                <h2 className="text-h2 text-foreground mb-4">
                                     {service.category.split(" & ")[0]}
                                 </h2>
 
@@ -90,7 +90,7 @@ export default async function ServicesPage({
 
                                 {/* Features List */}
                                 <div className="space-y-4">
-                                    <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">
+                                    <h3 className="text-label text-foreground uppercase">
                                         What&apos;s Included
                                     </h3>
                                     <ul className="space-y-3">
@@ -107,7 +107,7 @@ export default async function ServicesPage({
                                                         {feature.title}
                                                     </span>
                                                     {feature.description && (
-                                                        <span className="text-muted-foreground ml-1">
+                                                        <span className="text-muted-foreground ms-1">
                                                             — {feature.description}
                                                         </span>
                                                     )}
@@ -126,12 +126,12 @@ export default async function ServicesPage({
             <FAQ />
 
             {/* CTA Section */}
-            <section className="py-20 px-4 bg-gradient-to-b from-muted/40 to-background dark:from-muted/20 dark:to-background">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-6">
+            <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-muted/40 to-background dark:from-muted/20 dark:to-background">
+                <div className="max-w-reading mx-auto text-center">
+                    <h2 className="text-h2 text-foreground mb-6">
                         Ready to Elevate Your Digital Presence?
                     </h2>
-                    <p className="text-lg text-muted-foreground mb-8">
+                    <p className="text-lead mb-8">
                         Need a high-performance website or a dedicated hand to manage your systems?
                         Let&apos;s talk about your project.
                     </p>
@@ -140,7 +140,7 @@ export default async function ServicesPage({
                         className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-sm transition-all duration-300 shadow-lg hover:shadow-primary/25"
                     >
                         Start a Conversation
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </Link>

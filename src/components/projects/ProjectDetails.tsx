@@ -123,14 +123,14 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
     const shouldShowFallback = !imageUrl || imageError;
 
     return (
-        <div className="min-h-screen py-20 px-4">
-            <div className="max-w-7xl mx-auto">
+        <div className="min-h-screen py-16 md:py-24 px-4">
+            <div>
                 {/* Back Navigation */}
                 <Link
                     href="/projects"
                     className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors mb-8 group"
                 >
-                    <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                    <ArrowLeft className="w-4 h-4 me-2 rtl:rotate-180 group-hover:-translate-x-1 rtl:group-hover:translate-x-1 transition-transform" />
                     Back to Case Studies
                 </Link>
 
@@ -154,17 +154,17 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                 </span>
                             ))}
                         </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-mono tracking-tight">{title}</h1>
+                        <h1 className="text-hero mb-6">{title}</h1>
                     </div>
 
                     {/* Project Image - Premium Offset Accent Frame */}
                     {shouldShowImage && (
                         <div className="relative group max-w-4xl mx-auto my-8 ">
-                            {/* Decorative Top-Right Corner Frame */}
-                            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-primary/60 transition-all duration-300 group-hover:-top-4 group-hover:-right-4 z-0" />
+                            {/* Decorative Corner Frames — logical properties so the
+                                composition mirrors in RTL (plan §8.4) */}
+                            <div className="absolute -top-3 -end-3 w-16 h-16 border-t-2 border-e-2 border-primary/60 transition-all duration-300 group-hover:-top-4 group-hover:-end-4 z-0" />
 
-                            {/* Decorative Bottom-Left Corner Frame */}
-                            <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-primary/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-left-4 z-0" />
+                            <div className="absolute -bottom-3 -start-3 w-16 h-16 border-b-2 border-s-2 border-primary/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-start-4 z-0" />
 
                             {/* Premium Image Container */}
                             <div className="relative z-10 overflow-hidden rounded-md border border-border bg-muted shadow-xl  transition-all duration-500 group-hover:scale-[1.01] group-hover:shadow-2xl min-h-[300px]">
@@ -194,18 +194,18 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                     {/* Image Not Available Fallback */}
                     {shouldShowFallback && (
                         <div className="relative group max-w-4xl mx-auto my-8">
-                            {/* Decorative Top-Right Corner Frame */}
-                            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-primary/60 transition-all duration-300 group-hover:-top-4 group-hover:-right-4 z-0" />
+                            {/* Decorative Corner Frames — logical properties so the
+                                composition mirrors in RTL (plan §8.4) */}
+                            <div className="absolute -top-3 -end-3 w-16 h-16 border-t-2 border-e-2 border-primary/60 transition-all duration-300 group-hover:-top-4 group-hover:-end-4 z-0" />
 
-                            {/* Decorative Bottom-Left Corner Frame */}
-                            <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-primary/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-left-4 z-0" />
+                            <div className="absolute -bottom-3 -start-3 w-16 h-16 border-b-2 border-s-2 border-primary/60 transition-all duration-300 group-hover:-bottom-4 group-hover:-start-4 z-0" />
 
                             <div className="relative z-10 overflow-hidden rounded-md border border-border bg-muted shadow-xl p-12">
                                 <div className="flex flex-col items-center justify-center gap-4 text-center">
                                     <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
                                         <ImageOff className="w-8 h-8 text-muted-foreground" />
                                     </div>
-                                    <h3 className="text-xl font-semibold text-foreground">Image Not Available</h3>
+                                    <h3 className="text-h3 text-foreground">Image Not Available</h3>
                                     <p className="text-sm text-muted-foreground max-w-md">
                                         {!imageUrl
                                             ? "No project image is available for this case study."
@@ -224,12 +224,12 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                 <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
                                     <Building2 className="w-5 h-5 text-primary" />
                                 </div>
-                                <h2 className="text-2xl font-bold">Executive Summary</h2>
+                                <h2 className="text-h2">Executive Summary</h2>
                             </div>
 
                             {/* Business Problem */}
                             <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
-                                <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
+                                <h3 className="text-h3 mb-3 flex items-center gap-2">
                                     <TrendingUp className="w-5 h-5 text-destructive" />
                                     The Challenge
                                 </h3>
@@ -238,7 +238,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
 
                             {/* Business Outcome */}
                             <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
-                                <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
+                                <h3 className="text-h3 mb-3 flex items-center gap-2">
                                     <DollarSign className="w-5 h-5 text-success" />
                                     The Impact
                                 </h3>
@@ -264,12 +264,12 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                 <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
                                     <Cpu className="w-5 h-5 text-primary" />
                                 </div>
-                                <h2 className="text-2xl font-bold">Technical Deep Dive</h2>
+                                <h2 className="text-h2">Technical Deep Dive</h2>
                             </div>
 
                             {/* Technical Architecture */}
                             <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
-                                <h3 className="text-lg font-bold mb-4">System Architecture</h3>
+                                <h3 className="text-h3 mb-4">System Architecture</h3>
                                 <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                                     {highlightTechKeywords(technicalArchitecture)}
                                 </p>
@@ -277,7 +277,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
 
                             {/* Tech Stack */}
                             <div className="bg-card p-6 rounded-md border border-border/50 card-elevation">
-                                <h3 className="text-lg font-bold mb-4">Technology Stack</h3>
+                                <h3 className="text-h3 mb-4">Technology Stack</h3>
                                 <div className="flex flex-wrap gap-1.5 md:gap-2 w-full">
                                     {tags.map((tag) => (
                                         <span
@@ -298,7 +298,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                         target="_blank"
                                         className="flex items-center justify-center px-6 py-3 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold"
                                     >
-                                        <Globe className="w-5 h-5 mr-2" />
+                                        <Globe className="w-5 h-5 me-2" />
                                         Live Application
                                     </Link>
                                 )}
@@ -308,7 +308,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                         target="_blank"
                                         className="flex items-center justify-center px-6 py-3 rounded-sm bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border transition-colors font-semibold"
                                     >
-                                        <Github className="w-5 h-5 mr-2" />
+                                        <Github className="w-5 h-5 me-2" />
                                         View Source Code
                                     </Link>
                                 )}

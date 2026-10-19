@@ -38,11 +38,11 @@ export default function FAQ() {
     };
 
     return (
-        <section className="py-20 px-4 bg-muted/30">
-            <div className="max-w-3xl mx-auto">
+        <section className="py-16 md:py-24 px-4 bg-muted/30">
+            <div className="max-w-reading mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
+                    <h2 className="text-h2 text-foreground mb-4">
                         Frequently Asked Questions
                     </h2>
                     <p className="text-muted-foreground">
@@ -60,10 +60,10 @@ export default function FAQ() {
                             {/* Question Button */}
                             <button
                                 onClick={() => toggle(item.id)}
-                                className="w-full flex items-center justify-between px-6 py-5 text-left"
+                                className="w-full flex items-center justify-between px-6 py-5 text-start"
                                 aria-expanded={activeId === item.id}
                             >
-                                <span className="font-semibold text-foreground pr-4">
+                                <span className="font-semibold text-foreground pe-4">
                                     {item.question}
                                 </span>
                                 <svg

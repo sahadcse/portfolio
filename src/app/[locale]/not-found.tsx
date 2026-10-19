@@ -5,8 +5,8 @@ export default function NotFoundPage() {
     const t = useTranslations("notFound");
     return (
         <div className="flex flex-col items-center justify-center py-32 text-center">
-            <p className="font-mono text-sm text-muted-foreground mb-4">404</p>
-            <h1 className="text-4xl font-bold font-mono mb-4">{t("title")}</h1>
+            <p className="text-mono text-muted-foreground mb-4">404</p>
+            <h1 className="text-hero mb-4">{t("title")}</h1>
             <p className="text-muted-foreground mb-8 max-w-md">{t("body")}</p>
             <Link
                 href="/"

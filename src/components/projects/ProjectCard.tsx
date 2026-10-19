@@ -27,7 +27,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                             {project.clientSector}
                         </Badge>
                     </div>
-                    <h3 className="text-xl font-bold group-hover:underline transition-all">
+                    <h3 className="text-h3 group-hover:underline transition-all">
                         {project.title}
                     </h3>
                 </Link>
@@ -38,12 +38,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                         className="text-muted-foreground hover:text-primary transition-colors"
                         aria-label={`View ${project.title} Live`}
                     >
-                        <ArrowUpRight className="w-5 h-5" />
+                        <ArrowUpRight className="w-5 h-5 rtl:-scale-x-100" />
                     </Link>
                 )}
             </div>
 
-            <p className="text-muted-foreground mb-6 grow leading-relaxed line-clamp-3">
+            <p className="text-body text-muted-foreground mb-6 grow line-clamp-3">
                 {project.businessProblem.slice(0, 150)}...
             </p>
 

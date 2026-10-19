@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 
 export default function TechStack() {
     return (
-        <section className="py-16 border-y border-border/40 bg-muted/20">
-            <h2 className="text-2xl font-bold mb-8 font-mono">Technologies Mostly Used</h2>
+        <section className="py-16 md:py-24 border-y border-border/40 bg-muted/20">
+            <h2 className="text-h2 mb-8">Technologies Mostly Used</h2>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                     {TECH_STACK.map((tech, index) => (
                         <motion.div

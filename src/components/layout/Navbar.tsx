@@ -29,11 +29,11 @@ export default function Navbar() {
 
     return (
         <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-backdrop-filter:bg-background/60">
-            <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div className="max-w-content mx-auto px-4 h-16 flex items-center justify-between">
                 <Logo className="transition-colors duration-300" />
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center space-x-6">
+                <nav className="hidden md:flex items-center gap-6">
                     {navItems.map((item) => (
                         <Link
                             key={item.href}

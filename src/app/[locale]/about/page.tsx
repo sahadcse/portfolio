@@ -29,21 +29,21 @@ export default async function AboutPage({
     const { locale } = await params;
     setRequestLocale(locale);
     return (
-        <div className="container mx-auto px-4 py-20">
-            <div className="max-w-3xl mx-auto">
-                <h1 className="text-4xl font-bold mb-8 font-mono">About Me</h1>
+        <div className="px-4 py-16 md:py-24">
+            <div className="max-w-reading mx-auto">
+                <h1 className="text-hero mb-8">About Me</h1>
 
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
                     <div className="space-y-6 mb-12">
                         {ABOUT_CONTENT.bio.map((paragraph: string, index: number) => (
-                            <p key={index} className="text-xl leading-relaxed text-muted-foreground">
+                            <p key={index} className="text-lead">
                                 {paragraph}
                             </p>
                         ))}
                     </div>
 
                     <div className="mt-12">
-                        <h3 className="text-2xl font-bold mb-6 font-mono">Professional Experience</h3>
+                        <h3 className="text-h2 mb-6">Professional Experience</h3>
                         <div className="space-y-8">
                             {ABOUT_CONTENT.experience.map((exp: Experience, index: number) => (
                                 <div key={index} className="p-6 rounded-md border border-border/50 bg-card">
@@ -52,12 +52,12 @@ export default async function AboutPage({
                                             <h4 className="text-xl font-bold">{exp.role}</h4>
                                             <div className="text-lg text-primary">{exp.company}</div>
                                         </div>
-                                        <div className="text-right mt-2 md:mt-0">
+                                        <div className="text-end mt-2 md:mt-0">
                                             <div className="text-sm font-medium">{exp.period}</div>
                                             <div className="text-xs text-muted-foreground">{exp.location}</div>
                                         </div>
                                     </div>
-                                    <ul className="list-disc list-outside ml-5 space-y-2 text-muted-foreground text-sm">
+                                    <ul className="list-disc list-outside ms-5 space-y-2 text-muted-foreground text-sm">
                                         {exp.description.map((desc: string, i: number) => (
                                             <li key={i}>{desc}</li>
                                         ))}
@@ -69,7 +69,7 @@ export default async function AboutPage({
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
                         <div className="p-6 rounded-md border border-border/50 bg-card h-full">
-                            <h3 className="text-lg font-bold mb-4 font-mono">Education</h3>
+                            <h3 className="text-h3 mb-4">Education</h3>
                             <ul className="space-y-6">
                                 {ABOUT_CONTENT.education.map((edu: Education, index: number) => (
                                     <li key={index}>
@@ -83,7 +83,7 @@ export default async function AboutPage({
                         </div>
 
                         <div className="p-6 rounded-md border border-border/50 bg-card h-full">
-                            <h3 className="text-lg font-bold mb-4 font-mono">Skills</h3>
+                            <h3 className="text-h3 mb-4">Skills</h3>
                             <div className="flex flex-wrap gap-2">
                                 {ABOUT_CONTENT.skills.map((skill: string, index: number) => (
                                     <span key={index} className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-xs font-medium">

@@ -51,7 +51,7 @@ export default function ContactForm() {
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
+                    <label htmlFor="name" className="text-label">
                         Name
                     </label>
                     <input
@@ -59,6 +59,7 @@ export default function ContactForm() {
                         name="name"
                         type="text"
                         placeholder="John Doe"
+                        dir="auto"
                         className={`${inputStyles} ${fieldErrors.name ? errorInputStyles : normalInputStyles}`}
                         required
                     />
@@ -67,7 +68,7 @@ export default function ContactForm() {
                     )}
                 </div>
                 <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
+                    <label htmlFor="email" className="text-label">
                         Email
                     </label>
                     <input
@@ -85,7 +86,7 @@ export default function ContactForm() {
             </div>
 
             <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">
+                <label htmlFor="message" className="text-label">
                     Message
                 </label>
                 <textarea
@@ -93,6 +94,7 @@ export default function ContactForm() {
                     name="message"
                     placeholder="Tell me about your project..."
                     rows={6}
+                    dir="auto"
                     className={`${inputStyles} resize-none ${fieldErrors.message ? errorInputStyles : normalInputStyles}`}
                     required
                 />
@@ -118,7 +120,7 @@ export default function ContactForm() {
                 variant="primary"
                 size="md"
                 isLoading={isPending}
-                icon={<Send className="w-4 h-4" />}
+                icon={<Send className="w-4 h-4 rtl:rotate-180" />}
                 iconPosition="right"
                 className="w-full md:w-auto"
             >

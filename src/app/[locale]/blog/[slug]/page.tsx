@@ -47,7 +47,7 @@ export default async function BlogPost({ params }: Props) {
     }
 
     return (
-        <article className="container mx-auto px-4 py-20 max-w-3xl">
+        <article className="px-4 py-16 md:py-24 max-w-reading mx-auto">
             <header className="mb-10 border-b border-border/40 pb-10">
                 <div className="flex items-center gap-3 text-sm text-muted-foreground mb-4">
                     <time dateTime={post.date}>{post.date}</time>
@@ -60,12 +60,12 @@ export default async function BlogPost({ params }: Props) {
                         ))}
                     </div>
                 </div>
-                <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
+                <h1 className="text-hero">
                     {post.title}
                 </h1>
             </header>
 
-            <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-mono prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+            <div className="prose prose-neutral dark:prose-invert max-w-none prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
                 <MDXRemote source={post.content} />
             </div>
 

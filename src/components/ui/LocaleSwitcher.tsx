@@ -57,7 +57,7 @@ export default function LocaleSwitcher() {
                 <ul
                     role="listbox"
                     aria-label={t("label")}
-                    className="absolute right-0 mt-2 z-50 min-w-[9rem] rounded-md border border-border bg-popover text-popover-foreground shadow-elev-floating py-1"
+                    className="absolute end-0 mt-2 z-50 min-w-[9rem] rounded-md border border-border bg-popover text-popover-foreground shadow-elev-floating py-1"
                 >
                     {LOCALES.map((value) => (
                         <li key={value} role="option" aria-selected={value === locale}>
@@ -69,7 +69,7 @@ export default function LocaleSwitcher() {
                                         router.replace(pathname, { locale: value as Locale });
                                     }
                                 }}
-                                className={`w-full flex items-center justify-between px-3 py-2 text-sm text-left hover:bg-accent hover:text-accent-foreground transition-colors ${
+                                className={`w-full flex items-center justify-between px-3 py-2 text-sm text-start hover:bg-accent hover:text-accent-foreground transition-colors ${
                                     value === locale ? "font-semibold" : ""
                                 }`}
                             >

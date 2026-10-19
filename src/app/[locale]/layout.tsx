@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, Inter, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -20,6 +20,15 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
+// Arabic UI face (plan §10.8) — self-hosted at build; Latin/numerals keep
+// Inter via per-glyph fallback in the --font-sans/--font-mono stacks
+const plexSansArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-arabic",
   display: "swap",
 });
 
@@ -107,7 +116,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col selection:bg-primary selection:text-primary-foreground`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${plexSansArabic.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col selection:bg-primary selection:text-primary-foreground`}
       >
         <ThemeProvider
           attribute="class"
@@ -117,7 +126,7 @@ export default async function LocaleLayout({
         >
           <NextIntlClientProvider>
             <Navbar />
-            <main className="grow flex flex-col max-w-7xl mx-auto px-4">
+            <main className="grow flex flex-col max-w-content mx-auto px-4">
               {children}
             </main>
             <Footer />
