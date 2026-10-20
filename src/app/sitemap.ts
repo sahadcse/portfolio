@@ -1,43 +1,73 @@
 import { MetadataRoute } from "next";
-import { PROJECTS } from "@/data/projects";
+import { CURATED_PROJECTS } from "@/data/projects";
 import { getSortedPostsData } from "@/lib/blog";
+import { SITE_URL } from "@/data/site-config";
+import { LOCALES, localeAlternates, localePath, type Locale } from "@/i18n/config";
 
 /**
- * Dynamic sitemap generation for SEO
- * Includes all static routes, dynamic project pages, and blog posts
+ * Localized sitemap (plan §10.6): one <url> entry per (page × locale),
+ * each carrying the full bidirectional hreflang cluster for its path.
+ * Generated from the same helpers as the page metadata so the two
+ * can never drift apart.
  */
-export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://sahad.vercel.app";
+type SitemapEntry = MetadataRoute.Sitemap[number];
 
-    // Static routes
-    const staticRoutes = [
+function localizedEntries(
+    paths: string[],
+    extra: Partial<SitemapEntry> = {}
+): MetadataRoute.Sitemap {
+    const entries: MetadataRoute.Sitemap = [];
+    for (const path of paths) {
+        for (const locale of LOCALES) {
+            entries.push({
+                url: `${SITE_URL}${localePath(locale as Locale, path)}`,
+                changeFrequency: "monthly",
+                alternates: { languages: localeAlternates(path) },
+                ...extra,
+            });
+        }
+    }
+    return entries;
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
+    // Static routes (homepage gets the highest priority; core pages weekly)
+    const staticEntries: MetadataRoute.Sitemap = [];
+    const staticPaths = [
         "",
         "/about",
         "/projects",
+        "/services",
         "/contact",
         "/blog",
-    ].map((route) => ({
-        url: `${baseUrl}${route}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly" as const,
-        priority: route === "" ? 1 : 0.8,
-    }));
+        "/privacy",
+        "/terms",
+        "/impressum",
+    ];
+    for (const path of staticPaths) {
+        for (const locale of LOCALES) {
+            staticEntries.push({
+                url: `${SITE_URL}${localePath(locale as Locale, path)}`,
+                lastModified: new Date(),
+                changeFrequency: "weekly",
+                priority: path === "" ? 1 : 0.8,
+                alternates: { languages: localeAlternates(path) },
+            });
+        }
+    }
 
-    // Dynamic project routes
-    const projectRoutes = PROJECTS.map((project) => ({
-        url: `${baseUrl}/projects/${project.id}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
-    }));
+    // Dynamic project routes — curated set only; archived demos stay
+    // routable but out of the index (plan §15.2 V2-10)
+    const projectEntries = localizedEntries(
+        CURATED_PROJECTS.map((project) => `/projects/${project.id}`),
+        { priority: 0.6, lastModified: new Date() }
+    );
 
     // Dynamic blog routes
-    const blogPosts = getSortedPostsData().map((post) => ({
-        url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(post.date),
-        changeFrequency: "monthly" as const,
-        priority: 0.5,
-    }));
+    const blogEntries = localizedEntries(
+        getSortedPostsData().map((post) => `/blog/${post.slug}`),
+        { priority: 0.5 }
+    );
 
-    return [...staticRoutes, ...projectRoutes, ...blogPosts];
+    return [...staticEntries, ...projectEntries, ...blogEntries];
 }

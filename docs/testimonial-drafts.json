@@ -1,0 +1,29 @@
+[
+  {
+    "id": "draft-cozee-care",
+    "quote": { "en": "Sahad took the time to understand our needs and helped translate our requirements into a clear, professional online experience. He paid attention to the details and worked through feedback as the project developed." },
+    "authorName": "Cozee Care (name pending approval)",
+    "authorRole": "Role pending approval",
+    "authorOrg": "Cozee Care",
+    "relation": "client",
+    "projectRef": "cozee-care"
+  },
+  {
+    "id": "draft-violina",
+    "quote": { "en": "Sahad helped us present our services through a professional online presence. He approached our requirements thoughtfully and paid attention to the details throughout the website project." },
+    "authorName": "Violina Pflegedienst (name pending approval)",
+    "authorRole": "Role pending approval",
+    "authorOrg": "Violina Pflegedienst",
+    "relation": "client",
+    "projectRef": "violina-pflegedienst"
+  },
+  {
+    "id": "draft-taqwa",
+    "quote": { "en": "Sahad took a practical, structured approach to our website project. He worked to reflect our requirements clearly and paid attention to the details during implementation." },
+    "authorName": "Taqwa Group (name pending approval)",
+    "authorRole": "Role pending approval",
+    "authorOrg": "Taqwa Group",
+    "relation": "client",
+    "projectRef": "taqwa-group"
+  }
+]

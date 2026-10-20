@@ -1,8 +1,9 @@
 import { MetadataRoute } from "next";
+import { SITE_URL } from "@/data/site-config";
 
 /**
  * Robots.txt configuration for SEO
- * Allows all crawlers and points to the sitemap
+ * Allows all crawlers and points to the sitemap on the canonical host
  */
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -13,6 +14,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ["/api/", "/_next/", "/private/"],
             },
         ],
-        sitemap: "https://sahad.vercel.app/sitemap.xml",
+        sitemap: `${SITE_URL}/sitemap.xml`,
     };
 }

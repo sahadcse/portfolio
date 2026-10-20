@@ -1,37 +1,38 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { Menu, X, Code2, Download } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SITE_CONFIG } from "@/data/site-config";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import LocaleSwitcher from "@/components/ui/LocaleSwitcher";
 import Logo from "@/components/ui/Logo";
-
-const navItems = [
-    { name: "Projects", href: "/projects" },
-    { name: "Blog", href: "/blog" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-];
-
-const featuredNavItem = {
-    name: "Services",
-    href: "/services",
-};
+import { Link, usePathname } from "@/i18n/navigation";
 
 export default function Navbar() {
+    const t = useTranslations("nav");
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
 
+    const navItems = [
+        { name: t("projects"), href: "/projects" },
+        { name: t("about"), href: "/about" },
+        { name: t("contact"), href: "/contact" },
+    ];
+
+    const featuredNavItem = {
+        name: t("services"),
+        href: "/services",
+    };
+
     return (
         <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-backdrop-filter:bg-background/60">
-            <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div className="max-w-content mx-auto px-4 h-16 flex items-center justify-between">
                 <Logo className="transition-colors duration-300" />
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center space-x-6">
+                <nav className="hidden md:flex items-center gap-6">
                     {navItems.map((item) => (
                         <Link
                             key={item.href}
@@ -47,8 +48,8 @@ export default function Navbar() {
                     {/* Featured Services Link - High Focus */}
                     <Link
                         href={featuredNavItem.href}
-                        className={`border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 px-4 py-1.5 rounded-full hover:bg-cyan-500/20 transition-all font-medium ${pathname === featuredNavItem.href
-                            ? "ring-2 ring-cyan-500/50"
+                        className={`border border-primary/30 bg-primary/10 text-primary px-4 py-1.5 rounded-full hover:bg-primary/20 transition-all font-medium ${pathname === featuredNavItem.href
+                            ? "ring-2 ring-primary/50"
                             : ""
                             }`}
                     >
@@ -59,22 +60,25 @@ export default function Navbar() {
                             href={SITE_CONFIG.resumeUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
                         >
                             <Download className="w-4 h-4" />
-                            CV
+                            {t("cv")}
                         </a>
                     )}
+                    <LocaleSwitcher />
                     <ThemeToggle />
                 </nav>
 
                 {/* Mobile Menu Button */}
-                <div className="flex items-center gap-4 md:hidden">
+                <div className="flex items-center gap-2 md:hidden">
+                    <LocaleSwitcher />
                     <ThemeToggle />
                     <button
                         className="p-2 text-muted-foreground hover:text-foreground"
                         onClick={() => setIsOpen(!isOpen)}
-                        aria-label="Toggle menu"
+                        aria-label={t("openMenu")}
+                        aria-expanded={isOpen}
                     >
                         {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                     </button>
@@ -107,8 +111,8 @@ export default function Navbar() {
                             {/* Featured Services Link - Mobile */}
                             <Link
                                 href={featuredNavItem.href}
-                                className={`px-4 text-sm font-medium transition-colors border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 rounded-full py-2 text-center ${pathname === featuredNavItem.href
-                                    ? "ring-2 ring-cyan-500/50"
+                                className={`mx-4 text-sm font-medium transition-colors border border-primary/30 bg-primary/10 text-primary rounded-full py-2 text-center ${pathname === featuredNavItem.href
+                                    ? "ring-2 ring-primary/50"
                                     : ""
                                     }`}
                                 onClick={() => setIsOpen(false)}
@@ -124,7 +128,7 @@ export default function Navbar() {
                                     onClick={() => setIsOpen(false)}
                                 >
                                     <Download className="w-4 h-4" />
-                                    Download CV
+                                    {t("downloadCv")}
                                 </a>
                             )}
                         </nav>

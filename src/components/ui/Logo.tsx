@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Montserrat } from "next/font/google";
 
 const LaunchMontserrat = Montserrat({
@@ -21,20 +21,22 @@ interface LogoProps {
  */
 export default function Logo({ className = "" }: LogoProps) {
     return (
+        // Latin brand lockup — never mirrors in RTL locales
         <Link
             href="/"
+            dir="ltr"
             className={`flex flex-col items-start w-max ${className}`}
         >
             {/* Main Name Row */}
             <div className={`${LaunchMontserrat.className} text-3xl md:text-4xl font-bold transition-colors duration-300 flex items-center`}>
                 SAHAD
-                <span className="text-cyan-500 font-extrabold ml-0.5 transition-colors duration-300">
+                <span className="text-primary font-extrabold ms-0.5 transition-colors duration-300">
                     .
                 </span>
             </div>
 
             {/* Subtitle with 70% offset */}
-            <p className="ml-[70%] whitespace-nowrap text-[9px] md:text-[10px] tracking-[0.25em] text-slate-500 dark:text-slate-400 font-medium transition-colors duration-300 mt-0.5 uppercase">
+            <p className="ms-[70%] whitespace-nowrap text-[9px] md:text-[10px] tracking-[0.25em] text-muted-foreground font-medium transition-colors duration-300 mt-0.5 uppercase">
                 Software Architect
             </p>
         </Link>

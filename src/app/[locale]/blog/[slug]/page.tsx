@@ -1,0 +1,77 @@
+import { getPostData, getSortedPostsData } from "@/lib/blog";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import CallToAction from "@/components/sections/CallToAction";
+import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { Metadata } from "next";
+import { localeAlternates, localePath, type Locale } from "@/i18n/config";
+
+type Props = {
+    params: Promise<{ locale: string; slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { locale, slug } = await params;
+    const post = getPostData(slug);
+
+    if (!post) {
+        return {
+            title: "Post Not Found",
+        };
+    }
+
+    return {
+        title: post.title,
+        description: post.description,
+        alternates: {
+            canonical: localePath(locale as Locale, `/blog/${slug}`),
+            languages: localeAlternates(`/blog/${slug}`),
+        },
+    };
+}
+
+export async function generateStaticParams() {
+    const posts = getSortedPostsData();
+    return posts.map((post) => ({
+        slug: post.slug,
+    }));
+}
+
+export default async function BlogPost({ params }: Props) {
+    const { locale, slug } = await params;
+    setRequestLocale(locale);
+    const post = getPostData(slug);
+
+    if (!post) {
+        notFound();
+    }
+
+    return (
+        <article className="px-4 py-16 md:py-24 max-w-reading mx-auto">
+            <header className="mb-10 border-b border-border/40 pb-10">
+                <div className="flex items-center gap-3 text-sm text-muted-foreground mb-4">
+                    <time dateTime={post.date}>{post.date}</time>
+                    <span>•</span>
+                    <div className="flex flex-wrap gap-1.5">
+                        {post.tags.map(tag => (
+                            <span key={tag} className="bg-secondary px-2.5 py-1 rounded-sm text-[11px] md:text-xs text-secondary-foreground whitespace-nowrap">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+                <h1 className="text-hero">
+                    {post.title}
+                </h1>
+            </header>
+
+            <div className="prose prose-neutral dark:prose-invert max-w-none prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+                <MDXRemote source={post.content} />
+            </div>
+
+            <div className="mt-16 border-t border-border/40 pt-10">
+                <CallToAction />
+            </div>
+        </article>
+    );
+}

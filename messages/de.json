@@ -1,0 +1,802 @@
+{
+  "nav": {
+    "projects": "Projekte",
+    "services": "Leistungen",
+    "about": "Über mich",
+    "contact": "Kontakt",
+    "cv": "Lebenslauf",
+    "downloadCv": "Lebenslauf herunterladen",
+    "openMenu": "Menü umschalten"
+  },
+  "footer": {
+    "legalLabel": "Rechtliches",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "E-Mail",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "impressum": "Impressum",
+    "description": "Digitale Produkte & Systeme von Ende zu Ende — architektiert, ausgeliefert und persönlich betreut.",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "language": {
+    "label": "Sprache ändern"
+  },
+  "faq": {
+    "items": {
+      "technical-knowledge": {
+        "question": "Brauche ich technische Vorkenntnisse, um mit Ihnen zusammenzuarbeiten?",
+        "answer": "Überhaupt nicht. Ich übernehme den gesamten Lebenszyklus — von der Domain-Konfiguration und dem Hosting-Setup bis zum Deployment. Nach dem Livegang erhalten Sie eine einfache Einführung, damit Sie Ihre Abläufe oder Textaktualisierungen mühelos selbst verwalten können."
+      },
+      "code-ownership": {
+        "question": "Wem gehören Quellcode und Projekt-Assets nach der Lieferung?",
+        "answer": "Ihnen. Sie behalten 100 % der geistigen Eigentumsrechte und des Eigentums. Nach Projektabschluss werden das gesamte Repository und die Produktions-Assets sicher an Ihr GitHub- oder Cloud-Konto übergeben."
+      },
+      "retainer-model": {
+        "question": "Wie funktioniert das Modell des „Festen Entwickler-Retainers“?",
+        "answer": "Wie ein dedizierter Remote-CTO/Ingenieur auf Abruf — ohne die Fixkosten einer Festanstellung. Für eine feste monatliche Pauschale übernehme ich Ihre priorisierten Updates, kontinuierliches Performance-Tuning, Server-Sicherheitsaudits und dringende Fehlerbehebungen — Ihre Systeme bleiben aktuell, überwacht und werden bei Bedarf schnell repariert."
+      },
+      "communication-timezone": {
+        "question": "Wie gehen wir mit Kommunikation und Zeitzonen um?",
+        "answer": "Ich habe meinen Sitz in Bangladesch, halte aber hochflexible Arbeitszeiten, die sich mit den Geschäftszeiten in Australien (AEST), Europa/Deutschland (CET) und an der US-Ostküste überschneiden. Wir nutzen Tools wie Slack, Zoom und Notion für transparente, strukturierte Updates — async und sync."
+      },
+      "project-timeline": {
+        "question": "Welcher Zeitrahmen ist für ein Projekt typisch?",
+        "answer": "Eine erstklassige Next.js-Website oder Conversion-Landingpage wird in der Regel innerhalb von 3 bis 7 Werktagen entwickelt und live gestellt. Der Zeitrahmen für komplexe individuelle Geschäftssoftware oder interne Infrastruktur wird auf Grundlage Ihrer spezifischen betrieblichen Anforderungen kalkuliert."
+      }
+    }
+  },
+  "a11y": {
+    "onThisPage": "Auf dieser Seite",
+    "goToTop": "Nach oben",
+    "close": "Schließen",
+    "tocButton": "Inhaltsverzeichnis"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "body": "Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.",
+    "backHome": "Zurück zur Startseite",
+    "browse": "Projekte ansehen"
+  },
+  "home": {
+    "hero": {
+      "headlineStart": "Von der <green>ersten</green> Website",
+      "headlineEnd": "bis zur <mark>kompletten Plattform</mark>.",
+      "subtitle": "Ich helfe Gründern, Unternehmen und Fachleuten, <accent>zu starten</accent>, <accent>zu verbessern</accent>, <accent>zu automatisieren</accent> und <accent>aufzubauen</accent> — geschäftskritische Webplattformen und interne Systeme, persönlich architektiert, ausgeliefert und end-to-end betreut.",
+      "ctaPrimary": "Projekt besprechen",
+      "ctaSecondary": "Fallstudien ansehen",
+      "portraitAlt": "Porträt von Md Sahaduzzaman",
+      "panel": {
+        "role": "Software Engineer",
+        "org": "Gründer, Sahad Labs",
+        "basedIn": "Dhaka, BD — Überlappung AU / DE / USA",
+        "experienceTitle": "Praktische Erfahrung",
+        "rows": {
+          "backend": {
+            "label": "Backend & Datenbank",
+            "since": "4+ J."
+          },
+          "frontend": {
+            "label": "Frontend & UI-Systeme",
+            "since": "3,5+ J."
+          },
+          "devops": {
+            "label": "Cloud & DevOps",
+            "since": "3+ J."
+          },
+          "systems": {
+            "label": "Systemdesign & DSA",
+            "since": "2+ J."
+          },
+          "ai": {
+            "label": "KI-gestützter Workflow",
+            "since": "1+ J."
+          }
+        },
+        "aiDetail": "Claude Code · Gemini — schnellere Umsetzung; 100 % menschlich architektiert & geprüft",
+        "standardsTitle": "Engineering-Standards",
+        "standards": "End-to-End-Verantwortung · Schriftliche Async-Kommunikation · Sauberer Code · NDA-bereit",
+        "sla": "ENGINEERING-SLA: Produktionsreife Architektur, dokumentierte Repos & vollständige Übergabefähigkeit."
+      },
+      "proofPoints": [
+        "Vom MVP zur Vollplattform",
+        "100 % IP- & Quellcode-Eigentum",
+        "Keine Agentur-Zwischenschritte"
+      ],
+      "availabilityBadge": "Verfügbar für neue Projekte",
+      "availabilityDelivery": "Direkte Umsetzung auf Gründerebene (AU / DE / USA)"
+    },
+    "proof": {
+      "title": "Gelieferte Arbeit, persönlich gezählt",
+      "proofLine": "Entworfen und ausgeliefert für Kunden und Teams in <accent>Australien, Deutschland, den USA und darüber hinaus</accent> — Healthcare, Immobilien, E-Commerce und mehr.",
+      "methodologyLabel": "Wie das gezählt wird",
+      "footnote": "Persönliche Zählung — die Methodik ist zu jeder Zahl angegeben.",
+      "privateNote": "Mehr als 25 Projekte ausgeliefert — darunter öffentlich zugängliche Websites und private interne Systeme. Mehr als 10 sind öffentlich erreichbar; vertrauliche Arbeit kann nicht immer gezeigt werden."
+    },
+    "needs": {
+      "title": "Was möchten Sie umsetzen?",
+      "subtitle": "Vier Anliegen, mit denen Kunden gewöhnlich zu mir kommen. Wählen Sie Ihres — jede Karte verlinkt zu einem Nachweis.",
+      "items": {
+        "launch": {
+          "label": "Starten",
+          "definition": "Eine Website oder ein Produkt, das richtig live geht — schnell, barrierefrei und auffindbar.",
+          "examples": "Marketing-Websites · Landingpages · Produkt-MVPs",
+          "proofHref": "/projects/violina-pflegedienst",
+          "proofLabel": "Nachweis ansehen: Violina Pflegedienst"
+        },
+        "improve": {
+          "label": "Verbessern",
+          "definition": "Ein bestehendes System schneller, übersichtlicher oder leichter zu betreiben machen.",
+          "examples": "Performance und Caching · UX und Barrierefreiheit · SEO-Grundlagen",
+          "proofHref": "/projects/rushkat",
+          "proofLabel": "Nachweis ansehen: Rushkat"
+        },
+        "automate": {
+          "label": "Automatisieren",
+          "definition": "Manuelle Erfassung und wiederkehrende Verwaltung durch Software ersetzen, die einfach läuft.",
+          "examples": "Workflow-Automatisierung · interne Dashboards · Terminplanung und Buchung",
+          "proofHref": "/projects/cozee-care",
+          "proofLabel": "Nachweis ansehen: Cozee Care"
+        },
+        "build": {
+          "label": "Bauen",
+          "definition": "Individuelle Plattformen für die Art und Weise, wie Ihr Unternehmen tatsächlich arbeitet.",
+          "examples": "Vertical SaaS · APIs und Integrationen · Echtzeitsysteme",
+          "proofHref": "/projects/taqwa-group",
+          "proofLabel": "Nachweis ansehen: Taqwa Group"
+        }
+      }
+    },
+    "work": {
+      "title": "Ausgewählte Projekte",
+      "subtitle": "Systeme im täglichen Betrieb. Jede Aussage ist mit etwas verknüpft, das Sie selbst überprüfen können.",
+      "viewAll": "Alle Projekte"
+    },
+    "process": {
+      "title": "Wie ich arbeite",
+      "ownership": "Alles, was ich entwickle, gehört Ihnen — Quellcode, Repositories und Konten, bei Abschluss an Sie übergeben.",
+      "steps": {
+        "scope": {
+          "label": "Umfang",
+          "text": "Wir starten bei dem, was Sie vorhaben — nicht bei der Technik. Sie erhalten einen Plan in klarer Sprache und eine klare Kostenstruktur, bevor irgendetwas entwickelt wird."
+        },
+        "build": {
+          "label": "Umsetzung",
+          "text": "Ich konzipiere und entwickle alles persönlich, von Anfang bis Ende. Sie sehen Fortschritte früh — solange eine Kurskorrektur noch günstig ist."
+        },
+        "launch": {
+          "label": "Launch",
+          "text": "Deployment, Domain, Hosting, Übergabe — gemeinsam mit Ihnen erledigt, in Ihren Konten, auf Ihren Namen."
+        },
+        "maintain": {
+          "label": "Betreuung",
+          "text": "Nach dem Launch: Updates, Monitoring und schnelle Fehlerbehebungen — oder eine saubere Übergabe an Ihr eigenes Team. Sie entscheiden."
+        }
+      }
+    },
+    "trust": {
+      "title": "Warum Kunden dieser Arbeit vertrauen",
+      "subtitle": "Worte der Organisationen hinter den Arbeiten — daneben Dinge, die Sie selbst überprüfen können.",
+      "cards": {
+        "live": {
+          "tag": "Jetzt live",
+          "text": "Kundensysteme im Produktivbetrieb — erreichbar und in Betrieb unter ihren öffentlichen Adressen.",
+          "linkLabel": "cozeecare.com.au",
+          "linkHref": "https://www.cozeecare.com.au/"
+        },
+        "verified": {
+          "tag": "Geprüft 2026-10",
+          "text": "Jede Zahl auf dieser Seite nennt ihre Zählmethodik — wenn Belege altern, gilt: zurückziehen statt verteidigen.",
+          "linkLabel": "Der Nachweis-Bereich oben",
+          "linkHref": "#proof"
+        },
+        "ownership": {
+          "tag": "Ihr Eigentum",
+          "text": "Jede Übergabe umfasst das vollständige Repository, in Ihren Konten, auf Ihren Namen — mit einer Einführung für Ihr Team.",
+          "linkLabel": "So funktioniert die Übergabe",
+          "linkHref": "/about"
+        }
+      },
+      "draftLabel": "ENTWURF — NICHT FREIGEGEBEN"
+    },
+    "faqTeaser": {
+      "title": "Fragen, die vor einer Zusammenarbeit mit mir häufig gestellt werden",
+      "link": "Zur vollständigen FAQ"
+    },
+    "onThisPage": {
+      "proof": "Nachweise",
+      "needs": "Ihr Anliegen",
+      "projects": "Projekte",
+      "process": "Wie ich arbeite",
+      "capabilities": "Kompetenzen",
+      "trust": "Vertrauen",
+      "faq": "FAQ"
+    },
+    "capabilities": {
+      "title": "Engineering-Kompetenzen",
+      "subtitle": "Was ich kann — und welche Probleme jede einzelne Kompetenz löst. Jede Zeile verlinkt zu Arbeiten, die Sie öffnen können.",
+      "problemsLabel": "Welche Probleme sie löst",
+      "deliversLabel": "Was ich liefere",
+      "toolsLabel": "Tools",
+      "proofLabel": "Nachweis",
+      "items": {
+        "backend": {
+          "title": "Backend- & API-Entwicklung",
+          "summary": "Zuverlässige APIs und Serversysteme, die auch unter realer Last korrekt bleiben.",
+          "problems": "Langsame oder ausfallende Backends · Datenkorruption bei gleichzeitiger Nutzung · unklare Berechtigungsgrenzen",
+          "delivers": "REST-APIs · Authentifizierung und rollenbasierte Zugriffssteuerung · Caching und Query-Optimierung · transaktionale Workflows · containerisierte CI/CD-Deployments",
+          "tools": "Node.js · NestJS · Express.js · PostgreSQL · Prisma · Redis · Docker · GitHub Actions",
+          "proof": [
+            {
+              "label": "4j Traders — ACID-isoliertes Order-Backend",
+              "href": "/projects/4j-traders"
+            },
+            {
+              "label": "Rushkat — Caching unter gleichzeitiger Last",
+              "href": "/projects/rushkat"
+            }
+          ]
+        },
+        "fullstack": {
+          "title": "Full-Stack-Webanwendungen",
+          "summary": "Vollständige Produkte — Oberfläche, API, Datenbank, Deployment — als ein System gebaut.",
+          "problems": "Ideen, die als Mockup stecken bleiben · Frontend und Backend von verschiedenen Händen gebaut, die nicht zusammenpassen · niemand, der das Ganze verantwortet",
+          "delivers": "End-to-End-Produktentwicklung · Server-Rendering-Architektur · Komponentendesign · Zahlungs- und Buchungsabläufe",
+          "tools": "Next.js · React · TypeScript · Node.js",
+          "proof": [
+            {
+              "label": "Online Doctor — Telemedizin-Plattform",
+              "href": "/projects/online-doctor"
+            }
+          ]
+        },
+        "data": {
+          "title": "Daten- & Systemdesign",
+          "summary": "Datenmodelle und Schemas, die abbilden, wie das Unternehmen tatsächlich funktioniert.",
+          "problems": "Tabellenkalkulationen, die die Arbeit einer Datenbank übernehmen · langsame Suchen über wachsende Datenmengen · Änderungen, die stillschweigend die Historie beschädigen",
+          "delivers": "Schemadesign · Indexierungsstrategie · transaktionale Integrität · Ratenzahlungs- und Abrechnungslogik · Reporting-Abfragen",
+          "tools": "PostgreSQL · MongoDB · Prisma · Redis",
+          "proof": [
+            {
+              "label": "Taqwa Group — Grundstücksbuchung & EMI-Engine",
+              "href": "/projects/taqwa-group"
+            }
+          ]
+        },
+        "workflows": {
+          "title": "Geschäftliche Workflow-Systeme",
+          "summary": "Interne Software, die manuelle Erfassung und wiederkehrende Verwaltung ersetzt.",
+          "problems": "Abläufe laufen in Tabellen und Chat-Nachrichten · Terminplanung von Hand · keine gemeinsame Sicht darauf, was gerade passiert",
+          "delivers": "Buchungs- und Terminplanungs-Engines · administrative Dashboards · rollenbasierte interne Tools · mehrstufige Genehmigungs- und Empfehlungsabläufe",
+          "tools": "NestJS · Next.js · PostgreSQL",
+          "proof": [
+            {
+              "label": "Cozee Care — Automatisierung der Terminplanung",
+              "href": "/projects/cozee-care"
+            },
+            {
+              "label": "Taqwa Group — operative Dashboards",
+              "href": "/projects/taqwa-group"
+            }
+          ]
+        },
+        "frontend": {
+          "title": "Frontend-Entwicklung & Barrierefreiheit",
+          "summary": "Oberflächen, die auf echten Geräten für echte Nutzer funktionieren — einschließlich assistiver Technologien.",
+          "problems": "Websites, die auf Smartphones Probleme machen · Nutzer mit Behinderung ausschließen · für Suchmaschinen unsichtbar sind",
+          "delivers": "Responsive Umsetzung · Barrierefreiheit mit WCAG-Zielvorgaben · Performance mit Blick auf Core Web Vitals · technische SEO-Grundlagen",
+          "tools": "Next.js · React · Tailwind CSS",
+          "proof": [
+            {
+              "label": "Violina Pflegedienst — UX für Senioren zuerst",
+              "href": "/projects/violina-pflegedienst"
+            },
+            {
+              "label": "NDIS CarePlus — barrierefreie Service-Website",
+              "href": "/projects/ndis-careplus"
+            }
+          ]
+        },
+        "integrations": {
+          "title": "Integrationen & Echtzeit-Funktionen",
+          "summary": "Anbindung Ihres Produkts an Zahlungen, Live-Kommunikation und Drittanbieter-Dienste.",
+          "problems": "Zahlungsabwicklung außerhalb des Systems · Nutzer ohne Live-Kanal · Daten, die in separaten Tools feststecken",
+          "delivers": "Integration von Zahlungs-Gateways · Peer-to-Peer-Videoberatung · Echtzeit-Synchronisierung · Anbindung von Drittanbieter-APIs",
+          "tools": "Stripe · SSLCommerz · WebRTC · Socket.IO · Azure",
+          "proof": [
+            {
+              "label": "Online Doctor — WebRTC-Video + Stripe",
+              "href": "/projects/online-doctor"
+            },
+            {
+              "label": "Taqwa Group — SSLCommerz-Checkout",
+              "href": "/projects/taqwa-group"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "projectsIndex": {
+    "title": "Ausgewählte Projekte",
+    "intro": "Ein kuratierter Satz geleisteter Arbeit — Kundensysteme, Kundenwebsites, ein eigenes Produkt und Anstellungs-Projekte. Jede Karte nennt ihre Belegstufe, damit Sie genau wissen, was Sie sehen.",
+    "filterLabel": "Nach Branche filtern",
+    "filterAll": "Alle",
+    "empty": "Noch keine Projekte in dieser Branche.",
+    "summaryTitle": "Die Arbeit auf einen Blick",
+    "summaryDelivered": "25+ Projekte für Kunden und Arbeitgeber ausgeliefert — öffentliche Websites und private interne Systeme zusammen.",
+    "summaryPublic": "10+ davon sind online öffentlich erreichbar. Die Projekte unten sind genau diese öffentliche Menge — mit dem stärksten Beleg versehen.",
+    "privateTitle": "Warum manche Arbeiten nicht gezeigt werden",
+    "privateText": "Ein großer Teil der ausgelieferten Projekte sind interne Betriebssysteme — Planungs-Engines, Buchungsplattformen, Verwaltungswerkzeuge — die hinter Kunden-Logins oder unter Vertraulichkeitserwartungen liegen. Ihre Abwesenheit hier ist eine Eigenschaft der Arbeit, nicht eine Lücke in der Bilanz. Wo ein System ohne Preisgabe von Details beschrieben werden kann, sagt es die Fallstudie.",
+    "ongoingLabel": "In Arbeit"
+  },
+  "caseStudy": {
+    "back": "Zurück zu allen Projekten",
+    "roleLabel": "Rolle",
+    "constraintsLabel": "Kontext",
+    "problemLabel": "Das Problem",
+    "builtLabel": "Was ich entwickelt habe",
+    "howLabel": "Wie es funktioniert",
+    "outcomesLabel": "Ergebnisse",
+    "stackLabel": "Stack",
+    "nextStep": "Planen Sie etwas Ähnliches?",
+    "nextCta": "Projekt besprechen",
+    "archivedNote": "Archiviertes Demo-Projekt — wird zu Referenzzwecken aufbewahrt; wird nicht mehr als aktuelle Arbeit präsentiert.",
+    "englishBodyNote": "Der ausführliche Text dieser Fallstudie wird in der ursprünglichen englischen Fassung angezeigt; die übersetzte Version befindet sich in der Prüfung.",
+    "loadingImage": "Bild wird geladen..."
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "Über mich",
+      "title": "Der Ingenieur hinter der Arbeit",
+      "lead": "Wer ich bin, wie ich hierher gekommen bin und welche Grundsätze ich in jedes System einbringe, das ich entwickle."
+    },
+    "intro": {
+      "portraitAlt": "Porträt von Md Sahaduzzaman",
+      "paragraphs": [
+        "Ich bin Md Sahaduzzaman — die meisten nennen mich Sahad. Ich bin ein Software Engineer, der die <accent>Betriebssysteme baut, von denen Unternehmen still abhängen</accent>: Planungs-Engines, Buchungsplattformen, interne Dashboards, APIs und die Datenbanken dahinter.",
+        "Seit 2024 arbeite ich professionell mit Kunden und Teams in Australien, Deutschland, Südkorea und Bangladesch — als Angestellter und seit 2026 als <accent>Gründer von Sahad Labs</accent>. Die Arbeit reicht von einer Plattform für Behindertendienste mit sensiblen Daten bis zu einer Immobilien-Buchungs-Engine, die Tabellen ablöste.",
+        "Ich arbeite <accent>von Ende zu Ende</accent>: die operative Wirklichkeit verstehen, das Datenmodell entwerfen, die Anwendung bauen und in die Produktion bringen. Diese Seite ist die längere Version dieser Geschichte."
+      ],
+      "facts": {
+        "location": "Dhaka, Bangladesch",
+        "education": "BSc in Computer Science & Engineering, 2025",
+        "experience": "Beruflich tätig seit 2024",
+        "status": "Offen für Remote-Rollen und Kunden in Australien, Europa und den USA"
+      },
+      "cv": "Meinen Lebenslauf ansehen",
+      "linkedin": "Auf LinkedIn vernetzen"
+    },
+    "journey": {
+      "title": "Der Weg bis hierher",
+      "subtitle": "Anstellung, Studium und selbstständige Arbeit — die Kurzfassung einer längeren Geschichte.",
+      "concurrentNote": "Lief parallel zur Tätigkeit bei der Taqwa Group (remote).",
+      "entries": {
+        "education": {
+          "period": "2021 – 2025",
+          "title": "BSc in Computer Science & Engineering",
+          "org": "DHAKA International University",
+          "text": "Algorithmen, Datenbanken, Netzwerktechnik, Websysteme und Software-Engineering — begleitend in Full-Stack-Projekten angewandt."
+        },
+        "taqwa": {
+          "period": "Feb. 2024 – Aug. 2025",
+          "title": "Software Engineer, Taqwa Group",
+          "org": "Immobilien- & Multi-Branchen-Gruppe · Dhaka",
+          "text": "Einziger Software Engineer für eine branchenübergreifende Plattform: Grundstücksbuchung mit Ratenzahlungs-Engine (EMI), Zahlungs-Gateway-Integration, Empfehlungs- und Provisionslogik sowie Admin-Dashboards — als Ersatz für Abläufe auf Tabellenbasis."
+        },
+        "rushkat": {
+          "period": "Okt. 2024 – Jan. 2025",
+          "title": "Backend Engineer, Rushkat",
+          "org": "3D-Asset-Marktplatz · remote (Südkorea)",
+          "text": "Performance-Arbeit am Backend eines Shops mit hohem Traffic: Abfrageoptimierung, Redis-Caching und REST-APIs für datenintensive 3D-Asset-Endpoints."
+        },
+        "fourj": {
+          "period": "Sep. – Dez. 2025",
+          "title": "Software Engineer, 4j Traders",
+          "org": "E-Commerce · Dhaka",
+          "text": "Bestellabwicklungs-Backend mit strikter Transaktionsisolation, RBAC mit mehreren Rollen und der Docker- + GitHub-Actions-Pipeline, über die das Team heute deployt."
+        },
+        "sahadlabs": {
+          "period": "Jan. 2026 – heute",
+          "title": "Gründer & Engineer, Sahad Labs",
+          "org": "Selbstständig · Kunden in Australien & Deutschland",
+          "text": "End-to-End-Lieferung von Kundensystemen — allen voran die Cozee-Care-Plattform für Dienstleistungen für Menschen mit Behinderung und die Pflegeplattform Violina Pflegedienst — neben meinem eigenen Telemedizin-Produkt."
+        }
+      }
+    },
+    "principles": {
+      "title": "Wie ich an Engineering herangehe",
+      "subtitle": "Grundsätze, nach denen ich tatsächlich arbeite — jeder einzelne in einem echten Projekt erarbeitet.",
+      "items": {
+        "understand": {
+          "title": "Erst die Abläufe verstehen, dann die Architektur",
+          "text": "Das System muss abbilden, wie das Unternehmen tatsächlich läuft — nicht, wie es das Lehrbuch vorschreibt. Bei der Taqwa Group musste die Ratenzahlungs-Engine variable Zinsen über individuelle Rückzahlungszeiträume hinweg berechnen — ihre echten Regeln —, bevor alles andere funktionieren konnte.",
+          "proofLabel": "Ansehen: Taqwa Group",
+          "proofHref": "/projects/taqwa-group"
+        },
+        "secure": {
+          "title": "Sicherheit von Anfang an statt als Nachrüstung",
+          "text": "Sensible Daten bestimmen die Architektur früh. Bei Cozee Care bedeutete die Vertraulichkeit von Gesundheitsdaten: Autorisierung auf Routenebene mit NestJS Guards und JWT — Berechtigungsgrenzen, die an jedem Endpoint durchgesetzt werden, nicht verstreut über den Seitencode.",
+          "proofLabel": "Ansehen: Cozee Care",
+          "proofHref": "/projects/cozee-care"
+        },
+        "performance": {
+          "title": "Performance ist eine Design-Entscheidung",
+          "text": "Geschwindigkeit entsteht aus dem Datenmodell und der Struktur der Abfragen — nicht aus spätem Feintuning. Bei Rushkat und 4j Traders machten Caching-Strategie und Abfrageoptimierung den Unterschied zwischen Endpoints, die gleichzeitige Last überstehen, und solchen, die es nicht tun.",
+          "proofLabel": "Ansehen: Rushkat",
+          "proofHref": "/projects/rushkat"
+        },
+        "ownership": {
+          "title": "Verantwortung vom Commit bis in die Produktion",
+          "text": "Die Arbeit ist beendet, wenn es sicher und wiederholbar in der Produktion läuft. Bei 4j Traders habe ich die Docker- und GitHub-Actions-Pipeline gebaut, über die das Team heute deployt; bei Kundensystemen übernehme ich Deployment und Übergabe in den eigenen Konten des Kunden.",
+          "proofLabel": "Ansehen: 4j Traders",
+          "proofHref": "/projects/4j-traders"
+        },
+        "handover": {
+          "title": "Ich hinterlasse Kunden unabhängig",
+          "text": "Was ich entwickle, gehört Ihnen: Quellcode, Repositories und Konten, bei Abschluss übergeben, mit einer Einführung in klarer Sprache, damit Ihr Team alles ohne mich betreiben kann. Abhängigkeit ist kein Geschäftsmodell.",
+          "proofLabel": "So übergebe ich",
+          "proofHref": "/contact"
+        }
+      }
+    },
+    "working": {
+      "title": "Zusammenarbeit mit mir",
+      "subtitle": "Die Teile der Arbeit, die kein Code sind — beschrieben so, wie Kunden und Kollegen sie tatsächlich erlebt haben.",
+      "items": {
+        "timezones": {
+          "title": "Zeitzonen sind mein Problem, nicht Ihres",
+          "text": "Ich sitze in Bangladesch und halte Arbeitszeiten, die sich mit den Geschäftszeiten in Australien, Europa und den USA überschneiden. Meine bislang gelieferte Kundenarbeit liegt bei Teams in Australien und Europa — und meine Zeiten sind so angelegt, dass sie auch die US-Ostküste abdecken."
+        },
+        "communication": {
+          "title": "Strukturierte, asynchron-freundliche Updates",
+          "text": "Fortschritte werden schriftlich festgehalten — in Slack, per E-Mail, in Notion; Anrufe gibt es für die Entscheidungen, die eine Stimme brauchen. Sie wissen jederzeit, was ausgeliefert wurde und was als Nächstes kommt, ohne dass Sie hinterherfragen müssen."
+        },
+        "plainLanguage": {
+          "title": "Standardmäßig ohne Fachjargon",
+          "text": "Ich erkläre Systeme in der Sprache der Abläufe. Nicht-technische Kunden erhalten bei der Übergabe eine einfache Einführung, damit sie ihr System sicher selbst betreiben können."
+        },
+        "confidentiality": {
+          "title": "Diskretion bei sensiblen Arbeiten",
+          "text": "Ein Großteil meiner Arbeit spielt sich in regulierten oder geschäftlich sensiblen Bereichen ab — Dienstleistungen für Menschen mit Behinderung, Gesundheitswesen, Verkaufsdaten. Was ich im Job erfahre, behandle ich als vertraulich, und dieses Portfolio zeigt nur, was bereits öffentlich ist."
+        }
+      },
+      "testimonialsTitle": "Was Kunden und Kollegen sagen"
+    },
+    "tools": {
+      "title": "Tools, zu denen ich greife",
+      "subtitle": "Wählen Sie eine Kategorie, um den dahinterstehenden Werkzeugkasten zu sehen — ehrlich gruppiert, belegt.",
+      "categories": {
+        "ai": {
+          "label": "KI-Tools",
+          "tagline": "KI-gestützte Entwicklung — keine ausgelieferten KI-Features",
+          "note": "Bis heute wurden keine KI-Funktionen für Kunden ausgeliefert — das ist mein Entwicklungs-Workflow, kein Produktangebot.",
+          "groups": [
+            {
+              "label": "KI-gestützter Workflow",
+              "items": "Claude Code · Gemini — Recherche, Struktur und Review-Schleifen; schnellere Umsetzung bei 100 % menschlich architektierten und geprüften Ergebnissen."
+            }
+          ]
+        },
+        "frontend": {
+          "label": "Frontend",
+          "tagline": "Oberflächen, die auf echten Geräten standhalten",
+          "note": "Kern-React/Next.js-Arbeit belegt durch Violina Pflegedienst, Award Care und das FCSC-Portal.",
+          "groups": [
+            {
+              "label": "Frameworks & Bibliotheken",
+              "items": "React · Next.js · Three.js · Bootstrap · jQuery"
+            },
+            {
+              "label": "Website-Plattformen & Builder",
+              "items": "Webflow · Framer · Wix · Squarespace"
+            },
+            {
+              "label": "Styling",
+              "items": "Tailwind CSS · Design-Token-Komponentensysteme"
+            },
+            {
+              "label": "Practices",
+              "items": "Responsives Design · performanceorientierter Entwurf und Umsetzung · SEO-freundlicher Entwurf und Umsetzung · zugängliche, wartbare Oberflächen"
+            }
+          ]
+        },
+        "backend": {
+          "label": "Backend & DB",
+          "tagline": "APIs und Datenschichten, die unter Last korrekt bleiben",
+          "note": "Node.js/NestJS/PostgreSQL/MongoDB-Arbeit belegt durch 4j Traders, Rushkat und die Buchungs-Engine der Taqwa Group.",
+          "groups": [
+            {
+              "label": "Backend-Frameworks & Sprachen",
+              "items": "Node.js · NestJS · Laravel · Python · FastAPI · Django"
+            },
+            {
+              "label": "Datenbanken & Datenzugriff",
+              "items": "PostgreSQL · MySQL · MongoDB · Mongoose · MongoDB Atlas"
+            },
+            {
+              "label": "APIs & Integration",
+              "items": "REST-API-Entwicklung und Integration · ACID-Transaktionen · Redis-Caching · Query-Optimierung"
+            },
+            {
+              "label": "Auth & Echtzeit-Systeme",
+              "items": "JWT · RBAC (NestJS Guards) · WebSockets · Socket.IO · WebRTC"
+            }
+          ]
+        },
+        "devops": {
+          "label": "DevOps",
+          "tagline": "Vom Commit bis zur Produktion — wiederholbar",
+          "note": "CI/CD- und Container-Arbeit belegt durch die 4j-Traders-Pipeline und die Infrastrukturverantwortung bei der Taqwa Group.",
+          "groups": [
+            {
+              "label": "Infrastruktur & Server",
+              "items": "VPS-Administration · virtuelle private Server · Hetzner · Hostinger VPS"
+            },
+            {
+              "label": "Cloud- & Container-Deployment",
+              "items": "Microsoft Azure Container Apps · Azure · Docker · GitHub Actions CI/CD"
+            },
+            {
+              "label": "App-Hosting & Deployment",
+              "items": "Render · Railway · Vercel"
+            }
+          ]
+        },
+        "soft": {
+          "label": "Soft Skills",
+          "tagline": "Die Arbeitspraxis, die Kunden spüren",
+          "note": "Belegt durch Solo-Engineering bei der Taqwa Group und Kundenübergaben bei Sahad Labs.",
+          "groups": [
+            {
+              "label": "Arbeitspraxis",
+              "items": "End-to-End-Verantwortung · schriftliche Async-Kommunikation · saubere Dokumentation und Übergabe · Vertraulichkeit und NDA-Bereitschaft · eigenständige Umsetzung"
+            }
+          ]
+        }
+      },
+      "tabsLabel": "Werkzeugkategorien"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Leistungen",
+      "title": "Was ich für Ihr Team oder Ihr Unternehmen tun kann",
+      "lead": "Vier konkrete Arten, wie ich helfe — jede fundiert in Systemen, die ich <accent>bereits ausgeliefert habe</accent>. Falls Ihr Anliegen nicht aufgeführt ist, fragen Sie trotzdem; die Antwort ist so oder so ehrlich."
+    },
+    "labels": {
+      "problem": "Das Problem",
+      "delivers": "Was ich liefere",
+      "whyMe": "Warum ich",
+      "proof": "Nachweis"
+    },
+    "items": {
+      "customApps": {
+        "index": "01",
+        "title": "Individuelle Webanwendungen",
+        "for": "Für Gründer und Unternehmen mit Abläufen, die für Standard-Tools zu spezifisch sind.",
+        "problem": "Sie haben einen echten Prozess — Buchungen, Beratungen, Bestellungen, Empfehlungen — und generische Software zwingt Sie, sich zu verbiegen.",
+        "delivers": [
+          "Full-Stack-Anwendungen: Oberfläche, API, Datenbank, Deployment",
+          "Kundenportale und interne Plattformen",
+          "Zahlungsabläufe (Stripe, SSLCommerz) und Terminplanungslogik",
+          "Produkt-MVPs, die auf Wachstum angelegt sind, statt weggeworfen zu werden"
+        ],
+        "evidence": "Mein eigenes Telemedizin-Produkt — Videoberatung, Terminplanung und Zahlungen — läuft als einsatzfähiges System, nicht als Demo.",
+        "proofs": [
+          {
+            "label": "Online Doctor",
+            "href": "/projects/online-doctor"
+          }
+        ]
+      },
+      "backend": {
+        "index": "02",
+        "title": "Backend- & API-Entwicklung",
+        "for": "Für Teams, die zuverlässige Serverarbeit brauchen: APIs, Datenintegrität, Berechtigungen, Performance.",
+        "problem": "Ihr Produkt wächst, und das Backend wird zum Risiko: langsame Queries, Race Conditions, unklare Zugriffsregeln.",
+        "delivers": [
+          "REST-API-Design und -Implementierung",
+          "Authentifizierung, Rollen und Autorisierung auf Routenebene",
+          "Datenbank-Schemadesign, Indexierung und Abfrageoptimierung",
+          "Caching-Strategie für stark frequentierte Endpoints",
+          "Containerisierte Deployments mit CI/CD"
+        ],
+        "evidence": "Anstellungstätigkeit bei 4j Traders (ACID-isoliertes Bestell-Backend, RBAC, Docker-Pipelines) und bei Rushkat (Caching und Abfrageoptimierung unter gleichzeitiger Last).",
+        "proofs": [
+          {
+            "label": "4j Traders",
+            "href": "/projects/4j-traders"
+          },
+          {
+            "label": "Rushkat",
+            "href": "/projects/rushkat"
+          }
+        ]
+      },
+      "workflows": {
+        "index": "03",
+        "title": "Geschäftssysteme & Workflow-Automatisierung",
+        "for": "Für Abläufe, die noch in Tabellen, Chat-Verläufen und Doppelerfassung leben.",
+        "problem": "Manuelle Erfassung skaliert nicht: Buchungen bleiben liegen, Zahlen widersprechen sich, und niemand hat eine verlässliche Gesamtübersicht.",
+        "delivers": [
+          "Buchungs-, Terminplanungs- und Ratenzahlungs-Engines (EMI)",
+          "Administrative Dashboards und Reporting",
+          "Interne Tools mit mehreren Rollen und prüfungsfreundlichem Design",
+          "Automatisierung wiederkehrender manueller Prozesse"
+        ],
+        "evidence": "Bei der Taqwa Group habe ich tabellenbasierte Grundstücksverkäufe durch ein gemeinsames Buchungs- und Ratenzahlungssystem ersetzt; bei Cozee Care habe ich den Terminplanungs-Workflow für einen regulierten Anbieter von Dienstleistungen für Menschen mit Behinderung automatisiert.",
+        "proofs": [
+          {
+            "label": "Taqwa Group",
+            "href": "/projects/taqwa-group"
+          },
+          {
+            "label": "Cozee Care",
+            "href": "/projects/cozee-care"
+          }
+        ]
+      },
+      "websites": {
+        "index": "04",
+        "title": "Websites & Frontend-Entwicklung",
+        "for": "Für Unternehmen, deren Website das Erste ist, was Kunden sehen — und für Teams, die Frontend-Arbeit auf Produktionsniveau brauchen.",
+        "problem": "Eine Website, die langsam ist, nicht barrierefrei oder für Suchmaschinen unsichtbar, kostet Sie stillschweigend die Kunden, die nie ankommen.",
+        "delivers": [
+          "Responsive, barrierefreie Umsetzungen (am WCAG orientiert)",
+          "Performancebewusste Next.js-Implementierung",
+          "Technische SEO-Grundlagen und strukturierte Daten",
+          "Inhalte und Kontaktabläufe, die auf echten Geräten funktionieren"
+        ],
+        "evidence": "Umgesetzt für Kunden aus Gesundheitswesen und Dienstleistungen für Menschen mit Behinderung in Deutschland und Australien, darunter eine deutsche Pflegeplattform mit Senioren im Fokus und barrierefreie NDIS-Service-Websites.",
+        "proofs": [
+          {
+            "label": "Violina Pflegedienst",
+            "href": "/projects/violina-pflegedienst"
+          },
+          {
+            "label": "NDIS CarePlus",
+            "href": "/projects/ndis-careplus"
+          },
+          {
+            "label": "FCSC Healthcare Portal",
+            "href": "/projects/fcsc-healthcare"
+          }
+        ]
+      }
+    },
+    "notListed": {
+      "title": "Etwas anderes?",
+      "text": "Die vier Leistungen oben sind die Bereiche, in denen ich Belege vorweisen kann. Benachbarte Anliegen — DevOps-Aufräumarbeiten, technische Due Diligence, eine zweite Meinung zu einer Architektur — sind Gespräche wert; wenn ich nicht die richtige Wahl bin, sage ich es.",
+      "cta": "Fragen Sie mich direkt"
+    },
+    "process": {
+      "title": "Wie eine Zusammenarbeit abläuft",
+      "subtitle": "Keine festen Zeitrahmen versprochen und keine Ergebnisse im Voraus garantiert — nur eine klare Arbeitsweise, vereinbart, bevor irgendetwas beginnt.",
+      "steps": {
+        "discover": {
+          "label": "Erstgespräch",
+          "text": "Wir besprechen die Abläufe, die Rahmenbedingungen und, woran Erfolg zu erkennen ist — in klarer Sprache, bevor irgendeine Technologieentscheidung fällt."
+        },
+        "scope": {
+          "label": "Umfang",
+          "text": "Sie erhalten einen schriftlichen Plan: was entwickelt wird, in welcher Reihenfolge und wie sich die Kosten gestalten (fester Umfang vs. laufende Zusammenarbeit). Änderungen sind willkommen — frühe sind günstig."
+        },
+        "build": {
+          "label": "Umsetzung",
+          "text": "Ich entwickle persönlich, mit Fortschritten, die Sie sehen können. Kompromisse werden erklärt, wenn sie getroffen werden — nicht später entdeckt."
+        },
+        "launch": {
+          "label": "Launch",
+          "text": "Deployment, Domain und Hosting — erledigt in Ihren Konten, auf Ihren Namen, mit einer Einführung für Ihr Team."
+        },
+        "afterwards": {
+          "label": "Danach",
+          "text": "Entweder bleibe ich an Bord, um zu betreuen und weiterzuentwickeln (auf ausdrückliche Vereinbarung hin), oder ich übergebe sauber an Sie oder Ihr Team. Beides ist ein guter Abschluss."
+        }
+      }
+    },
+    "faqTitle": "Häufige Fragen",
+    "onThisPage": {
+      "services": "Leistungen",
+      "process": "Ablauf",
+      "faq": "FAQ"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Kontakt",
+      "title": "Lassen Sie uns über das sprechen, was Sie entwickeln",
+      "lead": "Ob Sie eine Stelle besetzen, ein Projekt planen, ein bestehendes System reparieren oder eine Idee erkunden — schreiben Sie mir. Ich lese jede Nachricht persönlich."
+    },
+    "audience": {
+      "title": "Gute Gründe, sich zu melden",
+      "items": {
+        "hiring": "Sie besetzen eine Software-Engineering-Stelle und möchten darüber sprechen",
+        "project": "Sie haben eine Projekt- oder Produktidee und brauchen jemanden, der sie umsetzt",
+        "improve": "Sie haben ein bestehendes System, das langsam, fehleranfällig oder unübersichtlich ist",
+        "collaborate": "Sie denken über eine Zusammenarbeit oder Partnerschaft nach"
+      }
+    },
+    "details": {
+      "emailLabel": "Lieber E-Mail?",
+      "copy": "E-Mail-Adresse kopieren",
+      "copied": "Kopiert",
+      "socialsLabel": "Weitere Profile",
+      "availabilityLabel": "Verfügbarkeit",
+      "availability": "Die Verfügbarkeitszeile von der Startseite ist immer aktuell.",
+      "privacyNote": "Ihre Angaben werden ausschließlich verwendet, um Ihnen zu antworten. Keine Newsletter, keine Weitergabe."
+    },
+    "form": {
+      "title": "Nachricht senden",
+      "inquiryLabel": "Worum geht es?",
+      "inquiryOptions": {
+        "hiring": "Einstellung oder Stelle",
+        "project": "Ein neues Projekt",
+        "improve": "Verbesserung eines Systems",
+        "collaborate": "Zusammenarbeit"
+      },
+      "budgetLabel": "Budget oder Umfang (optional)",
+      "budgetPlaceholder": "z. B. fester Umfang, monatlicher Retainer oder „noch unsicher“",
+      "nameLabel": "Name",
+      "namePlaceholder": "Ihr Name",
+      "emailLabel": "E-Mail",
+      "emailPlaceholder": "you@example.com",
+      "messageLabel": "Ihre Nachricht",
+      "messagePlaceholder": "Ein kurzer Absatz genügt — was Sie vorhaben und wie der Stand heute aussieht.",
+      "submit": "Nachricht senden",
+      "submitting": "Wird gesendet...",
+      "success": "Nachricht gesendet — vielen Dank. Ich melde mich persönlich bei Ihnen.",
+      "consentNote": "Beim Senden dieses Formulars wird Ihre E-Mail-Adresse nur verwendet, um zu antworten (siehe Datenschutzerklärung).",
+      "errors": {
+        "nameRequired": "Name ist erforderlich",
+        "nameMin": "Der Name muss mindestens 2 Zeichen lang sein",
+        "nameMax": "Der Name muss kürzer als 100 Zeichen sein",
+        "emailRequired": "E-Mail ist erforderlich",
+        "emailInvalid": "Ungültige E-Mail-Adresse",
+        "emailTooLong": "Die E-Mail-Adresse ist zu lang",
+        "messageRequired": "Nachricht ist erforderlich",
+        "messageMin": "Die Nachricht muss mindestens 10 Zeichen lang sein",
+        "messageMax": "Die Nachricht muss kürzer als 2000 Zeichen sein",
+        "budgetTooLong": "Budget/Umfang ist zu lang",
+        "fixErrors": "Bitte korrigieren Sie die Fehler unten und versuchen Sie es erneut",
+        "serverConfig": "Serverkonfigurationsfehler. Bitte verwenden Sie stattdessen die E-Mail-Adresse.",
+        "sendFailed": "Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder verwenden Sie die E-Mail-Adresse.",
+        "generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+      }
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "Sahad — Full-Stack Software Engineer | Persönliches Portfolio",
+      "description": "Von der ersten Website bis zur kompletten Plattform: Md Sahaduzzaman konzipiert, entwickelt und betreut die digitalen Systeme, von denen Unternehmen abhängen — Backend, Frontend, Daten und Deployment."
+    },
+    "about": {
+      "title": "Über mich | Sahad — Full-Stack Software Engineer",
+      "description": "Md Sahaduzzaman — Software Engineer und Gründer von Sahad Labs. Full-Stack- und Backend-Engineering für internationale Kunden seit 2024."
+    },
+    "services": {
+      "title": "Leistungen | Sahad — Full-Stack Software Engineer",
+      "description": "Individuelle Webanwendungen, Backend- und API-Engineering, geschäftliche Workflow-Systeme und Websites auf Produktionsniveau — fundiert in ausgelieferten Systemen."
+    },
+    "projects": {
+      "title": "Ausgewählte Projekte | Sahad — Full-Stack Software Engineer",
+      "description": "Fallstudien gelieferter Arbeit — Kundensysteme, Kundenwebsites, ein eigenes Produkt und Engineering auf Angestelltenebene. Jede Karte nennt ihre Nachweisstufe."
+    },
+    "contact": {
+      "title": "Kontakt | Sahad — Full-Stack Software Engineer",
+      "description": "Kontaktieren Sie mich zu Software-Engineering-Stellen, neuen Projekten, der Verbesserung eines bestehenden Systems oder einer Zusammenarbeit."
+    },
+    "caseStudySuffix": "Fallstudie"
+  },
+  "cta": {
+    "shared": {
+      "title": "Erzählen Sie mir, was Sie vorhaben.",
+      "body": "Ein Absatz zu Ihrem Projekt genügt — ich antworte mit einer ehrlichen Einschätzung, auch wenn ich nicht die richtige Wahl bin.",
+      "button": "Projekt besprechen",
+      "emailLabel": "Oder schreiben Sie mir direkt eine E-Mail:",
+      "copy": "E-Mail-Adresse kopieren",
+      "copied": "Kopiert"
+    }
+  }
+}
