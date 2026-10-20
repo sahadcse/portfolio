@@ -1,8 +1,39 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R3-equivalent reached early.** R1 · V2-06/07/08 · V2-09…14 · Phase 2 · Refinement · Multilingual · Canva pass · **Final refinement complete** (owner brief 2026-10-20: mobile UX, 25+/10+ metrics, projects page, tools audit, 404, testimonial drafts, About polish).
+**Current stage:** **R3-equivalent reached early.** R1 · V2-06/07/08 · V2-09…14 · Phase 2 · Refinement · Multilingual · Canva pass · Final refinement · **Corrections pass complete** (owner brief 2026-10-20: TOC text button, Go to Top mobile fix, USA proof line, approved testimonials published, script-warning fix, full tools content, 8 ongoing projects).
 **Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
+
+---
+
+## Completed — Corrections pass (2026-10-20, commit `acb8775`)
+
+### Mobile navigation
+- **TOC control is now a visible text button** — "Table of Contents" (+list icon, localized ×4) fixed at the top-right below the header. Measured at 320/375/390px: `top=76px, right-offset=16px, 155×34px, visible`. Popover/jump/dismiss behavior preserved (verified).
+- **Go to Top physically verified on mobile**: computed `display=flex, visibility=visible, opacity=1, z=50, clickable=true` at all three widths, screenshots captured (`g-gototop-{320,375,390}.png`), click returns to `scrollY=0`. No collision (TOC is top, GTT is bottom).
+
+### Proof line — USA (explicit instruction)
+Homepage proof section now reads **"…Australia, Germany, the USA, and beyond"** in all four locales (rendered-text verified). The historical 4-countries metric is untouched, per instruction.
+
+### Testimonials — PUBLISHED
+The three owner-approved quotes are live in `src/data/testimonials.ts` with **organization-only attribution** (no individual names/roles/ratings/dates invented) and exact approved English wording. Rendered-text verified on the homepage; screenshot `g-testimonials-live.png`. Trust subtitle updated (×4) since testimonials now exist. `docs/testimonial-drafts.md` marked approved & published. The TESTIMONIAL_PREVIEW gate remains for future drafts and cannot override approved data.
+
+### React script warning — root cause & fix
+The locale layout rendered the pre-hydration theme-init code as a raw `<script>` in the RSC tree; React re-renders layout components during client-side locale navigation, and scripts rendered client-side never execute → the console warning (and dead script on navigations). Fixed with **`next/script strategy="beforeInteractive"`** in the locale layout (App Router's supported pre-hydration mechanism; hoisted into initial HTML, excluded from client re-renders). Same inline code; no nonce/CSP in this app. **Verified: zero script warnings and zero hydration errors** across multi-locale loads + client-side link navigation; dark class still applies pre-hydration via the Script component.
+
+### Tools — full content published
+All owner-directed items now live in the tabs (verified in rendered panels): Frontend adds Three.js/Bootstrap/jQuery (frameworks) and a separate **Website platforms & builders** group (Webflow/Framer/Wix/Squarespace); Backend & DB adds Laravel/Python/FastAPI/Django, MySQL/Mongoose/MongoDB Atlas, WebSockets, and an APIs-&-integration group; DevOps adds VPS/Hetzner/Hostinger VPS (infrastructure), Microsoft Azure Container Apps (cloud/container), Render/Railway (app hosting). `docs/tools-claims-review.md` updated to RESOLVED with the mapping (no items pending).
+
+### Eight ongoing projects — added with genuine screenshots
+Live-site captures taken with headless Edge and processed through the image pipeline (≤300 KB budget): **Mid-Pacific charter intake** (demo/prototype), **Flipo concept** (demo, Sahad Labs prototype), **Hodgkins Bookkeeping** (demo/prototype), **Sea of Glass window cleaning** (client-site, AU), **OMR Portal** (own product landing), **Landfutter** (client-site, DE — German-language retail), **Sahad Labs website** (own-production, agency site — identified as own, not a client). **Award Care** deduped: the supplied URL was the existing `ndis-careplus` entry — retitled "Award Care — NDIS Services Website" and marked ongoing. All render in the Projects index (15 curated cards, verified) with localized **Ongoing** chips; descriptions written from inspected live-site content only.
+
+### Gates and evidence
+`lint` **0/0** · `i18n:check --strict` **OK** · `build` **clean** · captures: `g-gototop-{320,375,390}.png`, `g-testimonials-live.png`, `g-projects-full.png` + rendered-text assertions for USA/25+/10+/private note/FAQ USA/3 testimonials/org attributions/tools items/all-8-projects/no-dupes (15 unique). No page errors.
+
+### Owner actions
+1. Testimonial attributions are organization-level — supply approved individual names/roles if wanted.
+2. "ENGINEERING SLA" wording decision still open (flagged last pass).
+3. V2-25 native review of de/fr/ar; case-study data translation; form click-test (O4); ceo_image.png tracking; O1–O10; Taqwa tier (O6).
 
 ---
 
