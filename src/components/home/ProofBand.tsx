@@ -62,7 +62,7 @@ export default async function ProofBand() {
                     })}
                 </p>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-10">
                     {VERIFIED_METRICS.map((metric) => (
                         <MetricStat
                             key={metric.id}
@@ -72,7 +72,12 @@ export default async function ProofBand() {
                     ))}
                 </div>
 
-                <p className="mt-10 text-mono text-muted-foreground">{t("footnote")}</p>
+                {/* Private-work context — explains the delivered vs. public gap */}
+                <p className="mt-10 max-w-3xl text-body text-muted-foreground">
+                    {t("privateNote")}
+                </p>
+
+                <p className="mt-4 text-mono text-muted-foreground">{t("footnote")}</p>
 
                 {/* Testimonials-in-waiting: renders only from permission-gated data (§9.4) */}
                 {hasTestimonial && (

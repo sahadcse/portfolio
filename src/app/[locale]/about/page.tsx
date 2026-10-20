@@ -63,8 +63,14 @@ export default async function AboutPage({
                 <div className="container-content">
                 <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.4fr] gap-12 lg:gap-16 items-start">
                     <div>
-                        <figure>
-                            <div className="overflow-hidden rounded-md border border-border bg-muted max-w-xs">
+                        {/* Portrait with an offset accent frame — static decoration,
+                            mirrored for RTL, hidden from assistive tech */}
+                        <figure className="relative max-w-xs">
+                            <div
+                                aria-hidden="true"
+                                className="absolute inset-0 translate-x-3 translate-y-3 rtl:-translate-x-3 rounded-md border-2 border-primary/25"
+                            />
+                            <div className="relative overflow-hidden rounded-md border border-border bg-muted">
                                 <Image
                                     src="/images/sahad-portrait.webp"
                                     alt={t("intro.portraitAlt")}
@@ -76,10 +82,7 @@ export default async function AboutPage({
                                 />
                             </div>
                         </figure>
-                        <p className="mt-6 mb-4 text-label">
-                            <IdentityName>Sahaduzzaman (Sahad)</IdentityName>
-                        </p>
-                        <dl className="space-y-2.5">
+                        <dl className="mt-6 space-y-2.5">
                             {(
                                 [
                                     ["location", MapPin],
@@ -98,10 +101,17 @@ export default async function AboutPage({
                     </div>
 
                 <div>
-                    <div className="space-y-5 max-w-2xl">
-                        {t.raw("intro.paragraphs").map((paragraph: string) => (
-                            <p key={paragraph.slice(0, 24)} className="text-lead">
-                                {paragraph}
+                    {/* Identity heading — uppercase accent treatment, consistent
+                        with the hero and footer identity surfaces */}
+                    <h2 className="text-h2 mb-6">
+                        <IdentityName>Md Sahaduzzaman (Sahad)</IdentityName>
+                    </h2>
+                    <div className="space-y-5 max-w-2xl border-s-2 border-primary/20 ps-6">
+                        {(t.raw("intro.paragraphs") as string[]).map((paragraph, index) => (
+                            <p key={index} className="text-lead">
+                                {t.rich(`intro.paragraphs.${index}`, {
+                                    accent: (chunk) => <span className="em-accent">{chunk}</span>,
+                                })}
                             </p>
                         ))}
                     </div>

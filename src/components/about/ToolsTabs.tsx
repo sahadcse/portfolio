@@ -82,25 +82,40 @@ export default function ToolsTabs() {
             </div>
 
             {/* Panel — swaps in place per selected tab */}
-            {TAB_KEYS.map((key) => (
-                <div
-                    key={key}
-                    role="tabpanel"
-                    id={`tools-panel-${key}`}
-                    aria-labelledby={`tools-tab-${key}`}
-                    hidden={active !== key}
-                    tabIndex={0}
-                    className="rounded-md border border-border/50 bg-card p-6 md:p-8 mt-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                    <h3 className="text-h3 mb-1.5">{t(`categories.${key}.tagline`)}</h3>
-                    <p className="text-body text-foreground leading-relaxed max-w-3xl">
-                        {t(`categories.${key}.items`)}
-                    </p>
-                    <p className="text-mono text-muted-foreground mt-4 pt-4 border-t border-border/40">
-                        {t(`categories.${key}.note`)}
-                    </p>
-                </div>
-            ))}
+            {TAB_KEYS.map((key) => {
+                const groups = t.raw(`categories.${key}.groups`) as {
+                    label: string;
+                    items: string;
+                }[];
+                return (
+                    <div
+                        key={key}
+                        role="tabpanel"
+                        id={`tools-panel-${key}`}
+                        aria-labelledby={`tools-tab-${key}`}
+                        hidden={active !== key}
+                        tabIndex={0}
+                        className="rounded-md border border-border/50 bg-card p-6 md:p-8 mt-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                        <h3 className="text-h3 mb-5">{t(`categories.${key}.tagline`)}</h3>
+                        <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+                            {groups.map((group) => (
+                                <div key={group.label}>
+                                    <dt className="text-label text-muted-foreground uppercase mb-1.5">
+                                        {group.label}
+                                    </dt>
+                                    <dd className="text-body text-foreground leading-relaxed">
+                                        {group.items}
+                                    </dd>
+                                </div>
+                            ))}
+                        </dl>
+                        <p className="text-mono text-muted-foreground mt-6 pt-4 border-t border-border/40">
+                            {t(`categories.${key}.note`)}
+                        </p>
+                    </div>
+                );
+            })}
         </div>
     );
 }

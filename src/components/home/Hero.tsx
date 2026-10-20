@@ -27,14 +27,20 @@ export default async function Hero() {
                 <div className="grid w-full grid-cols-1 lg:grid-cols-[1.7fr_1fr] gap-12 lg:gap-16 items-center">
                     {/* Left — business value (no identity content) */}
                     <div>
-                        {/* Availability line */}
-                        <p className="flex items-center gap-2 text-label text-muted-foreground mb-7">
-                            <span
-                                className="inline-block w-2 h-2 rounded-full bg-success"
-                                aria-hidden="true"
-                            />
-                            {t("availability")}
-                        </p>
+                        {/* Availability: tinted badge + delivery line — one row on wide
+                            screens, two intentional elements on narrow ones */}
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-7">
+                            <p className="inline-flex items-center gap-2 self-start rounded-full border border-success/30 bg-success/10 px-3 py-1 text-label text-success">
+                                <span
+                                    className="inline-block w-2 h-2 rounded-full bg-success"
+                                    aria-hidden="true"
+                                />
+                                {t("availabilityBadge")}
+                            </p>
+                            <p className="text-label text-muted-foreground sm:before:content-['·'] sm:before:me-3 sm:before:text-border">
+                                {t("availabilityDelivery")}
+                            </p>
+                        </div>
 
                         {/* Editorial headline: quiet first line with green accent,
                             full-scale second line with lavender marker sweep */}
@@ -75,8 +81,9 @@ export default async function Hero() {
                             </Link>
                         </div>
 
-                        {/* Proof-point line — secondary to the CTAs */}
-                        <ul className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2">
+                        {/* Proof points — vertical list with a shared left edge on
+                            mobile; dot-separated single row where there's room */}
+                        <ul className="mt-8 flex flex-col items-start gap-2.5 sm:flex-row sm:items-center sm:flex-wrap sm:gap-x-5 sm:gap-y-2">
                             {proofPoints.map((point, index) => (
                                 <li
                                     key={point}
@@ -84,7 +91,7 @@ export default async function Hero() {
                                 >
                                     {index > 0 && (
                                         <span
-                                            className="text-border me-3 select-none"
+                                            className="text-border me-3 select-none hidden sm:inline"
                                             aria-hidden="true"
                                         >
                                             ·

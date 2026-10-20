@@ -38,7 +38,7 @@
       },
       "communication-timezone": {
         "question": "How do we handle communication and timezone differences?",
-        "answer": "I am based in Bangladesh but maintain highly flexible working hours that overlap perfectly with Australian (AEST) and European/German (CET) business days. We will use tools like Slack, Zoom, and Notion for transparent, structured async and sync updates."
+        "answer": "I am based in Bangladesh but maintain highly flexible working hours that overlap with Australian (AEST), European/German (CET), and US East Coast business days. We will use tools like Slack, Zoom, and Notion for transparent, structured async and sync updates."
       },
       "project-timeline": {
         "question": "What is the typical timeline for a project?",
@@ -54,11 +54,13 @@
   "notFound": {
     "title": "Page not found",
     "body": "The page you are looking for doesn't exist or has been moved.",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "browse": "Browse projects"
   },
   "home": {
     "hero": {
-      "availability": "Available for new projects · Direct Founder-Led Delivery (AU / DE / USA)",
+      "availabilityBadge": "Available for new projects",
+      "availabilityDelivery": "Direct Founder-Led Delivery (AU / DE / USA)",
       "headlineStart": "From a <green>First</green> Website",
       "headlineEnd": "to a <mark>full platform</mark>.",
       "subtitle": "I help founders, businesses, and professionals <accent>launch</accent>, <accent>improve</accent>, <accent>automate</accent>, and <accent>build</accent> revenue-critical web platforms and internal systems — architected, shipped, and maintained personally, end to end.",
@@ -92,6 +94,7 @@
       "title": "Delivered work, personally counted",
       "proofLine": "Designed and delivered for clients and teams in <accent>Australia, Germany, and beyond</accent> — healthcare, real estate, e-commerce, and more.",
       "methodologyLabel": "How this is counted",
+      "privateNote": "More than 25 projects delivered — including public-facing websites and private internal systems. More than 10 are publicly accessible; confidential work cannot always be shown.",
       "footnote": "Personal counts — methodology shown for every number."
     },
     "needs": {
@@ -158,6 +161,7 @@
     "trust": {
       "title": "Why clients trust the work",
       "subtitle": "No purchased quotes — this section shows things you can verify yourself. Client testimonials appear here once written permission is on file.",
+      "draftLabel": "DRAFT — NOT APPROVED",
       "cards": {
         "live": {
           "tag": "Live now",
@@ -269,7 +273,12 @@
   },
   "projectsIndex": {
     "title": "Selected projects",
-    "intro": "Case studies of delivered work — client systems, client websites, an own product, and employment-tier engineering. Every card states its evidence tier.",
+    "intro": "A curated set of delivered work — client systems, client websites, an own product, and employment-tier engineering. Every card states its evidence tier so you know exactly what you are looking at.",
+    "summaryTitle": "The work at a glance",
+    "summaryDelivered": "25+ projects delivered for clients and employers — public-facing websites and private internal systems combined.",
+    "summaryPublic": "10+ of them are publicly accessible online. The projects below are that public set, with the strongest evidence attached.",
+    "privateTitle": "Why some work isn't shown",
+    "privateText": "A large share of delivered projects are internal operational systems — scheduling engines, booking platforms, administrative tools — that live behind client logins or under confidentiality expectations. Their absence here is a property of the work, not a gap in the record. Where a system can be described without exposing specifics, its case study says so.",
     "filterLabel": "Filter by sector",
     "filterAll": "All",
     "empty": "No projects in this sector yet."
@@ -298,9 +307,9 @@
     "intro": {
       "portraitAlt": "Portrait of Md Sahaduzzaman",
       "paragraphs": [
-        "I'm Md Sahaduzzaman — most people call me Sahad. I'm a software engineer who builds the operational systems businesses quietly depend on: scheduling engines, booking platforms, internal dashboards, APIs, and the databases underneath them.",
-        "Since 2024 I've worked professionally with clients and teams in Australia, Germany, South Korea, and Bangladesh — as an employee and, since 2026, as the founder of Sahad Labs. The work ranges from a disability-services platform handling sensitive records to a real-estate booking engine that replaced spreadsheets.",
-        "I work end to end: understanding the operation, designing the data model, building the application, and seeing it into production. This page is the longer version of that story."
+        "I'm Md Sahaduzzaman — most people call me Sahad. I'm a software engineer who builds the <accent>operational systems businesses quietly depend on</accent>: scheduling engines, booking platforms, internal dashboards, APIs, and the databases underneath them.",
+        "Since 2024 I've worked professionally with clients and teams in Australia, Germany, South Korea, and Bangladesh — as an employee and, since 2026, as the <accent>founder of Sahad Labs</accent>. The work ranges from a disability-services platform handling sensitive records to a real-estate booking engine that replaced spreadsheets.",
+        "I work <accent>end to end</accent>: understanding the operation, designing the data model, building the application, and seeing it into production. This page is the longer version of that story."
       ],
       "facts": {
         "location": "Dhaka, Bangladesh",
@@ -415,31 +424,54 @@
         "ai": {
           "label": "AI Tools",
           "tagline": "AI-assisted development — not shipped AI features",
-          "items": "Claude Code & Gemini for research, scaffolding, and review loops — faster velocity with 100% human-architected and human-reviewed output.",
+          "groups": [
+            {
+              "label": "AI-assisted workflow",
+              "items": "Claude Code · Gemini — research, scaffolding, and review loops; faster velocity with 100% human-architected and human-reviewed output."
+            }
+          ],
           "note": "No AI-powered client features have been delivered to date; this is my development workflow, not a product offering."
         },
         "frontend": {
           "label": "Frontend",
           "tagline": "Interfaces that hold up on real devices",
-          "items": "React · Next.js (App Router) · TypeScript · Tailwind CSS — component architecture, WCAG-targeted accessibility, and Core-Web-Vitals-conscious builds.",
+          "groups": [
+            { "label": "Frameworks & libraries", "items": "React · Next.js · TypeScript" },
+            { "label": "Styling", "items": "Tailwind CSS · design-token component systems" },
+            { "label": "Practices", "items": "Responsive design · performance-focused builds · technical SEO · WCAG-targeted accessibility" }
+          ],
           "note": "Evidenced by Violina Pflegedienst, NDIS CarePlus, and the FCSC portal."
         },
         "backend": {
           "label": "Backend & DB",
           "tagline": "APIs and data layers that stay correct under load",
-          "items": "Node.js · NestJS · Express.js REST APIs · PostgreSQL · MongoDB · Prisma data modeling · Redis caching · JWT + RBAC authorization · ACID transactional workflows.",
+          "groups": [
+            { "label": "APIs & runtime", "items": "Node.js · NestJS · Express.js (REST)" },
+            { "label": "Databases & ORM", "items": "PostgreSQL · MongoDB · Prisma" },
+            { "label": "Integrity & performance", "items": "ACID transactions · Redis caching · query optimization" },
+            { "label": "Auth & real-time", "items": "JWT · RBAC (NestJS Guards) · Socket.IO · WebRTC" }
+          ],
           "note": "Evidenced by 4j Traders, Rushkat, and the Taqwa Group booking engine."
         },
         "devops": {
           "label": "DevOps",
           "tagline": "From commit to production, repeatably",
-          "items": "Docker containerization · GitHub Actions CI/CD · Azure and Vercel deployment · environment configuration and delivery pipelines.",
+          "groups": [
+            { "label": "Containers & CI/CD", "items": "Docker · GitHub Actions" },
+            { "label": "Cloud & hosting", "items": "Azure · Vercel" },
+            { "label": "Servers", "items": "VPS administration" }
+          ],
           "note": "Evidenced by the 4j Traders pipeline and Taqwa Group infrastructure ownership."
         },
         "soft": {
           "label": "Soft Skills",
           "tagline": "The working practices clients actually feel",
-          "items": "End-to-end ownership · async written communication · clean documentation and handover · confidentiality and NDA readiness · independent delivery.",
+          "groups": [
+            {
+              "label": "Working practices",
+              "items": "End-to-end ownership · async written communication · clean documentation and handover · confidentiality and NDA readiness · independent delivery"
+            }
+          ],
           "note": "Evidenced in sole-engineer delivery at Taqwa Group and client handovers at Sahad Labs."
         }
       }

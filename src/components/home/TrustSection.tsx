@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { IdentityName } from "@/components/shared/IdentityName";
-import { approvedTestimonials } from "@/data/testimonials";
+import { approvedTestimonials, type Testimonial } from "@/data/testimonials";
 
 /**
  * Client-trust section (user brief §7). Honest by construction: no
@@ -10,10 +10,34 @@ import { approvedTestimonials } from "@/data/testimonials";
  * Shows verifiable evidence instead (live systems, verified counts,
  * ownership policy); approved testimonials render here automatically once
  * entries with written permission exist in src/data/testimonials.ts.
+ *
+ * DRAFT PREVIEW: building with TESTIMONIAL_PREVIEW=1 renders the unapproved
+ * drafts from docs/testimonial-drafts.json with a mandatory DRAFT label.
+ * The drafts live OUTSIDE src/ and are read via fs only inside the flag
+ * gate, so production bundles contain neither the quotes nor the data —
+ * verified by grepping the built output.
  */
+async function loadPreviewDrafts(): Promise<Testimonial[]> {
+    if (process.env.TESTIMONIAL_PREVIEW !== "1") return [];
+    try {
+        const { readFileSync } = await import("node:fs");
+        const { join } = await import("node:path");
+        const raw = JSON.parse(
+            readFileSync(join(process.cwd(), "docs", "testimonial-drafts.json"), "utf8")
+        );
+        return raw as Testimonial[];
+    } catch {
+        return [];
+    }
+}
+
 export default async function TrustSection() {
     const t = await getTranslations("home.trust");
     const testimonials = approvedTestimonials();
+    const previewDrafts =
+        testimonials.length === 0 ? await loadPreviewDrafts() : [];
+    const shown: Testimonial[] =
+        testimonials.length > 0 ? testimonials : previewDrafts;
 
     const cardKeys = ["live", "verified", "ownership"] as const;
 
@@ -25,23 +49,37 @@ export default async function TrustSection() {
                     <p className="text-lead">{t("subtitle")}</p>
                 </div>
 
-                {/* Permissioned testimonials render here the moment they exist */}
-                {testimonials.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                        {testimonials.map((testimonial) => (
-                            <figure
-                                key={testimonial.id}
-                                className="rounded-md border border-border/50 bg-card p-7"
-                            >
-                                <blockquote className="text-body text-foreground">
-                                    &ldquo;{testimonial.quote.en}&rdquo;
-                                </blockquote>
-                                <figcaption className="mt-4 text-label text-muted-foreground">
-                                    {testimonial.authorName} · {testimonial.authorRole}
-                                    {testimonial.authorOrg ? ` · ${testimonial.authorOrg}` : ""}
-                                </figcaption>
-                            </figure>
-                        ))}
+                {/* Permissioned testimonials render here the moment they exist;
+                    the TESTIMONIAL_PREVIEW=1 build flag swaps in labelled drafts */}
+                {shown.length > 0 && (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                        {shown.map((testimonial) => {
+                            const isDraft = !testimonials.includes(testimonial);
+                            return (
+                                <figure
+                                    key={testimonial.id}
+                                    className={`rounded-md border p-7 flex flex-col ${
+                                        isDraft
+                                            ? "border-dashed border-warning/50 bg-warning/5"
+                                            : "border-border/50 bg-card"
+                                    }`}
+                                >
+                                    {isDraft && (
+                                        <span className="self-start text-mono rounded-sm border border-warning/40 bg-warning/10 text-warning px-2 py-0.5 mb-4">
+                                            {t("draftLabel")}
+                                        </span>
+                                    )}
+                                    <blockquote className="text-body text-foreground leading-relaxed">
+                                        &ldquo;{testimonial.quote.en}&rdquo;
+                                    </blockquote>
+                                    <figcaption className="mt-auto pt-4 text-label text-muted-foreground">
+                                        {testimonial.authorName}
+                                        {testimonial.authorRole ? ` · ${testimonial.authorRole}` : ""}
+                                        {testimonial.authorOrg ? ` · ${testimonial.authorOrg}` : ""}
+                                    </figcaption>
+                                </figure>
+                            );
+                        })}
                     </div>
                 )}
 

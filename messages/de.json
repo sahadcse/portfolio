@@ -38,7 +38,7 @@
       },
       "communication-timezone": {
         "question": "Wie gehen wir mit Kommunikation und Zeitzonen um?",
-        "answer": "Ich sitze in Bangladesch, halte aber sehr flexible Arbeitszeiten, die sich perfekt mit den Geschäftszeiten in Australien (AEST) und Europa/Deutschland (CET) überschneiden. Für transparente, strukturierte Updates — asynchron und synchron — nutzen wir Tools wie Slack, Zoom und Notion."
+        "answer": "Ich habe meinen Sitz in Bangladesch, halte aber hochflexible Arbeitszeiten, die sich mit den Geschäftszeiten in Australien (AEST), Europa/Deutschland (CET) und an der US-Ostküste überschneiden. Wir nutzen Tools wie Slack, Zoom und Notion für transparente, strukturierte Updates — async und sync."
       },
       "project-timeline": {
         "question": "Welcher Zeitrahmen ist für ein Projekt typisch?",
@@ -54,7 +54,8 @@
   "notFound": {
     "title": "Seite nicht gefunden",
     "body": "Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.",
-    "backHome": "Zurück zur Startseite"
+    "backHome": "Zurück zur Startseite",
+    "browse": "Projekte ansehen"
   },
   "home": {
     "hero": {
@@ -63,7 +64,6 @@
       "subtitle": "Ich helfe Gründern, Unternehmen und Fachleuten, <accent>zu starten</accent>, <accent>zu verbessern</accent>, <accent>zu automatisieren</accent> und <accent>aufzubauen</accent> — geschäftskritische Webplattformen und interne Systeme, persönlich architektiert, ausgeliefert und end-to-end betreut.",
       "ctaPrimary": "Projekt besprechen",
       "ctaSecondary": "Fallstudien ansehen",
-      "availability": "Verfügbar für neue Projekte · Direkte Umsetzung auf Gründerebene (AU / DE / USA)",
       "portraitAlt": "Porträt von Md Sahaduzzaman",
       "panel": {
         "role": "Software Engineer",
@@ -101,13 +101,16 @@
         "Vom MVP zur Vollplattform",
         "100 % IP- & Quellcode-Eigentum",
         "Keine Agentur-Zwischenschritte"
-      ]
+      ],
+      "availabilityBadge": "Verfügbar für neue Projekte",
+      "availabilityDelivery": "Direkte Umsetzung auf Gründerebene (AU / DE / USA)"
     },
     "proof": {
       "title": "Gelieferte Arbeit, persönlich gezählt",
       "proofLine": "Konzipiert und umgesetzt für Kunden und Teams in <accent>Australien, Deutschland und darüber hinaus</accent> — Gesundheitswesen, Immobilien, E-Commerce und mehr.",
       "methodologyLabel": "Wie das gezählt wird",
-      "footnote": "Persönliche Zählung — die Methodik ist zu jeder Zahl angegeben."
+      "footnote": "Persönliche Zählung — die Methodik ist zu jeder Zahl angegeben.",
+      "privateNote": "Mehr als 25 Projekte ausgeliefert — darunter öffentlich zugängliche Websites und private interne Systeme. Mehr als 10 sind öffentlich erreichbar; vertrauliche Arbeit kann nicht immer gezeigt werden."
     },
     "needs": {
       "title": "Was möchten Sie umsetzen?",
@@ -192,7 +195,8 @@
           "linkLabel": "So funktioniert die Übergabe",
           "linkHref": "/about"
         }
-      }
+      },
+      "draftLabel": "ENTWURF — NICHT FREIGEGEBEN"
     },
     "faqTeaser": {
       "title": "Fragen, die vor einer Zusammenarbeit mit mir häufig gestellt werden",
@@ -314,10 +318,15 @@
   },
   "projectsIndex": {
     "title": "Ausgewählte Projekte",
-    "intro": "Fallstudien gelieferter Arbeit — Kundensysteme, Kundenwebsites, ein eigenes Produkt und Engineering auf Angestelltenebene. Jede Karte nennt ihre Nachweisstufe.",
+    "intro": "Ein kuratierter Satz geleisteter Arbeit — Kundensysteme, Kundenwebsites, ein eigenes Produkt und Anstellungs-Projekte. Jede Karte nennt ihre Belegstufe, damit Sie genau wissen, was Sie sehen.",
     "filterLabel": "Nach Branche filtern",
     "filterAll": "Alle",
-    "empty": "Noch keine Projekte in dieser Branche."
+    "empty": "Noch keine Projekte in dieser Branche.",
+    "summaryTitle": "Die Arbeit auf einen Blick",
+    "summaryDelivered": "25+ Projekte für Kunden und Arbeitgeber ausgeliefert — öffentliche Websites und private interne Systeme zusammen.",
+    "summaryPublic": "10+ davon sind online öffentlich erreichbar. Die Projekte unten sind genau diese öffentliche Menge — mit dem stärksten Beleg versehen.",
+    "privateTitle": "Warum manche Arbeiten nicht gezeigt werden",
+    "privateText": "Ein großer Teil der ausgelieferten Projekte sind interne Betriebssysteme — Planungs-Engines, Buchungsplattformen, Verwaltungswerkzeuge — die hinter Kunden-Logins oder unter Vertraulichkeitserwartungen liegen. Ihre Abwesenheit hier ist eine Eigenschaft der Arbeit, nicht eine Lücke in der Bilanz. Wo ein System ohne Preisgabe von Details beschrieben werden kann, sagt es die Fallstudie."
   },
   "caseStudy": {
     "back": "Zurück zu allen Projekten",
@@ -343,9 +352,9 @@
     "intro": {
       "portraitAlt": "Porträt von Md Sahaduzzaman",
       "paragraphs": [
-        "Ich bin Md Sahaduzzaman — die meisten nennen mich Sahad. Ich bin Software Engineer und entwickle die operativen Systeme, von denen Unternehmen stillschweigend abhängen: Terminplanungs-Engines, Buchungsplattformen, interne Dashboards, APIs und die Datenbanken dahinter.",
-        "Seit 2024 arbeite ich professionell mit Kunden und Teams in Australien, Deutschland, Südkorea und Bangladesch — als Angestellter und, seit 2026, als Gründer von Sahad Labs. Die Arbeit reicht von einer Plattform für Dienstleistungen für Menschen mit Behinderung, die sensible Daten verarbeitet, bis hin zu einer Immobilien-Buchungs-Engine, die Tabellenkalkulationen ersetzt hat.",
-        "Ich arbeite von Anfang bis Ende: die Abläufe verstehen, das Datenmodell entwerfen, die Anwendung entwickeln und bis in den Produktivbetrieb begleiten. Diese Seite ist die ausführlichere Version dieser Geschichte."
+        "Ich bin Md Sahaduzzaman — die meisten nennen mich Sahad. Ich bin ein Software Engineer, der die <accent>Betriebssysteme baut, von denen Unternehmen still abhängen</accent>: Planungs-Engines, Buchungsplattformen, interne Dashboards, APIs und die Datenbanken dahinter.",
+        "Seit 2024 arbeite ich professionell mit Kunden und Teams in Australien, Deutschland, Südkorea und Bangladesch — als Angestellter und seit 2026 als <accent>Gründer von Sahad Labs</accent>. Die Arbeit reicht von einer Plattform für Behindertendienste mit sensiblen Daten bis zu einer Immobilien-Buchungs-Engine, die Tabellen ablöste.",
+        "Ich arbeite <accent>von Ende zu Ende</accent>: die operative Wirklichkeit verstehen, das Datenmodell entwerfen, die Anwendung bauen und in die Produktion bringen. Diese Seite ist die längere Version dieser Geschichte."
       ],
       "facts": {
         "location": "Dhaka, Bangladesch",
@@ -459,32 +468,85 @@
         "ai": {
           "label": "KI-Tools",
           "tagline": "KI-gestützte Entwicklung — keine ausgelieferten KI-Features",
-          "items": "Claude Code & Gemini für Recherche, Struktur und Review-Schleifen — schnellere Umsetzung bei 100 % menschlich architektierter und geprüfter Ergebnisse.",
-          "note": "Bis heute wurden keine KI-Funktionen für Kunden ausgeliefert — das ist mein Entwicklungs-Workflow, kein Produktangebot."
+          "note": "Bis heute wurden keine KI-Funktionen für Kunden ausgeliefert — das ist mein Entwicklungs-Workflow, kein Produktangebot.",
+          "groups": [
+            {
+              "label": "KI-gestützter Workflow",
+              "items": "Claude Code · Gemini — Recherche, Struktur und Review-Schleifen; schnellere Umsetzung bei 100 % menschlich architektierten und geprüften Ergebnissen."
+            }
+          ]
         },
         "frontend": {
           "label": "Frontend",
           "tagline": "Oberflächen, die auf echten Geräten standhalten",
-          "items": "React · Next.js (App Router) · TypeScript · Tailwind CSS — Komponentenarchitektur, WCAG als Ziel Maßstab und Core-Web-Vitals-bewusste Umsetzung.",
-          "note": "Belegt durch Violina Pflegedienst, NDIS CarePlus und das FCSC-Portal."
+          "note": "Belegt durch Violina Pflegedienst, NDIS CarePlus und das FCSC-Portal.",
+          "groups": [
+            {
+              "label": "Frameworks & Bibliotheken",
+              "items": "React · Next.js · TypeScript"
+            },
+            {
+              "label": "Styling",
+              "items": "Tailwind CSS · Design-Token-Komponentensysteme"
+            },
+            {
+              "label": "Practices",
+              "items": "Responsives Design · performancebewusste Umsetzung · technisches SEO · WCAG-orientierte Barrierefreiheit"
+            }
+          ]
         },
         "backend": {
           "label": "Backend & DB",
           "tagline": "APIs und Datenschichten, die unter Last korrekt bleiben",
-          "items": "Node.js · NestJS · Express.js REST-APIs · PostgreSQL · MongoDB · Prisma-Datenmodellierung · Redis-Caching · JWT + RBAC-Autorisierung · ACID-Transaktionen.",
-          "note": "Belegt durch 4j Traders, Rushkat und die Buchungs-Engine der Taqwa Group."
+          "note": "Belegt durch 4j Traders, Rushkat und die Buchungs-Engine der Taqwa Group.",
+          "groups": [
+            {
+              "label": "APIs & Laufzeit",
+              "items": "Node.js · NestJS · Express.js (REST)"
+            },
+            {
+              "label": "Datenbanken & ORM",
+              "items": "PostgreSQL · MongoDB · Prisma"
+            },
+            {
+              "label": "Integrität & Performance",
+              "items": "ACID-Transaktionen · Redis-Caching · Query-Optimierung"
+            },
+            {
+              "label": "Auth & Echtzeit",
+              "items": "JWT · RBAC (NestJS Guards) · Socket.IO · WebRTC"
+            }
+          ]
         },
         "devops": {
           "label": "DevOps",
           "tagline": "Vom Commit bis zur Produktion — wiederholbar",
-          "items": "Docker-Containerisierung · GitHub-Actions-CI/CD · Azure- und Vercel-Deployment · Umgebungskonfiguration und Delivery-Pipelines.",
-          "note": "Belegt durch die 4j-Traders-Pipeline und die Infrastrukturverantwortung bei der Taqwa Group."
+          "note": "Belegt durch die 4j-Traders-Pipeline und die Infrastrukturverantwortung bei der Taqwa Group.",
+          "groups": [
+            {
+              "label": "Container & CI/CD",
+              "items": "Docker · GitHub Actions"
+            },
+            {
+              "label": "Cloud & Hosting",
+              "items": "Azure · Vercel"
+            },
+            {
+              "label": "Server",
+              "items": "VPS-Administration"
+            }
+          ]
         },
         "soft": {
           "label": "Soft Skills",
           "tagline": "Die Arbeitspraxis, die Kunden spüren",
-          "items": "End-to-End-Verantwortung · schriftliche Async-Kommunikation · saubere Dokumentation und Übergabe · Vertraulichkeit und NDA-Bereitschaft · eigenständige Umsetzung.",
-          "note": "Belegt durch Solo-Engineering bei der Taqwa Group und Kundenübergaben bei Sahad Labs."
+          "note": "Belegt durch Solo-Engineering bei der Taqwa Group und Kundenübergaben bei Sahad Labs.",
+          "groups": [
+            {
+              "label": "Arbeitspraxis",
+              "items": "End-to-End-Verantwortung · schriftliche Async-Kommunikation · saubere Dokumentation und Übergabe · Vertraulichkeit und NDA-Bereitschaft · eigenständige Umsetzung"
+            }
+          ]
         }
       },
       "tabsLabel": "Werkzeugkategorien"

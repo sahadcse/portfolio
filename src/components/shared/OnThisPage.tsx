@@ -8,8 +8,9 @@ import { List, X } from "lucide-react";
  * "On this page" section navigation (user brief §2, refined):
  * - ≥2xl: fixed labeled panel at the inline-end of the viewport
  * - xl:   footprint-reduced dot rail (labels for screen readers/hover)
- * - <xl:  floating TOC button opening a compact popover (dialog semantics:
- *         Escape dismiss, focus return, background scroll locked)
+ * - <xl:  floating TOC button below the sticky header at the top-inline-end,
+ *         opening a compact popover (dialog semantics: Escape dismiss,
+ *         focus return, background scroll locked)
  *
  * One IntersectionObserver per mount drives the active indicator. Anchor
  * targets carry scroll-margin-top (global CSS) for the sticky header;
@@ -113,7 +114,7 @@ export default function OnThisPage({
                 </div>
             </nav>
 
-            {/* <xl — floating TOC button + popover */}
+            {/* <xl — floating TOC button + popover (top-inline-end, below header) */}
             <div className="xl:hidden">
                 {open && (
                     <>
@@ -128,7 +129,7 @@ export default function OnThisPage({
                             role="dialog"
                             aria-modal="true"
                             aria-label={t("onThisPage")}
-                            className="fixed bottom-24 end-4 z-50 w-56 rounded-md border border-border bg-popover text-popover-foreground p-3 shadow-elev-floating"
+                            className="fixed top-[4.75rem] end-4 z-50 w-56 rounded-md border border-border bg-popover text-popover-foreground p-3 shadow-elev-floating"
                         >
                             <div className="flex items-center justify-between mb-2 px-2">
                                 <p className="text-mono text-muted-foreground">{t("onThisPage")}</p>
@@ -152,7 +153,7 @@ export default function OnThisPage({
                     aria-expanded={open}
                     aria-haspopup="dialog"
                     aria-label={t("onThisPage")}
-                    className="xl:hidden fixed bottom-[5.25rem] end-4 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-elev-floating backdrop-blur-sm transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="xl:hidden fixed top-[4.75rem] end-4 z-40 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-elev-floating backdrop-blur-sm transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                     {open ? <X className="w-5 h-5" aria-hidden="true" /> : <List className="w-5 h-5" aria-hidden="true" />}
                 </button>

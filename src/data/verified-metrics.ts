@@ -24,17 +24,24 @@ export interface VerifiedMetric {
 export const VERIFIED_METRICS: VerifiedMetric[] = [
   {
     id: "delivered",
-    value: "8",
+    value: "25+",
     label: "Projects delivered",
     methodology:
-      "Work that reached a real recipient: client-accepted systems and websites, one own product in production, and shipped employment deliverables. Demo builds are tracked separately and excluded.",
+      "Client, employment, and own-product work that reached a real recipient — public-facing websites and private internal systems combined. Owner-supplied figure; demo builds excluded.",
+  },
+  {
+    id: "public",
+    value: "10+",
+    label: "Publicly accessible",
+    methodology:
+      "Delivered projects publicly reachable online at publication time. Confidential and internal systems cannot be shown and are not counted here.",
   },
   {
     id: "sectors",
     value: "6",
     label: "Sectors served",
     methodology:
-      "Distinct sectors of the delivered set only: disability services, healthcare, telemedicine, real estate, e-commerce, and a digital-asset marketplace.",
+      "Distinct sectors represented across the delivered work: disability services, healthcare, telemedicine, real estate, e-commerce, and a digital-asset marketplace.",
   },
   {
     id: "countries",
