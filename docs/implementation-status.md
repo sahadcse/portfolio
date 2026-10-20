@@ -1,8 +1,27 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R3-equivalent reached early.** R1 · V2-06/07/08 · V2-09…14 · Phase 2 · Refinement · Multilingual · Canva pass · Final refinement · **Corrections pass complete** (owner brief 2026-10-20: TOC text button, Go to Top mobile fix, USA proof line, approved testimonials published, script-warning fix, full tools content, 8 ongoing projects).
-**Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
+**Current stage:** **Complete through the analytics pass.** R1 · V2-06…14 · Phase 2 · Refinement · Multilingual · Canva · Final refinement · Corrections · **Visitor analytics + owner dashboard** (owner brief 2026-10-20).
+**Working branch:** `v2-r1-implementation` — **pushed to origin** (`github.com/sahadcse/portfolio`, new remote branch with upstream tracking) on 2026-10-20 @ `75b2216`. `origin/main` remains at `fc3a46e` (pre-V2) — **production deployment requires the owner to merge this branch into main**; until then any Vercel build of this branch is a Preview/branch deployment.
+
+---
+
+## Completed — Visitor analytics + owner dashboard (2026-10-20, commit `75b2216`, pushed)
+
+### Tracking
+`@vercel/analytics` `<Analytics />` mounted in the locale layout — aggregate, cookieless page views + unique visitors; no cookies, no fingerprinting, no profiles. Privacy notice carries a short disclosure (legal review still recommended before compliance claims). Collection starts when the feature is **enabled in the Vercel dashboard** (owner action) and the deployment goes live — no historical backfill.
+
+### Private dashboard — `/owner/traffic`
+Standalone root layout (`src/app/owner/layout.tsx`, multi-root setup), `noindex/nofollow`, unlinked, `force-dynamic`. **Auth:** password (`OWNER_DASHBOARD_PASSWORD`, constant-time compare), HMAC-signed httpOnly session cookie (`OWNER_SESSION_SECRET`, 7-day, server-verified every request), in-memory login throttling, logout. **Data:** server-side-only calls to the Vercel Web Analytics API (`visits/count` lifetime totals + `visits/aggregate?by=day` last 30 days) — no client-exposed credentials, no unauthenticated data path. **States:** missing-config (names the variables, never values), empty (real zero), API error (generic), OK (summary cards + SVG daily chart + table, UTC grouping, PV≠visitor note).
+
+### Middleware fix (root-caused)
+`/owner/traffic` 404'd despite a successful build: the next-intl proxy matcher intercepted it into the locale catch-all. Matcher now excludes `owner`.
+
+### Env vars (see `.env.example` + `docs/visitor-analytics-setup.md`)
+`OWNER_DASHBOARD_PASSWORD` · `OWNER_SESSION_SECRET` · `VERCEL_TOKEN` · `VERCEL_PROJECT_ID` · `VERCEL_TEAM_ID` (team projects only). **Owner setup required on Vercel:** add these env vars, enable Web Analytics on the project, redeploy. Until then the hosted dashboard shows the named-missing-variables state.
+
+### Verification evidence
+Build clean incl. `ƒ /owner/traffic` · auth flow browser-tested (unauth → login only; wrong password → generic error, no session; correct → signed httpOnly cookie + dashboard; logout → cleared) · unconfigured state renders the named-missing-vars message · secret grep over client bundle clean · regression: /, /about, /de, /ar 200s and 404 semantics intact after the matcher change · lint 0/0 · strict i18n OK.
 
 ---
 
