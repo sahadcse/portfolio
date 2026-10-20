@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { IBM_Plex_Sans_Arabic, Inter, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -143,6 +144,9 @@ export default async function LocaleLayout({
             </main>
             <Footer />
             <GoToTop />
+            {/* Aggregate, cookieless page-view tracking (Vercel Web Analytics) —
+                no personal profiles; see docs/visitor-analytics-setup.md */}
+            <Analytics />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

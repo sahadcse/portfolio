@@ -56,6 +56,9 @@ export default async function PrivacyPage({
                         <p className="text-muted-foreground">
                             I do not collect sensitive personal data such as government IDs, financial information, or health records unless explicitly required for a specific project and with your written consent.
                         </p>
+                        <p className="text-muted-foreground mt-4">
+                            This site also measures aggregate, cookieless traffic statistics through Vercel Web Analytics — anonymous page-view and visitor counts with no advertising profiles and no cross-site tracking.
+                        </p>
                     </section>
 
                     <section className="mb-10">

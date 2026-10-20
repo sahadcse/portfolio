@@ -10,10 +10,11 @@ import { routing } from "./i18n/routing";
  *  - Accept-Language is the next signal; default locale last
  *  - no IP/country redirects (the country header may only preselect the
  *    language picker once it exists — never a redirect)
- * The matcher excludes internal paths, route handlers, and static files.
+ * The matcher excludes internal paths, route handlers, static files, and
+ * the private owner area (own standalone root layout, no locale routing).
  */
 export default createMiddleware(routing);
 
 export const config = {
-    matcher: ["/((?!api|trpc|_next|_vercel|.*\\..*).*)"],
+    matcher: ["/((?!api|trpc|_next|_vercel|owner|.*\\..*).*)"],
 };
