@@ -1,8 +1,38 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R3-equivalent reached early.** R1 · V2-06/07/08 · V2-09…14 · Phase 2 · Refinement · **Multilingual + navigation pass complete** (owner brief 2026-10-20: fixed TOC, hero v2, experience profile, Go to Top, footer, USA geo, **full de/fr/ar translations**).
+**Current stage:** **R3-equivalent reached early.** R1 · V2-06/07/08 · V2-09…14 · Phase 2 · Refinement · Multilingual pass · **Canva hero + tools tabs + minimal footer complete** (owner brief 2026-10-20).
 **Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
+
+---
+
+## Completed — Canva hero, tools tabs, minimal footer (2026-10-20, commit `341c1f2`)
+
+### Hero (owner Canva reference) — `Hero.tsx`, `headlineStart/headlineEnd/proofPoints/panel` keys
+Left (~60%): green-dot availability line **"Available for new projects · Direct Founder-Led Delivery (AU / DE / USA)"**, editorial headline (green `First` accent + sparkle motif; lavender `.headline-mark` sweep under the platform phrase), revenue-critical description with accent verbs, CTAs (**View Case Studies** now), check-marked proof row (MVPs→Platforms · 100% IP & Source Ownership · Zero Agency Handoffs). No identity on the business side. Right (~35%): tall bordered profile card — identity header, five hands-on rows (owner-supplied durations: Backend & Database 4+ · Frontend & UI 3.5+ · Cloud & DevOps 3+ · System Design & DSA 2+ · AI-Augmented 1+), AI detail line (Claude Code · Gemini — 100% human-architected & reviewed), Engineering Standards, divider + monospaced SLA statement.
+
+**Factual flags for the owner (spec asked for these explicitly):**
+1. **"ENGINEERING SLA"** reads as a contractual service-level commitment. No such contract is offered anywhere on the site. Implemented verbatim as instructed — say the word and it becomes "Engineering standard" or similar.
+2. The durations are the owner-specified figures; the previous "study + professional combined" honesty note no longer fits the card inventory and was moved out — the About tools section + this handoff remain the labeling of record. Professional project work began Feb 2024; owners reviewing should confirm the "hands-on" framing (including academic work) is intended.
+3. **Gemini** and **NDA Ready** are owner-supplied claims with no repo evidence — implemented as instructed, flagged here.
+
+### Tools I Reach For → interactive tabs — `ToolsTabs.tsx` (About `#tools`)
+ARIA tablist/tab/tabpanel, `aria-selected`, direction-aware Arrow/Home/End keyboard nav (RTL flips), visible focus, scrollable tab bar on mobile, in-place panel swap. Five tabs (AI Tools · Frontend · Backend & DB · DevOps · Soft Skills), each with tagline + working set + an **evidence note naming the backing projects**. All four locales translated. Verified: click selection, ArrowRight (LTR) / ArrowLeft (RTL) advance, panels swap, zero overflow.
+
+### Footer — exact minimal spec — `Footer.tsx`
+Dot-matrix texture + radial spotlight + gradient **SAHADUZZAMAN** wordmark (single line at every width) + 3 social pills (Email/GitHub/LinkedIn) + description + hairline + copyright + 3 legal links. **Nothing else** — the previous invitation band, site columns, CV and Blog links were removed per the spec's strict inventory. Verified inventory programmatically (3 pills, 3 legal, no CTA, wordmark text exact).
+**Note:** the Blog route is now reachable only by direct URL (it had already left the navbar; the footer was its last visible link). Flag if a Blog link should live somewhere.
+
+### Theme-system fix (caught by dark-footer verification)
+Tailwind v4's `dark:` variant defaulted to the OS media query while the site themes via next-themes' `.dark` class — literal `dark:` utilities (footer, ThemeToggle icon swap) ignored the site's own toggle. Fixed with `@custom-variant dark (&:where(.dark, .dark *))` in `globals.css`. All `dark:` utilities now follow the site toggle.
+
+### Wordmark fit (two measured corrections)
+1. Clamp max **9.25rem → 7.75rem**: 12 characters at font-black −0.04em overflow the 1056px container above ~1333px viewports at the spec's cap.
+2. `letter-spacing` as inline style: the Arabic tracking neutralizer (`html[lang=ar] [class*=tracking-]`) correctly strips `tracking-` classes, widening the Latin mark — the neutralizer targets Arabic cursive; the Latin lockup is exempt by design.
+Verified single-line in all 12 capture contexts including AR.
+
+### Gates and evidence (2026-10-20)
+`npm run lint`: **0 errors, 0 warnings** · `npm run i18n:check`: **strict OK** (389/389 ×4 — footer slimmed) · `npm run build`: clean · 12+ captures inspected (`c-hero-*` EN light/dark/mobile + AR/DE/FR, `c-footer-*` EN light/dark/mobile + AR/DE/FR dark, `c-tabs-backend`): hero composition matches the reference in both themes and RTL; tabs all functional; footer inventory exact; **zero console errors, zero horizontal overflow** everywhere.
 
 ---
 
