@@ -9,25 +9,15 @@
     "openMenu": "Menü umschalten"
   },
   "footer": {
-    "tagline": "Full-Stack-Software für Unternehmen, die Tabellenkalkulationen hinter sich gelassen haben — persönlich konzipiert, umgesetzt und betreut.",
-    "ctaTitle": "Haben Sie etwas im Sinn?",
-    "ctaLabel": "Projekt besprechen",
-    "siteLabel": "Website",
-    "connectLabel": "Netzwerk",
     "legalLabel": "Rechtliches",
-    "projects": "Projekte",
-    "services": "Leistungen",
-    "about": "Über mich",
-    "contact": "Kontakt",
-    "blog": "Blog",
-    "cv": "Lebenslauf (PDF)",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "email": "E-Mail",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",
     "impressum": "Impressum",
-    "copyright": "© {year} {name}. Alle Rechte vorbehalten."
+    "description": "Digitale Produkte & Systeme von Ende zu Ende — architektiert, ausgeliefert und persönlich betreut.",
+    "rights": "Alle Rechte vorbehalten."
   },
   "language": {
     "label": "Sprache ändern"
@@ -68,46 +58,50 @@
   },
   "home": {
     "hero": {
-      "headlineStart": "Von der ersten Website",
+      "headlineStart": "Von der <green>ersten</green> Website",
       "headlineEnd": "bis zur <mark>kompletten Plattform</mark>.",
-      "subtitle": "Ich helfe Gründern, Unternehmen und Fachleuten, die digitalen Systeme ihrer Arbeit zu <accent>starten</accent>, zu <accent>verbessern</accent>, zu <accent>automatisieren</accent> und <accent>aufzubauen</accent> — persönlich konzipiert, umgesetzt und betreut, von Anfang bis Ende.",
+      "subtitle": "Ich helfe Gründern, Unternehmen und Fachleuten, <accent>zu starten</accent>, <accent>zu verbessern</accent>, <accent>zu automatisieren</accent> und <accent>aufzubauen</accent> — geschäftskritische Webplattformen und interne Systeme, persönlich architektiert, ausgeliefert und end-to-end betreut.",
       "ctaPrimary": "Projekt besprechen",
-      "ctaSecondary": "Projekte ansehen",
-      "availability": "Derzeit verfügbar für neue Projekte",
+      "ctaSecondary": "Fallstudien ansehen",
+      "availability": "Verfügbar für neue Projekte · Direkte Umsetzung auf Gründerebene (AU / DE / USA)",
       "portraitAlt": "Porträt von Md Sahaduzzaman",
       "panel": {
-        "role": "Software Engineer · Gründer, Sahad Labs",
-        "basedIn": "Dhaka, Bangladesch — AU/DE-Arbeitszeiten",
+        "role": "Software Engineer",
+        "org": "Gründer, Sahad Labs",
+        "basedIn": "Dhaka, BD — Überlappung AU / DE / USA",
         "experienceTitle": "Praktische Erfahrung",
-        "experienceNote": "Studium und Berufspraxis kombiniert; professionelle Projekte seit Anfang 2024.",
         "rows": {
           "backend": {
             "label": "Backend & Datenbank",
-            "since": "4+ J.",
-            "tools": "Node.js · NestJS · Express.js · PostgreSQL · Prisma · Redis"
-          },
-          "devops": {
-            "label": "DevOps",
-            "since": "3+ J.",
-            "tools": "Docker · GitHub Actions · Azure · Vercel"
+            "since": "4+ J."
           },
           "frontend": {
-            "label": "Frontend",
-            "since": "3+ J.",
-            "tools": "React · Next.js · TypeScript · Tailwind CSS"
+            "label": "Frontend & UI-Systeme",
+            "since": "3,5+ J."
+          },
+          "devops": {
+            "label": "Cloud & DevOps",
+            "since": "3+ J."
+          },
+          "systems": {
+            "label": "Systemdesign & DSA",
+            "since": "2+ J."
           },
           "ai": {
-            "label": "KI-Tools",
-            "since": "im Einsatz",
-            "tools": "Claude Code · Cursor — unterstützte Entwicklung; nichts an Kunden ausgeliefert"
-          },
-          "soft": {
-            "label": "Soft Skills",
-            "since": "",
-            "tools": "Eigenverantwortung · schriftliche Kommunikation · eigenständige Umsetzung · Vertraulichkeit"
+            "label": "KI-gestützter Workflow",
+            "since": "1+ J."
           }
-        }
-      }
+        },
+        "aiDetail": "Claude Code · Gemini — schnellere Umsetzung; 100 % menschlich architektiert & geprüft",
+        "standardsTitle": "Engineering-Standards",
+        "standards": "End-to-End-Verantwortung · Schriftliche Async-Kommunikation · Sauberer Code · NDA-bereit",
+        "sla": "ENGINEERING-SLA: Produktionsreife Architektur, dokumentierte Repos & vollständige Übergabefähigkeit."
+      },
+      "proofPoints": [
+        "Vom MVP zur Vollplattform",
+        "100 % IP- & Quellcode-Eigentum",
+        "Keine Agentur-Zwischenschritte"
+      ]
     },
     "proof": {
       "title": "Gelieferte Arbeit, persönlich gezählt",
@@ -228,8 +222,14 @@
           "delivers": "REST-APIs · Authentifizierung und rollenbasierte Zugriffssteuerung · Caching und Query-Optimierung · transaktionale Workflows · containerisierte CI/CD-Deployments",
           "tools": "Node.js · NestJS · Express.js · PostgreSQL · Prisma · Redis · Docker · GitHub Actions",
           "proof": [
-            { "label": "4j Traders — ACID-isoliertes Order-Backend", "href": "/projects/4j-traders" },
-            { "label": "Rushkat — Caching unter gleichzeitiger Last", "href": "/projects/rushkat" }
+            {
+              "label": "4j Traders — ACID-isoliertes Order-Backend",
+              "href": "/projects/4j-traders"
+            },
+            {
+              "label": "Rushkat — Caching unter gleichzeitiger Last",
+              "href": "/projects/rushkat"
+            }
           ]
         },
         "fullstack": {
@@ -239,7 +239,10 @@
           "delivers": "End-to-End-Produktentwicklung · Server-Rendering-Architektur · Komponentendesign · Zahlungs- und Buchungsabläufe",
           "tools": "Next.js · React · TypeScript · Node.js",
           "proof": [
-            { "label": "Online Doctor — Telemedizin-Plattform", "href": "/projects/online-doctor" }
+            {
+              "label": "Online Doctor — Telemedizin-Plattform",
+              "href": "/projects/online-doctor"
+            }
           ]
         },
         "data": {
@@ -249,7 +252,10 @@
           "delivers": "Schemadesign · Indexierungsstrategie · transaktionale Integrität · Ratenzahlungs- und Abrechnungslogik · Reporting-Abfragen",
           "tools": "PostgreSQL · MongoDB · Prisma · Redis",
           "proof": [
-            { "label": "Taqwa Group — Grundstücksbuchung & EMI-Engine", "href": "/projects/taqwa-group" }
+            {
+              "label": "Taqwa Group — Grundstücksbuchung & EMI-Engine",
+              "href": "/projects/taqwa-group"
+            }
           ]
         },
         "workflows": {
@@ -259,8 +265,14 @@
           "delivers": "Buchungs- und Terminplanungs-Engines · administrative Dashboards · rollenbasierte interne Tools · mehrstufige Genehmigungs- und Empfehlungsabläufe",
           "tools": "NestJS · Next.js · PostgreSQL",
           "proof": [
-            { "label": "Cozee Care — Automatisierung der Terminplanung", "href": "/projects/cozee-care" },
-            { "label": "Taqwa Group — operative Dashboards", "href": "/projects/taqwa-group" }
+            {
+              "label": "Cozee Care — Automatisierung der Terminplanung",
+              "href": "/projects/cozee-care"
+            },
+            {
+              "label": "Taqwa Group — operative Dashboards",
+              "href": "/projects/taqwa-group"
+            }
           ]
         },
         "frontend": {
@@ -270,8 +282,14 @@
           "delivers": "Responsive Umsetzung · Barrierefreiheit mit WCAG-Zielvorgaben · Performance mit Blick auf Core Web Vitals · technische SEO-Grundlagen",
           "tools": "Next.js · React · Tailwind CSS",
           "proof": [
-            { "label": "Violina Pflegedienst — UX für Senioren zuerst", "href": "/projects/violina-pflegedienst" },
-            { "label": "NDIS CarePlus — barrierefreie Service-Website", "href": "/projects/ndis-careplus" }
+            {
+              "label": "Violina Pflegedienst — UX für Senioren zuerst",
+              "href": "/projects/violina-pflegedienst"
+            },
+            {
+              "label": "NDIS CarePlus — barrierefreie Service-Website",
+              "href": "/projects/ndis-careplus"
+            }
           ]
         },
         "integrations": {
@@ -281,8 +299,14 @@
           "delivers": "Integration von Zahlungs-Gateways · Peer-to-Peer-Videoberatung · Echtzeit-Synchronisierung · Anbindung von Drittanbieter-APIs",
           "tools": "Stripe · SSLCommerz · WebRTC · Socket.IO · Azure",
           "proof": [
-            { "label": "Online Doctor — WebRTC-Video + Stripe", "href": "/projects/online-doctor" },
-            { "label": "Taqwa Group — SSLCommerz-Checkout", "href": "/projects/taqwa-group" }
+            {
+              "label": "Online Doctor — WebRTC-Video + Stripe",
+              "href": "/projects/online-doctor"
+            },
+            {
+              "label": "Taqwa Group — SSLCommerz-Checkout",
+              "href": "/projects/taqwa-group"
+            }
           ]
         }
       }
@@ -430,31 +454,40 @@
     },
     "tools": {
       "title": "Tools, zu denen ich greife",
-      "subtitle": "Der Arbeitsbestand, ehrlich gruppiert — einschließlich der Grenze zwischen der KI, die ich nutze, und der KI, die ich ausliefere.",
+      "subtitle": "Wählen Sie eine Kategorie, um den dahinterstehenden Werkzeugkasten zu sehen — ehrlich gruppiert, belegt.",
       "categories": {
         "ai": {
           "label": "KI-Tools",
-          "items": "Claude Code · Cursor",
-          "note": "KI-gestützter Entwicklungsworkflow — genutzt für Tempo in meinem eigenen Prozess. Bis heute wurden keine KI-Funktionen an Kunden ausgeliefert."
+          "tagline": "KI-gestützte Entwicklung — keine ausgelieferten KI-Features",
+          "items": "Claude Code & Gemini für Recherche, Struktur und Review-Schleifen — schnellere Umsetzung bei 100 % menschlich architektierter und geprüfter Ergebnisse.",
+          "note": "Bis heute wurden keine KI-Funktionen für Kunden ausgeliefert — das ist mein Entwicklungs-Workflow, kein Produktangebot."
         },
         "frontend": {
           "label": "Frontend",
-          "items": "React · Next.js · TypeScript · Tailwind CSS"
+          "tagline": "Oberflächen, die auf echten Geräten standhalten",
+          "items": "React · Next.js (App Router) · TypeScript · Tailwind CSS — Komponentenarchitektur, WCAG als Ziel Maßstab und Core-Web-Vitals-bewusste Umsetzung.",
+          "note": "Belegt durch Violina Pflegedienst, NDIS CarePlus und das FCSC-Portal."
         },
         "backend": {
-          "label": "Backend & Datenbank",
-          "items": "Node.js · NestJS · Express.js · PostgreSQL · MongoDB · Prisma · Redis"
+          "label": "Backend & DB",
+          "tagline": "APIs und Datenschichten, die unter Last korrekt bleiben",
+          "items": "Node.js · NestJS · Express.js REST-APIs · PostgreSQL · MongoDB · Prisma-Datenmodellierung · Redis-Caching · JWT + RBAC-Autorisierung · ACID-Transaktionen.",
+          "note": "Belegt durch 4j Traders, Rushkat und die Buchungs-Engine der Taqwa Group."
         },
         "devops": {
           "label": "DevOps",
-          "items": "Docker · GitHub Actions · Azure · Vercel"
+          "tagline": "Vom Commit bis zur Produktion — wiederholbar",
+          "items": "Docker-Containerisierung · GitHub-Actions-CI/CD · Azure- und Vercel-Deployment · Umgebungskonfiguration und Delivery-Pipelines.",
+          "note": "Belegt durch die 4j-Traders-Pipeline und die Infrastrukturverantwortung bei der Taqwa Group."
         },
         "soft": {
           "label": "Soft Skills",
-          "items": "Schriftliche asynchrone Kommunikation · End-to-End-Verantwortung · Übergabe in klarer Sprache · Vertraulichkeit · eigenständige Umsetzung",
-          "note": "Jeweils belegt in der Berufsgeschichte — Einzel-Engineer-Umsetzung bei der Taqwa Group, Kundenübergaben bei Sahad Labs."
+          "tagline": "Die Arbeitspraxis, die Kunden spüren",
+          "items": "End-to-End-Verantwortung · schriftliche Async-Kommunikation · saubere Dokumentation und Übergabe · Vertraulichkeit und NDA-Bereitschaft · eigenständige Umsetzung.",
+          "note": "Belegt durch Solo-Engineering bei der Taqwa Group und Kundenübergaben bei Sahad Labs."
         }
-      }
+      },
+      "tabsLabel": "Werkzeugkategorien"
     }
   },
   "services": {
@@ -483,7 +516,10 @@
         ],
         "evidence": "Mein eigenes Telemedizin-Produkt — Videoberatung, Terminplanung und Zahlungen — läuft als einsatzfähiges System, nicht als Demo.",
         "proofs": [
-          { "label": "Online Doctor", "href": "/projects/online-doctor" }
+          {
+            "label": "Online Doctor",
+            "href": "/projects/online-doctor"
+          }
         ]
       },
       "backend": {
@@ -500,8 +536,14 @@
         ],
         "evidence": "Anstellungstätigkeit bei 4j Traders (ACID-isoliertes Bestell-Backend, RBAC, Docker-Pipelines) und bei Rushkat (Caching und Abfrageoptimierung unter gleichzeitiger Last).",
         "proofs": [
-          { "label": "4j Traders", "href": "/projects/4j-traders" },
-          { "label": "Rushkat", "href": "/projects/rushkat" }
+          {
+            "label": "4j Traders",
+            "href": "/projects/4j-traders"
+          },
+          {
+            "label": "Rushkat",
+            "href": "/projects/rushkat"
+          }
         ]
       },
       "workflows": {
@@ -517,8 +559,14 @@
         ],
         "evidence": "Bei der Taqwa Group habe ich tabellenbasierte Grundstücksverkäufe durch ein gemeinsames Buchungs- und Ratenzahlungssystem ersetzt; bei Cozee Care habe ich den Terminplanungs-Workflow für einen regulierten Anbieter von Dienstleistungen für Menschen mit Behinderung automatisiert.",
         "proofs": [
-          { "label": "Taqwa Group", "href": "/projects/taqwa-group" },
-          { "label": "Cozee Care", "href": "/projects/cozee-care" }
+          {
+            "label": "Taqwa Group",
+            "href": "/projects/taqwa-group"
+          },
+          {
+            "label": "Cozee Care",
+            "href": "/projects/cozee-care"
+          }
         ]
       },
       "websites": {
@@ -534,9 +582,18 @@
         ],
         "evidence": "Umgesetzt für Kunden aus Gesundheitswesen und Dienstleistungen für Menschen mit Behinderung in Deutschland und Australien, darunter eine deutsche Pflegeplattform mit Senioren im Fokus und barrierefreie NDIS-Service-Websites.",
         "proofs": [
-          { "label": "Violina Pflegedienst", "href": "/projects/violina-pflegedienst" },
-          { "label": "NDIS CarePlus", "href": "/projects/ndis-careplus" },
-          { "label": "FCSC Healthcare Portal", "href": "/projects/fcsc-healthcare" }
+          {
+            "label": "Violina Pflegedienst",
+            "href": "/projects/violina-pflegedienst"
+          },
+          {
+            "label": "NDIS CarePlus",
+            "href": "/projects/ndis-careplus"
+          },
+          {
+            "label": "FCSC Healthcare Portal",
+            "href": "/projects/fcsc-healthcare"
+          }
         ]
       }
     },

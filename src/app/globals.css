@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Theme strategy: next-themes toggles the .dark class on <html> — the
+   dark: variant must follow the class, not the OS media query (the
+   default). Without this, literal dark: utilities (footer, ThemeToggle
+   icon swap) ignore the site's own toggle. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Per-glyph fallback: Latin renders with Inter/JetBrains Mono, Arabic with
      IBM Plex Sans Arabic (plan §10.8) */
@@ -184,16 +190,21 @@
     font-weight: 600;
   }
 
-  /* Headline marker (hero): a restrained highlighter sweep behind the
-     bottom of the phrase — decoration over live text, invisible if
-     styling fails. Mirrors safely in RTL (background position is
-     direction-neutral). */
+  /* Headline marker (hero): a restrained lavender/indigo highlighter sweep
+     behind the bottom of the phrase — decoration over live text, invisible
+     if styling fails. Direction-neutral (mirrors safely in RTL). */
   .headline-mark {
     background-image: linear-gradient(
       to top,
-      hsl(var(--primary) / 0.18) 0.28em,
-      transparent 0.28em
+      hsl(var(--primary) / 0.16) 0.3em,
+      transparent 0.3em
     );
+  }
+
+  /* Headline green accent ("First") — the success token keeps the hero's
+     single green element consistent with the availability dot */
+  .headline-green {
+    color: hsl(var(--success));
   }
 
   /* Sticky-header offset for same-page anchor targets */

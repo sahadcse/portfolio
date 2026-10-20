@@ -9,25 +9,15 @@
     "openMenu": "تبديل القائمة"
   },
   "footer": {
-    "tagline": "برمجيات Full-Stack للشركات التي تجاوزت مرحلة جداول البيانات — تصميم وتنفيذ وصيانة بشكل شخصي.",
-    "ctaTitle": "هل لديك فكرة في ذهنك؟",
-    "ctaLabel": "لنتحدث عن مشروعك",
-    "siteLabel": "الموقع",
-    "connectLabel": "تواصل",
-    "legalLabel": "معلومات قانونية",
-    "projects": "المشاريع",
-    "services": "الخدمات",
-    "about": "نبذة عني",
-    "contact": "تواصل",
-    "blog": "المدونة",
-    "cv": "السيرة الذاتية (PDF)",
+    "legalLabel": "قانوني",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "email": "البريد الإلكتروني",
     "privacy": "سياسة الخصوصية",
     "terms": "شروط الخدمة",
     "impressum": "الإشعار القانوني (Impressum)",
-    "copyright": "© {year} {name}. جميع الحقوق محفوظة."
+    "description": "منتجات وأنظمة رقمية من البداية إلى النهاية — بتصميم وتنفيذ وصيانة شخصية.",
+    "rights": "جميع الحقوق محفوظة."
   },
   "language": {
     "label": "تغيير اللغة"
@@ -68,46 +58,50 @@
   },
   "home": {
     "hero": {
-      "headlineStart": "من موقعك الأول",
+      "headlineStart": "من <green>أول</green> موقع لك",
       "headlineEnd": "إلى <mark>منصة متكاملة</mark>.",
-      "subtitle": "أساعد المؤسسين والشركات والمحترفين على <accent>إطلاق</accent> و<accent>تحسين</accent> و<accent>أتمتة</accent> و<accent>بناء</accent> الأنظمة الرقمية التي يعتمد عليها عملهم — بتصميم وتنفيذ وصيانة شخصية من البداية إلى النهاية.",
+      "subtitle": "أساعد المؤسسين والشركات والمحترفين على <accent>إطلاق</accent> و<accent>تحسين</accent> و<accent>أتمتة</accent> و<accent>بناء</accent> منصات ويب وأنظمة داخلية حرجة لأعمالهم — بتصميم وتنفيذ وصيانة شخصية من البداية إلى النهاية.",
       "ctaPrimary": "لنتحدث عن مشروعك",
-      "ctaSecondary": "استعرض المشاريع",
-      "availability": "متاح حاليًا لمشاريع جديدة",
+      "ctaSecondary": "استعرض دراسات الحالة",
+      "availability": "متاح لمشاريع جديدة · تنفيذ مباشر بقيادة المؤسس (أستراليا / ألمانيا / الولايات المتحدة)",
       "portraitAlt": "صورة شخصية لـ Md Sahaduzzaman",
       "panel": {
-        "role": "مهندس برمجيات · مؤسس Sahad Labs",
-        "basedIn": "دكا، بنغلاديش — بتوقيت أستراليا/ألمانيا",
+        "role": "مهندس برمجيات",
+        "org": "مؤسس، Sahad Labs",
+        "basedIn": "دكا، بنغلاديش — تغطية أستراليا / ألمانيا / الولايات المتحدة",
         "experienceTitle": "خبرة عملية",
-        "experienceNote": "دراسة وعمل مهني معًا؛ مشاريع مهنية منذ أوائل 2024.",
         "rows": {
           "backend": {
             "label": "الواجهة الخلفية وقواعد البيانات",
-            "since": "4+ سنوات",
-            "tools": "Node.js · NestJS · Express.js · PostgreSQL · Prisma · Redis"
-          },
-          "devops": {
-            "label": "DevOps",
-            "since": "3+ سنوات",
-            "tools": "Docker · GitHub Actions · Azure · Vercel"
+            "since": "4+ سنوات"
           },
           "frontend": {
-            "label": "الواجهة الأمامية",
-            "since": "3+ سنوات",
-            "tools": "React · Next.js · TypeScript · Tailwind CSS"
+            "label": "الواجهة الأمامية وأنظمة UI",
+            "since": "3.5+ سنوات"
+          },
+          "devops": {
+            "label": "السحابة و DevOps",
+            "since": "3+ سنوات"
+          },
+          "systems": {
+            "label": "تصميم الأنظمة وهياكل البيانات",
+            "since": "2+ سنوات"
           },
           "ai": {
-            "label": "أدوات الذكاء الاصطناعي",
-            "since": "قيد الاستخدام",
-            "tools": "Claude Code · Cursor — تطوير بمساعدة الذكاء الاصطناعي؛ لم يُشحن أي شيء إلى العملاء"
-          },
-          "soft": {
-            "label": "المهارات الشخصية",
-            "since": "",
-            "tools": "تحمّل المسؤولية · تواصل كتابي · تسليم مستقل · سرية"
+            "label": "سير عمل معزز بالذكاء الاصطناعي",
+            "since": "1+ سنة"
           }
-        }
-      }
+        },
+        "aiDetail": "Claude Code · Gemini — سرعة أعلى؛ هندسة ومراجعة بشرية 100%",
+        "standardsTitle": "معايير هندسية",
+        "standards": "ملكية كاملة · تواصل كتابي غير متزامن · كود نظيف · جاهزية اتفاقيات السرية",
+        "sla": "اتفاقية مستوى الخدمة الهندسية: بنية جاهزة للإنتاج، مستودعات موثقة وقدرة تسليم كاملة."
+      },
+      "proofPoints": [
+        "من النموذج الأولي إلى المنصة الكاملة",
+        "ملكية كاملة للملكية الفكرية والكود",
+        "بلا وسيطاء وكالات"
+      ]
     },
     "proof": {
       "title": "أعمال مُسلَّمة، بعدّ شخصي",
@@ -228,8 +222,14 @@
           "delivers": "واجهات REST · مصادقة وصلاحيات وصول قائمة على الأدوار · تخزين مؤقت وتحسين استعلامات · سير عمل تعاملية · عمليات نشر بحاويات عبر CI/CD",
           "tools": "Node.js · NestJS · Express.js · PostgreSQL · Prisma · Redis · Docker · GitHub Actions",
           "proof": [
-            { "label": "4j Traders — خلفية طلبات بعزل ACID", "href": "/projects/4j-traders" },
-            { "label": "Rushkat — تخزين مؤقت تحت أحمال متزامنة", "href": "/projects/rushkat" }
+            {
+              "label": "4j Traders — خلفية طلبات بعزل ACID",
+              "href": "/projects/4j-traders"
+            },
+            {
+              "label": "Rushkat — تخزين مؤقت تحت أحمال متزامنة",
+              "href": "/projects/rushkat"
+            }
           ]
         },
         "fullstack": {
@@ -239,7 +239,10 @@
           "delivers": "بناء منتجات من البداية إلى النهاية · بنية عرض من الخادم · تصميم مكونات · تدفقات دفع وجدولة",
           "tools": "Next.js · React · TypeScript · Node.js",
           "proof": [
-            { "label": "Online Doctor — منصة طب عن بُعد", "href": "/projects/online-doctor" }
+            {
+              "label": "Online Doctor — منصة طب عن بُعد",
+              "href": "/projects/online-doctor"
+            }
           ]
         },
         "data": {
@@ -249,7 +252,10 @@
           "delivers": "تصميم مخططات قواعد البيانات · استراتيجية الفهرسة · سلامة المعاملات · منطق الأقساط والفوترة · استعلامات التقارير",
           "tools": "PostgreSQL · MongoDB · Prisma · Redis",
           "proof": [
-            { "label": "Taqwa Group — محرك حجز قطع الأراضي وأقساط EMI", "href": "/projects/taqwa-group" }
+            {
+              "label": "Taqwa Group — محرك حجز قطع الأراضي وأقساط EMI",
+              "href": "/projects/taqwa-group"
+            }
           ]
         },
         "workflows": {
@@ -259,8 +265,14 @@
           "delivers": "محركات حجز وجدولة · لوحات تحكم إدارية · أدوات داخلية قائمة على الأدوار · تدفقات موافقة وإحالة متعددة الخطوات",
           "tools": "NestJS · Next.js · PostgreSQL",
           "proof": [
-            { "label": "Cozee Care — أتمتة الجدولة", "href": "/projects/cozee-care" },
-            { "label": "Taqwa Group — لوحات تحكم تشغيلية", "href": "/projects/taqwa-group" }
+            {
+              "label": "Cozee Care — أتمتة الجدولة",
+              "href": "/projects/cozee-care"
+            },
+            {
+              "label": "Taqwa Group — لوحات تحكم تشغيلية",
+              "href": "/projects/taqwa-group"
+            }
           ]
         },
         "frontend": {
@@ -270,8 +282,14 @@
           "delivers": "بنيات متجاوبة · إمكانية وصول موجهة بمعايير WCAG · أداء واعٍ بمؤشرات Core Web Vitals · أسس SEO تقنية",
           "tools": "Next.js · React · Tailwind CSS",
           "proof": [
-            { "label": "Violina Pflegedienst — تجربة مستخدم تضع كبار السن أولًا", "href": "/projects/violina-pflegedienst" },
-            { "label": "NDIS CarePlus — موقع خدمات ميسّر الوصول", "href": "/projects/ndis-careplus" }
+            {
+              "label": "Violina Pflegedienst — تجربة مستخدم تضع كبار السن أولًا",
+              "href": "/projects/violina-pflegedienst"
+            },
+            {
+              "label": "NDIS CarePlus — موقع خدمات ميسّر الوصول",
+              "href": "/projects/ndis-careplus"
+            }
           ]
         },
         "integrations": {
@@ -281,8 +299,14 @@
           "delivers": "تكامل بوابات الدفع · استشارات مرئية مباشرة بين الأطراف · مزامنة في الوقت الفعلي · ربط واجهات API لأطراف ثالثة",
           "tools": "Stripe · SSLCommerz · WebRTC · Socket.IO · Azure",
           "proof": [
-            { "label": "Online Doctor — فيديو WebRTC + Stripe", "href": "/projects/online-doctor" },
-            { "label": "Taqwa Group — دفع عبر SSLCommerz", "href": "/projects/taqwa-group" }
+            {
+              "label": "Online Doctor — فيديو WebRTC + Stripe",
+              "href": "/projects/online-doctor"
+            },
+            {
+              "label": "Taqwa Group — دفع عبر SSLCommerz",
+              "href": "/projects/taqwa-group"
+            }
           ]
         }
       }
@@ -430,31 +454,40 @@
     },
     "tools": {
       "title": "الأدوات التي أعتمد عليها",
-      "subtitle": "أدوات العمل، مصنّفة بصدق — بما في ذلك الخط الفاصل بين الذكاء الاصطناعي الذي أستخدمه والذي أسلّمه.",
+      "subtitle": "اختر فئة لعرض الأدوات التي تستند إليها — مصنفة بصدق ومدعومة بالأدلة.",
       "categories": {
         "ai": {
           "label": "أدوات الذكاء الاصطناعي",
-          "items": "Claude Code · Cursor",
-          "note": "سير عمل مدعوم بالذكاء الاصطناعي — أستخدمه لسرعة التنفيذ في عمليتي الخاصة. لم تُسلَّم للعملاء أي ميزات ذكاء اصطناعي حتى اليوم."
+          "tagline": "تطوير معزز بالذكاء الاصطناعي — لا ميزات ذكاء اصطناعي مُسلَّمة",
+          "items": "Claude Code و Gemini للبحث والهيكلة وحلقات المراجعة — سرعة أعلى بمخرجات مصمَّمة ومراجَعة بشريًا بالكامل.",
+          "note": "لم تُسلَّم أي ميزات ذكاء اصطناعي للعملاء حتى الآن — هذا سير عملي التطويري، وليس عرضًا لمنتج."
         },
         "frontend": {
           "label": "الواجهة الأمامية",
-          "items": "React · Next.js · TypeScript · Tailwind CSS"
+          "tagline": "واجهات تصمد على الأجهزة الحقيقية",
+          "items": "React · Next.js (App Router) · TypeScript · Tailwind CSS — هندسة مكوّنات، إتاحة مستهدفة بمعايير WCAG، وأداء واعٍ بمؤشرات Core Web Vitals.",
+          "note": "موثَّق في Violina Pflegedienst و NDIS CarePlus وبوابة FCSC."
         },
         "backend": {
-          "label": "الواجهة الخلفية وقواعد البيانات",
-          "items": "Node.js · NestJS · Express.js · PostgreSQL · MongoDB · Prisma · Redis"
+          "label": "Backend & DB",
+          "tagline": "واجهات API وطبقات بيانات تظل صحيحة تحت الضغط",
+          "items": "واجهات REST بـ Node.js · NestJS · Express.js · PostgreSQL · MongoDB · نمذجة Prisma · تخزين Redis مؤقت · تصريح JWT + RBAC · معاملات ACID.",
+          "note": "موثَّق في 4j Traders و Rushkat ومحرك حجز Taqwa Group."
         },
         "devops": {
           "label": "DevOps",
-          "items": "Docker · GitHub Actions · Azure · Vercel"
+          "tagline": "من الـ commit إلى الإنتاج، بشكل قابل للتكرار",
+          "items": "حاويات Docker · CI/CD عبر GitHub Actions · نشر على Azure و Vercel · إعداد البيئات وخطوط التسليم.",
+          "note": "موثَّق في خط 4j Traders ومسؤولية البنية التحتية في Taqwa Group."
         },
         "soft": {
           "label": "المهارات الشخصية",
-          "items": "تواصل كتابي غير متزامن · ملكية من البداية إلى النهاية · تسليم بلغة بسيطة · سرية · تسليم مستقل",
-          "note": "كل منها موثق في التاريخ المهني — تسليم كمهندس وحيد في Taqwa Group، وتسليمات للعملاء في Sahad Labs."
+          "tagline": "ممارسات عمل يشعر بها العملاء فعلًا",
+          "items": "ملكية كاملة · تواصل كتابي غير متزامن · توثيق وتسليم نظيفان · سرية وجاهزية لاتفاقيات السرية · تنفيذ مستقل.",
+          "note": "موثَّق في التنفيذ المنفرد في Taqwa Group وتسليمات العملاء في Sahad Labs."
         }
-      }
+      },
+      "tabsLabel": "فئات الأدوات"
     }
   },
   "services": {
@@ -483,7 +516,10 @@
         ],
         "evidence": "منتجي الخاص للطب عن بُعد — استشارات مرئية وجدولة ومدفوعات — يعمل كنظام فعلي، لا كعرض توضيحي.",
         "proofs": [
-          { "label": "Online Doctor", "href": "/projects/online-doctor" }
+          {
+            "label": "Online Doctor",
+            "href": "/projects/online-doctor"
+          }
         ]
       },
       "backend": {
@@ -500,8 +536,14 @@
         ],
         "evidence": "عمل بصفة موظف في 4j Traders (خلفية طلبات بعزل ACID، وRBAC، ومسارات Docker) وفي Rushkat (تخزين مؤقت وتحسين استعلامات تحت أحمال متزامنة).",
         "proofs": [
-          { "label": "4j Traders", "href": "/projects/4j-traders" },
-          { "label": "Rushkat", "href": "/projects/rushkat" }
+          {
+            "label": "4j Traders",
+            "href": "/projects/4j-traders"
+          },
+          {
+            "label": "Rushkat",
+            "href": "/projects/rushkat"
+          }
         ]
       },
       "workflows": {
@@ -517,8 +559,14 @@
         ],
         "evidence": "في Taqwa Group استبدلت مبيعات القطع المدارة بجداول البيانات بنظام مشترك للحجز والأقساط؛ وفي Cozee Care أتمتت سير عمل الجدولة لمزود خدمات ذوي إعاقة خاضع للتنظيم.",
         "proofs": [
-          { "label": "Taqwa Group", "href": "/projects/taqwa-group" },
-          { "label": "Cozee Care", "href": "/projects/cozee-care" }
+          {
+            "label": "Taqwa Group",
+            "href": "/projects/taqwa-group"
+          },
+          {
+            "label": "Cozee Care",
+            "href": "/projects/cozee-care"
+          }
         ]
       },
       "websites": {
@@ -534,9 +582,18 @@
         ],
         "evidence": "سلّمت لعملاء في الرعاية الصحية وخدمات ذوي الإعاقة في ألمانيا وأستراليا، بما في ذلك منصة رعاية ألمانية تضع كبار السن أولًا ومواقع خدمات NDIS ميسّرة الوصول.",
         "proofs": [
-          { "label": "Violina Pflegedienst", "href": "/projects/violina-pflegedienst" },
-          { "label": "NDIS CarePlus", "href": "/projects/ndis-careplus" },
-          { "label": "FCSC Healthcare Portal", "href": "/projects/fcsc-healthcare" }
+          {
+            "label": "Violina Pflegedienst",
+            "href": "/projects/violina-pflegedienst"
+          },
+          {
+            "label": "NDIS CarePlus",
+            "href": "/projects/ndis-careplus"
+          },
+          {
+            "label": "FCSC Healthcare Portal",
+            "href": "/projects/fcsc-healthcare"
+          }
         ]
       }
     },

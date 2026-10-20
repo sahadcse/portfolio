@@ -9,25 +9,15 @@
     "openMenu": "Toggle menu"
   },
   "footer": {
-    "tagline": "Full-stack software for businesses that have outgrown spreadsheets — designed, delivered, and maintained personally.",
-    "ctaTitle": "Have something in mind?",
-    "ctaLabel": "Discuss a project",
-    "siteLabel": "Site",
-    "connectLabel": "Connect",
+    "description": "End-to-end digital products & systems — architected, shipped, and maintained personally.",
     "legalLabel": "Legal",
-    "projects": "Projects",
-    "services": "Services",
-    "about": "About",
-    "contact": "Contact",
-    "blog": "Blog",
-    "cv": "CV (PDF)",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "email": "Email",
+    "rights": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "impressum": "Legal Notice (Impressum)",
-    "copyright": "© {year} {name}. All rights reserved."
+    "impressum": "Legal Notice (Impressum)"
   },
   "language": {
     "label": "Change language"
@@ -68,45 +58,34 @@
   },
   "home": {
     "hero": {
-      "headlineStart": "From a first website",
+      "availability": "Available for new projects · Direct Founder-Led Delivery (AU / DE / USA)",
+      "headlineStart": "From a <green>First</green> Website",
       "headlineEnd": "to a <mark>full platform</mark>.",
-      "subtitle": "I help founders, businesses, and professionals <accent>launch</accent>, <accent>improve</accent>, <accent>automate</accent>, and <accent>build</accent> the digital systems their work depends on — designed, delivered, and maintained personally, end to end.",
+      "subtitle": "I help founders, businesses, and professionals <accent>launch</accent>, <accent>improve</accent>, <accent>automate</accent>, and <accent>build</accent> revenue-critical web platforms and internal systems — architected, shipped, and maintained personally, end to end.",
       "ctaPrimary": "Discuss a project",
-      "ctaSecondary": "See the projects",
-      "availability": "Currently available for new projects",
+      "ctaSecondary": "View Case Studies",
+      "proofPoints": [
+        "MVPs to Full Platforms",
+        "100% IP & Source Ownership",
+        "Zero Agency Handoffs"
+      ],
       "portraitAlt": "Portrait of Md Sahaduzzaman",
       "panel": {
-        "role": "Software Engineer · Founder, Sahad Labs",
-        "basedIn": "Dhaka, Bangladesh — AU/DE hours",
+        "role": "Software Engineer",
+        "org": "Founder, Sahad Labs",
+        "basedIn": "Dhaka, BD — AU / DE / USA Overlap",
         "experienceTitle": "Hands-on experience",
-        "experienceNote": "Study and professional work combined; professional projects since early 2024.",
         "rows": {
-          "backend": {
-            "label": "Backend & Database",
-            "since": "4+ yrs",
-            "tools": "Node.js · NestJS · Express.js · PostgreSQL · Prisma · Redis"
-          },
-          "devops": {
-            "label": "DevOps",
-            "since": "3+ yrs",
-            "tools": "Docker · GitHub Actions · Azure · Vercel"
-          },
-          "frontend": {
-            "label": "Frontend",
-            "since": "3+ yrs",
-            "tools": "React · Next.js · TypeScript · Tailwind CSS"
-          },
-          "ai": {
-            "label": "AI Tools",
-            "since": "in use",
-            "tools": "Claude Code · Cursor — assisted development; nothing shipped to clients"
-          },
-          "soft": {
-            "label": "Soft skills",
-            "since": "",
-            "tools": "Ownership · written communication · independent delivery · confidentiality"
-          }
-        }
+          "backend": { "label": "Backend & Database", "since": "4+ yrs" },
+          "frontend": { "label": "Frontend & UI Systems", "since": "3.5+ yrs" },
+          "devops": { "label": "Cloud & DevOps", "since": "3+ yrs" },
+          "systems": { "label": "System Design and DSA", "since": "2+ yrs" },
+          "ai": { "label": "AI-Augmented Workflow", "since": "1+ yrs" }
+        },
+        "aiDetail": "Claude Code · Gemini — faster velocity; 100% human-architected & reviewed",
+        "standardsTitle": "Engineering standards",
+        "standards": "End-to-End Ownership · Async Written Comms · Clean Code · NDA Ready",
+        "sla": "ENGINEERING SLA: Production-ready architecture, documented repos & full handoff capability."
       }
     },
     "proof": {
@@ -430,29 +409,38 @@
     },
     "tools": {
       "title": "Tools I reach for",
-      "subtitle": "The working set, honestly grouped — including the line between AI I use and AI I ship.",
+      "subtitle": "Select a category to see the working set behind it — honestly grouped, evidence-backed.",
+      "tabsLabel": "Tool categories",
       "categories": {
         "ai": {
-          "label": "AI tools",
-          "items": "Claude Code · Cursor",
-          "note": "AI-assisted development workflow — used for velocity in my own process. No AI features have been shipped to clients to date."
+          "label": "AI Tools",
+          "tagline": "AI-assisted development — not shipped AI features",
+          "items": "Claude Code & Gemini for research, scaffolding, and review loops — faster velocity with 100% human-architected and human-reviewed output.",
+          "note": "No AI-powered client features have been delivered to date; this is my development workflow, not a product offering."
         },
         "frontend": {
           "label": "Frontend",
-          "items": "React · Next.js · TypeScript · Tailwind CSS"
+          "tagline": "Interfaces that hold up on real devices",
+          "items": "React · Next.js (App Router) · TypeScript · Tailwind CSS — component architecture, WCAG-targeted accessibility, and Core-Web-Vitals-conscious builds.",
+          "note": "Evidenced by Violina Pflegedienst, NDIS CarePlus, and the FCSC portal."
         },
         "backend": {
-          "label": "Backend & database",
-          "items": "Node.js · NestJS · Express.js · PostgreSQL · MongoDB · Prisma · Redis"
+          "label": "Backend & DB",
+          "tagline": "APIs and data layers that stay correct under load",
+          "items": "Node.js · NestJS · Express.js REST APIs · PostgreSQL · MongoDB · Prisma data modeling · Redis caching · JWT + RBAC authorization · ACID transactional workflows.",
+          "note": "Evidenced by 4j Traders, Rushkat, and the Taqwa Group booking engine."
         },
         "devops": {
           "label": "DevOps",
-          "items": "Docker · GitHub Actions · Azure · Vercel"
+          "tagline": "From commit to production, repeatably",
+          "items": "Docker containerization · GitHub Actions CI/CD · Azure and Vercel deployment · environment configuration and delivery pipelines.",
+          "note": "Evidenced by the 4j Traders pipeline and Taqwa Group infrastructure ownership."
         },
         "soft": {
-          "label": "Soft skills",
-          "items": "Written async communication · end-to-end ownership · plain-language handover · confidentiality · independent delivery",
-          "note": "Each evidenced in the working history — sole-engineer delivery at Taqwa Group, client handovers at Sahad Labs."
+          "label": "Soft Skills",
+          "tagline": "The working practices clients actually feel",
+          "items": "End-to-end ownership · async written communication · clean documentation and handover · confidentiality and NDA readiness · independent delivery.",
+          "note": "Evidenced in sole-engineer delivery at Taqwa Group and client handovers at Sahad Labs."
         }
       }
     }

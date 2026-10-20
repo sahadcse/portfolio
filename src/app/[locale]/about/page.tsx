@@ -8,6 +8,7 @@ import PageHero from "@/components/shared/PageHero";
 import CtaPanel from "@/components/shared/CtaPanel";
 import TestimonialSection from "@/components/shared/TestimonialSection";
 import OnThisPage from "@/components/shared/OnThisPage";
+import ToolsTabs from "@/components/about/ToolsTabs";
 import { IdentityName } from "@/components/shared/IdentityName";
 import { SITE_CONFIG } from "@/data/site-config";
 import { localeAlternates, localePath, type Locale } from "@/i18n/config";
@@ -33,9 +34,6 @@ export async function generateMetadata({
 const JOURNEY_KEYS = ["education", "taqwa", "rushkat", "fourj", "sahadlabs"] as const;
 const PRINCIPLE_KEYS = ["understand", "secure", "performance", "ownership", "handover"] as const;
 const WORKING_KEYS = ["timezones", "communication", "plainLanguage", "confidentiality"] as const;
-const TOOL_CATEGORY_KEYS = ["ai", "frontend", "backend", "devops", "soft"] as const;
-/** Categories carrying an evidence note (AI = assisted-not-shipped; soft = where evidenced). */
-const TOOLS_WITH_NOTES: readonly string[] = ["ai", "soft"];
 
 export default async function AboutPage({
     params,
@@ -225,34 +223,14 @@ export default async function AboutPage({
             {/* Testimonials — renders only from permission-gated data */}
             <TestimonialSection />
 
-            {/* Tools I Reach For — five evidence-backed categories, one row on desktop */}
+            {/* Tools I Reach For — interactive tabs (owner brief §3) */}
             <section id="tools" className="py-16 md:py-24 border-y border-border/40 bg-muted/20">
                 <div className="container-content">
                     <div className="max-w-2xl mb-12">
                         <h2 className="text-h2 mb-4">{t("tools.title")}</h2>
                         <p className="text-lead">{t("tools.subtitle")}</p>
                     </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-                        {TOOL_CATEGORY_KEYS.map((key) => (
-                            <div
-                                key={key}
-                                className="rounded-md border border-border/50 bg-card p-5 flex flex-col"
-                            >
-                                <h3 className="text-label uppercase tracking-wide text-foreground mb-3">
-                                    {t(`tools.categories.${key}.label`)}
-                                </h3>
-                                <p className="text-mono text-muted-foreground leading-relaxed">
-                                    {t(`tools.categories.${key}.items`)}
-                                </p>
-                                {TOOLS_WITH_NOTES.includes(key) && (
-                                    <p className="text-sm text-muted-foreground mt-3 pt-3 border-t border-border/40">
-                                        {t(`tools.categories.${key}.note`)}
-                                      </p>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                    <ToolsTabs />
                 </div>
             </section>
 
