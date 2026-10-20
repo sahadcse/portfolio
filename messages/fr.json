@@ -49,7 +49,8 @@
   "a11y": {
     "onThisPage": "Sur cette page",
     "goToTop": "Haut de page",
-    "close": "Fermer"
+    "close": "Fermer",
+    "tocButton": "Table des matières"
   },
   "notFound": {
     "title": "Page introuvable",
@@ -107,7 +108,7 @@
     },
     "proof": {
       "title": "Travaux livrés, comptés personnellement",
-      "proofLine": "Conçu et livré pour des clients et des équipes en <accent>Australie, en Allemagne et au-delà</accent> — santé, immobilier, e-commerce, et plus encore.",
+      "proofLine": "Conçu et livré pour des clients et des équipes en <accent>Australie, Allemagne, aux États-Unis et au-delà</accent> — santé, immobilier, e-commerce et plus.",
       "methodologyLabel": "Comment cela est compté",
       "footnote": "Comptages personnels — méthodologie indiquée pour chaque chiffre.",
       "privateNote": "Plus de 25 projets livrés — dont des sites web publics et des systèmes internes privés. Plus de 10 sont librement accessibles en ligne ; le travail confidentiel ne peut pas toujours être montré."
@@ -175,7 +176,7 @@
     },
     "trust": {
       "title": "Pourquoi les clients font confiance à ce travail",
-      "subtitle": "Aucun témoignage acheté — cette section présente des éléments que vous pouvez vérifier vous-même. Les témoignages clients apparaîtront ici dès qu'une autorisation écrite sera consignée.",
+      "subtitle": "Les mots des organisations derrière les travaux — à côté de ce que vous pouvez vérifier vous-même.",
       "cards": {
         "live": {
           "tag": "En ligne actuellement",
@@ -326,7 +327,8 @@
     "summaryDelivered": "Plus de 25 projets livrés pour des clients et des employeurs — sites publics et systèmes internes privés confondus.",
     "summaryPublic": "Plus de 10 sont accessibles publiquement en ligne. Les projets ci-dessous forment cet ensemble public, avec les preuves les plus solides.",
     "privateTitle": "Pourquoi certains travaux ne sont pas montrés",
-    "privateText": "Une grande partie des projets livrés sont des systèmes opérationnels internes — moteurs de planification, plateformes de réservation, outils d'administration — qui vivent derrière des connexions clients ou sous confidentialité. Leur absence ici tient à la nature du travail, pas à un manque. Quand un système peut être décrit sans rien dévoiler, son étude de cas le dit."
+    "privateText": "Une grande partie des projets livrés sont des systèmes opérationnels internes — moteurs de planification, plateformes de réservation, outils d'administration — qui vivent derrière des connexions clients ou sous confidentialité. Leur absence ici tient à la nature du travail, pas à un manque. Quand un système peut être décrit sans rien dévoiler, son étude de cas le dit.",
+    "ongoingLabel": "En cours"
   },
   "caseStudy": {
     "back": "Retour à tous les projets",
@@ -479,11 +481,15 @@
         "frontend": {
           "label": "Frontend",
           "tagline": "Des interfaces qui tiennent sur les vrais appareils",
-          "note": "Démontré par Violina Pflegedienst, NDIS CarePlus et le portail FCSC.",
+          "note": "Travail React/Next.js de base démontré par Violina Pflegedienst, Award Care et le portail FCSC.",
           "groups": [
             {
               "label": "Frameworks & bibliothèques",
-              "items": "React · Next.js · TypeScript"
+              "items": "React · Next.js · Three.js · Bootstrap · jQuery"
+            },
+            {
+              "label": "Plateformes & builders web",
+              "items": "Webflow · Framer · Wix · Squarespace"
             },
             {
               "label": "Styles",
@@ -491,49 +497,49 @@
             },
             {
               "label": "Pratiques",
-              "items": "Design responsive · builds axés performance · SEO technique · accessibilité ciblée WCAG"
+              "items": "Design responsive · conception et réalisation axées performance · conception et réalisation SEO-friendly · UI accessible et maintenable"
             }
           ]
         },
         "backend": {
           "label": "Backend & BD",
           "tagline": "Des API et des couches de données justes sous charge",
-          "note": "Démontré par 4j Traders, Rushkat et le moteur de réservation Taqwa Group.",
+          "note": "Travail Node.js/NestJS/PostgreSQL/MongoDB démontré par 4j Traders, Rushkat et le moteur de réservation Taqwa Group.",
           "groups": [
             {
-              "label": "APIs & runtime",
-              "items": "API REST Node.js · NestJS · Express.js"
+              "label": "Frameworks & langages backend",
+              "items": "Node.js · NestJS · Laravel · Python · FastAPI · Django"
             },
             {
-              "label": "Bases de données & ORM",
-              "items": "PostgreSQL · MongoDB · Prisma"
+              "label": "Bases de données & accès aux données",
+              "items": "PostgreSQL · MySQL · MongoDB · Mongoose · MongoDB Atlas"
             },
             {
-              "label": "Intégrité & performance",
-              "items": "Transactions ACID · cache Redis · optimisation de requêtes"
+              "label": "APIs & intégration",
+              "items": "Développement et intégration d'API REST · transactions ACID · cache Redis · optimisation de requêtes"
             },
             {
               "label": "Auth & temps réel",
-              "items": "JWT · RBAC (NestJS Guards) · Socket.IO · WebRTC"
+              "items": "JWT · RBAC (NestJS Guards) · WebSockets · Socket.IO · WebRTC"
             }
           ]
         },
         "devops": {
           "label": "DevOps",
           "tagline": "Du commit à la production, de façon répétable",
-          "note": "Démontré par la pipeline 4j Traders et la responsabilité infrastructure Taqwa Group.",
+          "note": "Travail CI/CD et conteneurs démontré par la pipeline 4j Traders et la responsabilité infrastructure Taqwa Group.",
           "groups": [
             {
-              "label": "Conteneurs & CI/CD",
-              "items": "Docker · GitHub Actions"
+              "label": "Infrastructure & serveurs",
+              "items": "administration VPS · serveurs privés virtuels · Hetzner · Hostinger VPS"
             },
             {
-              "label": "Cloud & hébergement",
-              "items": "Azure · Vercel"
+              "label": "Déploiement cloud & conteneurs",
+              "items": "Microsoft Azure Container Apps · Azure · Docker · CI/CD GitHub Actions"
             },
             {
-              "label": "Serveurs",
-              "items": "administration VPS"
+              "label": "Hébergement applicatif & déploiement",
+              "items": "Render · Railway · Vercel"
             }
           ]
         },

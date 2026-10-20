@@ -277,12 +277,14 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "ndis-careplus",
-    title: "NDIS CarePlus Website",
+    title: "Award Care — NDIS Services Website",
+    shortTitle: "Award Care",
     clientSector: "Disability Services (Australia)",
     sectorShort: "Disability services",
     status: "supporting",
     evidenceLevel: "client-site",
     role: "Solo engineer — build and deployment",
+    ongoing: true,
     businessProblem:
       "NDIS service provider needed a professional web presence to clearly communicate service offerings to participants and families navigating Australia's National Disability Insurance Scheme.",
     businessOutcome:
@@ -301,6 +303,214 @@ export const PROJECTS: Project[] = [
     cardImageUrl: "/images/projects/award-care-card.webp",
     ogImageUrl: "/images/projects/award-care-og.jpg",
     liveUrl: "https://award-care-landing.vercel.app/",
+    codeUrl: "https://github.com/sahadcse",
+  },
+  {
+    id: "midpac-charter-intake",
+    title: "Mid-Pacific Jets — Charter Intake Concept",
+    shortTitle: "Mid-Pacific Charter Intake",
+    clientSector: "Private Aviation (Concept Prototype)",
+    sectorShort: "Aviation",
+    status: "supporting",
+    evidenceLevel: "demo",
+    role: "Solo engineer — concept, design, and build",
+    ongoing: true,
+    businessProblem:
+      "Charter customers need a structured way to describe a private-flight mission — route, timing, and passenger load — before talking to a charter desk.",
+    businessOutcome:
+      "Designed a five-step intake concept that turns a flight brief into a clean, hand-off-ready summary — explicitly a prototype, not connected to any operator's systems.",
+    oneLineOutcome:
+      "Five-step charter-request intake prototype: mission, route, and passengers distilled into a hand-off summary.",
+    technicalArchitecture:
+      "Deployed as a static preview on Vercel. The form runs entirely client-side — nothing is submitted anywhere — by design.",
+    metrics: [
+      "Five-step guided intake flow",
+      "Client-side only — no data leaves the browser",
+      "Explicitly labelled a concept prototype",
+    ],
+    tags: ["Prototype", "UX Flow", "Aviation"],
+    imageUrl: "/images/projects/midpac-charter.webp",
+    cardImageUrl: "/images/projects/midpac-charter-card.webp",
+    ogImageUrl: "/images/projects/midpac-charter-og.jpg",
+    liveUrl: "https://midpac-charter-intake.vercel.app/",
+    codeUrl: "https://github.com/sahadcse",
+  },
+  {
+    id: "flipo-concept",
+    title: "Flipo — Brand Licensing Market Intelligence (Concept)",
+    shortTitle: "Flipo",
+    clientSector: "Market Intelligence (Concept Prototype)",
+    sectorShort: "Market research",
+    status: "supporting",
+    evidenceLevel: "demo",
+    role: "Solo engineer — concept site for Sahad Labs",
+    ongoing: true,
+    businessProblem:
+      "A brand-licensing market-intelligence concept needed a pitch-ready site explaining its methodology — simulated purchase scenarios, audience profiling, and global data extrapolation.",
+    businessOutcome:
+      "Built the concept site presenting FLIPO's methodology, team, and track record — labelled a Sahad Labs concept prototype throughout.",
+    oneLineOutcome:
+      "Concept site pitching a brand-licensing intelligence service: methodology, team, and enquiry flow.",
+    technicalArchitecture:
+      "Deployed as a static concept preview on Vercel under the Sahad Labs prototype label.",
+    metrics: [
+      "Methodology and track-record presentation",
+      "Enquiry flow and FAQ",
+      "Labelled a Sahad Labs concept prototype",
+    ],
+    tags: ["Prototype", "Landing Page", "Concept"],
+    imageUrl: "/images/projects/flipo.webp",
+    cardImageUrl: "/images/projects/flipo-card.webp",
+    ogImageUrl: "/images/projects/flipo-og.jpg",
+    liveUrl: "https://flipo-concept.vercel.app/",
+    codeUrl: "https://github.com/sahadcse",
+  },
+  {
+    id: "hodgkins-bookkeeping",
+    title: "Hodgkins Bookkeeping — Program Landing Page",
+    shortTitle: "Hodgkins Bookkeeping",
+    clientSector: "Financial Services (Demonstration Prototype)",
+    sectorShort: "Financial services",
+    status: "supporting",
+    evidenceLevel: "demo",
+    role: "Solo engineer — concept, design, and build",
+    ongoing: true,
+    businessProblem:
+      "A remote bookkeeping service needed a focused landing page for a year-end books-cleanup program: program steps, deliverables, pricing shape, and an inquiry path.",
+    businessOutcome:
+      "Built the program landing page — steps, deliverables, audience fit, FAQ, and inquiry form — labelled a demonstration prototype.",
+    oneLineOutcome:
+      "Year-end books-cleanup program page: steps, deliverables, FAQ, and inquiry flow for a Georgia bookkeeping firm.",
+    technicalArchitecture:
+      "Deployed as a static demonstration prototype on Vercel; the inquiry form is not yet connected to a backend, by prototype design.",
+    metrics: [
+      "Program steps and deliverables presented",
+      "FAQ and audience-fit sections",
+      "Explicitly labelled a demonstration prototype",
+    ],
+    tags: ["Prototype", "Landing Page", "Bookkeeping"],
+    imageUrl: "/images/projects/hodgkins.webp",
+    cardImageUrl: "/images/projects/hodgkins-card.webp",
+    ogImageUrl: "/images/projects/hodgkins-og.jpg",
+    liveUrl: "https://hodgkins-bookkeeping.vercel.app/",
+    codeUrl: "https://github.com/sahadcse",
+  },
+  {
+    id: "glass-cleaning",
+    title: "Sea of Glass — Window Cleaning Website",
+    shortTitle: "Sea of Glass",
+    clientSector: "Home Services (Australia)",
+    sectorShort: "Home services",
+    status: "supporting",
+    evidenceLevel: "client-site",
+    role: "Solo engineer — design implementation, build, and deployment",
+    ongoing: true,
+    businessProblem:
+      "A premium window-cleaning business in Northern Rivers, NSW needed a site presenting its commercial, domestic, and accommodation (short-stay turnover) service streams with a clear quote-request path.",
+    businessOutcome:
+      "Launched a service website covering the three service streams with testimonials, FAQ, and before/after showcases.",
+    oneLineOutcome:
+      "Three-stream service website with before/after showcases and a quote-request flow for an NSW window-cleaning business.",
+    technicalArchitecture:
+      "Built with Next.js and deployed on Vercel: responsive service pages, quote-request flow, and locally relevant content for the Byron Bay area.",
+    metrics: [
+      "Commercial, domestic, and accommodation streams",
+      "Quote-request flow",
+      "Before/after showcases and FAQ",
+    ],
+    tags: ["Next.js", "Service Business", "Australia"],
+    imageUrl: "/images/projects/glass-cleaning.webp",
+    cardImageUrl: "/images/projects/glass-cleaning-card.webp",
+    ogImageUrl: "/images/projects/glass-cleaning-og.jpg",
+    liveUrl: "https://glass-cleaning.vercel.app/",
+    codeUrl: "https://github.com/sahadcse",
+  },
+  {
+    id: "omr-portal",
+    title: "Online OMR Portal — Exam Platform Landing",
+    shortTitle: "OMR Portal",
+    clientSector: "Education Technology",
+    sectorShort: "Education tech",
+    status: "supporting",
+    evidenceLevel: "own-production",
+    role: "Solo founder-engineer — concept and build",
+    ongoing: true,
+    businessProblem:
+      "Coaching institutes and students need a modern way to run OMR-based practice exams with performance tracking and real-time evaluation management.",
+    businessOutcome:
+      "Launched the platform landing presence for an online OMR portal — practice exams, performance tracking, and real-time evaluation management. Product build ongoing.",
+    oneLineOutcome:
+      "Landing presence for an online OMR exam platform — practice, tracking, and real-time evaluation. Build ongoing.",
+    technicalArchitecture:
+      "Deployed on Vercel. The landing presence is live; the product itself is under active development.",
+    metrics: [
+      "Practice-exam platform positioning",
+      "Performance tracking and evaluation messaging",
+    ],
+    tags: ["EdTech", "Landing Page", "Ongoing"],
+    imageUrl: "/images/projects/omrportal.webp",
+    cardImageUrl: "/images/projects/omrportal-card.webp",
+    ogImageUrl: "/images/projects/omrportal-og.jpg",
+    liveUrl: "https://omrportal.vercel.app/",
+    codeUrl: "https://github.com/sahadcse",
+  },
+  {
+    id: "landfutter",
+    title: "Landfutter — Feed & Pet Supply Website",
+    shortTitle: "Landfutter",
+    clientSector: "Retail (Germany)",
+    sectorShort: "Retail",
+    status: "supporting",
+    evidenceLevel: "client-site",
+    role: "Solo engineer — design implementation, build, and deployment",
+    ongoing: true,
+    businessProblem:
+      "A Thuringian feed and pet-supply retailer needed a German-language site presenting its brands, advice, opening hours, and a delivery-request path for the Erfurt region.",
+    businessOutcome:
+      "Launched a German-language website covering the retailer's ranges (poultry, pigeon, horse, and pet feed from known brands), advice positioning, delivery requests, and legal pages.",
+    oneLineOutcome:
+      "German-language retailer site: brands, advice, opening hours, and delivery requests for the Erfurt region.",
+    technicalArchitecture:
+      "Built with Next.js and deployed on Vercel: German-language content, delivery-request flow, and legal pages (Impressum/Datenschutz) for the German market.",
+    metrics: [
+      "German-language retail presentation",
+      "Delivery-request flow",
+      "German legal pages included",
+    ],
+    tags: ["Next.js", "German Market", "Retail"],
+    imageUrl: "/images/projects/landfutter.webp",
+    cardImageUrl: "/images/projects/landfutter-card.webp",
+    ogImageUrl: "/images/projects/landfutter-og.jpg",
+    liveUrl: "https://landfutter.vercel.app/",
+    codeUrl: "https://github.com/sahadcse",
+  },
+  {
+    id: "sahad-labs-site",
+    title: "Sahad Labs — Agency Website",
+    shortTitle: "Sahad Labs",
+    clientSector: "Digital Agency (Own Website)",
+    sectorShort: "Agency",
+    status: "supporting",
+    evidenceLevel: "own-production",
+    role: "Founder-engineer — design, build, and multilingual delivery",
+    ongoing: true,
+    businessProblem:
+      "Sahad Labs needed its own site to present services, case studies, its delivery process, and founder background to an international audience — separate from this personal portfolio.",
+    businessOutcome:
+      "Launched the agency's own multilingual website (English, Arabic, French, German) covering services, case studies, a six-stage delivery process, and insights.",
+    oneLineOutcome:
+      "The agency's own multilingual site (EN/AR/FR/DE): services, case studies, process, and background.",
+    technicalArchitecture:
+      "Built with Next.js and deployed on Vercel with four-locale routing and RTL support for the Arabic version.",
+    metrics: [
+      "Four languages including RTL Arabic",
+      "Services, case studies, process, and FAQ",
+    ],
+    tags: ["Next.js", "Multilingual", "Sahad Labs"],
+    imageUrl: "/images/projects/sahadlabs.webp",
+    cardImageUrl: "/images/projects/sahadlabs-card.webp",
+    ogImageUrl: "/images/projects/sahadlabs-og.jpg",
+    liveUrl: "https://sahadlabs.tech/en",
     codeUrl: "https://github.com/sahadcse",
   },
   {

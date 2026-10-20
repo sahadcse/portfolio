@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { IBM_Plex_Sans_Arabic, Inter, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -97,7 +98,15 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
-        <script
+        {/* Pre-hydration theme init — prevents a light/dark flash before React
+            mounts. Rendered via next/script (beforeInteractive): Next hoists it
+            into the initial HTML and does NOT re-render it during client-side
+            locale navigation, which is what triggered React's
+            "script tag inside React component" warning with the previous raw
+            <script> element. Same code as before; no nonce/CSP in this app. */}
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {

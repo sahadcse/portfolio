@@ -48,6 +48,7 @@
   },
   "a11y": {
     "onThisPage": "On this page",
+    "tocButton": "Table of Contents",
     "goToTop": "Go to top",
     "close": "Close"
   },
@@ -92,7 +93,7 @@
     },
     "proof": {
       "title": "Delivered work, personally counted",
-      "proofLine": "Designed and delivered for clients and teams in <accent>Australia, Germany, and beyond</accent> — healthcare, real estate, e-commerce, and more.",
+      "proofLine": "Designed and delivered for clients and teams in <accent>Australia, Germany, the USA, and beyond</accent> — healthcare, real estate, e-commerce, and more.",
       "methodologyLabel": "How this is counted",
       "privateNote": "More than 25 projects delivered — including public-facing websites and private internal systems. More than 10 are publicly accessible; confidential work cannot always be shown.",
       "footnote": "Personal counts — methodology shown for every number."
@@ -160,7 +161,7 @@
     },
     "trust": {
       "title": "Why clients trust the work",
-      "subtitle": "No purchased quotes — this section shows things you can verify yourself. Client testimonials appear here once written permission is on file.",
+      "subtitle": "Words from the organizations behind the work — alongside things you can verify yourself.",
       "draftLabel": "DRAFT — NOT APPROVED",
       "cards": {
         "live": {
@@ -273,7 +274,8 @@
   },
   "projectsIndex": {
     "title": "Selected projects",
-    "intro": "A curated set of delivered work — client systems, client websites, an own product, and employment-tier engineering. Every card states its evidence tier so you know exactly what you are looking at.",
+    "intro": "A curated set of delivered and ongoing work — client systems, client websites, an own product, and employment-tier engineering. Every card states its evidence tier so you know exactly what you are looking at.",
+    "ongoingLabel": "Ongoing",
     "summaryTitle": "The work at a glance",
     "summaryDelivered": "25+ projects delivered for clients and employers — public-facing websites and private internal systems combined.",
     "summaryPublic": "10+ of them are publicly accessible online. The projects below are that public set, with the strongest evidence attached.",
@@ -434,34 +436,35 @@
         },
         "frontend": {
           "label": "Frontend",
-          "tagline": "Interfaces that hold up on real devices",
+          "tagline": "Implementation technologies and design/development practices",
           "groups": [
-            { "label": "Frameworks & libraries", "items": "React · Next.js · TypeScript" },
+            { "label": "Frameworks & libraries", "items": "React · Next.js · Three.js · Bootstrap · jQuery" },
+            { "label": "Website platforms & builders", "items": "Webflow · Framer · Wix · Squarespace" },
             { "label": "Styling", "items": "Tailwind CSS · design-token component systems" },
-            { "label": "Practices", "items": "Responsive design · performance-focused builds · technical SEO · WCAG-targeted accessibility" }
+            { "label": "Practices", "items": "Responsive design · performance-focused design and implementation · SEO-friendly design and implementation · accessible, maintainable UI" }
           ],
-          "note": "Evidenced by Violina Pflegedienst, NDIS CarePlus, and the FCSC portal."
+          "note": "Core React/Next.js work evidenced by Violina Pflegedienst, Award Care, and the FCSC portal."
         },
         "backend": {
           "label": "Backend & DB",
-          "tagline": "APIs and data layers that stay correct under load",
+          "tagline": "APIs, data layers, and real-time systems",
           "groups": [
-            { "label": "APIs & runtime", "items": "Node.js · NestJS · Express.js (REST)" },
-            { "label": "Databases & ORM", "items": "PostgreSQL · MongoDB · Prisma" },
-            { "label": "Integrity & performance", "items": "ACID transactions · Redis caching · query optimization" },
-            { "label": "Auth & real-time", "items": "JWT · RBAC (NestJS Guards) · Socket.IO · WebRTC" }
+            { "label": "Backend frameworks & languages", "items": "Node.js · NestJS · Laravel · Python · FastAPI · Django" },
+            { "label": "Databases & data access", "items": "PostgreSQL · MySQL · MongoDB · Mongoose · MongoDB Atlas" },
+            { "label": "APIs & integration", "items": "REST API development and integration · ACID transactions · Redis caching · query optimization" },
+            { "label": "Auth & real-time systems", "items": "JWT · RBAC (NestJS Guards) · WebSockets · Socket.IO · WebRTC" }
           ],
-          "note": "Evidenced by 4j Traders, Rushkat, and the Taqwa Group booking engine."
+          "note": "Node.js/NestJS/PostgreSQL/MongoDB work evidenced by 4j Traders, Rushkat, and the Taqwa Group booking engine."
         },
         "devops": {
           "label": "DevOps",
-          "tagline": "From commit to production, repeatably",
+          "tagline": "Infrastructure, deployment, and delivery",
           "groups": [
-            { "label": "Containers & CI/CD", "items": "Docker · GitHub Actions" },
-            { "label": "Cloud & hosting", "items": "Azure · Vercel" },
-            { "label": "Servers", "items": "VPS administration" }
+            { "label": "Infrastructure & servers", "items": "VPS administration · virtual private servers · Hetzner · Hostinger VPS" },
+            { "label": "Cloud & container deployment", "items": "Microsoft Azure Container Apps · Azure · Docker · GitHub Actions CI/CD" },
+            { "label": "Application hosting & deployment", "items": "Render · Railway · Vercel" }
           ],
-          "note": "Evidenced by the 4j Traders pipeline and Taqwa Group infrastructure ownership."
+          "note": "CI/CD and container work evidenced by the 4j Traders pipeline and Taqwa Group infrastructure ownership."
         },
         "soft": {
           "label": "Soft Skills",

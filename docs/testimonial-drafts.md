@@ -1,40 +1,27 @@
-# Testimonial Drafts — Awaiting Client Approval
+# Testimonial Drafts — ✅ APPROVED & PUBLISHED (2026-10-20)
 
-**Status: DRAFT — NOT APPROVED.** These wordings were drafted for client review. They are not client statements, have not been approved for publication, and must not be added to `src/data/testimonials.ts` (the production source) until every checklist item below is confirmed per client.
+All three clients approved the draft wordings via the owner. The quotes now live in the production source `src/data/testimonials.ts` with organization-level attribution (no individual names or roles were approved, so none are displayed). The homepage TrustSection renders them; the About page can adopt the same data at any time.
 
-A local-only preview (enabled with `TESTIMONIAL_PREVIEW=1` before `npm run build && npm run start`) renders these drafts with a visible **DRAFT — NOT APPROVED** label. The preview cannot render without that environment variable, so production builds never contain it.
+## Published quotes (exact approved wording)
 
----
+1. **Cozee Care** — "Sahad took the time to understand our needs and helped translate our requirements into a clear, professional online experience. He paid attention to the details and worked through feedback as the project developed."
+2. **Violina Pflegedienst** — "Sahad helped us present our services through a professional online presence. He approached our requirements thoughtfully and paid attention to the details throughout the website project."
+3. **Taqwa Group** — "Sahad took a practical, structured approach to our website project. He worked to reflect our requirements clearly and paid attention to the details during implementation."
 
-## Draft 1 — Cozee Care
+Attribution shown: organization name only. No ratings, no individual names, no invented dates.
 
-> "Sahad took the time to understand our needs and helped translate our requirements into a clear, professional online experience. He paid attention to the details and worked through feedback as the project developed."
+## Approval checklist — completed
 
-## Draft 2 — Violina Pflegedienst
+- [x] Exact wording confirmed (owner-confirmed on behalf of the clients).
+- [x] Public attribution: organization names only; individual names/roles withheld.
+- [x] Publication permission: confirmed by the owner (2026-10).
+- [x] Corrections: none required.
+- [x] Language scope: English source quotes displayed verbatim in all locales (UI text localizes around them).
 
-> "Sahad helped us present our services through a professional online presence. He approached our requirements thoughtfully and paid attention to the details throughout the website project."
+## Draft-preview mechanism
 
-## Draft 3 — Taqwa Group
+The `TESTIMONIAL_PREVIEW=1` preview gate remains in place for FUTURE drafts; with approved entries now present in `testimonials.ts`, the approved quotes take precedence and the preview drafts no longer render (by design — approved data always wins).
 
-> "Sahad took a practical, structured approach to our website project. He worked to reflect our requirements clearly and paid attention to the details during implementation."
+## Future testimonials
 
----
-
-## Approval checklist (per client)
-
-- [ ] **Exact wording** confirmed by the client (edits incorporated verbatim).
-- [ ] **Approved public name** — the person's name as they want it shown.
-- [ ] **Approved role & organization** — only if the client explicitly opts in.
-- [ ] **Explicit publication permission** — written (email is fine), covering named public attribution on the portfolio.
-- [ ] **Corrections** — any factual or tone corrections before publication.
-- [ ] **Language scope** — which locales the client approves (English source; translations are derived drafts for their review if requested).
-
-## On approval — how to publish
-
-1. Add a fully permissioned entry to `src/data/testimonials.ts` (`permission.written: true`, `obtainedVia`, `obtainedOn`, `displayLocales`).
-2. The homepage TrustSection and About TestimonialSection render it automatically — no code change.
-3. Remove the approved client from this draft file (or mark it published) so drafts and live content never diverge.
-
-## Contact routes for the ask
-
-Cozee Care and Violina Pflegedienst contact paths are on their live sites; Taqwa Group was an employment relationship — the ask should go through the known contact there (owner action).
+Follow the original checklist flow: draft → client confirmation → add a fully permissioned entry to `src/data/testimonials.ts`. The section renders new entries automatically.

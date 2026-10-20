@@ -40,6 +40,8 @@ export interface Project {
   title: string;
   /** Compact display name for cards */
   shortTitle?: string;
+  /** Work still in progress — renders a localized "Ongoing" chip on cards */
+  ongoing?: boolean;
   clientSector: string;
   /** Normalized sector for index filter chips (§6.4) */
   sectorShort?: string;

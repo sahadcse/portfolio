@@ -29,11 +29,56 @@ export interface Testimonial {
 }
 
 /**
- * Status (plan §9.4): zero verified testimonial entries exist today, so
- * V2 ships with the section hidden. Add a fully-permissioned entry here
- * and it appears — no code change needed.
+ * Status (2026-10-20): the three clients below approved their testimonial
+ * wordings via the owner (drafts + checklist: docs/testimonial-drafts.md).
+ * Attribution is organization-level — no individual names/roles were
+ * approved, so none are shown. Quotes are kept in the exact approved
+ * English wording; UI text around them localizes.
  */
-export const TESTIMONIALS: Testimonial[] = [];
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: "cozee-care",
+    quote: {
+      en: "Sahad took the time to understand our needs and helped translate our requirements into a clear, professional online experience. He paid attention to the details and worked through feedback as the project developed.",
+    },
+    authorName: "Cozee Care",
+    authorRole: "",
+    relation: "client",
+    projectRef: "cozee-care",
+    obtainedVia: "written-statement",
+    obtainedOn: "2026-10",
+    permission: { written: true, scope: "named-publication", on: "2026-10" },
+    displayLocales: ["en"],
+  },
+  {
+    id: "violina-pflegedienst",
+    quote: {
+      en: "Sahad helped us present our services through a professional online presence. He approached our requirements thoughtfully and paid attention to the details throughout the website project.",
+    },
+    authorName: "Violina Pflegedienst",
+    authorRole: "",
+    relation: "client",
+    projectRef: "violina-pflegedienst",
+    obtainedVia: "written-statement",
+    obtainedOn: "2026-10",
+    permission: { written: true, scope: "named-publication", on: "2026-10" },
+    displayLocales: ["en"],
+  },
+  {
+    id: "taqwa-group",
+    quote: {
+      en: "Sahad took a practical, structured approach to our website project. He worked to reflect our requirements clearly and paid attention to the details during implementation.",
+    },
+    authorName: "Taqwa Group",
+    authorRole: "",
+    relation: "client",
+    projectRef: "taqwa-group",
+    obtainedVia: "written-statement",
+    obtainedOn: "2026-10",
+    permission: { written: true, scope: "named-publication", on: "2026-10" },
+    displayLocales: ["en"],
+  },
+];
 
 /** Only entries that pass the written-permission gate may ever render. */
 export function approvedTestimonials(): Testimonial[] {

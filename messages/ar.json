@@ -49,7 +49,8 @@
   "a11y": {
     "onThisPage": "في هذه الصفحة",
     "goToTop": "العودة إلى الأعلى",
-    "close": "إغلاق"
+    "close": "إغلاق",
+    "tocButton": "محتويات الصفحة"
   },
   "notFound": {
     "title": "الصفحة غير موجودة",
@@ -107,7 +108,7 @@
     },
     "proof": {
       "title": "أعمال مُسلَّمة، بعدّ شخصي",
-      "proofLine": "صممت وسلّمت لعملاء وفرق في <accent>أستراليا وألمانيا وما بعدهما</accent> — رعاية صحية وعقارات وتجارة إلكترونية والمزيد.",
+      "proofLine": "صُمِّم وسُلِّم لعملاء وفرق في <accent>أستراليا وألمانيا والولايات المتحدة وخارجها</accent> — رعاية صحية وعقارات وتجارة إلكترونية والمزيد.",
       "methodologyLabel": "كيف يُحتسب هذا",
       "footnote": "أرقام بعدّ شخصي — منهجية معروضة لكل رقم.",
       "privateNote": "أكثر من 25 مشروعًا مُسلَّمًا — منها مواقع عامة وأنظمة داخلية خاصة. أكثر من 10 متاحة للعموم؛ والعمل السري لا يمكن عرضه دائمًا."
@@ -175,7 +176,7 @@
     },
     "trust": {
       "title": "لماذا يثق العملاء بالعمل",
-      "subtitle": "لا شهادات مشتراة — هذا القسم يعرض أمورًا يمكنك التحقق منها بنفسك. وستظهر شهادات العملاء هنا بمجرد توفر إذن خطي موثق.",
+      "subtitle": "كلمات من الجهات التي تقف خلف الأعمال — إلى جانب أمور يمكنك التحقق منها بنفسك.",
       "cards": {
         "live": {
           "tag": "يعمل الآن",
@@ -326,7 +327,8 @@
     "summaryDelivered": "أكثر من 25 مشروعًا سُلِّمت للعملاء وأصحاب عمل — مواقع عامة وأنظمة داخلية خاصة معًا.",
     "summaryPublic": "أكثر من 10 منها متاحة للعموم عبر الإنترنت. المشاريع أدناه هي تلك المجموعة العامة، مرفقة بأقوى الأدلة.",
     "privateTitle": "لماذا لا تُعرض بعض الأعمال",
-    "privateText": "جزء كبير من المشاريع المُسلَّمة أنظمة تشغيل داخلية — محركات جدولة ومنصات حجز وأدوات إدارية — تعمل خلف تسجيلات دخول العملاء أو ضمن توقعات سرية. غيابها هنا خاصية للعمل نفسه وليس نقصًا في السجل. وحيث يمكن وصف نظام دون الكشف عن التفاصيل، تنصّ على ذلك دراسة الحالة."
+    "privateText": "جزء كبير من المشاريع المُسلَّمة أنظمة تشغيل داخلية — محركات جدولة ومنصات حجز وأدوات إدارية — تعمل خلف تسجيلات دخول العملاء أو ضمن توقعات سرية. غيابها هنا خاصية للعمل نفسه وليس نقصًا في السجل. وحيث يمكن وصف نظام دون الكشف عن التفاصيل، تنصّ على ذلك دراسة الحالة.",
+    "ongoingLabel": "قيد التنفيذ"
   },
   "caseStudy": {
     "back": "العودة إلى جميع المشاريع",
@@ -479,11 +481,15 @@
         "frontend": {
           "label": "الواجهة الأمامية",
           "tagline": "واجهات تصمد على الأجهزة الحقيقية",
-          "note": "موثَّق في Violina Pflegedienst و NDIS CarePlus وبوابة FCSC.",
+          "note": "عمل React/Next.js الأساسي موثَّق في Violina Pflegedienst و Award Care وبوابة FCSC.",
           "groups": [
             {
               "label": "أطر العمل والمكتبات",
-              "items": "React · Next.js · TypeScript"
+              "items": "React · Next.js · Three.js · Bootstrap · jQuery"
+            },
+            {
+              "label": "منصات وبُنَاء المواقع",
+              "items": "Webflow · Framer · Wix · Squarespace"
             },
             {
               "label": "التنسيق",
@@ -491,49 +497,49 @@
             },
             {
               "label": "الممارسات",
-              "items": "تصميم متجاوب · بناء واعٍ بالأداء · SEO تقني · إتاحة مستهدفة بمعايير WCAG"
+              "items": "تصميم متجاوب · تصميم وتنفيذ واعٍ بالأداء · تصميم وتنفيذ صديق لمحركات البحث · واجهات يسهل الوصول إليها وسهلة الصيانة"
             }
           ]
         },
         "backend": {
           "label": "Backend & DB",
           "tagline": "واجهات API وطبقات بيانات تظل صحيحة تحت الضغط",
-          "note": "موثَّق في 4j Traders و Rushkat ومحرك حجز Taqwa Group.",
+          "note": "عمل Node.js/NestJS/PostgreSQL/MongoDB موثَّق في 4j Traders و Rushkat ومحرك حجز Taqwa Group.",
           "groups": [
             {
-              "label": "واجهات API وبيئة التشغيل",
-              "items": "Node.js · NestJS · Express.js (REST)"
+              "label": "أطر العمل ولغات الواجهة الخلفية",
+              "items": "Node.js · NestJS · Laravel · Python · FastAPI · Django"
             },
             {
-              "label": "قواعد البيانات والـ ORM",
-              "items": "PostgreSQL · MongoDB · Prisma"
+              "label": "قواعد البيانات والوصول للبيانات",
+              "items": "PostgreSQL · MySQL · MongoDB · Mongoose · MongoDB Atlas"
             },
             {
-              "label": "السلامة والأداء",
-              "items": "معاملات ACID · تخزين Redis مؤقت · تحسين الاستعلامات"
+              "label": "واجهات API والتكامل",
+              "items": "تطوير واجهات REST ودمجها · معاملات ACID · تخزين Redis مؤقت · تحسين الاستعلامات"
             },
             {
-              "label": "المصادقة والزمن الحقيقي",
-              "items": "JWT · RBAC (NestJS Guards) · Socket.IO · WebRTC"
+              "label": "المصادقة والأنظمة اللحظية",
+              "items": "JWT · RBAC (NestJS Guards) · WebSockets · Socket.IO · WebRTC"
             }
           ]
         },
         "devops": {
           "label": "DevOps",
           "tagline": "من الـ commit إلى الإنتاج، بشكل قابل للتكرار",
-          "note": "موثَّق في خط 4j Traders ومسؤولية البنية التحتية في Taqwa Group.",
+          "note": "عمل CI/CD والحاويات موثَّق في خط 4j Traders ومسؤولية البنية التحتية في Taqwa Group.",
           "groups": [
             {
-              "label": "الحاويات و CI/CD",
-              "items": "Docker · GitHub Actions"
+              "label": "البنية التحتية والخوادم",
+              "items": "إدارة VPS · خوادم افتراضية خاصة · Hetzner · Hostinger VPS"
             },
             {
-              "label": "السحابة والاستضافة",
-              "items": "Azure · Vercel"
+              "label": "النشر السحابي والحاويات",
+              "items": "Microsoft Azure Container Apps · Azure · Docker · CI/CD عبر GitHub Actions"
             },
             {
-              "label": "الخوادم",
-              "items": "إدارة VPS"
+              "label": "استضافة التطبيقات والنشر",
+              "items": "Render · Railway · Vercel"
             }
           ]
         },

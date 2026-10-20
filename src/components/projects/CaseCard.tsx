@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { tierLabel } from "@/data/verified-metrics";
 import type { Project } from "@/types/portfolio";
@@ -11,6 +12,7 @@ import type { Project } from "@/types/portfolio";
  * renders only for a verified live URL.
  */
 export default function CaseCard({ project }: { project: Project }) {
+    const t = useTranslations("projectsIndex");
     const title = project.shortTitle ?? project.title;
 
     return (
@@ -47,6 +49,11 @@ export default function CaseCard({ project }: { project: Project }) {
             </div>
 
             <div className="flex flex-wrap items-center gap-2 mt-4">
+                {project.ongoing && (
+                    <span className="text-mono rounded-sm border border-success/30 bg-success/10 text-success px-2 py-0.5">
+                        {t("ongoingLabel")}
+                    </span>
+                )}
                 <span className="text-mono rounded-sm border border-primary/20 bg-primary/10 text-primary px-2 py-0.5">
                     {tierLabel(project.evidenceLevel)}
                 </span>

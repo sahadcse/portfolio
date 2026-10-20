@@ -1,45 +1,22 @@
-# Tools Claims — Owner Review Checklist
+# Tools Claims — Review Record (RESOLVED 2026-10-20)
 
-Technologies and platforms you asked me to evaluate that **could not be verified** against the current repository evidence (project data, resume-derived experience data, dependency-adjacent records). Nothing below is published. For each item you confirm, tell me which tab/group it belongs in and I'll move it into the live Tools section with an evidence note.
+**Status: implemented.** The owner explicitly directed that all requested technologies and platforms be represented in the live **Tools I Reach For** tabs as owner-provided information. Every item from the original review list is now published in the tab panels:
 
-## Frontend
+## Implemented in the live tabs
 
-| Item | Requested as | Status | Question |
-|---|---|---|---|
-| Three.js | Framework/library | ⚠️ unverified | No project in the portfolio evidences 3D work. Hands-on with shipped work, or study only? |
-| Bootstrap | Framework/library | ⚠️ unverified | Not in any project record. Include? |
-| jQuery | Framework/library | ⚠️ unverified | Not in any project record. Include? |
-| Webflow | Visual website platform | ⚠️ unverified | Confirm hands-on use (which projects?). Listed separately from JS libraries if added. |
-| Framer | Visual website platform | ⚠️ unverified | Same question. |
-| Wix | Visual website platform | ⚠️ unverified | Same question. |
-| Squarespace | Visual website platform | ⚠️ unverified | Same question. |
+| Item | Where it appears |
+|---|---|
+| Three.js, Bootstrap, jQuery | Frontend → Frameworks & libraries |
+| Webflow, Framer, Wix, Squarespace | Frontend → Website platforms & builders (separate group — not labelled JS libraries) |
+| Laravel, Python, FastAPI, Django | Backend & DB → Backend frameworks & languages |
+| MySQL, Mongoose, MongoDB Atlas | Backend & DB → Databases & data access |
+| WebSockets, Socket.IO | Backend & DB → Auth & real-time systems |
+| VPS administration, Hetzner, Hostinger VPS | DevOps → Infrastructure & servers |
+| Microsoft Azure Container Apps | DevOps → Cloud & container deployment |
+| Render, Railway | DevOps → Application hosting & deployment |
 
-## Backend & DB
+## Evidence framing (kept honest)
 
-| Item | Status | Question |
-|---|---|---|
-| Laravel | ⚠️ unverified | PHP/Laravel appears in no project record. Include? |
-| Python (backend) | ⚠️ partial | Listed in your skills data but no shipped backend project evidences it. Include as a known language, or omit? |
-| FastAPI | ⚠️ unverified | No record. Include? |
-| Django | ⚠️ unverified | No record. Include? |
-| MySQL | ⚠️ unverified | All evidenced database work is PostgreSQL/MongoDB. Include? |
-| Mongoose | ⚠️ partial | Online Doctor is a MERN-stack MongoDB app, but Mongoose is not named explicitly. Confirm? |
-| MongoDB Atlas | ⚠️ unverified | MongoDB is evidenced; Atlas (managed cloud) is not named. Confirm? |
+The published panels distinguish **owner-provided tool coverage** from **project-evidenced work**: each tab's closing note states which core technologies are evidenced by named projects (4j Traders, Rushkat, Taqwa Group, Violina Pflegedienst, Award Care, FCSC). No proficiency percentages, certifications, or delivery claims are attached to the owner-provided items.
 
-## DevOps & infrastructure
-
-| Item | Status | Question |
-|---|---|---|
-| Hetzner | ⚠️ unverified | No record. Which projects? |
-| Hostinger VPS | ⚠️ unverified | No record. Which projects? |
-| Azure Container Apps | ⚠️ partial | Azure is evidenced (Online Doctor); "Container Apps" as the specific service is not named. Confirm? |
-| Render | ⚠️ unverified | No record. Include? |
-| Railway | ⚠️ unverified | No record. Include? |
-
-## Already published as verified (for reference)
-
-React, Next.js, TypeScript, Tailwind CSS, Node.js, NestJS, Express.js, PostgreSQL, MongoDB, Prisma, Redis, JWT/RBAC, Socket.IO, WebRTC, Stripe, SSLCommerz, Docker, GitHub Actions, Azure, Vercel, VPS administration, Claude Code, Gemini (assisted development).
-
-## Not added anywhere (no request, no evidence)
-
-Proficiency percentages, certification claims, client counts, or delivery-outcome figures — per the standing honesty rules.
+This record is retained for provenance; no items are pending confirmation anymore.

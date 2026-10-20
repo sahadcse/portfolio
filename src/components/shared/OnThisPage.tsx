@@ -152,10 +152,10 @@ export default function OnThisPage({
                     onClick={() => setOpen((value) => !value)}
                     aria-expanded={open}
                     aria-haspopup="dialog"
-                    aria-label={t("onThisPage")}
-                    className="xl:hidden fixed top-[4.75rem] end-4 z-40 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-elev-floating backdrop-blur-sm transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="xl:hidden fixed top-[4.75rem] end-4 z-40 flex items-center gap-1.5 rounded-full border border-border bg-background/90 text-foreground shadow-elev-floating backdrop-blur-sm transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring px-3.5 py-2 text-label"
                 >
-                    {open ? <X className="w-5 h-5" aria-hidden="true" /> : <List className="w-5 h-5" aria-hidden="true" />}
+                    {open ? <X className="w-4 h-4" aria-hidden="true" /> : <List className="w-4 h-4" aria-hidden="true" />}
+                    {t("tocButton")}
                 </button>
             </div>
         </>
