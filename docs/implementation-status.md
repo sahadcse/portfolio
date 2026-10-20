@@ -1,8 +1,47 @@
 # Portfolio V2 — Implementation Status
 
 **Plan:** `docs/portfolio-v2-audit-and-plan.md` (v2.1, approved 2026-10-15) — authoritative specification.
-**Current stage:** **R3-equivalent reached early.** R1 · V2-06/07/08 · V2-09…14 · Phase 2 · Refinement · Multilingual pass · **Canva hero + tools tabs + minimal footer complete** (owner brief 2026-10-20).
+**Current stage:** **R3-equivalent reached early.** R1 · V2-06/07/08 · V2-09…14 · Phase 2 · Refinement · Multilingual · Canva pass · **Final refinement complete** (owner brief 2026-10-20: mobile UX, 25+/10+ metrics, projects page, tools audit, 404, testimonial drafts, About polish).
 **Working branch:** `v2-r1-implementation` (based on `main` @ `fc3a46e`). **Nothing pushed or deployed.**
+
+---
+
+## Completed — Final refinement (2026-10-20, commit `78cbe13`)
+
+### Mobile UX
+- **TOC button → top-right** below the sticky header (top=76px measured; popover opens downward; RTL mirrors to left-offset 16px). Verified at 320/375/390px: open → jump → dismiss, no collisions with the language selector or menu.
+- **Go to Top** verified visible after scroll at all three widths (bottom-right, clear of everything — the earlier "missing" report is explained by its old position under the TOC button near the browser gesture bar; repositioning the TOC resolves it).
+
+### Hero mobile
+- Availability split: **tinted success badge** ("Available for new projects") + separate delivery line; single row on wide screens, stacked on mobile.
+- Proof points: vertical list on mobile with **one shared left edge** (measured [16,16,16]px at 320/375/390); dot-separated row preserved on desktop.
+
+### Credibility metrics (owner-supplied figures)
+Proof band now shows **25+ projects delivered** (public + private combined, owner-supplied), **10+ publicly accessible**, plus the kept 6 sectors / 4 countries / 3 live systems with clarified methodologies, and a private-work note. Metrics are marked owner-supplied in their methodology text. **Delivered ≠ public is stated everywhere the figures appear.** FAQ #3 timezone answer now covers AEST, CET, and **US East Coast**. The proof line ("delivered for clients and teams in Australia, Germany, and beyond") stays delivered-work-factual — no US clients invented.
+
+### Projects page — `docs/projects-page-research.md` first (sources + patterns), then rebuilt
+Informative opening → 25+/10+ summary strip → existing sector filter + evidence-tier cards → private/internal-work explainer → shared CTA. Research sources: r/webdev case-study thread, dev.to 40-portfolio review, Colorlib portfolio examples, UX Planet NDA guidance, Stack Exchange NDA framing.
+
+### Not Found
+Localized 404 (verified **HTTP 404** on `/nonexistent`, `/de|/ar|/fr/nonexistent`, and unknown locale `/xx/...`), home + projects actions. **No auto-redirect** — trade-off documented in the component (404 semantics, SEO, loop risk); the brief explicitly permits this priority.
+
+### Tools audit — `docs/tools-claims-review.md`
+Panels restructured into labeled groups. Removed the "(App Router)" editorial comment. **Unverified owner-mentioned items (Three.js, Bootstrap, jQuery, Webflow, Framer, Wix, Squarespace, Laravel, Python, FastAPI, Django, MySQL, Mongoose, MongoDB Atlas, Hetzner, Hostinger VPS, Azure Container Apps, Render, Railway) are NOT published** — they wait in the review checklist for confirmation.
+
+### About
+Identity heading **MD SAHADUZZAMAN (SAHAD)** (uppercase accent, verified computed styles) above the intro; accent-emphasized intro phrases; portrait offset accent frame (RTL-mirrored, static, aria-hidden).
+
+### Testimonial drafts — `docs/testimonial-drafts.md` + `docs/testimonial-drafts.json`
+Three owner-drafted quotes with a per-client approval checklist. **Preview is build-flag-gated** (`TESTIMONIAL_PREVIEW=1`): drafts live in `docs/` (outside the bundle), read via fs only inside the gate, render with mandatory localized **DRAFT — NOT APPROVED** labels (dashed warning styling). Verified: preview build renders all three with labels; **production build contains zero draft text** (grep over `.next/server`). Production fallback (evidence cards) preserved.
+
+### Gates and evidence
+`lint` **0/0** · `i18n:check --strict` **OK** · `build` **clean** · captures: `f-mobile-{320,375,390}.png`, `f-mobile-ar.png`, `f-projects-en.png`, `f-about-en.png`, `f-about-ar.png`, `f-tabs-backend.png`, `f-testimonial-preview.png` — all inspected; programmatic checks for TOC/GoToTop positions, proof-point alignment, metrics, FAQ USA, 404 statuses, footer inventory, draft leak. No console errors.
+
+### Owner actions
+1. **tools-claims-review.md** — confirm/deny each listed item; confirmed items get added with evidence notes.
+2. **Testimonial drafts** — send to clients; on written approval add to `src/data/testimonials.ts` (renders automatically).
+3. Confirm the 25+/10+ methodology wording is acceptable as "owner-supplied figure".
+4. Prior open items: V2-25 native review of de/fr/ar, case-study data translation, real form click-test (O4), ceo_image.png tracking, O1–O10, Taqwa tier (O6).
 
 ---
 
