@@ -306,6 +306,72 @@ export const PROJECTS: Project[] = [
     codeUrl: "https://github.com/sahadcse",
   },
   {
+    id: "the-life-writer",
+    title: "The Life Writer — Life Story & Memoir Website",
+    shortTitle: "The Life Writer",
+    clientSector: "Life Stories & Memoir Services",
+    sectorShort: "Memoir services",
+    status: "supporting",
+    evidenceLevel: "client-site",
+    role: "WordPress / Elementor developer — page building, custom styling, and site implementation",
+    // No timeframe published: dates are not verified for this engagement.
+    businessProblem:
+      "A life-story and memoir preservation business needed its website to present its service clearly to individuals and families — readable long-form content, working enquiry paths, and a trustworthy presentation of a personally sensitive service.",
+    businessOutcome:
+      "Contributed to the development and visual implementation of the website: Elementor page building, visual design, responsive layouts, custom styling, enquiry forms, integrations and SEO.",
+    oneLineOutcome:
+      "Elementor page building, responsive layouts, custom styling, enquiry forms, integrations and SEO for a life-story and memoir preservation service.",
+    technicalArchitecture:
+      "Work on the business's WordPress site using Elementor Pro: page building and visual layout implementation, responsive behaviour across devices, custom CSS and JavaScript enhancements, enquiry forms with third-party integrations, and on-page SEO.",
+    metrics: [
+      "Elementor Pro page building and visual layout implementation",
+      "Responsive layouts across devices",
+      "Custom CSS and JavaScript enhancements",
+      "Enquiry forms and third-party integrations",
+      "On-page SEO implementation",
+      "Client training for routine website updates",
+    ],
+    tags: ["WordPress", "Elementor Pro", "CSS", "JavaScript", "Responsive Design", "SEO"],
+    // No screenshot published: the card and detail figure use the standard
+    // "No preview" fallback until owner-supplied captures exist.
+    imageUrl: "",
+    liveUrl: "https://thelifewriter.com/",
+    codeUrl: "https://github.com/sahadcse",
+  },
+  {
+    id: "70-degrees",
+    title: "70 Degrees — Archives & Cultural Heritage Website",
+    shortTitle: "70 Degrees",
+    clientSector: "Archives & Cultural Heritage",
+    sectorShort: "Cultural heritage",
+    status: "supporting",
+    evidenceLevel: "client-site",
+    role: "WordPress / Elementor developer — page building, custom styling, and site implementation",
+    // No timeframe published: dates are not verified for this engagement.
+    businessProblem:
+      "A specialist business working across archival preservation, oral history, and cultural heritage needed its website to present its services clearly to clients, partners, and communities.",
+    businessOutcome:
+      "Contributed to the development of the organisation's website: Elementor page building, visual design, responsive implementation, custom styling, forms, integrations and SEO.",
+    oneLineOutcome:
+      "Elementor page building, responsive implementation, custom styling, forms, integrations and SEO for an archives and cultural heritage specialist.",
+    technicalArchitecture:
+      "Work on the organisation's WordPress site using Elementor Pro: page building and visual layout implementation, responsive behaviour across devices, custom CSS and JavaScript, forms and third-party integrations, and on-page SEO.",
+    metrics: [
+      "Elementor Pro page building and visual layout implementation",
+      "Responsive layouts across devices",
+      "Custom CSS and JavaScript enhancements",
+      "Forms and third-party integrations",
+      "On-page SEO implementation",
+      "Website handover and client training",
+    ],
+    tags: ["WordPress", "Elementor Pro", "CSS", "JavaScript", "Responsive Design", "SEO"],
+    // No screenshot published: the card and detail figure use the standard
+    // "No preview" fallback until owner-supplied captures exist.
+    imageUrl: "",
+    liveUrl: "https://70degrees.org/",
+    codeUrl: "https://github.com/sahadcse",
+  },
+  {
     id: "midpac-charter-intake",
     title: "Mid-Pacific Jets — Charter Intake Concept",
     shortTitle: "Mid-Pacific Charter Intake",

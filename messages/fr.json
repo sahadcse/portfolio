@@ -481,7 +481,7 @@
         "frontend": {
           "label": "Frontend",
           "tagline": "Des interfaces qui tiennent sur les vrais appareils",
-          "note": "Travail React/Next.js de base démontré par Violina Pflegedienst, Award Care et le portail FCSC.",
+          "note": "Travail React/Next.js de base démontré par Violina Pflegedienst, Award Care et le portail FCSC ; travail WordPress/Elementor démontré par The Life Writer et 70 Degrees.",
           "groups": [
             {
               "label": "Frameworks & bibliothèques",
@@ -489,7 +489,7 @@
             },
             {
               "label": "Plateformes & builders web",
-              "items": "Webflow · Framer · Wix · Squarespace"
+              "items": "Webflow · Framer · Wix · Squarespace · WordPress · Elementor Pro"
             },
             {
               "label": "Styles",

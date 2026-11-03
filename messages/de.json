@@ -481,7 +481,7 @@
         "frontend": {
           "label": "Frontend",
           "tagline": "Oberflächen, die auf echten Geräten standhalten",
-          "note": "Kern-React/Next.js-Arbeit belegt durch Violina Pflegedienst, Award Care und das FCSC-Portal.",
+          "note": "Kern-React/Next.js-Arbeit belegt durch Violina Pflegedienst, Award Care und das FCSC-Portal; WordPress-/Elementor-Arbeit belegt durch The Life Writer und 70 Degrees.",
           "groups": [
             {
               "label": "Frameworks & Bibliotheken",
@@ -489,7 +489,7 @@
             },
             {
               "label": "Website-Plattformen & Builder",
-              "items": "Webflow · Framer · Wix · Squarespace"
+              "items": "Webflow · Framer · Wix · Squarespace · WordPress · Elementor Pro"
             },
             {
               "label": "Styling",
