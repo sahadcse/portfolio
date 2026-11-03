@@ -439,11 +439,11 @@
           "tagline": "Implementation technologies and design/development practices",
           "groups": [
             { "label": "Frameworks & libraries", "items": "React · Next.js · Three.js · Bootstrap · jQuery" },
-            { "label": "Website platforms & builders", "items": "Webflow · Framer · Wix · Squarespace" },
+            { "label": "Website platforms & builders", "items": "Webflow · Framer · Wix · Squarespace · WordPress · Elementor Pro" },
             { "label": "Styling", "items": "Tailwind CSS · design-token component systems" },
             { "label": "Practices", "items": "Responsive design · performance-focused design and implementation · SEO-friendly design and implementation · accessible, maintainable UI" }
           ],
-          "note": "Core React/Next.js work evidenced by Violina Pflegedienst, Award Care, and the FCSC portal."
+          "note": "Core React/Next.js work evidenced by Violina Pflegedienst, Award Care, and the FCSC portal; WordPress and Elementor work evidenced by The Life Writer and 70 Degrees."
         },
         "backend": {
           "label": "Backend & DB",
